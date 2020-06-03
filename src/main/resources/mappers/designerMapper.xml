@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace=" ">
+	<insert id="joinDesigner">
+		insert into gr_designer(mb_id, de_licence,de_approval, de_point)
+		select mb_id,#{de_licence},'N', 1000
+		from gr_member
+		where mb_check = "Y";
+	</insert>
+</mapper>
