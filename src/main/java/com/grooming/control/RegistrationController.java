@@ -39,6 +39,12 @@ public class RegistrationController {
 		return "home";
 	}
 	
+	//가게 정보 블럭 처리 (관리자에 의한)
+	@RequestMapping(value = "/blockShop")
+	public String shopBlockByAdmin() {
+		return "";
+	}
+	
 	//가게 상세 이미지 추가 메소드
 	@RequestMapping(value = "/addShopimgs")
 	public String addShopImgs(@Param(value = "licencenum")int licencenum, 
@@ -79,11 +85,13 @@ public class RegistrationController {
 		return "home";
 	}
 	
+	//컨트롤 테스트용
+	@RequestMapping(path = "/test")
+	public String goToTest(Model model) {
+		return "mypage/addList";
+	}
+	
 	/************************************
 		컨트롤에서 사용할 유틸 메소드..
 	*************************************/
-	//등록전 미용사 여부 체크 메소드
-	public void name() {
-		
-	}
 }
