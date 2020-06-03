@@ -3,13 +3,27 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="registMap">
-	<insert id="insertShop">
+<mapper namespace="registrationMapper">
+	<select id="searchOneShop" resultType="RegisterationDTO">
+		select * from gr_registration
+		where de_licencenum = #{de_licencenum}
+	</select>
+
+	<insert id="insertShop" parameterType="RegisterationDTO">
 		insert into gr_registration
 		values (#{de_licencenum}, #{reg_title},
 				#{ref_shopname}, #{reg_shopaddress},
-				#{reg_wantdate}, #{reg_price},
-				#{reg_con}, now(),
+				#{reg_price},#{reg_con}, now(),
 				0, #{reg_img})
 	</insert>
+		
+	<insert id="insertShopInfoimg" parameterType="RegisterationDTO">
+		insert into REG_IMG
+		values (#{de_licencenum}, #{reg_addimg})
+	</insert>
+	
+	<select id="listAdd_imgs" parameterType="int" resultType="RegisterationDTO">
+		select * from REG_IMG
+		where de_licencenum = #{de_licencenum}
+	</select>
 </mapper>

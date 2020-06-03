@@ -9,7 +9,6 @@ public class RegisterationDTO {
 	private String reg_title;
 	private String ref_shopname;
 	private String reg_shopaddress;
-	private Date reg_wantdate;
 	private int reg_price;
 	private String reg_con;
 	private Date reg_date;
@@ -22,25 +21,23 @@ public class RegisterationDTO {
 	public RegisterationDTO() {}
 	
 	public RegisterationDTO(int de_licencenum, String reg_title, String ref_shopname, String reg_shopaddress,
-			Date reg_wantdate, int reg_price, String reg_con, String reg_img) {
+				int reg_price, String reg_con, String reg_img) {
 		super();
 		this.de_licencenum = de_licencenum;
 		this.reg_title = reg_title;
 		this.ref_shopname = ref_shopname;
 		this.reg_shopaddress = reg_shopaddress;
-		this.reg_wantdate = reg_wantdate;
 		this.reg_price = reg_price;
 		this.reg_con = reg_con;
 		this.reg_img = reg_img;
 	}
 
 	public RegisterationDTO(int de_licencenum, String reg_title, String ref_shopname, String reg_shopaddress,
-			Date reg_wantdate, int reg_price, String reg_con, Date reg_date, int reg_block, String reg_img) {
+				int reg_price, String reg_con, Date reg_date, int reg_block, String reg_img) {
 		this.de_licencenum = de_licencenum;
 		this.reg_title = reg_title;
 		this.ref_shopname = ref_shopname;
 		this.reg_shopaddress = reg_shopaddress;
-		this.reg_wantdate = reg_wantdate;
 		this.reg_price = reg_price;
 		this.reg_con = reg_con;
 		this.reg_date = reg_date;
@@ -77,12 +74,6 @@ public class RegisterationDTO {
 	}
 	public void setReg_shopaddress(String reg_shopaddress) {
 		this.reg_shopaddress = reg_shopaddress;
-	}
-	public Date getReg_wantdate() {
-		return reg_wantdate;
-	}
-	public void setReg_wantdate(Date reg_wantdate) {
-		this.reg_wantdate = reg_wantdate;
 	}
 	public int getReg_price() {
 		return reg_price;
