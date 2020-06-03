@@ -19,23 +19,23 @@ public class NoticeDAOTest {
 	@Inject
 	private NoticeDAO noticedao;
 	
-//	@Test
-//	public void insertTest() {
-//		NoticeDTO noticedto = new NoticeDTO();
-//		noticedto.setNt_title("공지5");
-//		noticedto.setAd_id("admin");
-//		noticedto.setNt_con("ck");
-//		
-//		noticedao.insertOne(noticedto);	
-//	}
-	
 	@Test
-	public void selectAll() {
-		List<NoticeDTO> list = noticedao.selectList();
-		for(NoticeDTO dto : list) {
-			System.out.println(dto.getNt_no() + "글번호," + dto.getNt_title());
-		}
+	public void insertTest() {
+		NoticeDTO noticedto = new NoticeDTO();
+		noticedto.setNt_title("공지6");
+		noticedto.setAd_id("admin");
+		noticedto.setNt_con("ck");
+		
+		noticedao.insertOne(noticedto);	
 	}
+	
+//	@Test
+//	public void selectAll() {
+//		List<NoticeDTO> list = noticedao.selectList();
+//		for(NoticeDTO dto : list) {
+//			System.out.println(dto.getNt_no() + "글번호," + dto.getNt_title());
+//		}
+//	}
 	
 	
 }

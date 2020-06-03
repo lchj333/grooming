@@ -16,14 +16,14 @@
 	</select>
 	
 	<!-- 공지사항 수정 -->
-	<update id="updateNotice" parameterType="NoticeDTO">
+	<update id="updateNotice">
 		UPDATE GR_NOTICE
 		SET NT_TITLE = #{nt_title}, NT_CON = #{nt_con}
 		WHERE NT_NO = #{nt_no}
 	</update>
 	
 	<!-- 공지사항 삭제 -->
-	<delete id="deleteNotice" parameterType="NoticeDTO">
+	<delete id="deleteNotice">
 		DELETE FROM GR_NOTICE
 		WHERE NT_NO = #{nt_no}
 	</delete>
