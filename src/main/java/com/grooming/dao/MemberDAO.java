@@ -31,8 +31,8 @@ public class MemberDAO {
 	}
 	
 	// ID로 회원 개별 조회 메소드
-	public MemberDTO selectOne(String id) {
-		return ss.selectOne("selectMemberOne", id);
+	public MemberDTO selectOne(String mb_id) {
+		return ss.selectOne("selectMemberOne", mb_id);
 	}
 	
 	
