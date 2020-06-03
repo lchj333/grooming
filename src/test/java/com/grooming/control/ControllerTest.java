@@ -35,7 +35,6 @@ public class ControllerTest {
 	
 	@Test
 	public void testController() throws Exception {
-		mockMvc.perform(MockMvcRequestBuilders.get("/controller"));//get,post둘다 됨. (지금은 get방식)
+		mockMvc.perform(MockMvcRequestBuilders.get("/"));//get,post둘다 됨. (지금은 get방식)
 	}
-	//현재 서블릿 버전 낮아서 실행 불가
 }
