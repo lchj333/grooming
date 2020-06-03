@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.grooming.dao.MemberDAO;
-import com.grooming.dto.MemberVO;
+import com.grooming.dto.MemberDTO;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,16 +18,22 @@ public class MemberDAOTest {
 	private MemberDAO memberDao;
 	
 	@Test
-	public void testTime() {
-		System.out.println(memberDao.getTime());
-	}
-	
-	@Test
 	public void testInsertMember() {
-//		MemberVO mvo = new MemberVO();
-//		mvo.setUid("uid");
-//		mvo.setPwd("pwd");
-//		mvo.setUsername("sername");
-//		mvo.setEmail("email@email");
+		MemberDTO memberDto = new MemberDTO();
+		memberDto.setMb_id("123sad2q3sd");
+		memberDto.setMb_pw("234234");
+		memberDto.setMb_name("야스오");
+		memberDto.setMb_birth("991122");
+		memberDto.setMb_gender("M");
+		memberDto.setMb_email("dddd@dddd.ddd");
+		memberDto.setMb_emailck("Y");
+		memberDto.setMb_phone("010-7777-7777");
+		memberDto.setMb_address1("주소1");
+		memberDto.setMb_address2("주소2");
+		memberDto.setMb_area("선호주소");
+		
+		memberDao.joinMember(memberDto);
+		
+		System.out.println("회원가입 성공");
 	}
 }
