@@ -11,7 +11,7 @@ import com.grooming.dto.NoticeDTO;
 
 
 @Repository
-public class NoticeDAO implements Public_DAO {
+public class NoticeDAO {
 	
 	@Inject
 	SqlSession ss;
@@ -20,27 +20,23 @@ public class NoticeDAO implements Public_DAO {
 		this.ss = ss;
 	}	
 	// 공지사항 전체 조회하기
-	public List<Object> selectList() {
+	public List<NoticeDTO> selectList() {
 		// TODO Auto-generated method stub
 		return ss.selectList("selectAllNotice");
 	}	
 	// 공지사항 추가(작성)
-	@Override
-	public void insertOne(Object obj) {
-		ss.insert("insertNotice", (NoticeDTO)obj);
+	public void insertOne(NoticeDTO noticedto) {
+		ss.insert("insertNotice", noticedto);
 	}	
 	// 공지사항 수정
-	@Override
-	public void updateOne(Object obj) {
-		ss.update("updateNotice", (NoticeDTO)obj);
-	}	
-	// 공지삭제
-	@Override
-	public void deleteOne(Object obj) {
-		ss.delete("deleteNotice", (NoticeDTO)obj);
+	public void updateOne(NoticeDTO noticedto) {
+		ss.update("updateNotice", noticedto);
+	}
+	// 공지사항 삭제
+	public void deleteOne(NoticeDTO noticedto) {
+		ss.delete("deleteNotice", noticedto);
 	}
 
-	@Override
 	public void selectOne() {
 		// 필요없는기능
 	}
