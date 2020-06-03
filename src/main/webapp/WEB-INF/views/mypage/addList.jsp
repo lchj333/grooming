@@ -21,19 +21,19 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
 	
   <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet">
   <!-- Main styles -->
-  <link href="css/admin.css" rel="stylesheet">
+  <link href="<c:url value="/resources/css/admin.css"/>" rel="stylesheet">
   <!-- Icon fonts-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="<c:url value="/resources/vendor/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet" type="text/css">
   <!-- Plugin styles -->
-  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-  <link href="vendor/dropzone.css" rel="stylesheet">
-  <link href="css/date_picker.css" rel="stylesheet">
+  <link href="<c:url value="/resources/vendor/datatables/dataTables.bootstrap4.css"/>" rel="stylesheet">
+  <link href="<c:url value="/resources/vendor/dropzone.css"/>" rel="stylesheet">
+  <link href="<c:url value="/resources/css/date_picker.css"/>" rel="stylesheet">
   <!-- WYSIWYG Editor -->
-  <link rel="stylesheet" href="js/editor/summernote-bs4.css">
+  <link rel="stylesheet" href="<c:url value="/resources/js/editor/summernote-bs4.css"/>">
   <!-- Your custom styles -->
-  <link href="css/custom.css" rel="stylesheet">
+  <link href="<c:url value="/resources/css/custom.css"/>" rel="stylesheet">
 	
 </head>
 
@@ -757,25 +757,25 @@
       </div>
     </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>"></script>
+    <script src="<c:url value="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<c:url value="/resources/vendor/jquery-easing/jquery.easing.min.js"/>"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-	<script src="vendor/jquery.selectbox-0.2.js"></script>
-	<script src="vendor/retina-replace.min.js"></script>
-	<script src="vendor/jquery.magnific-popup.min.js"></script>
+    <script src="<c:url value="/resources/vendor/chart.js/Chart.min.js"/>"></script>
+    <script src="<c:url value="/resources/vendor/datatables/jquery.dataTables.js"/>"></script>
+    <script src="<c:url value="/resources/vendor/datatables/dataTables.bootstrap4.js"/>"></script>
+	<script src="<c:url value="/resources/vendor/jquery.selectbox-0.2.js"/>"></script>
+	<script src="<c:url value="/resources/vendor/retina-replace.min.js"/>"></script>
+	<script src="<c:url value="/resources/vendor/jquery.magnific-popup.min.js"/>"></script>
     <!-- Custom scripts for all pages-->
-    <script src="js/admin.js"></script>
+    <script src="<c:url value="/resources/js/admin.js"/>"></script>
 	<!-- Custom scripts for this page-->
-	<script src="vendor/dropzone.min.js"></script>
-	<script src="vendor/bootstrap-datepicker.js"></script>
+	<script src="<c:url value="/resources/vendor/dropzone.min.js"/>"></script>
+	<script src="<c:url value="/resources/vendor/bootstrap-datepicker.js"/>"></script>
 	<script>$('input.date-pick').datepicker();</script>
   <!-- WYSIWYG Editor -->
-  <script src="js/editor/summernote-bs4.min.js"></script>
+  <script src="<c:url value="/resources/js/editor/summernote-bs4.min.js"/>"></script>
   <script>
       $('.editor').summernote({
     fontSizes: ['10', '14'],
