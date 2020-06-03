@@ -3,13 +3,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="com.exam.MemberMapper">
-	<select id="getTime" resultType="String">
-		select now()
+<mapper namespace=" ">
+	<insert id="joinMember" parameterType="MemberDTO">
+		insert into GR_MEMBER(MB_ID, MB_PW, MB_NAME, MB_BIRTH, MB_GENDER, MB_EMAIL, MB_EMAILCK, MB_PHONE, MB_ADRESS1, MB_ADRESS2, MB_JOINDATE, MB_AREA)
+		values (#{mb_id}, #{mb_pw}, #{mb_name},
+				#{mb_birth}, #{mb_gender}, #{mb_email},
+				#{mb_emailck}, #{mb_phone}, #{mb_address1}, 
+				#{mb_address2}, now(), #{mb_area})
+	</insert>
+	
+	<select id="selectMemberAll" resultType="MemberDTO">
+		select * from gr_member
 	</select>
 	
-	<insert id="insertMember"><!-- parmType넣지않은 이유는 mybatisConfig.xml 참조  -->
-		insert into tbl_member (uid, pwd, username, email)
-		values (#{uid}, #{pwd}, #{username}, #{email})
-	</insert>
+	<select id="selectMemberOne" resultType="MemberDTO">
+		select * from gr_member
+		where mb_id = #{mb_id}
+	</select>
+
 </mapper>
