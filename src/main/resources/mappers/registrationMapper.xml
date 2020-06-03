@@ -4,12 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="registMap">
-	<insert id="">
+	<insert id="insertShop">
 		insert into gr_registration
-		values (${de_licencenum}, ${reg_title},
-				${ref_shopname}, ${reg_shopaddress},
-				${reg_wantdate}, ${reg_price},
-				${reg_con}, ${reg_date},
-				${reg_block}, ${reg_img})
+		values (#{de_licencenum}, #{reg_title},
+				#{ref_shopname}, #{reg_shopaddress},
+				#{reg_wantdate}, #{reg_price},
+				#{reg_con}, now(),
+				0, #{reg_img})
 	</insert>
 </mapper>

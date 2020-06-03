@@ -20,6 +20,20 @@ public class RegisterationDTO {
 	
 	//생성자
 	public RegisterationDTO() {}
+	
+	public RegisterationDTO(int de_licencenum, String reg_title, String ref_shopname, String reg_shopaddress,
+			Date reg_wantdate, int reg_price, String reg_con, String reg_img) {
+		super();
+		this.de_licencenum = de_licencenum;
+		this.reg_title = reg_title;
+		this.ref_shopname = ref_shopname;
+		this.reg_shopaddress = reg_shopaddress;
+		this.reg_wantdate = reg_wantdate;
+		this.reg_price = reg_price;
+		this.reg_con = reg_con;
+		this.reg_img = reg_img;
+	}
+
 	public RegisterationDTO(int de_licencenum, String reg_title, String ref_shopname, String reg_shopaddress,
 			Date reg_wantdate, int reg_price, String reg_con, Date reg_date, int reg_block, String reg_img) {
 		this.de_licencenum = de_licencenum;

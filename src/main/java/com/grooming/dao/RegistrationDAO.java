@@ -20,6 +20,6 @@ public class RegistrationDAO {
 	
 	//가게 정보 등록 메소드 
 	public void insertShop(RegisterationDTO dto) {
-		ss.insert(map+".", dto);
+		ss.insert(map+".insertShop", dto);
 	}
 }
