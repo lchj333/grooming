@@ -23,7 +23,11 @@ public class NoticeDAO {
 	public List<NoticeDTO> selectList() {
 		// TODO Auto-generated method stub
 		return ss.selectList("selectAllNotice");
-	}	
+	}
+	// 공지사항 자세히보기
+	public NoticeDTO selectOne(int nt_no) {
+		return ss.selectOne("selectOneNotice", nt_no);
+	}
 	// 공지사항 추가(작성)
 	public void insertOne(NoticeDTO noticedto) {
 		ss.insert("insertNotice", noticedto);
