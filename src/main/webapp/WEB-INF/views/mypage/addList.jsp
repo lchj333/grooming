@@ -324,7 +324,7 @@
 				<div class="col-md-12">
 					<div class="form-group">
 						<label>Photos</label>
-						<form action="/registShop" class="dropzone"></form>
+						<form action="/registShop" method="post" class="dropzone" enctype="multipart/form-data"></form>
 					</div>
 				</div>
 			</div>
