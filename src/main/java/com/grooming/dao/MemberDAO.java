@@ -35,6 +35,13 @@ public class MemberDAO {
 		return ss.selectOne("selectMemberOne", mb_id);
 	}
 	
+	// 미용사 사용신청 메소드
+	public void designerCheck(MemberDTO memberDto) {
+		ss.update("designerCheck", memberDto);
+	}
+
+	
+	
 	
 	
 }
