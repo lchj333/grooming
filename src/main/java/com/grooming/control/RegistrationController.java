@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -25,16 +26,8 @@ public class RegistrationController {
 	
 	//가게 등록
 	@RequestMapping(path = "/registShop")
-	public String insertShopInfo(@Param(value = "licencenum")int licencenum,
-				@Param(value = "title")String title,
-				@Param(value = "shopname")String shopname,
-				@Param(value = "shopaddress")String shopaddress,
-				@Param(value = "price")int price,
-				@Param(value = "price")String con,
-				@Param(value = "img")String img, Model model) {
-		//메소드 바디
-		RegisterationDTO dto = new RegisterationDTO(licencenum, title, shopname, 
-				shopaddress, price, con, img);
+	public String insertShopInfo(RegisterationDTO dto, Model model) {//스프링이 알아서 set해줌.
+		
 //		System.out.println("/registShop");
 		return "home";
 	}
@@ -47,8 +40,8 @@ public class RegistrationController {
 	
 	//가게 상세 이미지 추가 메소드
 	@RequestMapping(value = "/addShopimgs")
-	public String addShopImgs(@Param(value = "licencenum")int licencenum, 
-							MultipartHttpServletRequest req) {
+	public String addShopImgs(@RequestParam(value = "De_licencenum")int licencenum, 
+								MultipartHttpServletRequest req) {
 		//메소드 바디
 		RegisterationDTO dto = new RegisterationDTO();
 		
