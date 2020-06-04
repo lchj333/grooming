@@ -108,9 +108,17 @@
 			<!-- /row-->
 			<div class="row">
 				<div class="col-md-12">
+<!-- 					<div class="form-group">
+						<label>Photos</label>
+						<form action="addShopimgs" method="post" class="dropzone" enctype="multipart/form-data">
+							<input type="hidden" name="de_licencenum" value="9000"/>
+							<input type="submit" value="전송"/>
+						</form> 
+					</div>
+					-->
 					<div class="form-group">
 						<label>Photos</label>
-						<form action="/file-upload" method="post" class="dropzone" enctype="multipart/form-data"></form>
+						<form action="/file-upload" class="dropzone"></form>
 					</div>
 				</div>
 			</div>
@@ -742,26 +750,26 @@
         </div>
       </div>
     </div>
-    <!-- Bootstrap core JavaScript-->
-    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/mypage/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
     <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/chart.js/Chart.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/jquery.dataTables.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/dataTables.bootstrap4.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery.selectbox-0.2.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/retina-replace.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery.magnific-popup.min.js"></script>
+    <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/dataTables.bootstrap4.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.selectbox-0.2.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/retina-replace.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.magnific-popup.min.js'/>"></script>
     <!-- Custom scripts for all pages-->
-    <script src="${pageContext.request.contextPath}/resources/mypage/js/admin.js"></script>
+    <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
 	<!-- Custom scripts for this page-->
-	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/dropzone.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap-datepicker.js"></script>
+	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
 	<script>$('input.date-pick').datepicker();</script>
   <!-- WYSIWYG Editor -->
-  <script src="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.min.js"></script>
+  <script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
   <script>
       $('.editor').summernote({
     fontSizes: ['10', '14'],

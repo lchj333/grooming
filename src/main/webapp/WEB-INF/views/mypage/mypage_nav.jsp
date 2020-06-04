@@ -23,11 +23,11 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
 	
   <!-- Bootstrap core CSS-->
-  <link href="${pageContext.request.contextPath}/resources/mypage/css/bootstrap.min.css" rel="stylesheet" >
+  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
   <!-- Main styles -->
   <link href="${pageContext.request.contextPath}/resources/mypage/css/admin.css" rel="stylesheet">
   <!-- Icon fonts-->
-  <link href="${pageContext.request.contextPath}/resources/mypage/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Plugin styles -->
   <link href="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/mypage/vendor/dropzone.css" rel="stylesheet">
