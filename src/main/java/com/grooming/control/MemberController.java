@@ -8,12 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grooming.dao.MemberDAO;
 import com.grooming.dto.MemberDTO;
+import com.grooming.service.SecurityService;
 
 
 
@@ -22,8 +25,29 @@ public class MemberController {
 	@Inject
 	MemberDAO dao;
 	
-	@RequestMapping(value = "/join")
-	public String join(MemberDTO memberDto) {
+	
+	@GetMapping(value = "/join")
+	public String insertOk() {
+		return "joinForm";
+	}
+	
+	
+	@PostMapping(value = "/join")
+	public String join(MemberDTO memberDto, HttpServletRequest req) {
+		
+		
+		
+		SecurityService securityService = new SecurityService();
+		
+		//String securityPw = securityService.encryptSHA256(memberDto.getMb_pw());
+		
+		String mb_pw = req.getParameter("mb_pw");
+		String securityPw = securityService.encryptSHA256(mb_pw);
+		
+		System.out.println(mb_pw);
+		System.out.println(securityPw);
+		
+		memberDto.setMb_pw(securityPw);
 		
 		dao.joinMember(memberDto);
 		
