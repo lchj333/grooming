@@ -23,29 +23,54 @@ public class NoticeController {
 	@Inject
 	NoticeDAO noticedao;
 	
+	//공지사항 전체보기
 	@RequestMapping(value="/noticeList")
 	public String noticeList(Model model) {
 		List<NoticeDTO> list = noticedao.selectList();
 		model.addAttribute("list", list);
 		return "gr_noticeboard_list";
 	}
-	
-	@GetMapping(value="/insert")
-	public String noticeInsert(Model model) {
-		return "gr_noticeboard_insert";
-	}
-	
-	@PostMapping(value="/insert")
-	public String noticeWrite(@ModelAttribute NoticeDTO noticedto) {
-		noticedao.insertOne(noticedto);
-		return "redirect:/noticeList";
-	}
-	
+
+	// 상세내용 보기
 	@RequestMapping(value="/detail")
 	public String noticeDetail(@RequestParam(value="nt_no")int nt_no, Model model) {
+		noticedao.raiseHits(nt_no);
 		NoticeDTO noticedto = noticedao.selectOne(nt_no);
 		model.addAttribute("inform", noticedto);
 		return "gr_noticeboard_detail";
 	}
 	
+	//글 작성 페이지로 이동
+	@GetMapping(value="/insert")
+	public String noticeWrite(Model model) {
+		return "gr_noticeboard_insert";
+	}
+	//글 작성하기
+	@PostMapping(value="/insert")
+	public String WriteOk(@ModelAttribute NoticeDTO noticedto) {
+		noticedao.insertOne(noticedto);
+		return "redirect:/noticeList";
+	}
+	
+	// 글 수정페이지로 이동
+	@GetMapping(value="/updateNotice")
+	public String noticeUpdate(@RequestParam(value="nt_no")int nt_no, Model model) {
+		NoticeDTO noticedto = noticedao.selectOne(nt_no);
+		model.addAttribute("inform", noticedto);
+		return "gr_noticeboard_update";
+	}
+	//글 수정하기
+	@PostMapping(value="/updateNotice")
+	public String UpdateOk(@RequestParam(value="nt_no")int nt_no, Model model,
+							@ModelAttribute NoticeDTO noticedto) {
+		noticedao.updateOne(noticedto);
+		return "redirect:/noticeList";
+	}
+	
+	// 글 삭제하기
+	@RequestMapping(value="/deleteNotice")
+	public String noticeDelete(@RequestParam(value="nt_no")int nt_no, Model model) {
+		noticedao.deleteOne(nt_no);
+		return "redirect:/noticeList";
+	}
 }

@@ -37,12 +37,12 @@ public class NoticeDAO {
 		ss.update("updateNotice", noticedto);
 	}
 	// 공지사항 삭제
-	public void deleteOne(NoticeDTO noticedto) {
-		ss.delete("deleteNotice", noticedto);
+	public void deleteOne(int nt_no) {
+		ss.delete("deleteNotice", nt_no);
 	}
-
-	public void selectOne() {
-		// 필요없는기능
+	// 조회수 올리기
+	public void raiseHits(int nt_no) {
+		ss.update("raiseHits", nt_no);
 	}
 }
 
