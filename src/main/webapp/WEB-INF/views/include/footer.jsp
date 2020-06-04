@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +14,7 @@
 		<div class="container margin_60_35">
 			<div class="row">
 				<div class="col-lg-5 col-md-12 p-r-5">
-					<p><img src="img/Grooming_logo_main2.png" width="150" height="36" alt="로고" id="footer-logo"></p>
+					<p><img src="/resources/img/Grooming_logo_main2.png" width="150" height="36" alt="로고" id="footer-logo"></p>
 					<p>Mea nibh meis philosophia eu. Duis legimus efficiantur ea sea. Id placerat tacimates definitionem sea, prima quidam vim no. Duo nobis persecuti cu. Nihil facilisi indoctum an vix, ut delectus expetendis vis.</p>
 
 				</div>
@@ -48,9 +50,9 @@
 	</footer>
 	<!--/footer-->
 	<!-- COMMON SCRIPTS -->
-	<script src="js/common_scripts.js"></script>
-	<script src="js/main.js"></script>
-	<script src="assets/validate.js"></script>
+	<script src="/resources/main_resources/js/common_scripts.js"></script>
+	<script src="/resources/main_resources/js/main.js"></script>
+	<script src="/resources/main_resources/assets/validate.js"></script>
 
 </body>
 </html>
