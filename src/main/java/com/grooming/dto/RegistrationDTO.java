@@ -3,7 +3,7 @@ package com.grooming.dto;
 import java.util.Date;
 
 //등록테이블(판매자페이지)
-public class RegisterationDTO {
+public class RegistrationDTO {
 	//매변
 	private int de_licencenum;
 	private String reg_title;
@@ -18,9 +18,9 @@ public class RegisterationDTO {
 	private String reg_addimg;
 	
 	//생성자
-	public RegisterationDTO() {}
+	public RegistrationDTO() {}
 	
-	public RegisterationDTO(int de_licencenum, String reg_title, String ref_shopname, String reg_shopaddress,
+	public RegistrationDTO(int de_licencenum, String reg_title, String ref_shopname, String reg_shopaddress,
 				int reg_price, String reg_con, String reg_img) {
 		super();
 		this.de_licencenum = de_licencenum;
@@ -32,7 +32,7 @@ public class RegisterationDTO {
 		this.reg_img = reg_img;
 	}
 
-	public RegisterationDTO(int de_licencenum, String reg_title, String ref_shopname, String reg_shopaddress,
+	public RegistrationDTO(int de_licencenum, String reg_title, String ref_shopname, String reg_shopaddress,
 				int reg_price, String reg_con, Date reg_date, int reg_block, String reg_img) {
 		this.de_licencenum = de_licencenum;
 		this.reg_title = reg_title;
@@ -45,7 +45,7 @@ public class RegisterationDTO {
 		this.reg_img = reg_img;
 	}	
 	//디테일 이미지
-	public RegisterationDTO(int de_licencenum, String reg_addimg) {
+	public RegistrationDTO(int de_licencenum, String reg_addimg) {
 		this.de_licencenum = de_licencenum;
 		this.reg_addimg = reg_addimg;
 	}

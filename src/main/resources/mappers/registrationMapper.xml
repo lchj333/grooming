@@ -21,9 +21,4 @@
 		insert into REG_IMG
 		values (#{de_licencenum}, #{reg_addimg})
 	</insert>
-	
-	<select id="listAdd_imgs" parameterType="int" resultType="RegisterationDTO">
-		select * from REG_IMG
-		where de_licencenum = #{de_licencenum}
-	</select>
 </mapper>

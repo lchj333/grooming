@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.grooming.dao.RegistrationDAO;
-import com.grooming.dto.RegisterationDTO;
+import com.grooming.dto.RegistrationDTO;
 
 @Controller
 public class RegistrationController {
@@ -26,7 +27,7 @@ public class RegistrationController {
 	
 	//가게 등록
 	@RequestMapping(path = "/registShop")
-	public String insertShopInfo(RegisterationDTO dto, Model model) {//스프링에서 알아서 set.
+	public String insertShopInfo(RegistrationDTO dto, Model model) {//스프링에서 알아서 set.
 		//값 입력 메소드
 		rdao.insertShop(dto);
 //		System.out.println("/registShop");
@@ -40,12 +41,23 @@ public class RegistrationController {
 		return "home";
 	}
 	
+	//가게 상세 정보
+	@RequestMapping(value = "/detailShop")
+	public String detailShopInfo(int licencenum, HttpSession hs) {
+		//가게 정보
+//		List<RegisterationDTO> list = rdao.sel~~~~
+//		hs.getAttribute(name)
+		//가게 상세이미지 목록
+//		if()!=null)
+		return "";
+	}
+	
 	//가게 상세 이미지 추가 메소드
 	@RequestMapping(value = "/addShopimgs")
 	public String addShopImgs(@RequestParam(value = "de_licencenum")int licencenum, 
 							MultipartHttpServletRequest req) {
 		//메소드 바디
-		RegisterationDTO dto = new RegisterationDTO();
+		RegistrationDTO dto = new RegistrationDTO();
 		
 		dto.setDe_licencenum(licencenum); //식별 컬럼
 		
@@ -70,9 +82,9 @@ public class RegistrationController {
 	//컨트롤 테스트용
 	@RequestMapping(path = "/shoptest")
 	public String test(Model model) {
-		List<RegisterationDTO> list = rdao.testTest(9000);
+		List<RegistrationDTO> list = rdao.testTest(9000);
 		
-		for(RegisterationDTO d : list) {
+		for(RegistrationDTO d : list) {
 			System.out.print("licencenum : "+d.getDe_licencenum());
 			System.out.println("imgname : "+d.getReg_addimg());
 		}
@@ -84,6 +96,7 @@ public class RegistrationController {
 	@RequestMapping(path = "/test")
 	public String goToTest(Model model) {
 		return "mypage/grooming_hairdresser_addList";
+		
 	}
 	
 	/************************************
