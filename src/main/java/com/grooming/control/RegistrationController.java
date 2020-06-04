@@ -83,7 +83,7 @@ public class RegistrationController {
 	//컨트롤 테스트용
 	@RequestMapping(path = "/test")
 	public String goToTest(Model model) {
-		return "mypage/addList";
+		return "mypage/grooming_hairdresser_addList";
 	}
 	
 	/************************************
