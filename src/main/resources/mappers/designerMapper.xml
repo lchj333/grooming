@@ -4,10 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace=" ">
-	<insert id="joinDesigner">
-		insert into gr_designer(mb_id, de_licence,de_approval, de_point)
-		select mb_id,#{de_licence},'N', 1000
+	<insert id="joinDesigner" parameterType="DesignerDTO">
+		insert ignore into gr_designer(mb_id, de_licence,de_approval, de_point)
+		select #{mb_id}, #{de_licence}, 'N', 1000
 		from gr_member
-		where mb_check = "Y";
+		where mb_check = "Y"
 	</insert>
 </mapper>
