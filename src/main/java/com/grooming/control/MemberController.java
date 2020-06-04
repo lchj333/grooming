@@ -4,9 +4,11 @@ package com.grooming.control;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -34,16 +36,40 @@ public class MemberController {
 		List<MemberDTO> list = dao.selectMemberAll();
 		model.addAttribute("memberlist", list);
 		
-		return "list";
+		return "member";
 	}
 	
-	@RequestMapping(value = "/selectMemberOne")
-	public String showOne(@RequestParam(value = "id", required = true)String id,Model model) {
+	@RequestMapping(value = "/detail")
+	public String showOne(@RequestParam(value = "mb_id", required = true)String mb_id,Model model) {
+		MemberDTO dto = dao.selectOne(mb_id);
 		
-		dao.selectOne(id);
-		model.addAttribute("info", dao.selectOne(id));
+		model.addAttribute("info", dto);
 		
 		return "detail";
 		
 	}
+	@RequestMapping(value = "/designerForm")
+	public String showdeeigner(@RequestParam(value = "mb_id", required = true)String mb_id,Model model) {
+		
+		MemberDTO dto = dao.selectOne(mb_id);
+		
+		//System.out.println(dto);
+		
+		model.addAttribute("deinfo", dto);
+		
+		
+		return "designerForm";
+		
+	}
+	
+	@RequestMapping(value = "/designerCheck")
+	public String designerCheck(MemberDTO memberDto) {
+		
+		dao.designerCheck(memberDto);
+		
+		
+		return "redirect:/selectMemberAll";
+	}
+
+	
 }
