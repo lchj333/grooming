@@ -1,0 +1,48 @@
+/*============================================================================================*/
+/* Your custom styles below */
+/*============================================================================================*/
+
+
+.icon_mail_alt:before {
+	content: "\e010";
+}
+
+.icon-user {
+	margin: -7px;
+}
+
+#login {
+	margin: auto;
+	background-color: white;
+}
+
+.email2 {
+	width: 50%;
+}
+
+#grooming_login_mail_Button {
+	width: 40%;
+	height: 100%;
+
+	background-color: black;
+	color: #ffffff;
+	display: inline;
+	border-radius: 0px;
+	margin-left: -5px;
+	border-color: black;
+}
+
+#grooming_login_mail_Text {
+	width: 60%;
+	height: 100%;
+	padding-left: 5px;
+	display: inline;
+	outline: none;
+	box-sizing: border-box;
+	color: black;
+}
+#row_consent_form{
+	margin-top: 120px;
+	margin-bottom: 120px;
+
+}

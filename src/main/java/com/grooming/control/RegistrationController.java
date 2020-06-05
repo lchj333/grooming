@@ -53,7 +53,7 @@ public class RegistrationController {
 	}
 	
 	//가게 상세 이미지 추가 메소드
-	@RequestMapping(value = "/addShopimgs")
+	@RequestMapping(value = "/file-upload")
 	public String addShopImgs(@RequestParam(value = "de_licencenum")int licencenum, 
 							MultipartHttpServletRequest req) {
 		//메소드 바디
