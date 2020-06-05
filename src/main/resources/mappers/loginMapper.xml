@@ -11,7 +11,7 @@
 		and mb_pw = #{mb_pw}
 	</select>
 	
-	<select id="LoginOk" parameterType="LoginDto" resultType="LoginDto">
+	<select id="loginOk" parameterType="LoginDto" resultType="LoginDto">
 		select * 
 		from gr_member
 		where mb_id = #{mb_id}
