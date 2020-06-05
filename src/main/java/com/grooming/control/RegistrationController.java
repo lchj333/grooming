@@ -34,7 +34,7 @@ public class RegistrationController {
 		return "home";
 	}
 	
-	//가게 정보 블럭 처리 (관리자에 의한)
+	//가게 정보 블럭 상태 변경 (관리자에 의한)
 	@RequestMapping(value = "/blockShop")
 	public String shopBlockByAdmin(int no) {
 //		rdao.

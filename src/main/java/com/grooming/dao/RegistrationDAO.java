@@ -20,17 +20,20 @@ public class RegistrationDAO {
 		this.ss = ss;
 	}
 	
+	//등록된 가게 리스트
+	public List<RegistrationDTO> getList() {
+		return ss.selectList(MAPPER+".list");
+	}
+	
 	//가게 정보 등록 메소드 
 	public void insertShop(RegistrationDTO dto) {
 		ss.insert(MAPPER+".insertShop", dto);
 	}
 	
-	//등록된 가게 블럭상태 해제
-//	public void name() {
-//		if() {
-//			System.out.println("삭제 성공");
-//		}else System.out.println("삭제 실패");
-//	}
+	//가게 정보 블럭 상태 변경 (관리자에 의한)
+	public void changeStateByAdmin(int no) {
+		ss.update(MAPPER+".BlockByAdmin", no);
+	}
 	
 	//가게 상세 이미지 추가
 	public void insertShopInfoimg(RegistrationDTO dto) {

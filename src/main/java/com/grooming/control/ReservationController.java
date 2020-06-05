@@ -1,12 +1,15 @@
 package com.grooming.control;
 
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.grooming.dao.ReservationDAO;
 
@@ -27,20 +30,25 @@ public class ReservationController {
 		return "";
 	}
 	
-	//사용자 미용 후기
+	//사용자 미용 후기 작성
 	@RequestMapping(value = "/writeReview")
 	public String writeReview() {
 		return "";
 	}
 	
 	//미용사 예약 대기 목록
-	@RequestMapping(value = "/listForCutter")
+	@RequestMapping(value = "/listMyReserv")
 	public String listForCutter(HttpServletRequest req) {
+		Map<String, Object> map = null;
+		
 		//미용사인지 확인
 		if(imCutter(req)) {
-			String name = (String) req.getAttribute("de_licencenum");//세션에서 미용사 이름
+			map.put("type", "de_licencenum");
+			map.put("data", (int) req.getAttribute("de_licencenum"));//세션에서 미용사 넘버
+		}else {
+			String id = (String) req.getAttribute("mb_id");//세션에서 현재 사용자 아이디
 		}
-		return "";
+		return "home";
 	}
 	
 	//사용자 예약 목록
@@ -49,7 +57,7 @@ public class ReservationController {
 		String MB_ID = (String) req.getAttribute("MB_ID");//세션에서 사용자 이름
 		
 		//예약 검색
-//		rdao.selec
+		rdao.selectListByCustomer(MB_ID);
 		
 		return "";
 	}

@@ -4,12 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="registrationMapper">
-	<select id="searchOneShop" resultType="RegisterationDTO">
+	<!-- 모든가게 리스트 -->
+	<select id="list">
+		select * from gr_registration
+	</select>
+
+	<select id="searchOneShop" resultType="RegistrationDTO">
 		select * from gr_registration
 		where de_licencenum = #{de_licencenum}
 	</select>
 
-	<insert id="insertShop" parameterType="RegisterationDTO">
+	<insert id="insertShop" parameterType="RegistrationDTO">
 		insert into gr_registration
 		values (#{de_licencenum}, #{reg_title},
 				#{ref_shopname}, #{reg_shopaddress},
@@ -17,8 +22,14 @@
 				0, #{reg_img})
 	</insert>
 		
-	<insert id="insertShopInfoimg" parameterType="RegisterationDTO">
+	<insert id="insertShopInfoimg" parameterType="RegistrationDTO">
 		insert into REG_IMG
 		values (#{de_licencenum}, #{reg_addimg})
 	</insert>
+	
+	<update id="BlockByAdmin" parameterType="RegistrationDTO">
+		update gr_registration
+		set reg_block = #{reg_block}
+		where de_licencenum = #{de_licencenum}
+	</update>
 </mapper>

@@ -1,6 +1,7 @@
 package com.grooming.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -17,13 +18,14 @@ public class ReservationDAO {
 	@Inject
 	SqlSession ss;
 	
-	//사용자(가 보는) 예약 목록
+	//현재의 유효한 예약 목록
 	public List<ReservationDTO> selectListByCustomer(String mb_id) {
-		return ss.selectList(MAPPER+".ListByCustomer", mb_id);
+		return ss.selectList(MAPPER+".getReservList", mb_id);
 	}
 	
-	//미용사(가 보는) 예약 대기 목록
-	public List<ReservationDTO> selectListByCutter(int de_licencenum) {
-		return ss.selectList(MAPPER+".ListByCutter", de_licencenum);
+	//예약 내역 가져오기
+	public List<ReservationDTO> selectListByCutter(Map<String, Object> map) {
+		return ss.selectList(MAPPER+".getAllMyList", map);
 	}
+	
 }
