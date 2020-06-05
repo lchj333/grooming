@@ -16,26 +16,26 @@ public class ReservationController {
 	ReservationDAO rdao;
 	
 	//사용자의 미용 예약
-	@RequestMapping(value = "/")
-	public String asd1() {
+	@RequestMapping(value = "/reserv")
+	public String reserv() {
 		return "";
 	}
 	
 	//미용사 예약 승인 + 피드백
-	@RequestMapping(value = "/")
-	public String asd2() {
+	@RequestMapping(value = "/yorn")
+	public String yesOrNo() {
 		return "";
 	}
 	
 	//사용자 미용 후기
-	@RequestMapping(value = "/")
-	public String asd3() {
+	@RequestMapping(value = "/writeReview")
+	public String writeReview() {
 		return "";
 	}
 	
 	//미용사 예약 대기 목록
-	@RequestMapping(value = "/")
-	public String asdasd(HttpServletRequest req) {
+	@RequestMapping(value = "/listForCutter")
+	public String listForCutter(HttpServletRequest req) {
 		//미용사인지 확인
 		if(imCutter(req)) {
 			String name = (String) req.getAttribute("de_licencenum");//세션에서 미용사 이름
@@ -44,8 +44,8 @@ public class ReservationController {
 	}
 	
 	//사용자 예약 목록
-	@RequestMapping(value = "/")
-	public String asd4(HttpServletRequest req) {
+	@RequestMapping(value = "/listForCustomer")
+	public String listForCustomer(HttpServletRequest req) {
 		String MB_ID = (String) req.getAttribute("MB_ID");//세션에서 사용자 이름
 		
 		//예약 검색
