@@ -25,7 +25,7 @@ public class LoginDAO {
 	
 	// 로그인 처리 메소드
 	public LoginDTO loginOk(LoginDTO loginDto) {
-		return ss.selectOne("LoginOk", loginDto);
+		return ss.selectOne("loginOk", loginDto);
 	}
 	
 }
