@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace=" ">
+	<update id="updateDes" parameterType="DesignerDTO">
+		update gr_designer
+		set de_point = de_point + #{de_point}
+		where de_licencenum = #{de_licencenum}
+	</update>
+
+	<select id="selectAllDes" resultType="DesignerDTO">
+		select * from GR_PAYLOG
+	</select>
+	
+	 <insert id="insertMoney" parameterType="DesignerDTO">
+	 	insert into GR_PAYLOG
+	 	values(#{de_licencenum}, sysdate(), #{de_point})
+	 </insert>
+
+	<select id="selectOneDesi"  parameterType="int" resultType="DesignerDTO">
+		select * from GR_PAYLOG
+		where de_licencenum = #{de_licencenum}
+	</select>
+	
+</mapper>
