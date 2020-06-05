@@ -22,10 +22,10 @@ public class LoginController {
 	@Inject
 	LoginDAO dao;
 	
-//	@RequestMapping(value = "login", method = RequestMethod.GET)
-//	public String loginGet(@ModelAttribute("loginDto") LoginDTO loginDto) {
-//		return "login";
-//	}
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	public String loginGet(@ModelAttribute("loginDto") LoginDTO loginDto) {
+		return "login";
+	}
 	
 //	@RequestMapping(value = "login", method = RequestMethod.POST)
 //	public String loginPost(LoginDTO loginDto, HttpServletRequest req) throws Exception {
@@ -45,7 +45,7 @@ public class LoginController {
 //	}
 	
 	
-	@RequestMapping(value="login")
+	@RequestMapping(value="login", method = RequestMethod.POST)
 	public ModelAndView loginCheck(@ModelAttribute LoginDTO loginDto,HttpSession session, HttpServletRequest req) {
 		SecurityService securityService = new SecurityService();
 		String pw = req.getParameter("mb_pw");
@@ -68,9 +68,6 @@ public class LoginController {
 			mav.setViewName("login");
 			
 		}
-		
-		
-		
 		
 		
 		return mav;
