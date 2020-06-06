@@ -9,19 +9,31 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.grooming.dao.ReservationDAO;
+import com.grooming.dto.ReservationDTO;
 
 @Controller
 public class ReservationController {
 	@Inject
 	ReservationDAO rdao;
 	
-	//사용자의 미용 예약
-	@RequestMapping(value = "/reserv")
-	public String reserv() {
-		return "";
+	//예약 작성 폼으로 이동
+	@GetMapping(value = "/reserv")
+	public String ReservForm() {
+		return "insertForm";
+	}
+	
+	//사용자의 미용 예약 적용
+	@PostMapping(value = "/reserv")
+	public String takeReserv(ReservationDTO dto) {
+		rdao.insertReserv(dto);
+		
+		//적용 후 메인으로~ 
+		return "home";
 	}
 	
 	//미용사 예약 승인 + 피드백

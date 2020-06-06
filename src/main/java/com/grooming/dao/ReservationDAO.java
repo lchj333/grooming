@@ -23,9 +23,30 @@ public class ReservationDAO {
 		return ss.selectList(MAPPER+".getReservList", mb_id);
 	}
 	
-	//예약 내역 가져오기
+	//예약 내역 목록 가져오기
 	public List<ReservationDTO> selectListByCutter(Map<String, Object> map) {
 		return ss.selectList(MAPPER+".getAllMyList", map);
+	}
+	
+	//예약 상세내용 셀렉트
+	public ReservationDTO selectOneByNum(int num) {
+		return ss.selectOne(MAPPER+".selectByNum", num);
+	}
+	
+	//예약 상태 변경 (승인 | 미승인) +@피드백
+	public void checkReserv(ReservationDTO dto) {
+		//승인 or 미승인 (기본값 'U')
+		ss.update(MAPPER+".checkReserv", dto);
+		
+		//미 승인을 입력 할 경우 추가 내용 삽입
+		if(dto.getRe_approval() != null) {
+			ss.insert(MAPPER+".insertFeedBack", dto);
+		}
+	}
+	
+	//예약 작성
+	public void insertReserv(ReservationDTO dto) {
+		ss.insert(MAPPER+".insertReserv", dto);
 	}
 	
 }
