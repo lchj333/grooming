@@ -754,7 +754,8 @@
     <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
-    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<c:url value='/resources/mypage/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
+    
     <!-- Page level plugin JavaScript-->
     <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
