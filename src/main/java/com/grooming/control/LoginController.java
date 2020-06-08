@@ -24,25 +24,8 @@ public class LoginController {
 	
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String loginGet(@ModelAttribute("loginDto") LoginDTO loginDto) {
-		return "login";
+		return "loginForm";
 	}
-	
-//	@RequestMapping(value = "login", method = RequestMethod.POST)
-//	public String loginPost(LoginDTO loginDto, HttpServletRequest req) throws Exception {
-//		
-//		
-//		LoginDTO dto = dao.login(loginDto);
-//		
-//		System.out.println(dto);
-//		HttpSession session = req.getSession();
-//		
-//		SecurityService securityService = new SecurityService();
-//
-//		session.setAttribute("login", dto);
-//		
-//		
-//		return "member";
-//	}
 	
 	
 	@RequestMapping(value="login", method = RequestMethod.POST)
@@ -62,10 +45,11 @@ public class LoginController {
 			
 			System.out.println(dao.loginOk(loginDto));
 			System.out.println(loginDto.getMb_pw());
+			System.out.println(loginDto.getMb_id());
 			mav.setViewName("loginOk");
 		}else if (check == 0) {
 			session.setAttribute("login", null);
-			mav.setViewName("login");
+			mav.setViewName("loginOk");
 			
 		}
 		
