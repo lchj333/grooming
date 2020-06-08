@@ -50,6 +50,25 @@ public class MemberDAO {
 		return ss.selectOne("idPw", memberDto);
 	}
 	
+	// PW체크
+	public String checkPw(MemberDTO memberDto) {
+		return ss.selectOne("checkPw", memberDto);
+	}
+	
+	// PW 변경
+	public void changePw(MemberDTO memberDto) {
+		ss.update("changePw", memberDto);
+	}
+	// Email체크
+	public MemberDTO checkEmail(MemberDTO memberDto) {
+		return ss.selectOne("checkEmail", memberDto);
+	}
+	
+	// Email변경
+	public void changeEmail(MemberDTO memberDto) {
+		ss.update("changeEmail", memberDto);
+	}
+	
 	// 미용사 사용신청 메소드
 	public void designerCheck(MemberDTO memberDto) {
 		ss.update("designerCheck", memberDto);
