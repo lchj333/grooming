@@ -143,12 +143,23 @@ public class MemberController {
 	
 	// 비밀번호 체크
 	@RequestMapping(value = "checkPw")
-	public String checkPw(@RequestParam(value = "mb_id", required = false)String mb_id,
+	public String checkPw(HttpServletRequest req,
 							Model model,MemberDTO memberDto) {
 		
-		String dto = dao.checkPw(memberDto);
+
+		SecurityService securityService = new SecurityService();
+		
+		String mb_id = req.getParameter("mb_id");
+		String mb_pw = req.getParameter("mb_pw");
+		String securityPw = securityService.encryptSHA256(mb_pw);
+		
+		memberDto.setMb_pw(securityPw);
+		
+		int dto = dao.checkPw(memberDto);
 		
 		model.addAttribute("checkPw", dto);
+		System.out.println(dto);
+		System.out.println(securityPw);
 		
 		return "checkPw";
 		
@@ -172,10 +183,13 @@ public class MemberController {
 	
 	// 이메일 체크
 	@RequestMapping(value = "checkEmail")
-	public String checkEmail(@RequestParam(value = "mb_email")String mb_email,
+	public String checkEmail(HttpServletRequest req,
 			Model model,MemberDTO memberDto) {
 		
-		MemberDTO dto = dao.checkEmail(memberDto);
+		String mb_id = req.getParameter("mb_id");
+		String mb_email = req.getParameter("mb_email");
+		
+		int dto = dao.checkEmail(memberDto);
 		
 		model.addAttribute("checkEmail", dto);
 		
