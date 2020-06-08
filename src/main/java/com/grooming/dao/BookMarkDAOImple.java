@@ -17,8 +17,7 @@ public class BookMarkDAOImple implements BookMarkDAO{
 	//찜 한 내용 조회
 	@Override
 	public List<BookMarkDTO> selectBookMark(BookMarkDTO BookMarkDTO) {
-		
-		return ss.selectList("selectBookMark");
+		return ss.selectList("selectBookMark", BookMarkDTO);
 	}
 	//찜 하기
 	@Override

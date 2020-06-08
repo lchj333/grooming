@@ -10,9 +10,10 @@
 
 <form action="bookmarksearch" method="post" >
 		<h4>아이디</h4>
+		<!-- 아이디만 입력받아서 검색 -->
 		<input type="text" name="mb_id" id="" /> <br />
 		
-		<input type="submit" value="찜" />
+		<input type="submit" value="검색" />
 	</form>
 
 

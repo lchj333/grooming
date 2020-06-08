@@ -36,12 +36,13 @@ public class BookMarkController {
 		dao.insertBookmark(dto);	
 	}
 	
-	//찜 목록 표시
+	//찜 목록 표시 스타트
 	@RequestMapping(value = "bookmarkSearchID")
 	public String whatthe() {
 		return "bookmarkSearchID";
 	}
 	
+	//찜 목록 표시
 	@RequestMapping(value = "/bookmarksearch")
 	public String selectBookMark(@RequestParam(value = "mb_id")String id,BookMarkDTO dto, Model m) {
 		dto.setMb_id(id);
