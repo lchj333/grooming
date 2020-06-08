@@ -3,7 +3,6 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace=" ">
-
 	<!-- C -->
 	<insert id="insertFaq">
 		INSERT INTO GR_FAQ
@@ -11,10 +10,10 @@
 	</insert>
 	
 	<!-- R -->
-	<select id="selectAllFaq">
-		SELECT * FROM GR_FAQ ORDER BY F_TITLE DESC
+	<select id="selectAllFaq" resultType="FaqDTO">
+		SELECT * FROM GR_FAQ
 	</select>	
-	<select id="selectOnebyTitle">
+	<select id="selectOnebyf_title" resultType="FaqDTO">
 		SELECT * FROM GR_FAQ WHERE F_TITLE = #{f_title}
 	</select>
 	
@@ -22,6 +21,7 @@
 	<update id="updateFaq">
 		UPDATE GR_FAQ
 		SET F_TITLE = #{f_title}, F_CON = #{f_con}
+		WHERE F_TITLE = #{f_title}
 	</update>
 	
 	<!-- D -->

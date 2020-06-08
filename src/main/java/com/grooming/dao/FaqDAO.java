@@ -13,7 +13,8 @@ import com.grooming.dto.FaqDTO;
 public class FaqDAO {
 	
 	@Inject
-	SqlSession ss;	
+	SqlSession ss;
+	
 	public void SetSs(SqlSession ss) {
 		this.ss = ss;
 	}
@@ -27,7 +28,7 @@ public class FaqDAO {
 		return ss.selectList("selectAllFaq");
 	}	
 	public FaqDTO selectOne(String f_title) {
-		return ss.selectOne("selectOnebyTitle", f_title);
+		return ss.selectOne("selectOnebyf_title", f_title);
 	}
 	
 	//u
