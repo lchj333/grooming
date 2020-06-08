@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace=" ">
+	<!-- 회원가입 -->
 	<insert id="joinMember" parameterType="MemberDTO">
 		insert into GR_MEMBER(MB_ID, MB_PW, MB_NAME, MB_BIRTH, MB_GENDER, MB_EMAIL, MB_EMAILCK, MB_PHONE, MB_ADDRESS1, MB_ADDRESS2, MB_JOINDATE, MB_AREA)
 		values (#{mb_id}, #{mb_pw}, #{mb_name},
@@ -12,15 +13,39 @@
 				#{mb_address2}, now(), #{mb_area})
 	</insert>
 	
+	<!-- 전체조회 -->
 	<select id="selectMemberAll" resultType="MemberDTO">
 		select * from gr_member
 	</select>
 	
+	<!-- ID로 개별조회 -->
 	<select id="selectMemberOne" resultType="MemberDTO">
 		select * from gr_member
 		where mb_id = #{mb_id}
 	</select>
 	
+	<!-- ID 중복체크 -->
+	<select id="idCheck" resultType="int">
+		select count(*)
+		from gr_member
+		where mb_id = #{mb_id}
+	</select>
+	
+	<!-- name,Email 확인 -->
+	<select id="idFind" resultType="int">
+		select count(*)
+		from gr_member
+		where mb_name = #{mb_name} and mb_email = #{mb_email}
+	</select>
+	
+	<!-- ID,Email 확인 -->
+	<select id="idPw" resultType="int">
+		select count(*)
+		from gr_member
+		where mb_id = #{mb_id} and mb_email = #{mb_email}
+	</select>
+	
+	<!-- 미용사 체크 확인 -->
 	<update id="designerCheck" parameterType="MemberDTO">
 		update gr_member
 		set mb_check = 'Y'
