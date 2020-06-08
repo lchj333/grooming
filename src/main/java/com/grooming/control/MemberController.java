@@ -26,9 +26,6 @@ public class MemberController {
 	@Inject
 	MemberDAO dao;
 	
-	@Autowired
-	JavaMailSender mailSender;     //메일 서비스를 사용하기 위해 의존성을 주입함.
-	
 	
 	// 회원가입 GET
 	@GetMapping(value = "/join")
@@ -44,8 +41,6 @@ public class MemberController {
 		
 		
 		SecurityService securityService = new SecurityService();
-		
-		//String securityPw = securityService.encryptSHA256(memberDto.getMb_pw());
 		
 		String mb_pw = req.getParameter("mb_pw");
 		String securityPw = securityService.encryptSHA256(mb_pw);
@@ -107,7 +102,7 @@ public class MemberController {
 	}
 
     // 아이디 중복확인
-	@RequestMapping(value = "mb_id_check")
+	@RequestMapping(value = "/mb_id_check")
 	public String idCheck(@RequestParam(value = "mb_id", required = false)String mb_id,Model model) {
 		int dto = dao.idCheck(mb_id);
 		
@@ -119,7 +114,7 @@ public class MemberController {
 	}
 	
 	// 아이디 찾기
-	@RequestMapping(value = "mb_id_find")
+	@RequestMapping(value = "/mb_id_find")
 	public String idFind(@RequestParam(value = "mb_name", required = false)String mb_id,
 						 @RequestParam(value = "mb_email", required = false)String mb_email,
 						 Model model, MemberDTO memberDto) {
@@ -133,7 +128,7 @@ public class MemberController {
 	}
 	
 	// 비밀번호 찾기
-	@RequestMapping(value = "mb_pw_find")
+	@RequestMapping(value = "/mb_pw_find")
 	public String idPw(@RequestParam(value = "mb_id", required = false)String mb_id,
 					   @RequestParam(value = "mb_email", required = false)String mb_email,
 					   Model model, MemberDTO memberDto) {
@@ -145,5 +140,59 @@ public class MemberController {
 		
 		return "mb_pw_find";
 	}
+	
+	// 비밀번호 체크
+	@RequestMapping(value = "checkPw")
+	public String checkPw(@RequestParam(value = "mb_id", required = false)String mb_id,
+							Model model,MemberDTO memberDto) {
+		
+		String dto = dao.checkPw(memberDto);
+		
+		model.addAttribute("checkPw", dto);
+		
+		return "checkPw";
+		
+	}
+	
+	// 비밀번호 변경
+	@RequestMapping(value = "changePw")
+	public String changePw(HttpServletRequest req, Model model,MemberDTO memberDto) {
+		SecurityService securityService = new SecurityService();
+		
+		String mb_pw = req.getParameter("mb_pw");
+		String securityPw = securityService.encryptSHA256(mb_pw);
+		
+		memberDto.setMb_pw(securityPw);
+		
+		dao.changePw(memberDto);
+		
+		return "changePw";
+		
+	}
+	
+	// 이메일 체크
+	@RequestMapping(value = "checkEmail")
+	public String checkEmail(@RequestParam(value = "mb_email")String mb_email,
+			Model model,MemberDTO memberDto) {
+		
+		MemberDTO dto = dao.checkEmail(memberDto);
+		
+		model.addAttribute("checkEmail", dto);
+		
+		return "checkEmail";
+		
+	}
+	
+	// 이메일 변경
+	@RequestMapping(value = "changeEmail")
+	public String changeEmail(@RequestParam(value = "mb_email")String mb_email,
+							Model model,MemberDTO memberDto) {
+		
+		dao.changeEmail(memberDto);
+		
+		return "changePw";
+		
+	}
+	
 	
 }
