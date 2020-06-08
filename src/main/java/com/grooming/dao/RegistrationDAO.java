@@ -44,4 +44,5 @@ public class RegistrationDAO {
 	public List<RegistrationDTO> testTest(int licencenum) {
 		return ss.selectOne(MAPPER+".listAdd_imgs", licencenum);
 	}
+	
 }

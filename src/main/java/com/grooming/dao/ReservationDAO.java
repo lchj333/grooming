@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grooming.dto.ReservationDTO;
 
@@ -18,17 +19,17 @@ public class ReservationDAO {
 	@Inject
 	SqlSession ss;
 	
-	//현재의 유효한 예약 목록
-	public List<ReservationDTO> selectListByCustomer(String mb_id) {
-		return ss.selectList(MAPPER+".getReservList", mb_id);
+	//현재의 유효한 예약 리스트 (사용자)
+	public List<ReservationDTO> selectListByCustomer(ReservationDTO dto) {
+		return ss.selectList(MAPPER+".getReservList", dto);
 	}
 	
-	//예약 내역 목록 가져오기
-	public List<ReservationDTO> selectListByCutter(Map<String, Object> map) {
-		return ss.selectList(MAPPER+".getAllMyList", map);
+	//예약 내역 리스트 (미용사)
+	public List<ReservationDTO> selectListByCutter(String mb_id) {
+		return ss.selectList(MAPPER+".getAllMyList", mb_id);
 	}
 	
-	//예약 상세내용 셀렉트
+	//예약 상세내용
 	public ReservationDTO selectOneByNum(int num) {
 		return ss.selectOne(MAPPER+".selectByNum", num);
 	}

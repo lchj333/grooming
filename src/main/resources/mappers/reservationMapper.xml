@@ -7,19 +7,20 @@
 	<!-- 현재 예약 리스트 중복 쿼리문 -->
 	<sql id="list">
 		select * from gr_reservation
-		<if test="#{de_licencenum}!=null">
-			where  = #{de_licencenum}
-		</if><if test="">
-			where  = #{who}
+		<if test="#{de_licencenum}!=null"><!-- 미용사 -->
+			where de_licencenum = #{de_licencenum}
+			and not re_approval like 'N'
+		</if><if test="#{de_licencenum}==null"><!-- 사용자 -->
+			where mb_id = #{mb_id}
+			and re_approval like 'Y'
 		</if>
 		and re_date <![CDATA[>=]]> date_add(now(), interval -1 day)
 		order by RE_DATE desc
 	</sql>
-	<!-- 현재 예약 리스트() -->
+	<!-- 현재 승인된 유효한 예약 리스트 (사용자 & 미용사) -->
 	<select id="getReservList" parameterType="ReservationDTO" resultType="ReservationDTO">
 			<include refid="list">
-				<property name="type" value="#{type}"/>
-				<property name="who" value="#{who}"/>
+				<property name="de_licencenum" value="#{de_licencenum}"/>
 			</include>
 	</select>
 	
@@ -30,6 +31,7 @@
 		order by RE_DATE desc
 	</select>
 	
+	<!-- 상세정보 -->
 	<select id="selectByNum" parameterType="int" resultType="ReservationDTO">
 		select * from gr_reservation
 		where de_licencenum = #{de_licencenum}
