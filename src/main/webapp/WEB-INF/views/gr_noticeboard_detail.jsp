@@ -25,8 +25,8 @@
 			<td>${inform.ad_id }</td>
 			<td>${inform.nt_con }</td>
 			<td>${inform.nt_hits }</td>
-			<td><fmt:formatDate value="${inform.nt_regdate}" pattern="yy-MM-dd"/></td>
-			<%-- <td>${inform.nt_regdate }</td> --%>
+			<%-- <td><fmt:formatDate value="${inform.nt_regdate}" pattern="yy-MM-dd"/></td> --%>
+			<td>${inform.nt_regdate }</td>
 		</tr>
 	</table>
 	<a href="noticeList"><input type="button" value="목록으로" /></a>
