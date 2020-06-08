@@ -69,7 +69,7 @@ public class DesinerController {
 		return "redirect:/list";
 	}
 	//요기 까지 충전 금액 입력 로직입니다.
-
+ 
 	@PostMapping(value = "/selectPayForm")
 	public String selectPay(@RequestParam(value = "licencenum")int licence, Model m) {
 		System.out.println("반응");
@@ -79,6 +79,7 @@ public class DesinerController {
 		
 		return "selectPayed";
 	}
+	
 	@PostMapping(value = "/selectPay")
 	public String whatthenice() {
 		return "selectPayForm";
