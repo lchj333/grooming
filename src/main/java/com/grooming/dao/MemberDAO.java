@@ -35,6 +35,21 @@ public class MemberDAO {
 		return ss.selectOne("selectMemberOne", mb_id);
 	}
 	
+	// ID 중복 체크
+	public int idCheck(String mb_id) {
+		return ss.selectOne("idCheck", mb_id);
+	}
+	
+	// ID 찾기(name,email 일치여부)
+	public int idFind(MemberDTO memberDto) {
+		return ss.selectOne("idFind", memberDto);
+	}
+	
+	// PW 찾기(id,email 일치여부)
+	public int idPw(MemberDTO memberDto) {
+		return ss.selectOne("idPw", memberDto);
+	}
+	
 	// 미용사 사용신청 메소드
 	public void designerCheck(MemberDTO memberDto) {
 		ss.update("designerCheck", memberDto);
