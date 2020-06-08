@@ -51,7 +51,7 @@ public class MemberDAO {
 	}
 	
 	// PW체크
-	public String checkPw(MemberDTO memberDto) {
+	public int checkPw(MemberDTO memberDto) {
 		return ss.selectOne("checkPw", memberDto);
 	}
 	
@@ -60,7 +60,7 @@ public class MemberDAO {
 		ss.update("changePw", memberDto);
 	}
 	// Email체크
-	public MemberDTO checkEmail(MemberDTO memberDto) {
+	public int checkEmail(MemberDTO memberDto) {
 		return ss.selectOne("checkEmail", memberDto);
 	}
 	
