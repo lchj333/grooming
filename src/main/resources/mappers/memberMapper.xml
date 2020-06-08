@@ -53,10 +53,10 @@
 	</update>
 	
 	<!-- 비밀번호 일치 확인 -->
-	<select id="checkPw"  resultType="String">
-		select mb_pw
+	<select id="checkPw"  resultType="int">
+		select count(*)
 		from gr_member
-		where mb_id = #{mb_id}
+		where mb_id = #{mb_id} and mb_pw = #{mb_pw}
 	</select>
 	
 	<!-- 비밀번호 수정 -->
@@ -67,10 +67,10 @@
 	</update>
 	
 	<!-- 이메일 일치 확인 -->
-	<select id="checkEmail"  resultType="MemberDTO">
-		select mb_email
+	<select id="checkEmail"  resultType="int">
+		select count(*)
 		from gr_member
-		where mb_id = #{mb_id}
+		where mb_id = #{mb_id} and mb_email = #{mb_email}
 	</select>
 	
 	<!-- 이메일 수정 -->
@@ -81,7 +81,7 @@
 	</update>
 	
 	<!-- 개인정보 수정 -->
-	<update id="updateMember" parameterType="dto">
+	<update id="updateMember" parameterType="MemberDTO">
 	<![CDATA[
    		update gr_member
    		<trim prefix="set" suffixOverrides=",">
