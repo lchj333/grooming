@@ -38,23 +38,23 @@
 	</select>
 	
 	<!-- 예약 승인 | 미승인 -->
-	<update id="checkReserv">
+	<update id="checkReserv" parameterType="ReservationDTO">
 		update gr_reservation
 		set RE_APPROVAL = #{RE_APPROVAL}
 		where re_num = #{re_num};
 	</update>
 	
 	<!-- 미승인 사유 작성 -->
-	<insert id="insertFeedBack">
+	<insert id="insertFeedBack" parameterType="ReservationDTO">
 		insert into res_because
 		values #{re_num}, #{bc_con} 
 	</insert>
 	
 	<!-- 예약 작성 -->
-	<insert id="insertReserv"><!-- 예약 번호는 자동 생성 -->
+	<insert id="insertReserv" parameterType="ReservationDTO"><!-- 예약 번호는 자동 생성 -->
 		insert into gr_reservation (de_licencenum, mb_id, re_approval, re_date, 
 									re_nowdate,	re_species, re_weight, re_cut)
-		values (#{de_licencenum}, #{mb_id, 'U', #{re_date}, 
+		values (#{de_licencenum}, #{mb_id}, 'U', #{re_date}, 
 				now(), #{re_species}, #{re_weight}, #{re_cut})
 	</insert>
 	

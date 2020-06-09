@@ -1,5 +1,5 @@
 Dropzone.options.fileDropzone = {
-    url: './fileUpload.php',
+    url: '/file-upload',
     autoProcessQueue: false,
     uploadMultiple: true,
     parallelUploads: 2,
@@ -13,7 +13,7 @@ Dropzone.options.fileDropzone = {
             type: 'POST',
             async: false,
             cache: false,
-            url: './survey/survey.ok',
+            url: '/resources/shopimags/',
             data: { file: srvFile }
         });
         var _ref;
