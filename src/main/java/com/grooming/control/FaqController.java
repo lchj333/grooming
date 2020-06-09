@@ -41,7 +41,8 @@ public class FaqController {
 	//글 작성하기 페이지로 이동하기
 	@GetMapping(value="/faqInsert")
 	public String faqWrite(Model model) {
-		return "gr_faqboard_insert";
+		/*return "gr_faqboard_insert";*/
+		return "board/grooming_faqboard_write";
 	}
 	// 글 작성하기
 	@PostMapping(value="/faqInsert")

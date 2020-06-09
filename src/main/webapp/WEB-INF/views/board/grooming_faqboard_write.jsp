@@ -25,7 +25,7 @@
   <link href="${pageContext.request.contextPath}/resources/mypage/vendor/dropzone.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/mypage/css/date_picker.css" rel="stylesheet">
   <!-- WYSIWYG Editor -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.css">
+  <link href="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.css" rel="stylesheet" >
   <!-- Your custom styles -->
   <link href="${pageContext.request.contextPath}/resources/mypage/css/custom.css" rel="stylesheet">
 	
