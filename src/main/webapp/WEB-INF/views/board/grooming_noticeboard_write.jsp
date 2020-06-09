@@ -15,21 +15,20 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
 	
   <!-- Bootstrap core CSS-->
-  <link href="/resources/mypage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Main styles -->
-  <link href="/resources/mypage/css/admin.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/mypage/css/admin.css" rel="stylesheet">
   <!-- Icon fonts-->
-  <link href="/resources/mypage/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Plugin styles -->
-  <link href="/resources/mypage/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-  <link href="/resources/mypage/vendor/dropzone.css" rel="stylesheet">
-  <link href="/resources/mypage/css/date_picker.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/dropzone.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/mypage/css/date_picker.css" rel="stylesheet">
   <!-- WYSIWYG Editor -->
-  <link rel="stylesheet" href="/resources/mypage/js/editor/summernote-bs4.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.css">
   <!-- Your custom styles -->
-  <link href="/resources/main_resources/css/custom.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
      
-	
 </head>
 
 <body class="fixed-nav sticky-footer" id="page-top">
@@ -38,10 +37,7 @@
   <form action="insert" method="post">
   <div class="content-wrapper" id="grooming_noticeboard_write_maindiv">
     <div class="container-fluid">
-   
 		<div class="box_general padding_bottom" >
-		
-		
 			<!-- 페이지 TITLE -->
 			<div class="header_box version_2">
 				<h2><i class="fa fa-file"></i>공지사항</h2>
@@ -98,25 +94,25 @@
       </div>
     </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="/resources/mypage/vendor/jquery/jquery.min.js"></script>
-    <script src="/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
-    <script src="/resources/mypage/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src=<c:url value='"/resources/mypage/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="/resources/mypage/vendor/chart.js/Chart.min.js"></script>
-    <script src="/resources/mypage/vendor/datatables/jquery.dataTables.js"></script>
-    <script src="/resources/mypage/vendor/datatables/dataTables.bootstrap4.js"></script>
-	<script src="/resources/mypage/vendor/jquery.selectbox-0.2.js"></script>
-	<script src="/resources/mypage/vendor/retina-replace.min.js"></script>
-	<script src="/resources/mypage/vendor/jquery.magnific-popup.min.js"></script>
+    <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/dataTables.bootstrap4.js'/> "></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.selectbox-0.2.js'/> "></script>
+	<script src="<c:url value='/resources/mypage/vendor/retina-replace.min.js'/> "></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.magnific-popup.min.js'/>"></script>
     <!-- Custom scripts for all pages-->
-    <script src="/resources/mypage/js/admin.js"></script>
+    <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
 	<!-- Custom scripts for this page-->
-	<script src="/resources/mypage/vendor/dropzone.min.js"></script>
-	<script src="/resources/mypage/vendor/bootstrap-datepicker.js"></script>
+	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
 	<script>$('input.date-pick').datepicker();</script>
   <!-- WYSIWYG Editor -->
-  <script src="/resources/mypage/js/editor/summernote-bs4.min.js"></script>
+  <script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
   <script>
       $('.editor').summernote({
     fontSizes: ['10', '14'],
