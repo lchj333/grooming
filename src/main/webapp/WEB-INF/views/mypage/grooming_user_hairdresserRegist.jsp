@@ -23,7 +23,7 @@
 	
 	$(function(){
 		$("#btn").click(function(){
-			document.frm.action = "<c:url value='/survey/survey.ok'/>";
+			document.frm.action = "<c:url value='/file-upload'/>";
 			document.frm.submit();
 		});
 		
@@ -40,7 +40,7 @@
 
  <div class="content-wrapper">
     <div class="container-fluid">
-		<form action="#" name="frm">
+		<form action="#" name="frm" method="post" enctype="multipart/form-data">
 	      <!-- Breadcrumbs-->
 	      <ol class="breadcrumb">
 	        <li class="breadcrumb-item">
@@ -80,7 +80,7 @@
 						<table id="pricing-list-container" style="width:100%;">
 							<tr class="pricing-list-item">
 								<td>
-									<form name="fname">
+									<form name="fname" enctype="multipart/form-data" method="post">
 										<div class="dropzone" id="fileDropzone"></div>
 									</form>
 								</td>
