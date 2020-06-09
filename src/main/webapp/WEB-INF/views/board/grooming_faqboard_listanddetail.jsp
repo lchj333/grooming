@@ -39,17 +39,18 @@
 					<h4 class="nomargin_top" id="faq_maintitle">자주묻는질문</h4>
 					<div role="tablist" class="add_bottom_45 accordion_2" id="payment">
 						<div class="card">
-							<c:forEach var="inform" items="${list }"></c:forEach>
-							<div class="card-header" role="tab">
-								<h5 class="mb-0">
-									<a data-toggle="collapse" href="#collapseOne_payment" aria-expanded="true"><i class="indicator ti-minus"></i><c:out value="${inform.f_title }"></c:out></a>
-								</h5>
-							</div>
-							<div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
-								<div class="card-body">
-									<p><c:out value="${inform.f_con }"></c:out></p>
+							<c:forEach var="inform" items="${list }">
+								<div class="card-header" role="tab">
+									<h5 class="mb-0">
+										<a data-toggle="collapse" href="#collapseOne_payment" aria-expanded="true"><i class="indicator ti-minus"></i><c:out value="${inform.f_title }"></c:out></a>
+									</h5>
 								</div>
-							</div>
+								<div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
+									<div class="card-body">
+										<p><c:out value="${inform.f_con }"></c:out></p>
+									</div>
+								</div>
+							</c:forEach>
 						</div>
 						<!-- /card -->
 					</div>

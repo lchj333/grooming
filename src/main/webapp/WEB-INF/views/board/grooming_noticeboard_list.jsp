@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/resources/main_resources/css/gr_noticeboard_list.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/main_resources/css/grooming_noticeboard_list.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
