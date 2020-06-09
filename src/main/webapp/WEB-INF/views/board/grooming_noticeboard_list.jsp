@@ -21,10 +21,9 @@
 			<section id="gr_noticeboard_list_section">
 				<ul id="gr_noticeboard_list_pagetitle">전체공지</ul>
 				<ul id="gr_noticeboard_list_articlelist">
-					<c:forEach var="i" begin="1" end="15">
+					<c:forEach var="a" items="${list}">
 						<li id="gr_noticeboard_list_li">
-							<%-- <a href="$" id="gr_noticeboard_list_li_a"><c:out value="${nt_title }"></c:out></a> --%>
-							공지사항 입니다.공지사항 입니다.공지사항 입니다.공지사항 입니다.
+							<a href="detail?nt_no=${a.nt_no }"><c:out value="${a.nt_title }"></c:out></a>
 						</li>
 					</c:forEach>
 				</ul>

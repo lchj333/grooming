@@ -35,6 +35,7 @@
 <body class="fixed-nav sticky-footer" id="page-top">
 <jsp:include page="../include/header.jsp"/>
   <!-- /Navigation-->
+  <form action="insert" method="post">
   <div class="content-wrapper" id="grooming_noticeboard_write_maindiv">
     <div class="container-fluid">
    
@@ -65,15 +66,14 @@
 					</div>
 				</div>
 			</div>
-		
-			
 		</div>
 		<!-- /box_general-->
 		<!-- /box_general-->
-		<p><a href="#0" class="btn_1 medium">Save</a></p>
+		<input type="submit" value="저장" class="btn_1 medium" />
 	  </div>
 	  <!-- /.container-fluid-->
    	</div>
+  </form>
     <!-- /.container-wrapper-->
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -129,7 +129,6 @@
       ],
         placeholder: '내용을 입력하세요',
         tabsize: 2,
- 
         height: 500
       });
     </script>
