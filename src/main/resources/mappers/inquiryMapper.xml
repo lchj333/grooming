@@ -26,11 +26,3 @@
 		DELETE FROM GR_INQUIRY WHERE IN_NUM = #{in_num}
 	</delete>
 </mapper>
-<!-- 
-	in_num int autoincrement
-	mb_id char
-	ad_id char
-	in_title char
-	in_con char
-	in_nowdate date
- -->

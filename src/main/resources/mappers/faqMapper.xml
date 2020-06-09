@@ -12,7 +12,7 @@
 	<!-- R -->
 	<select id="selectAllFaq" resultType="FaqDTO">
 		SELECT * FROM GR_FAQ
-	</select>	
+	</select>
 	<select id="selectOnebyf_title" resultType="FaqDTO">
 		SELECT * FROM GR_FAQ WHERE F_TITLE = #{f_title}
 	</select>

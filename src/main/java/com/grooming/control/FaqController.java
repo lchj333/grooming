@@ -38,19 +38,19 @@ public class FaqController {
 	}
 	
 	//글 작성하기 페이지로 이동하기
-	@GetMapping(value="/insertFaq")
+	@GetMapping(value="/faqInsert")
 	public String faqWrite(Model model) {
 		return "gr_faqboard_insert";
 	}
 	// 글 작성하기
-	@PostMapping(value="/insertFaq")
+	@PostMapping(value="/faqInsert")
 	public String WriteOk(@ModelAttribute FaqDTO faqdto) {
 		faqdao.insertOne(faqdto);
 		return "redirect:/faqList";
 	}
 	
 	// 글 수정하기 페이지로 이동
-	@GetMapping(value="updateFaq")
+	@GetMapping(value="faqUpdate")
 	public String faqUpdate(@RequestParam(value="f_title")String f_title, Model model) {
 		FaqDTO faqdto = faqdao.selectOne(f_title);
 		model.addAttribute("inform", faqdto);
@@ -58,7 +58,7 @@ public class FaqController {
 	}
 	
 	// 글 수정하기
-	@PostMapping(value="updateFaq")
+	@PostMapping(value="faqUpdate")
 	public String UpdateOk(@ModelAttribute FaqDTO faqdto,
 						@RequestParam(value="f_title")String f_title, Model model) {
 		faqdao.updateOne(faqdto);
@@ -66,7 +66,7 @@ public class FaqController {
 	}
 	
 	// 글 삭제하기
-	@RequestMapping(value="deleteFaq")
+	@RequestMapping(value="faqDelete")
 	public String faqDelete(@RequestParam(value="f_title")String f_title, Model model) {
 		faqdao.deleteOne(f_title);
 		return "redirect:/faqList";

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h2>gr_noticeboard_insert.jsp</h2>
-	<form action="insert" method="post">
+	<form action="noticeInsert" method="post">
 		<table>
 			<tr>
 				<th>글 제목</th>

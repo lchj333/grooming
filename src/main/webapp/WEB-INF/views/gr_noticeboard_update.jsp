@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>gr_noticeboard_update.jsp</h2>
-	<form action="updateNotice?nt_no=${inform.nt_no }" method="post">
+	<form action="noticeUpdate?nt_no=${inform.nt_no }" method="post">
 		<table>
 			<tr>
 				<th>글 제목</th>

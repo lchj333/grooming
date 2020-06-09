@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>gr_faqboard_insert.jsp</h2>
-	<form action="insertFaq" method="post">
+	<form action="faqInsert" method="post">
 		<table>
 			<tr>
 				<th>글 제목</th>

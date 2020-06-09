@@ -23,6 +23,6 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<form action="insertFaq" method="get"><input type="submit" value="자주묻는질문작성" /></form>
+	<form action="faqInsert" method="get"><input type="submit" value="자주묻는질문작성" /></form>
 </body>
 </html>
