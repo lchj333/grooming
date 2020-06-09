@@ -28,7 +28,8 @@ public class NoticeController {
 	public String noticeList(Model model) {
 		List<NoticeDTO> list = noticedao.selectList();
 		model.addAttribute("list", list);
-		return "gr_noticeboard_list";
+		/* return "gr_noticeboard_list"; */
+		return "board/grooming_noticeboard_list";
 	}
 
 	// 상세내용 보기
