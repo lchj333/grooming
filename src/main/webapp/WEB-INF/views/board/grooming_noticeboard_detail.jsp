@@ -16,6 +16,7 @@
 <!-- header end -->
 
 <!-- contents -->
+	
 	<div id="gr_noticeboard_detail_maindiv">
 		<div id="gr_noticeboard_detail_title"><span><c:out value="${inform.nt_title }"></c:out></span></div>
 		<div id="gr_noticeboard_detail_datehits">
