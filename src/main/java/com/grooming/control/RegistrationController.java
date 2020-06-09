@@ -42,23 +42,35 @@ public class RegistrationController {
 	이 메서드는 다른 리소스에서 호출되지 않는다해도 수행된다. */
 	@PostConstruct
 	public void initController() {
-		this.realPath = c.getRealPath("/resources/shopimags/");
+		this.realPath = c.getRealPath("/resources/shopimags/");	//저장될 경로 지정
 //		System.out.println("Registration컨트롤러의 @PostConstruct 작동.");
 	}
 	
-	//가게 등록
+	//가게 등록 (+썸네일 이미지)
 	@RequestMapping(path = "/registShop")
-	public String insertShopInfo(RegistrationDTO dto, Model model) {//스프링에서 알아서 set.
-		//값 입력 메소드
+	public String insertShopInfo(RegistrationDTO dto, MultipartHttpServletRequest ms, //스프링에서 알아서 set.
+									HttpServletRequest req) throws IllegalStateException, IOException {
+		//메소드 바디
+		//post 파라미터
+		MultipartFile mfile = ms.getFile("file");
+		
+		//이미지 추가 메소드
+		String fileName = saveFile(mfile);
+			
+		//저장된 파일 이름 담기
+		dto.setReg_img(fileName);
+		
+		//최종적 DB저장
 		rdao.insertShop(dto);
-//		System.out.println("/registShop");
+		
 		return "home";
 	}
 	
 	//가게 정보 블럭 상태 변경 (관리자에 의한)
 	@RequestMapping(value = "/blockShop")
 	public String shopBlockByAdmin(int no) {
-//		rdao.
+		rdao.changeStateByAdmin(no);
+		
 		return "home";
 	}
 	
@@ -73,75 +85,63 @@ public class RegistrationController {
 		return "";
 	}
 	
-	//가게 상세 이미지 추가 메소드
-	@RequestMapping(value = "/file-upload", method = RequestMethod.POST)
-	public String addShopImgs(MultipartHttpServletRequest ms, HttpServletRequest req) throws IllegalStateException, IOException {
-		String licenceNum = ms.getParameter("licenceNum");
-		MultipartFile mfile = ms.getFile("file");
-		
-		//IOException - 파일이 없을 때 발생할 에러. 호출함수인 xml의 DispatcherServlet class로 예외처리 전가//studentNumber - submissionForm의 속성 name 
-		String originalFile = mfile.getOriginalFilename();
-		String originalFileExtension = originalFile.substring(originalFile.lastIndexOf("."));
-		String storedFileName = UUID.randomUUID().toString().replaceAll("-", "") + originalFileExtension;
-		   
-		File file = new File("/resources/shopimags/" + storedFileName);//realPath : 톰캣내의 주소
-		mfile.transferTo(file);
-		   
-		System.out.println("file.getPath() : "+file.getPath());
-		System.out.println(licenceNum + "가 업로드한 파일은");
-		System.out.println(originalFile + "은 업로드한 파일이다.");
-		System.out.println(storedFileName + "라는 이름으로 업로드 됐다.");
-		System.out.println("파일사이즈는 " + mfile.getSize());
-		
-//		req.setAttribute("filePath", realPath);
-//		req.setAttribute("fileName", storedFileName);
-		req.setAttribute("loadimg", "/resources/shopimags/"+storedFileName);
-	
-		return "home";
-	}
-	
 	//컨트롤 테스트용
-	@RequestMapping(path = "/shoptest")
-	public String test(Model model) {
-		List<RegistrationDTO> list = rdao.testTest(9000);
-		
-		for(RegistrationDTO d : list) {
-			System.out.print("licencenum : "+d.getDe_licencenum());
-			System.out.println("imgname : "+d.getReg_addimg());
-		}
-		
-		return "home";
-	}
-	
-	//컨트롤 테스트용e
 	@RequestMapping(path = "/test")
 	public String goToTest(HttpServletRequest req, HttpServletResponse res) {
 		req.setAttribute("loadimg", "44e24070d1ea429e90550b1bc8df68e1.png");
-		System.out.println("c.getRealPath(/) : "+c.getRealPath("/"));
+		System.out.println("c.getRealPath('/') : "+c.getRealPath("/"));
 		
 		return "home";
 //		return "fileUpload";
+	}
+	
+	//가게 상세 이미지 추가 메소드
+	@RequestMapping(value = "/insertInfoImgs", method = RequestMethod.POST)
+	public String addShopImgs(MultipartHttpServletRequest ms, HttpServletRequest req) throws IllegalStateException, IOException {
+		int de_licencenum = Integer.parseInt(ms.getParameter("de_licencenum"));
+		
+		List<MultipartFile> list = ms.getFiles("file");
+		//IOException - 파일이 없을 때 발생할 에러. 호출함수인 xml의 DispatcherServlet class로 예외처리 전가//studentNumber - submissionForm의 속성 name 
+		
+		if (list.size() > 0) {
+			for(MultipartFile mfile : list) {
+				//파일 저장 메소드 실행
+				String fileName = saveFile(mfile);
+				
+				//DTO
+				RegistrationDTO dto = new RegistrationDTO(de_licencenum, fileName);
+				//저장된 파일이름과 라이선스 번호 저장
+				rdao.insertShop(dto);
+			}
+		}else {	//넘어온 파일이 없을 경우
+			System.out.println("파일이 담겨있지않습니다.");
+		}
+		
+		return "home";
 	}
 	
 	//등록시 포인트 깍기
 	/************************************
 		컨트롤에서 사용할 유틸 메소드..
 	*************************************/
-	//실제 이미지 추가 메소드
-	public String addImg(MultipartFile mfile) throws IllegalStateException, IOException {
-		//IOException - 파일이 없을 때 발생할 에러. 호출함수인 xml의 DispatcherServlet class로 예외처리 전가//studentNumber - submissionForm의 속성 name 
+	//실제 파일 저장 메소드
+	public String saveFile(MultipartFile mfile) throws IllegalStateException, IOException {
+		//문자열 요리
 		String originalFile = mfile.getOriginalFilename();
 		String originalFileExtension = originalFile.substring(originalFile.lastIndexOf("."));
 		String storedFileName = UUID.randomUUID().toString().replaceAll("-", "") + originalFileExtension;
-		   
-		File file = new File("/resources/shopimags/" + storedFileName);//realPath : 톰캣내의 주소
+		
+		//파일 저장
+		File file = new File(realPath + storedFileName);//realPath : 톰캣내의 주소
 		mfile.transferTo(file);
-		   
+		
+		//체크
 		System.out.println("file.getPath() : "+file.getPath());
 		System.out.println(originalFile + "은 업로드한 파일이다.");
 		System.out.println(storedFileName + "라는 이름으로 업로드 됐다.");
 		System.out.println("파일사이즈는 " + mfile.getSize());
-	
+		
+		//실제 저장되는 파일이름 리턴
 		return storedFileName;
 	}
 	
