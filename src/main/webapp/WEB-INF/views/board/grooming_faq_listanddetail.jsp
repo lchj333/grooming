@@ -13,22 +13,22 @@
     <title>Panagea | Premium site template for travel agencies, hotels and restaurant listing.</title>
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="/resources/mypage/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="/resources/mypage/img/apple-touch-icon-57x57-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="/resources/mypage/img/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="/resources/mypage/img/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="/resources/mypage/img/apple-touch-icon-144x144-precomposed.png">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
 
     <!-- GOOGLE WEB FONT -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
 
     <!-- BASE CSS -->
-    <link href="/resources/mypage/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/resources/mypage/css/style.css" rel="stylesheet">
-	<link href="/resources/mypage/css/vendors.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+	<link href="css/vendors.css" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
-    <link href="/resources/mypage/css/custom.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesㅊheet">
 
 </head>
 
@@ -42,19 +42,18 @@
 		<div class="container margin_60_35">
 			<div class="row" id="grooming_faq_maindiv">
 				<div class="col-lg-9" id="faq">
-					<h4 class="nomargin_top">자주묻는질문</h4>
+					<h4 class="nomargin_top" id="faq_maintitle">자주묻는질문</h4>
 					<div role="tablist" class="add_bottom_45 accordion_2" id="payment">
 						<div class="card">
+							<c:forEach var="inform" items="${list }"></c:forEach>
 							<div class="card-header" role="tab">
 								<h5 class="mb-0">
-									<a data-toggle="collapse" href="#collapseOne_payment" aria-expanded="true"><i class="indicator ti-minus"></i>그루밍 계정은 어떻게 만드나요?</a>
+									<a data-toggle="collapse" href="#collapseOne_payment" aria-expanded="true"><i class="indicator ti-minus"></i><c:out value="${inform.f_title }"></c:out></a>
 								</h5>
 							</div>
-
 							<div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
 								<div class="card-body">
-									<p>아직 그루밍 계정이 없는 경우, grooming.co.kr 로 이동해 회원 가입을 클릭하세요.</p>
-									<p>그루밍 회원 가입 및 계정 만들기는 무료입니다.</p>
+									<p><c:out value="${inform.f_con }"></c:out></p>
 								</div>
 							</div>
 						</div>
@@ -69,10 +68,10 @@
 		<!--/container-->
 	</main>
 	<!--/main-->
+	</div>
 	
 
 	<!--/footer-->
-	</div>
 	<!-- page -->
 	
 	<!-- Sign In Popup -->

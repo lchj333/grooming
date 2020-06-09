@@ -17,14 +17,14 @@
 
 <!-- contents -->
 	<div id="gr_noticeboard_detail_maindiv">
-		<div id="gr_noticeboard_detail_title"><span><c:out value="${nt_title }"></c:out></span></div>
+		<div id="gr_noticeboard_detail_title"><span><c:out value="${inform.nt_title }"></c:out></span></div>
 		<div id="gr_noticeboard_detail_datehits">
 			<span>작성일자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<span><fmt:formatDate value="${nt_regdate }" pattern="yy-MM-dd"/>  &nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span><fmt:formatDate value="${inform.nt_regdate }" pattern="yy-MM-dd"/>  &nbsp;&nbsp;&nbsp;&nbsp;</span>
 			<span>조회수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-			<span><c:out value="${nt_hits }"></c:out></span>
+			<span><c:out value="${inform.nt_hits }"></c:out></span>
 		</div>
-		<div id="gr_noticeboard_detail_contents"><c:out value="${nt_con }"></c:out></div>
+		<div id="gr_noticeboard_detail_contents"><c:out value="${inform.nt_con }"></c:out></div>
 	</div>
 <!-- footer -->
 </div>
