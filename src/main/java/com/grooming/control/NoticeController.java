@@ -32,7 +32,7 @@ public class NoticeController {
 	}
 
 	// 상세내용 보기
-	@RequestMapping(value="/detail")
+	@RequestMapping(value="/noticeDetail")
 	public String noticeDetail(@RequestParam(value="nt_no")int nt_no, Model model) {
 		noticedao.raiseHits(nt_no);
 		NoticeDTO noticedto = noticedao.selectOne(nt_no);
@@ -41,26 +41,26 @@ public class NoticeController {
 	}
 	
 	//글 작성 페이지로 이동
-	@GetMapping(value="/insert")
+	@GetMapping(value="/noticeInsert")
 	public String noticeWrite(Model model) {
 		return "gr_noticeboard_insert";
 	}
 	//글 작성하기
-	@PostMapping(value="/insert")
+	@PostMapping(value="/noticeInsert")
 	public String WriteOk(@ModelAttribute NoticeDTO noticedto) {
 		noticedao.insertOne(noticedto);
 		return "redirect:/noticeList";
 	}
 	
 	// 글 수정페이지로 이동
-	@GetMapping(value="/updateNotice")
+	@GetMapping(value="/noticeUpdate")
 	public String noticeUpdate(@RequestParam(value="nt_no")int nt_no, Model model) {
 		NoticeDTO noticedto = noticedao.selectOne(nt_no);
 		model.addAttribute("inform", noticedto);
 		return "gr_noticeboard_update";
 	}
 	//글 수정하기
-	@PostMapping(value="/updateNotice")
+	@PostMapping(value="/noticeUpdate")
 	public String UpdateOk(@RequestParam(value="nt_no")int nt_no, Model model,
 							@ModelAttribute NoticeDTO noticedto) {
 		noticedao.updateOne(noticedto);
@@ -68,7 +68,7 @@ public class NoticeController {
 	}
 	
 	// 글 삭제하기
-	@RequestMapping(value="/deleteNotice")
+	@RequestMapping(value="/noticeDelete")
 	public String noticeDelete(@RequestParam(value="nt_no")int nt_no, Model model) {
 		noticedao.deleteOne(nt_no);
 		return "redirect:/noticeList";

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>gr_faqboard_update.jsp</h2>
-	<form action="updateFaq?f_title=${inform.f_title }" method="post">
+	<form action="faqUpdate?f_title=${inform.f_title }" method="post">
 		<table>
 			<tr>
 				<th>글 제목</th>

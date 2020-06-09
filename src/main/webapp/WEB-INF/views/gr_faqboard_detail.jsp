@@ -23,6 +23,6 @@
 	</table>
 	<a href="faqList"><input type="button" value="목록으로" /></a>
 	<%-- <a href="updateFaq?f_title=${inform.f_title }"><input type="button" value="수정하기" /></a> --%>
-	<a href="deleteFaq?f_title=${inform.f_title }"><input type="button" value="삭제하기" /></a>
+	<a href="faqDelete?f_title=${inform.f_title }"><input type="button" value="삭제하기" /></a>
 </body>
 </html>

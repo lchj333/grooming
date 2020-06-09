@@ -21,7 +21,7 @@
 		<c:forEach var="a" items="${list }">
 		<tr>
 			<%-- <td>${a.nt_no }</td> --%>
-			<td><a href="detail?nt_no=${a.nt_no }">${a.nt_title }</a></td>
+			<td><a href="noticeDetail?nt_no=${a.nt_no }">${a.nt_title }</a></td>
 			<%-- <td>${a.ad_id }</td> --%>
 			<td>${a.nt_con }</td>
 			<%-- <td>${a.nt_hits }</td>
@@ -29,6 +29,6 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<form action="insert" method="get"><input type="submit" value="공지작성" /></form>
+	<form action="noticeInsert" method="get"><input type="submit" value="공지작성" /></form>
 </body>
 </html>
