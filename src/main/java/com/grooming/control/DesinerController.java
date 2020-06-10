@@ -62,8 +62,33 @@ public class DesinerController {
 		return "redirect:/list";
 	}
 	//요기 까지 충전 금액 입력 로직입니다.
- 
-
+	
+	//금액 사용 시 디자이너 테이블에서 금액 마이너스
+	//이건 나중에 글 올리는 로직이 연동 된 다음에 money를 따오는걸 고정값으로 넣고 라이센스 넘버만 받아서 사용하면 됩니다.
+	@RequestMapping(value = "/Minus")
+	public String updateDesMinus(@RequestParam(value = "money")int no, @RequestParam(value = "licence")int licence, DesignerDTO dto) {
+		dto.setDe_licencenum(licence);
+		dto.setDe_point(no);
+		
+		dao.updateDesMinus(dto);
+		
+		return "list";
+	}
+	
+	
+	//자신의 결제 금액 출력 메소드
+	@RequestMapping(value = "oneselectStart")
+	public String showMoneyStart() {
+		return "selectmoney";
+	}
+	@RequestMapping(value = "onselect")
+	public String showMoney(@RequestParam(value = "licence")int no, Model m, DesignerDTO dto) {
+		dto.setDe_licencenum(no);
+		List<DesignerDTO> olist = dao.selectPointOne(dto);
+		m.addAttribute("olist", olist);
+		
+		return "selectonelist";
+	}
 	
 	
 	
