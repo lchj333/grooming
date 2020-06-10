@@ -4,89 +4,141 @@ package com.grooming.control;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.grooming.dao.RegistrationDAO;
-import com.grooming.dto.RegisterationDTO;
+import com.grooming.dto.RegistrationDTO;
+import com.grooming.utils.FileUpload;
 
 @Controller
 public class RegistrationController {
-	//가게 등록,수정, 조회에 대한 컨트롤러
+	FileUpload fu = new FileUpload();
+	//가게 등록,수정, 조회에 대한 DAO
 	@Inject
 	RegistrationDAO rdao;
 	
-	//가게 등록
-	@RequestMapping(path = "/registShop")
-	public String insertShopInfo(RegisterationDTO dto, Model model) {//스프링에서 알아서 set.
-		//값 입력 메소드
+	private String realPath;
+	
+	@Autowired
+	ServletContext c;
+	/*
+	@PostConstruct는 의존성 주입이 이루어진 후 초기화를 수행하는 메서드이다. 
+	@PostConstruct가 붙은 메서드는 클래스가 service(로직을 탈 때? 로 생각 됨)를 수행하기 전에 발생한다. 
+	이 메서드는 다른 리소스에서 호출되지 않는다해도 수행된다. */
+	@PostConstruct // -> 서버 service를 시작할때 자동으로 실행
+	public void initMethod() {
+		this.realPath = c.getRealPath("/resources/shopimags/");	//저장할 경로
+	}
+	
+	//가게 등록 (+썸네일 이미지)
+	@RequestMapping(value = "/registShop")
+	public String insertShopInfo(RegistrationDTO dto, MultipartHttpServletRequest ms, //스프링에서 알아서 set.
+									HttpServletRequest req) throws IllegalStateException, IOException {
+		//메소드 바디
+		//post 파라미터
+		MultipartFile mfile = ms.getFile("file");
+		
+		//이미지 추가 메소드
+		String fileName = fu.saveFile(mfile, realPath);
+			
+		//저장된 파일 이름 담기
+		dto.setReg_img(fileName);
+		
+		//최종적 DB저장
 		rdao.insertShop(dto);
-//		System.out.println("/registShop");
+		
 		return "home";
 	}
 	
-	//가게 정보 블럭 처리 (관리자에 의한)
+	//가게 정보 블럭 상태 변경 (관리자에 의한)
 	@RequestMapping(value = "/blockShop")
 	public String shopBlockByAdmin(int no) {
-//		rdao.
+		rdao.changeStateByAdmin(no);
+		
 		return "home";
+	}
+	
+	//가게 상세 정보
+	@RequestMapping(value = "/detailShop")
+	public String detailShopInfo(int licencenum, HttpSession hs) {
+		//가게 정보
+//		List<RegisterationDTO> list = rdao.sel~~~~
+//		hs.getAttribute(name)
+		//가게 상세이미지 목록
+//		if()!=null)
+		return "";
 	}
 	
 	//가게 상세 이미지 추가 메소드
-	@RequestMapping(value = "/file-upload")
-	public String addShopImgs(@RequestParam(value = "de_licencenum")int licencenum, 
-							MultipartHttpServletRequest req) {
-		//메소드 바디
-		RegisterationDTO dto = new RegisterationDTO();
+	@RequestMapping(value = "/insertInfoImgs", method = RequestMethod.POST)
+	public String addShopImgs(MultipartHttpServletRequest ms, HttpServletRequest req) throws IllegalStateException, IOException {
+		int de_licencenum = (int)req.getAttribute("de_licencenum");
+//		int de_licencenum = Integer.parseInt(ms.getParameter("de_licencenum"));
 		
-		dto.setDe_licencenum(licencenum); //식별 컬럼
+		List<MultipartFile> list = ms.getFiles("files");
+		//IOException - 파일이 없을 때 발생할 에러. 호출함수인 xml의 DispatcherServlet class로 예외처리 전가//studentNumber - submissionForm의 속성 name 
+		System.out.println("list : "+list);
 		
-		//파일 업로드
-		MultipartFile mf = req.getFile("addimg"); //업로드 파라미터 (파라미터 이름인듯하다)
-		String path = req.getRealPath("resources/shopimags"); //저장될 위치
-		String fileName = mf.getOriginalFilename(); //업로드 파일 이름
-		File uploadFile = new File(path+"//"+fileName); //복사될 위치..
-		try {
-			mf.transferTo(uploadFile); //업로드
-		}catch (IllegalStateException e){
-			e.printStackTrace();
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
-		dto.setReg_addimg(fileName);//변환된 이미지 경로 + 이름인거 같다
-		
-		rdao.insertShopInfoimg(dto);
-		return "home";
-	}
-	
-	//컨트롤 테스트용
-	@RequestMapping(path = "/shoptest")
-	public String test(Model model) {
-		List<RegisterationDTO> list = rdao.testTest(9000);
-		
-		for(RegisterationDTO d : list) {
-			System.out.print("licencenum : "+d.getDe_licencenum());
-			System.out.println("imgname : "+d.getReg_addimg());
+		if (list.size() > 0) {
+			for(MultipartFile mfile : list) {
+				//파일 저장 메소드 실행
+				String fileName = fu.saveFile(mfile, realPath);
+				
+				//DTO
+				RegistrationDTO dto = new RegistrationDTO(de_licencenum, fileName);
+				//저장된 파일이름과 라이선스 번호 저장
+				rdao.insertShop(dto);
+			}
+		}else {	//넘어온 파일이 없을 경우
+			System.out.println("파일이 담겨있지않습니다.");
 		}
 		
 		return "home";
 	}
 	
-	//컨트롤 테스트용
-	@RequestMapping(path = "/test")
-	public String goToTest(Model model) {
-		return "mypage/grooming_hairdresser_addList";
-	}
-	
+	//등록시 포인트 깍기
 	/************************************
 		컨트롤에서 사용할 유틸 메소드..
 	*************************************/
+	//컨트롤 테스트용
+	@RequestMapping(value = "/test")
+	public String goToTest() {
+		
+		return "upTest";
+	}
+	
+	//실제 파일 저장 메소드
+	public String saveFile(MultipartFile mfile, String filePath) throws IllegalStateException, IOException {
+		//문자열 요리
+		String originalFile = mfile.getOriginalFilename();
+		String originalFileExtension = originalFile.substring(originalFile.lastIndexOf("."));
+		String storedFileName = UUID.randomUUID().toString().replaceAll("-", "") + originalFileExtension;
+		
+		//파일 저장
+		File file = new File(realPath + filePath + storedFileName) ;//realPath : 톰캣내의 주소
+		mfile.transferTo(file);
+			
+		//체크
+		System.out.println("file.getPath() : "+file.getPath());
+//		System.out.println(originalFile + "은 업로드한 파일이다.");
+		System.out.println(storedFileName + "라는 이름으로 업로드 됐다.");
+//		System.out.println("파일사이즈는 " + mfile.getSize());
+	
+		//실제 저장되는 파일이름 리턴
+		return storedFileName;
+	}
+	
 }

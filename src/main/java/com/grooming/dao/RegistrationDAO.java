@@ -7,11 +7,11 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.grooming.dto.RegisterationDTO;
+import com.grooming.dto.RegistrationDTO;
 
 @Repository
 public class RegistrationDAO {
-	private static final String REGIST = "registrationMapper";
+	private final String MAPPER = "registrationMapper";
 	
 	@Inject
 	SqlSession ss;
@@ -20,25 +20,29 @@ public class RegistrationDAO {
 		this.ss = ss;
 	}
 	
-	//가게 정보 등록 메소드 
-	public void insertShop(RegisterationDTO dto) {
-		ss.insert(REGIST+".insertShop", dto);
+	//등록된 가게 리스트
+	public List<RegistrationDTO> getList() {
+		return ss.selectList(MAPPER+".list");
 	}
 	
-	//등록된 가게 블럭상태 해제
-//	public void name() {
-//		if() {
-//			System.out.println("삭제 성공");
-//		}else System.out.println("삭제 실패");
-//	}
+	//가게 정보 등록 메소드 
+	public void insertShop(RegistrationDTO dto) {
+		ss.insert(MAPPER+".insertShop", dto);
+	}
+	
+	//가게 정보 블럭 상태 변경 (관리자에 의한)
+	public void changeStateByAdmin(int no) {
+		ss.update(MAPPER+".BlockByAdmin", no);
+	}
 	
 	//가게 상세 이미지 추가
-	public void insertShopInfoimg(RegisterationDTO dto) {
-		ss.insert(REGIST+".insertShopInfoimg", dto);
+	public void insertShopInfoimg(RegistrationDTO dto) {
+		ss.insert(MAPPER+".insertShopInfoimg", dto);
 	}
 	
 	//임시 테스트
-	public List<RegisterationDTO> testTest(int licencenum) {
-		return ss.selectOne(REGIST+".listAdd_imgs", licencenum);
+	public List<RegistrationDTO> testTest(int licencenum) {
+		return ss.selectOne(MAPPER+".listAdd_imgs", licencenum);
 	}
+	
 }
