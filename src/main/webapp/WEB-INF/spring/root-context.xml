@@ -7,10 +7,13 @@
 	
 	<bean class="com.grooming.dao.DesinerDAOImple">
 		<property name="ss" ref="sqlSession" />
-</bean>
-<bean class="com.grooming.dao.BookMarkDAOImple">
-	<property name="ss" ref="sqlSession" />
-</bean>
+	</bean>
+	<bean class="com.grooming.dao.BookMarkDAOImple">
+		<property name="ss" ref="sqlSession" />
+	</bean>
+	<bean class="com.grooming.dao.PaylogDAOImple">
+		<property name="ss" ref="sqlSession" />
+	</bean>
 
 
 	<!-- Root Context: defines shared resources visible to all other web components -->

@@ -36,10 +36,6 @@ public class DesinerDAOImple implements DesinerDAO{
 		// TODO Auto-generated method stub
 		return ss.selectList("selectAllDes");
 	}
-	@Override
-	public DesignerDTO selectOneDesi(int no) {
-		// TODO Auto-generated method stub
-		return ss.selectOne("selectOneDesi", no);
-	}
+
 
 }

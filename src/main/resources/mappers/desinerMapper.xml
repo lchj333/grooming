@@ -18,10 +18,7 @@
 	 	insert into GR_PAYLOG
 	 	values(#{de_licencenum}, sysdate(), #{de_point})
 	 </insert>
+	 
 
-	<select id="selectOneDesi"  parameterType="int" resultType="DesignerDTO">
-		select * from GR_PAYLOG
-		where de_licencenum = #{de_licencenum}
-	</select>
-	
+
 </mapper>

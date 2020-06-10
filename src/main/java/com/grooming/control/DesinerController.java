@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grooming.dao.DesinerDAO;
 import com.grooming.dao.DesinerDAOImple;
-import com.grooming.dao.PaylogDAO;
-import com.grooming.dao.PaylogDAOImple;
 import com.grooming.dto.DesignerDTO;
 import com.grooming.dto.PaylogDTO;
 
@@ -27,8 +25,6 @@ public class DesinerController {
 	@Inject
 	DesinerDAOImple dao;
 
-	@Inject
-	PaylogDAOImple dao2;
 
 	@RequestMapping(value = "/list")
 	public String showList(Model model) {
@@ -55,12 +51,9 @@ public class DesinerController {
 	@PostMapping(value = "/updateOK")
 	public String updateDes(
 	@RequestParam(value = "pt1")int pt1, @RequestParam(value = "pt2")int pt2,
-	DesignerDTO dto, PaylogDTO dto2) {
-		
-		dto.setDe_point(pt1); dto.setDe_licencenum(pt2);
-		 
+	DesignerDTO dto, PaylogDTO dto2) {	
+		dto.setDe_point(pt1); dto.setDe_licencenum(pt2); 
 		dto2.setDe_licencenum(pt2); dto2.setPay_money(pt1);
-		System.out.println(dto2.getDe_licencenum() + "  " +dto2.getPay_money()+"---------------------");
 		
 		dao.updateDes(dto);
 		dao.insertMoney(dto);
@@ -70,22 +63,7 @@ public class DesinerController {
 	}
 	//요기 까지 충전 금액 입력 로직입니다.
  
-	@PostMapping(value = "/selectPayForm")
-	public String selectPay(@RequestParam(value = "licencenum")int licence, Model m) {
-		System.out.println("반응");
-		DesignerDTO dto = dao.selectOneDesi(licence);
-		m.addAttribute("pay", dto);
-		System.out.println(licence);
-		
-		return "selectPayed";
-	}
-	
-	@PostMapping(value = "/selectPay")
-	public String whatthenice() {
-		return "selectPayForm";
-	}
-	
-	
+
 	
 	
 	
