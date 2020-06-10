@@ -6,13 +6,16 @@
 <mapper namespace=" ">
 
 	 <insert id="insertBookmark" parameterType="BookMarkDTO">
-	 	insert into mb_bookmark
-	 	values(#{mb_id}, #{de_licencenum})
+	 	INSERT INTO mb_bookmark SELECT #{mb_id}, #{de_licencenum} FROM DUAL WHERE NOT EXISTS(SELECT de_licencenum FROM mb_bookmark WHERE mb_id = #{mb_id} and de_licencenum = #{de_licencenum})
 	 </insert>
 
 	<select id="selectBookMark"  parameterType="BookMarkDTO" resultType="BookMarkDTO">
 		select * from mb_bookmark
 		where mb_id = #{mb_id}
 	</select>
+	
+	<delete id="deleteBookMark" parameterType="BookMarkDTO">
+		DELETE FROM mb_bookmark where de_licencenum = #{de_licencenum} and mb_id = #{mb_id};
+	</delete>
 	
 </mapper>
