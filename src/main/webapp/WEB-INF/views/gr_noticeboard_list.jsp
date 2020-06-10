@@ -9,6 +9,7 @@
 </head>
 <body>
 	<h2>gr_noticeboard_list.jsp</h2>
+	<form action="noticeInsert" method="get"><input type="submit" value="공지작성" /></form>
 	<table>
 		<tr>
 			<!-- <th>글번호</th> -->
@@ -21,7 +22,7 @@
 		<c:forEach var="a" items="${list }">
 		<tr>
 			<%-- <td>${a.nt_no }</td> --%>
-			<td><a href="noticeDetail?nt_no=${a.nt_no }">${a.nt_title }</a></td>
+			<td><a href="noticeDetail?nt_no=${a.nt_no }&num=${pn}">${a.nt_title }</a></td>
 			<%-- <td>${a.ad_id }</td> --%>
 			<td>${a.nt_con }</td>
 			<%-- <td>${a.nt_hits }</td>
@@ -29,6 +30,20 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<form action="noticeInsert" method="get"><input type="submit" value="공지작성" /></form>
+	<div>
+		<c:if test="${prev}">
+			<span>[ <a href="/control/noticeListPage?num=${startPageNum - 1}">이전</a> ]</span>
+		</c:if>
+			
+		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+			<span><a href="/control/noticeListPage?num=${num}">${num}</a></span>
+		</c:forEach>			
+		<c:if test="${next}">
+			<span>[ <a href="/control/noticeListPage?num=${endPageNum + 1}">다음</a> ]</span>
+		</c:if>
+		<%-- <c:forEach begin="1" end="${pageNum}" var="num">
+			<span><a href="/control/noticeListPage?num=${num}">${num}</a></span>
+		</c:forEach> --%>
+	</div>
 </body>
 </html>

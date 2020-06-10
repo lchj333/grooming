@@ -42,4 +42,16 @@
 		WHERE NT_NO = #{nt_no}
 	</update>
 	
+	<!-- 게시물의 총 갯수를 구하기 -->
+	<select id="count" resultType="int">
+		SELECT COUNT(NT_NO) FROM GR_NOTICE
+	</select>
+	
+	<!-- 게시물 목록 + 페이징 -->
+	<select id="listPage" parameterType="hashMap" resultType="NoticeDTO">
+		SELECT * FROM GR_NOTICE
+		ORDER BY NT_NO DESC
+		LIMIT #{displayPost}, #{postNum}
+	</select>
+	
 </mapper>

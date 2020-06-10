@@ -26,8 +26,8 @@ public class FaqController {
 	public String faqList(Model model) {
 		List<FaqDTO> list = faqdao.selectList();
 		model.addAttribute("list", list);
-		/* return "gr_faqboard_list"; */
-		return "board/grooming_faq_listanddetail";
+		return "gr_faqboard_list";
+		//return "board/grooming_faqboard_write";
 	}
 	
 	//상세내용 보기
