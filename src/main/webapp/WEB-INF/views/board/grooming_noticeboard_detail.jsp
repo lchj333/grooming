@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="/resources/main_resources/css/gr_noticeboard_detail.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/main_resources/css/grooming_noticeboard_detail.css" />
 <meta charset="UTF-8">
 <title>grooming_noticeboard_detail.jsp</title>
 </head>
@@ -16,6 +16,7 @@
 <!-- header end -->
 
 <!-- contents -->
+	
 	<div id="gr_noticeboard_detail_maindiv">
 		<div id="gr_noticeboard_detail_title"><span><c:out value="${inform.nt_title }"></c:out></span></div>
 		<div id="gr_noticeboard_detail_datehits">
