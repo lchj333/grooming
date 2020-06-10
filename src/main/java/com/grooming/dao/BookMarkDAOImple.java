@@ -23,6 +23,11 @@ public class BookMarkDAOImple implements BookMarkDAO{
 	@Override
 	public void insertBookmark(BookMarkDTO BookMarkDTO) {
 		ss.insert("insertBookmark", BookMarkDTO);
-		
 	}
+	//찜 삭제
+	@Override
+	public void deleteBookMark(BookMarkDTO BookMarkDTO) {
+		ss.delete("deleteBookMark", BookMarkDTO);
+	}
+	
 }

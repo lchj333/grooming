@@ -51,6 +51,19 @@ public class BookMarkController {
 		
 		return "bookmarklist";
 	}
+	
+	//찜 목록 삭제 스타트
+	@RequestMapping(value = "bookmarkdelete")
+	public String deletestart() {
+		return "deletebm";
+	}
+	//찜 목록 삭제
+	@RequestMapping(value = "deletethatiselect")
+	public void deleteBookMark(@RequestParam(value = "id")String id, @RequestParam(value = "licence")int licence, BookMarkDTO dto) {
+		dto.setDe_licencenum(licence);
+		dto.setMb_id(id);
+		dao.deleteBookMark(dto);
+	}
 
 	
 }
