@@ -10,44 +10,41 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.grooming.dao.RegistrationDAO;
 import com.grooming.dto.RegistrationDTO;
+import com.grooming.utils.FileUpload;
 
 @Controller
 public class RegistrationController {
-	//가게 등록,수정, 조회에 대한 컨트롤러
+	FileUpload fu = new FileUpload();
+	//가게 등록,수정, 조회에 대한 DAO
 	@Inject
 	RegistrationDAO rdao;
 	
-	@Autowired//서블릿의 실제 주소를 받아오기위해 선언
-	ServletContext c;
-	
 	private String realPath;
+	
+	@Autowired
+	ServletContext c;
 	/*
 	@PostConstruct는 의존성 주입이 이루어진 후 초기화를 수행하는 메서드이다. 
 	@PostConstruct가 붙은 메서드는 클래스가 service(로직을 탈 때? 로 생각 됨)를 수행하기 전에 발생한다. 
 	이 메서드는 다른 리소스에서 호출되지 않는다해도 수행된다. */
-	@PostConstruct
-	public void initController() {
-		this.realPath = c.getRealPath("/resources/shopimags/");	//저장될 경로 지정
-//		System.out.println("Registration컨트롤러의 @PostConstruct 작동.");
+	@PostConstruct // -> 서버 service를 시작할때 자동으로 실행
+	public void initMethod() {
+		this.realPath = c.getRealPath("/resources/shopimags/");	//저장할 경로
 	}
 	
 	//가게 등록 (+썸네일 이미지)
-	@RequestMapping(path = "/registShop")
+	@RequestMapping(value = "/registShop")
 	public String insertShopInfo(RegistrationDTO dto, MultipartHttpServletRequest ms, //스프링에서 알아서 set.
 									HttpServletRequest req) throws IllegalStateException, IOException {
 		//메소드 바디
@@ -55,7 +52,7 @@ public class RegistrationController {
 		MultipartFile mfile = ms.getFile("file");
 		
 		//이미지 추가 메소드
-		String fileName = saveFile(mfile);
+		String fileName = fu.saveFile(mfile, realPath);
 			
 		//저장된 파일 이름 담기
 		dto.setReg_img(fileName);
@@ -85,28 +82,20 @@ public class RegistrationController {
 		return "";
 	}
 	
-	//컨트롤 테스트용
-	@RequestMapping(path = "/test")
-	public String goToTest(HttpServletRequest req, HttpServletResponse res) {
-		req.setAttribute("loadimg", "44e24070d1ea429e90550b1bc8df68e1.png");
-		System.out.println("c.getRealPath('/') : "+c.getRealPath("/"));
-		
-		return "home";
-//		return "fileUpload";
-	}
-	
 	//가게 상세 이미지 추가 메소드
 	@RequestMapping(value = "/insertInfoImgs", method = RequestMethod.POST)
 	public String addShopImgs(MultipartHttpServletRequest ms, HttpServletRequest req) throws IllegalStateException, IOException {
-		int de_licencenum = Integer.parseInt(ms.getParameter("de_licencenum"));
+		int de_licencenum = (int)req.getAttribute("de_licencenum");
+//		int de_licencenum = Integer.parseInt(ms.getParameter("de_licencenum"));
 		
-		List<MultipartFile> list = ms.getFiles("file");
+		List<MultipartFile> list = ms.getFiles("files");
 		//IOException - 파일이 없을 때 발생할 에러. 호출함수인 xml의 DispatcherServlet class로 예외처리 전가//studentNumber - submissionForm의 속성 name 
+		System.out.println("list : "+list);
 		
 		if (list.size() > 0) {
 			for(MultipartFile mfile : list) {
 				//파일 저장 메소드 실행
-				String fileName = saveFile(mfile);
+				String fileName = fu.saveFile(mfile, realPath);
 				
 				//DTO
 				RegistrationDTO dto = new RegistrationDTO(de_licencenum, fileName);
@@ -124,29 +113,32 @@ public class RegistrationController {
 	/************************************
 		컨트롤에서 사용할 유틸 메소드..
 	*************************************/
+	//컨트롤 테스트용
+	@RequestMapping(value = "/test")
+	public String goToTest() {
+		
+		return "upTest";
+	}
+	
 	//실제 파일 저장 메소드
-	public String saveFile(MultipartFile mfile) throws IllegalStateException, IOException {
+	public String saveFile(MultipartFile mfile, String filePath) throws IllegalStateException, IOException {
 		//문자열 요리
 		String originalFile = mfile.getOriginalFilename();
 		String originalFileExtension = originalFile.substring(originalFile.lastIndexOf("."));
 		String storedFileName = UUID.randomUUID().toString().replaceAll("-", "") + originalFileExtension;
 		
 		//파일 저장
-		File file = new File(realPath + storedFileName);//realPath : 톰캣내의 주소
+		File file = new File(realPath + filePath + storedFileName) ;//realPath : 톰캣내의 주소
 		mfile.transferTo(file);
-		
+			
 		//체크
 		System.out.println("file.getPath() : "+file.getPath());
-		System.out.println(originalFile + "은 업로드한 파일이다.");
+//		System.out.println(originalFile + "은 업로드한 파일이다.");
 		System.out.println(storedFileName + "라는 이름으로 업로드 됐다.");
-		System.out.println("파일사이즈는 " + mfile.getSize());
-		
+//		System.out.println("파일사이즈는 " + mfile.getSize());
+	
 		//실제 저장되는 파일이름 리턴
 		return storedFileName;
 	}
 	
-	//저장된 이미지 파일 불러오기
-	public void loadImg() {
-		
-	}
 }
