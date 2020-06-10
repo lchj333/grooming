@@ -43,7 +43,7 @@ public class RegistrationController {
 	@PostConstruct가 붙은 메서드는 클래스가 service(로직을 탈 때? 로 생각 됨)를 수행하기 전에 발생한다. 
 	이 메서드는 다른 리소스에서 호출되지 않는다해도 수행된다. */
 	@PostConstruct // -> 서버 service를 시작할때 자동으로 실행
-	public void initMethod(HttpServletRequest r) {
+	public void initMethod() {
 		this.realPath = c.getRealPath("/resources/shopimags/");	//저장할 경로
 	}
 	//메뉴 ->
