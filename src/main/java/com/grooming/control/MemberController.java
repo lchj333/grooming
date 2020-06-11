@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -234,7 +235,7 @@ public class MemberController {
 		
 		dao.changePw(dd);
 		
-		return "redirect:/mypage";
+		return "redirect:/logout";
 		
 	}
 	
@@ -256,36 +257,42 @@ public class MemberController {
 	
 	// 기본정보 수정
 	@RequestMapping(value = "changeInfo")
-	public String changeInfo(@RequestParam(value = "mb_id")String mb_id,
-							 @RequestParam(value = "mb_phone")String mb_phone,
-							 @RequestParam(value = "mb_address1")String mb_address1,
-							 @RequestParam(value = "mb_address2")String mb_address2,
+	public String changeInfo(@RequestParam(value = "mb_id", required = false )String mb_id,
+							 @RequestParam(value = "mb_phone", required = false)String mb_phone,
+							 @RequestParam(value = "mb_address1", required = false)String mb_address1,
+							 @RequestParam(value = "mb_address2", required = false)String mb_address2,
 			Model model,MemberDTO memberDto) {
+		
 		
 		memberDto.setMb_phone(mb_phone);
 		memberDto.setMb_address1(mb_address1);
 		memberDto.setMb_address2(mb_address2);
 		
+		
 		dao.changeInfo(memberDto);
 		
-		return "redirect:/mypage";
+		
+		return "redirect:/logout";
+//		return "/mypage/grooming_user_profile";
 		
 	}
 	
 	// 이메일 변경
 	@RequestMapping(value = "changeEmail")
 	public String changeEmail(@RequestParam(value = "mb_id", required = false)String mb_id,
-							  @RequestParam(value = "mb_email", required = false)String mb_email,
+			 				  @RequestParam(value = "mb_email", required = false)String mb_email,
 							Model model,MemberDTO memberDto) {
 		
 		MemberDTO dd = new MemberDTO();
+		
 		dd.setMb_id(mb_id);
 		dd.setMb_email(mb_email);
 		
-		System.out.println(mb_id);
+		
 		dao.changeEmail(dd);
 		
-		return "redirect:/mypage";
+		return "redirect:/logout";
+//		return "/mypage/grooming_user_profile";
 		
 	}
 	
@@ -293,6 +300,9 @@ public class MemberController {
 	// 마이페이지 접속 
 	@RequestMapping(value = "mypage")
 	public String myPage() {
+		
+		
+		
 		return "/mypage/grooming_user_profile";
 	}
 	
