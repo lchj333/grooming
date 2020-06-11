@@ -6,22 +6,26 @@
 <mapper namespace="reservationMapper">
 	<!-- 현재 예약 리스트 중복 쿼리문 -->
 	<sql id="list">
+		<![CDATA[
 		select * from gr_reservation
+		]]>
 		<if test="#{de_licencenum}!=null"><!-- 미용사 -->
+		<![CDATA[
 			where de_licencenum = #{de_licencenum}
 			and not re_approval like 'N'
+		]]>
 		</if><if test="#{de_licencenum}==null"><!-- 사용자 -->
+		<![CDATA[
 			where mb_id = #{mb_id}
 			and re_approval like 'Y'
+		]]>
 		</if>
-		and re_date <![CDATA[>=]]> date_add(now(), interval -1 day)
-		order by RE_DATE desc
+		<![CDATA[ and re_date >= date_add(now(), interval -1 day)
+		order by RE_DATE desc ]]>
 	</sql>
 	<!-- 현재 승인된 유효한 예약 리스트 (사용자 & 미용사) -->
 	<select id="getReservList" parameterType="ReservationDTO" resultType="ReservationDTO">
-			<include refid="list">
-				<property name="de_licencenum" value="#{de_licencenum}"/>
-			</include>
+			<include refid="list"/>
 	</select>
 	
 	<!-- 예약 내역 리스트 -->

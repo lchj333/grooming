@@ -1,5 +1,6 @@
 package com.grooming.control;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -28,8 +29,10 @@ public class ReservationController {
 		
 		ReservationDTO dto = new ReservationDTO();
 		dto.setMb_id(mb_id);
+		
 		//예약 검색
-		rdao.selectListByCustomer(dto);
+		List<ReservationDTO> list = rdao.selectListByCustomer(dto);
+		req.setAttribute("revs", list);
 		
 		return "/mypage/grooming_user_booking";
 	}
@@ -49,11 +52,17 @@ public class ReservationController {
 		return "home";
 	}
 	
-	//사용자 미용 후기 작성
-	@RequestMapping(value = "/writeReview")
-	public String writeReview() {
-		return "";
+	//사용자 미용 후기 작성 폼
+	@GetMapping(value = "/writeReview")
+	public String writeReviewForm() {
+		return "mypage/grooming_user_review";
 	}
+	
+//	@PostMapping(value = "/writeReview")
+//	public String writeReviewReal(HttpServletRequest req, ) {
+//		
+//		return "home";
+//	}
 	
 	/***********************************************
   		미용사 입장
