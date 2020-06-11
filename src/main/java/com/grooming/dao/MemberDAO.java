@@ -41,13 +41,13 @@ public class MemberDAO {
 	}
 	
 	// ID 찾기(name,email 일치여부)
-	public int idFind(MemberDTO memberDto) {
+	public MemberDTO idFind(MemberDTO memberDto) {
 		return ss.selectOne("idFind", memberDto);
 	}
 	
 	// PW 찾기(id,email 일치여부)
-	public int idPw(MemberDTO memberDto) {
-		return ss.selectOne("idPw", memberDto);
+	public MemberDTO pwFind(MemberDTO memberDto) {
+		return ss.selectOne("pwFind", memberDto);
 	}
 	
 	// PW체크
