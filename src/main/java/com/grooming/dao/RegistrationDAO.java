@@ -33,8 +33,8 @@ public class RegistrationDAO {
 	}
 	
 	//가게 정보 블럭 상태 변경 (관리자에 의한)
-	public void changeStateByAdmin(int no) {
-		ss.update(MAPPER+".BlockByAdmin", no);
+	public void changeStateByAdmin(RegistrationDTO dto) {
+		ss.update(MAPPER+".BlockByAdmin", dto);
 	}
 	
 	//가게 상세 이미지 추가

@@ -29,7 +29,7 @@
 		insert into REG_IMG
 		values (#{de_licencenum}, #{reg_addimg})
 	</insert>
-	
+	<!-- 블럭상태 변경 -->
 	<update id="BlockByAdmin" parameterType="RegistrationDTO">
 		update gr_registration
 		set reg_block = #{reg_block}
