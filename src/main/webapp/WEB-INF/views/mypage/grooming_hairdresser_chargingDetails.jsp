@@ -53,9 +53,10 @@
               	<c:forEach var="p" items="${plist }">
 	                <tr>
 	                  <td>${p.de_licencenum }</td>
-	                  <td>${p.pay_date }</td>
+	                  <td><fmt:formatDate value="${p.pay_date }" pattern="YYYY-MM-dd-hh:mm:ss"/></td>
 	                  <td>${p.pay_money }원</td>
 	                  <c:set var="total" value="${total + p.pay_money }"/>
+	                  
 	                </tr>
 	           	</c:forEach>
 	           	

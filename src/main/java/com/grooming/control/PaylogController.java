@@ -25,7 +25,7 @@ public class PaylogController {
 		return "searchListiPayed";
 	}
 	
-	@PostMapping(value = "/searchListList")
+	@PostMapping(value = "mypage/searchListList")
 	public String paylistselect(@RequestParam("licence")int li, Model m, PaylogDTO dto) {
 		dto.setDe_licencenum(li);
 		List<PaylogDTO> plist = dao.selectAllIPayed(dto);

@@ -69,7 +69,7 @@
 			              
 			        
 			         alert(msg);
-			      	  document.frm.action = "<c:url value='mypage/pointchargings'/>";
+			      	  document.frm.action = "<c:url value='/pointchargingok'/>";
 					  document.frm.submit();
 			          location.href = 'control/updateok';					/* 결제 후 가고싶은 페이지로 이동 */
 			     

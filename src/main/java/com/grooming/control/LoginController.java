@@ -33,7 +33,7 @@ public class LoginController {
 	@RequestMapping(value={ "/login", "/adlogin" }, method = RequestMethod.GET)
 	public String loginGet(@ModelAttribute("loginDto") MemberDTO memberDto,
 						   @ModelAttribute("adminDto") AdminDTO adminDto) {
-		return "loginForm";
+		return "login/grooming_login_form";
 	}
 	
 	
