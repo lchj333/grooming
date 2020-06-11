@@ -7,7 +7,11 @@
 <meta charset="UTF-8">
 <title>pointCharging</title>
 </head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<!-- 결제에 필요한 것들 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="../js/httpRequest.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript">
 
 	/* 라디오 버튼 클릭시 value값 입력 */
@@ -32,9 +36,76 @@
 			if($('#payment-amount').val()==""){
 				alert("충전금액을 선택해주세요.");
 			}else{
-				document.frm.action = "<c:url value='/survey/survey.ok'/>";
-				document.frm.submit();
-			}
+				
+				//결제 페이지
+				 var msg = "";
+			     var buyer_name ="";
+			     var totalm = $('#payment-amount').val()
+			     
+			      var IMP = window.IMP; // 생략가능
+			      IMP.init('imp94723924');
+			   
+			      IMP.request_pay({
+			          pg : 'inicis', // version 1.1.0부터 지원.
+			          pay_method : 'kakao',
+			          merchant_uid : 'merchant_' + new Date().getTime(),
+			          name : '주문명:결제테스트',
+			          amount : totalm,
+			          buyer_email : 'iamport@siot.do',
+			          buyer_name : '갓오현',
+			          //company_nane : 'SAFETY' 
+			          buyer_tel : '010-1234-5678',
+			          buyer_addr : '서울특별시 강남구 삼성동',
+			          buyer_postcode : '123-456',
+			          m_redirect_url : 'http://www.naver.com'
+			      }, function(rsp) {
+			          if ( rsp.success ) {
+			              msg = '결제가 완료되었습니다.';
+			              // msg += '고유ID : ' + rsp.imp_uid;
+			             // msg += '구매자 이름 : ' + rsp.buyer_name;   
+			              // msg += '상점 거래ID : ' + rsp.merchant_uid;
+			            //  msg += '결제 금액 : ' + rsp.paid_amount;
+			              // msg += '카드 승인번호 : ' + rsp.apply_num;
+			              
+			        
+			         alert(msg);
+			      	  document.frm.action = "<c:url value='/updateok'/>";
+					  document.frm.submit();
+			          location.href = 'control/updateok';					/* 결제 후 가고싶은 페이지로 이동 */
+			     
+			         checkUp();
+			        
+			         
+			          } else {
+			              msg = '결제에 실패하였습니다.';
+			              msg += '에러내용 : ' + rsp.error_msg; 
+			              alert(msg);
+			              
+			              location.href = 'update';					/* 결제 후 가고싶은 페이지로 이동 */    
+			          }
+			          
+			          
+			          
+			      });
+			      function checkUp() {
+			    	  var totalmy = $('#payment-amount').val()
+			         var params = "total=" + encodeURIComponent(totalmy) + "&names="+encodeURIComponent('김');
+			         console.log("ddddd");
+			         sendRequest('/updateok', params, callback, 'POST');
+			         console.log("=================================");
+			        
+			     }
+
+			      function callback() {
+			         if(xhr.readyState==4 & xhr.status==200){
+			         msg = '결제가 완료되었습니다.';
+			         alert(msg);
+			         /*  msg += '구매자 이름 : ' + rsp.buyer_name;*/ 
+			         }
+			     }
+				
+			     
+			}		
 		});
 	});
 		
@@ -89,7 +160,7 @@
 			</div>
 			<!-- /box_general-->
 			
-   		<form action="#" name="frm">
+   		<form method="post" name="frm">
 			
 			<div class="row">
 					<div class="col-md-6">
@@ -113,9 +184,13 @@
 						</div>
 					</div>
 				</div>
-			
+				<!-- ============================================================================= -->
+			<td><input type="text" name="de_licencenum" value="10001"/></td>
 				<p id="myprofile-savebtn">
 					<input type="button" id="btn" value="저장" class="btn_1 medium" />
+				</p>
+				<p id="">
+					<input type="button" id="btn" value="결제완료" class="" />
 				</p>
 	  	</form>
 	  </div>
@@ -149,30 +224,12 @@
 	<script src="<c:url value='/resources/mypage/vendor/jquery.selectbox-0.2.js'/>"></script>
 	<script src="<c:url value='/resources/mypage/vendor/retina-replace.min.js'/>"></script>
 	<script src="<c:url value='/resources/mypage/vendor/jquery.magnific-popup.min.js'/>"></script>
-    <!-- Custom scripts for all pages-->
+
     <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
-	<!-- Custom scripts for this page-->
+
 	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
 	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
-	<script>$('input.date-pick').datepicker();</script>
-	<!-- WYSIWYG Editor -->
-	<script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
-	<script>
-      $('.editor').summernote({
-    fontSizes: ['10', '14'],
-    toolbar: [
-      // [groupName, [list of button]]
-      ['style', ['bold', 'italic', 'underline', 'clear']],
-      ['font', ['strikethrough']],
-      ['fontsize', ['fontsize']],
-      ['para', ['ul', 'ol', 'paragraph']]
-      ],
-        placeholder: 'Write here your description....',
-        tabsize: 2,
-        height: 200
-      });
-    </script>
-	
+
 
 	
 </body>

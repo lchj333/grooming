@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,41 +38,42 @@
 	
 </head>
 
+
 <body class="fixed-nav sticky-footer" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
-    <a class="navbar-brand" href="#"><img src="img/grooming_logo_main.png" data-retina="true" alt="" width="150" height="36"></a>
+    <a class="navbar-brand" href="#"><img src="<c:url value='/resources/mypage/img/grooming_logo_main.png'/>" data-retina="true" alt="" width="150" height="36"></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-          <a class="nav-link" href="grooming_user_profile.jsp">
+          <a class="nav-link" href="<c:url value='/WEB-INF/views/mypage/grooming_user_profile.jsp'/>">
             <i class="fa fa-fw fa-user"></i>
             <span class="nav-link-text">회원정보</span>
           </a>
         </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-          <a class="nav-link" href="grooming_user_talk.jsp">
+          <a class="nav-link" href="<c:url value='/WEB-INF/views/mypage/grooming_user_talk.jsp'/>">
             <i class="fa fa-fw fa-envelope-open"></i>
             <span class="nav-link-text">1대1 대화</span>
           </a>
         </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
-          <a class="nav-link" href="grooming_user_booking.jsp">
+          <a class="nav-link" href="<c:url value='/WEB-INF/views/mypage/grooming_user_booking.jsp'/>">
             <i class="fa fa-fw fa-calendar-check-o"></i>
             <span class="nav-link-text">예약정보<span class="badge badge-pill badge-primary">6 New</span></span>
           </a>
         </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reviews">
-          <a class="nav-link" href="grooming_user_review.jsp">
+          <a class="nav-link" href="<c:url value='/WEB-INF/views/mypage/grooming_user_review.jsp'/>">
             <i class="fa fa-fw fa-star"></i>
             <span class="nav-link-text">내리뷰</span>
           </a>
         </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Bookmarks">
-          <a class="nav-link" href="grooming_user_bookmark.jsp">
+          <a class="nav-link" href="<c:url value='/WEB-INF/views/mypage/grooming_user_bookmark.jsp'/>">
             <i class="fa fa-fw fa-heart"></i>
             <span class="nav-link-text">북마크</span>
           </a>
