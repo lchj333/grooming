@@ -6,7 +6,6 @@ import java.util.Date;
 public class RegistrationDTO {
 	//매변
 	private int de_licencenum;
-	private String reg_title;
 	private String ref_shopname;
 	private String reg_shopaddress;
 	private int reg_price;
@@ -20,11 +19,10 @@ public class RegistrationDTO {
 	//생성자
 	public RegistrationDTO() {}
 	
-	public RegistrationDTO(int de_licencenum, String reg_title, String ref_shopname, String reg_shopaddress,
+	public RegistrationDTO(int de_licencenum, String ref_shopname, String reg_shopaddress,
 				int reg_price, String reg_con, String reg_img) {
 		super();
 		this.de_licencenum = de_licencenum;
-		this.reg_title = reg_title;
 		this.ref_shopname = ref_shopname;
 		this.reg_shopaddress = reg_shopaddress;
 		this.reg_price = reg_price;
@@ -32,10 +30,9 @@ public class RegistrationDTO {
 		this.reg_img = reg_img;
 	}
 
-	public RegistrationDTO(int de_licencenum, String reg_title, String ref_shopname, String reg_shopaddress,
+	public RegistrationDTO(int de_licencenum, String ref_shopname, String reg_shopaddress,
 				int reg_price, String reg_con, Date reg_date, int reg_block, String reg_img) {
 		this.de_licencenum = de_licencenum;
-		this.reg_title = reg_title;
 		this.ref_shopname = ref_shopname;
 		this.reg_shopaddress = reg_shopaddress;
 		this.reg_price = reg_price;
@@ -56,12 +53,6 @@ public class RegistrationDTO {
 	}
 	public void setDe_licencenum(int de_licencenum) {
 		this.de_licencenum = de_licencenum;
-	}
-	public String getReg_title() {
-		return reg_title;
-	}
-	public void setReg_title(String reg_title) {
-		this.reg_title = reg_title;
 	}
 	public String getRef_shopname() {
 		return ref_shopname;
