@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -186,6 +187,8 @@ public class MemberController {
 		return "grooming_login_pw_find_step2_form";
 	}
 	
+	
+	
 	// 비밀번호 체크
 	@RequestMapping(value = "checkPw")
 	public String checkPw(HttpServletRequest req,
@@ -225,12 +228,14 @@ public class MemberController {
 		
 		dd.setMb_pw(securityService.encryptSHA256(mb_pw));
 		
+		System.out.println(mb_pw);
+		
 		System.out.println(dd.getMb_id());
 		System.out.println(dd.getMb_pw());
 		
 		dao.changePw(dd);
 		
-		return "home";
+		return "redirect:/logout";
 		
 	}
 	
@@ -246,20 +251,59 @@ public class MemberController {
 		
 		model.addAttribute("checkEmail", dto);
 		
-		return "checkEmail";
+		return "/mypage/grooming_user_profile";
+		
+	}
+	
+	// 기본정보 수정
+	@RequestMapping(value = "changeInfo")
+	public String changeInfo(@RequestParam(value = "mb_id", required = false )String mb_id,
+							 @RequestParam(value = "mb_phone", required = false)String mb_phone,
+							 @RequestParam(value = "mb_address1", required = false)String mb_address1,
+							 @RequestParam(value = "mb_address2", required = false)String mb_address2,
+			Model model,MemberDTO memberDto) {
+		
+		
+		memberDto.setMb_phone(mb_phone);
+		memberDto.setMb_address1(mb_address1);
+		memberDto.setMb_address2(mb_address2);
+		
+		
+		dao.changeInfo(memberDto);
+		
+		
+		return "redirect:/logout";
+//		return "/mypage/grooming_user_profile";
 		
 	}
 	
 	// 이메일 변경
 	@RequestMapping(value = "changeEmail")
-	public String changeEmail(@RequestParam(value = "mb_email")String mb_email,
+	public String changeEmail(@RequestParam(value = "mb_id", required = false)String mb_id,
+			 				  @RequestParam(value = "mb_email", required = false)String mb_email,
 							Model model,MemberDTO memberDto) {
 		
-		dao.changeEmail(memberDto);
+		MemberDTO dd = new MemberDTO();
 		
-		return "changePw";
+		dd.setMb_id(mb_id);
+		dd.setMb_email(mb_email);
+		
+		
+		dao.changeEmail(dd);
+		
+		return "redirect:/logout";
+//		return "/mypage/grooming_user_profile";
 		
 	}
 	
+	
+	// 마이페이지 접속 
+	@RequestMapping(value = "mypage")
+	public String myPage() {
+		
+		
+		
+		return "/mypage/grooming_user_profile";
+	}
 	
 }

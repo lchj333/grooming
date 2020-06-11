@@ -4,17 +4,6 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
-	
-	<bean class="com.grooming.dao.DesinerDAOImple">
-		<property name="ss" ref="sqlSession" />
-	</bean>
-	<bean class="com.grooming.dao.BookMarkDAOImple">
-		<property name="ss" ref="sqlSession" />
-	</bean>
-	<bean class="com.grooming.dao.PaylogDAOImple">
-		<property name="ss" ref="sqlSession" />
-	</bean>
-
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
