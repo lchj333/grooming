@@ -16,12 +16,12 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
 
     <!-- BASE CSS -->
-    <link href="/resources/main_resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/resources/main_resources/css/style.css" rel="stylesheet">
-	<link href="/resources/main_resources/css/vendors.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/main_resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/main_resources/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/main_resources/css/vendors.css" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
-    <link href="/resources/main_resources/css/custom.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
 
     <style>
         html,
@@ -39,7 +39,7 @@
 			<div id="preloader"><div data-loader="circle-side"></div></div><!-- /Page Preload -->
 			<div id="logo">
 				<a href="grooming_main.jsp">
-					<img src="/resources/main_resources/img/Grooming_logo_main.png" width="150" height="36" data-retina="true" alt="">
+					<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main.png" width="150" height="36" data-retina="true" alt="">
 				</a>
 			</div>
 			<ul id="top_menu">
@@ -128,9 +128,9 @@
 
 	<!-- Map -->
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
-	<script src="/resources/main_resources/js/markerclusterer.js"></script>
-	<script src="/resources/main_resources/js/map_restaurants_half_screen.js"></script>
-	<script src="/resources/main_resources/js/infobox.js"></script>
+	<script src="<c:url value='/resources/resources/main_resources/js/markerclusterer.js'/>"></script>
+	<script src="<c:url value='/resources/resources/main_resources/js/map_restaurants_half_screen.js'/>"></script>
+	<script src="<c:url value='/resources/resources/main_resources/js/infobox.js'/>"></script>
 
 </body>
 </html>

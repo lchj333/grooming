@@ -50,9 +50,9 @@
 	</footer>
 	<!--/footer-->
 	<!-- COMMON SCRIPTS -->
-	<script src="/resources/main_resources/js/common_scripts.js"></script>
-	<script src="/resources/main_resources/js/main.js"></script>
-	<script src="/resources/main_resources/assets/validate.js"></script>
+	<script src="<c:url value='/resources/main_resources/js/common_scripts.js'/>"></script>
+	<script src="<c:url value='/resources/main_resources/js/main.js'/>"></script>
+	<script src="<c:url value='/resources/main_resources/assets/validate.js'/>"></script>
 
 </body>
 </html>

@@ -47,7 +47,7 @@ public class NoticeController {
 		HttpSession ses = req.getSession();
 		//ses.setAttribute("num", 현재페이지값이있는객체);
 		
-		return "gr_noticeboard_detail";
+		return "board/grooming_noticeboard_list";
 	}
 	 
 	//글 작성 페이지로 이동
