@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.grooming.dto.RegistrationDTO;
+import com.grooming.dto.ShopListDTO;
 
 @Repository
 public class RegistrationDAO {
@@ -22,9 +23,18 @@ public class RegistrationDAO {
 	}
 	
 	//등록된 가게 리스트 (허가된)
-	public List<RegistrationDTO> getList(Map<String, Object> map) {
-		
+	public List<ShopListDTO> getList(Map<String, Object> map) {
 		return ss.selectList(MAPPER+".list", map);
+	}
+	
+	//샵 상세 정보
+	public RegistrationDTO infoShop(int de_licencenum) {
+		return ss.selectOne(MAPPER+".shopDetail", de_licencenum);
+	}
+	
+	//샵 상세 이미지들..
+	public List<String> infoImgs(int de_licencenum) {
+		return ss.selectList(MAPPER+".infoImgs", de_licencenum);
 	}
 	
 	//가게 정보 등록 메소드 
@@ -32,19 +42,15 @@ public class RegistrationDAO {
 		ss.insert(MAPPER+".insertShop", dto);
 	}
 	
-	//가게 정보 블럭 상태 변경 (관리자에 의한)
-	public void changeStateByAdmin(int no) {
-		ss.update(MAPPER+".BlockByAdmin", no);
-	}
-	
 	//가게 상세 이미지 추가
 	public void insertShopInfoimg(RegistrationDTO dto) {
 		ss.insert(MAPPER+".insertShopInfoimg", dto);
 	}
 	
-	//임시 테스트
-	public List<RegistrationDTO> testTest(int licencenum) {
-		return ss.selectOne(MAPPER+".listAdd_imgs", licencenum);
+	//가게 정보 블럭 상태 변경 (관리자에 의한)
+	public void changeStateByAdmin(RegistrationDTO dto) {
+		ss.update(MAPPER+".BlockByAdmin", dto);
 	}
+	
 	
 }

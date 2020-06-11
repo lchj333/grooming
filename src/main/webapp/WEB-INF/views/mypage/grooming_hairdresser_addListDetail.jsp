@@ -87,11 +87,11 @@
 			length = ($("img").length)-1;
 				if(length==0){
 					alert("최소 1장의 이미지를 올려주세요")
-				}else if(length>=1 && length<=5){
+				}else if(length>=1 && length<=8){
 					document.frm.action = "<c:url value='/mypage/insertInfoImgs'/>";
 					document.frm.submit();  
-				}else if(length>5){
-					alert("최대 5장까지 이미지를 올릴수 있습니다.");
+				}else if(length>8){
+					alert("최대 8장까지 이미지를 올릴수 있습니다.");
 				}
 		});
 

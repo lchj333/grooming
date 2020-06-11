@@ -17,6 +17,8 @@
 	</environments> -->
 	
 	<typeAliases>
-		<package name="com.grooming.dto" />	<!-- 패키지 통째로 인식하여 줌 -->
+		 <package name="com.grooming.dto" />
 	</typeAliases>
+
+	
 </configuration>
