@@ -6,8 +6,8 @@
 <mapper namespace=" ">
 	<!-- 디자이너 테이블 생성 -->
 	<insert id="joinDesigner" parameterType="DesignerDTO">
-		insert ignore into gr_designer(mb_id, de_licence,de_approval, de_point)
-		select #{mb_id}, #{de_licence}, 'N', 1000
+		insert ignore into gr_designer(mb_id, de_licence,de_approval, de_point, de_instr)
+		select #{mb_id}, #{de_licence}, 'N', 0 , #{de_insta}
 		from gr_member
 		where mb_check = "Y"
 	</insert>
