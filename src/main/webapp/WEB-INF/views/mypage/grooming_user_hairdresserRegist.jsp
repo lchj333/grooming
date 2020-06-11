@@ -13,20 +13,29 @@
 	function checkBox(){
 	    if($('input:radio[id=gr_user]').is(':checked')){
 	        $('#img-upload').slideUp(500);
+	
 	    }else{
 	        $('#img-upload').slideDown(500);
 	    }	
 	}
 	
-	
 	/* 파일보내기 */
-	
 	$(function(){
 		$("#btn").click(function(){
-			document.frm.action = "<c:url value='/survey/survey.ok'/>";
-			document.frm.submit();
+			if($('#img-upload').is(':visible') == false ){
+				alert("asd");
+			}else{
+				if($("#de_licence").val() == ""){
+			    	alert("이미지를 올려주세요");
+				    $("#de_licence").focus();
+				    return false;
+				}else{
+					document.frm.action = "<c:url value='/survey/survey.ok'/>";
+					document.frm.submit();
+					alert("심사후 미용사등록");
+				}
+			}
 		});
-		
 		/* 기본세팅은 일반회원인 처음에는 안보이게 */
 		$('#img-upload').hide();
 	});
@@ -57,8 +66,8 @@
 						<div class="form-group">
 								<h6><label>미용사 변경</label></h6>
 							<div>
-								<div>일반회원<input type="radio" name="ck" id="gr_user" value="일반회원" checked="checked" onClick="checkBox()" /></div>
-								<div>미용사<input type="radio" name="ck" id="gr_hairdresser" value="미용사" onClick="checkBox()" /></div>
+								<div>일반회원<input type="radio" name="ck" id="gr_user" value="user" checked="checked" onClick="checkBox()" /></div>
+								<div>미용사<input type="radio" name="ck" id="gr_hairdresser" value="hairdresser" onClick="checkBox()" /></div>
 							</div>
 						</div>
 					</div>
@@ -66,9 +75,8 @@
 				<!-- /row-->
 			</div>
 			<!-- /box_general-->
-		</form>
 			
-		</div>
+		
 			
 			<div class="box_general padding_bottom" id="img-upload">
 				<div class="header_box version_2">
@@ -80,9 +88,8 @@
 						<table id="pricing-list-container" style="width:100%;">
 							<tr class="pricing-list-item">
 								<td>
-									<form name="fname">
-										<div class="dropzone" id="fileDropzone"></div>
-									</form>
+									<!-- 이미지 파일 첨부 -->
+									<input type="file" name="de_licence" id="de_licence" />
 								</td>
 							</tr>
 						</table>
@@ -94,9 +101,11 @@
 			<p id="myprofile-savebtn">
 				<input type="button" id="btn" value="저장" class="btn_1 medium" />
 			</p>
+	  </form>
 	  </div>
+	
 	  <!-- /.container-fluid-->
-
+	</div>
     <!-- /.container-wrapper-->
     <footer class="sticky-footer">
       <div class="container">
@@ -112,15 +121,11 @@
 
 	<jsp:include page="mypage_logout.jsp"></jsp:include>
 
-    <!-- Bootstrap core JavaScript-->
     <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
-    <script src="<c:url value='/resources/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
-    <!-- Page level plugin JavaScript-->
-
-	
-
+    <script src="<c:url value='/resources/mypage/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
+    
     <!-- Page level plugin JavaScript-->
     <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
@@ -134,12 +139,25 @@
 	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
 	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
 	<script>$('input.date-pick').datepicker();</script>
-  	<!-- WYSIWYG Editor -->
- 	<script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
-
-
-	<!-- Custom dropzone -->
-	<script src="<c:url value='/resources/mypage/vendor/custome_dropzone.js'/>"></script>
+	<!-- WYSIWYG Editor -->
+	<script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
+	<script>
+      $('.editor').summernote({
+    fontSizes: ['10', '14'],
+    toolbar: [
+      // [groupName, [list of button]]
+      ['style', ['bold', 'italic', 'underline', 'clear']],
+      ['font', ['strikethrough']],
+      ['fontsize', ['fontsize']],
+      ['para', ['ul', 'ol', 'paragraph']]
+      ],
+        placeholder: 'Write here your description....',
+        tabsize: 2,
+        height: 200
+      });
+    </script>
+	
+	
 
 </body>
 </html>
