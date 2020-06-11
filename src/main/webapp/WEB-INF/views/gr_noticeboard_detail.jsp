@@ -29,7 +29,7 @@
 			<td>${inform.nt_regdate }</td>
 		</tr>
 	</table>
-	<a href="noticeList"><input type="button" value="목록으로" /></a>
+	<a href="noticeListPage?num=${pn }"><input type="button" value="목록으로" /></a>
 	<a href="noticeUpdate?nt_no=${inform.nt_no }"><input type="button" value="수정하기" /></a>
 	<a href="noticeDelete?nt_no=${inform.nt_no }"><input type="button" value="삭제하기" /></a>
 </body>

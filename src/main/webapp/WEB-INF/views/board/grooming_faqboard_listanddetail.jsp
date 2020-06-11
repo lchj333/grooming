@@ -40,6 +40,18 @@
 					<div role="tablist" class="add_bottom_45 accordion_2" id="payment">
 						<div class="card">
 							<c:forEach var="inform" items="${list }">
+<<<<<<< HEAD:src/main/webapp/WEB-INF/views/board/grooming_faq_listanddetail.jsp
+							<div class="card-header" role="tab">
+								<h5 class="mb-0">
+									<a data-toggle="collapse" href="#collapseOne_payment" aria-expanded="true"><i class="indicator ti-minus"></i><c:out value="${inform.f_title }"></c:out></a>
+								</h5>
+							</div>
+							<div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
+								<div class="card-body">
+									<p><c:out value="${inform.f_con }"></c:out></p>
+								</div>
+							</div>
+=======
 								<div class="card-header" role="tab">
 									<h5 class="mb-0">
 										<a data-toggle="collapse" href="#collapseOne_payment" aria-expanded="true"><i class="indicator ti-minus"></i><c:out value="${inform.f_title }"></c:out></a>
@@ -50,6 +62,7 @@
 										<p><c:out value="${inform.f_con }"></c:out></p>
 									</div>
 								</div>
+>>>>>>> c886cff1ee25b3e13b77ef795d7b4dd4d25691ad:src/main/webapp/WEB-INF/views/board/grooming_faqboard_listanddetail.jsp
 							</c:forEach>
 						</div>
 						<!-- /card -->

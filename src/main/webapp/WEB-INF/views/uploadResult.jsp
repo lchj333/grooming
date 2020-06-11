@@ -1,24 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="<c:url value='/resources/test.css' />" />
 <title>Insert title here</title>
 </head>
 <body>
-
-
-
-
-	addList
-
-	<div class="test">
-		hihi
-	</div>
-
+<br>
+<h3>저장 경로 : ${filePath}</h3>
+<h1>파일명 : ${fileName}</h1>
 </body>
 </html>

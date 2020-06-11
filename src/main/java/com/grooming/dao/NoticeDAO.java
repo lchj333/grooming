@@ -1,5 +1,6 @@
 package com.grooming.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -44,5 +45,18 @@ public class NoticeDAO {
 	public void raiseHits(int nt_no) {
 		ss.update("raiseHits", nt_no);
 	}
+	// 게시물의 총 갯수
+	public int count() {
+		return ss.selectOne("count");
+	}
+	// 게시물 목록 + 페이징
+	public List<NoticeDTO> listPage(int displayPost, int postNum) {
+		HashMap<String, Integer> data = new HashMap<String, Integer>();
+		data.put("displayPost", displayPost);
+		data.put("postNum", postNum);
+		return ss.selectList("listPage", data);
+	}
+	
+	
 }
 
