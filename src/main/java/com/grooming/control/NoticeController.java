@@ -53,7 +53,8 @@ public class NoticeController {
 	//글 작성 페이지로 이동
 	@GetMapping(value="/noticeInsert")
 	public String noticeWrite(Model model) {
-		return "gr_noticeboard_insert";
+		//return "gr_noticeboard_insert";
+		return "board/grooming_noticeboard_write";
 	}
 	//글 작성하기
 	@PostMapping(value="/noticeInsert")
