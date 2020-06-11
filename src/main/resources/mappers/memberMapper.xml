@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace=" ">
+	<!-- 회원가입 -->
+	<insert id="joinMember" parameterType="MemberDTO">
+		insert into GR_MEMBER(MB_ID, MB_PW, MB_NAME, MB_BIRTH, MB_GENDER, MB_EMAIL, MB_EMAILCK, MB_PHONE, MB_ADDRESS1, MB_ADDRESS2, MB_JOINDATE, MB_AREA)
+		values (#{mb_id}, #{mb_pw}, #{mb_name},
+				#{mb_birth}, #{mb_gender}, #{mb_email},
+				#{mb_emailck}, #{mb_phone}, #{mb_address1}, 
+				#{mb_address2}, now(), #{mb_area})
+	</insert>
+	
+	<!-- 전체조회 -->
+	<select id="selectMemberAll" resultType="MemberDTO">
+		select * from gr_member
+	</select>
+	
+	<!-- ID로 개별조회 -->
+	<select id="selectMemberOne" resultType="MemberDTO">
+		select * from gr_member
+		where mb_id = #{mb_id}
+	</select>
+	
+	<!-- ID 중복체크 -->
+	<select id="idCheck" resultType="int">
+		select count(*)
+		from gr_member
+		where mb_id = #{mb_id}
+	</select>
+	
+	<!-- name,Email 확인 -->
+	<select id="idFind" parameterType="MemberDTO" resultType="MemberDTO">
+		select *
+		from gr_member
+		where mb_name = #{mb_name} and mb_email = #{mb_email}
+	</select>
+	
+	<!-- ID,Email 확인 -->
+	<select id="pwFind" parameterType="MemberDTO" resultType="MemberDTO">
+		select *
+		from gr_member
+		where mb_id = #{mb_id} and mb_email = #{mb_email}
+	</select>
+	
+	<!-- 미용사 체크 확인 -->
+	<update id="designerCheck" parameterType="MemberDTO">
+		update gr_member
+		set mb_check = 'Y'
+		where mb_id = #{mb_id}
+	</update>
+	
+	<!-- 비밀번호 일치 확인 -->
+	<select id="checkPw"  resultType="int">
+		select count(*)
+		from gr_member
+		where mb_id = #{mb_id} and mb_pw = #{mb_pw}
+	</select>
+	
+	<!-- 비밀번호 수정 -->
+	<update id="changePw" parameterType="MemberDTO">
+		update gr_member
+		set mb_pw = #{mb_pw}
+		where mb_id = #{mb_id}
+	</update>
+	
+	<!-- 이메일 일치 확인 -->
+	<select id="checkEmail"  resultType="int">
+		select count(*)
+		from gr_member
+		where mb_id = #{mb_id} and mb_email = #{mb_email}
+	</select>
+	
+	<!-- 이메일 수정 -->
+	<update id="changeEmail" parameterType="MemberDTO">
+		update gr_member
+		set mb_email = #{mb_email}
+		where mb_id = #{mb_id}
+	</update>
+	
+	<!-- 개인정보 수정 -->
+	<update id="updateMember" parameterType="MemberDTO">
+	<![CDATA[
+   		update gr_member
+   		<trim prefix="set" suffixOverrides=",">
+      		<if test="mb_phone !=null">mb_phone = #{mb_phone},</if>
+      		<if test="mb_email !=null">mb_email = #{mb_email},</if>
+      		<if test="mb_address1 !=null">mb_address1 = #{mb_address1},</if>
+      		<if test="mb_address2 !=null">mb_address2 = #{mb_address2}</if>
+   		</trim>    
+  		 where mb_id = #{mb_id}
+	]]>
+	</update>
+	
+
+</mapper>

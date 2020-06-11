@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace=" ">
+	<!-- 공지사항 작성 -->
+	<insert id="insertNotice">
+		INSERT INTO GR_NOTICE(NT_TITLE, AD_ID, NT_CON, NT_HITS, NT_REGDATE)
+		VALUES (#{nt_title}, "admin", #{nt_con}, 0, now())
+	</insert>
+	
+	<!-- 공지사항 전체조회 -->
+	<select id="selectAllNotice" resultType="NoticeDTO">
+		SELECT * FROM GR_NOTICE
+		ORDER BY NT_NO DESC
+	</select>
+	
+	<!-- 공지사항 상세정보 -->
+	<select id="selectOneNotice" parameterType="int" resultType="NoticeDTO">
+		SELECT NT_NO, NT_TITLE, AD_ID, NT_CON, NT_HITS, NT_REGDATE
+		FROM GR_NOTICE
+		WHERE NT_NO = #{nt_no}
+	</select>
+	
+	<!-- 공지사항 수정 -->
+	<update id="updateNotice">
+		UPDATE GR_NOTICE
+		SET NT_TITLE = #{nt_title}, NT_CON = #{nt_con}, NT_REGDATE = now()
+		WHERE NT_NO = #{nt_no}
+	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="deleteNotice">
+		DELETE FROM GR_NOTICE
+		WHERE NT_NO = #{nt_no}
+	</delete>
+	
+	<!-- 조회수 늘리기 -->
+	<update id="raiseHits">
+		UPDATE GR_NOTICE
+		SET NT_HITS = NT_HITS+1
+		WHERE NT_NO = #{nt_no}
+	</update>
+	
+	<!-- 게시물의 총 갯수를 구하기 -->
+	<select id="count" resultType="int">
+		SELECT COUNT(NT_NO) FROM GR_NOTICE
+	</select>
+	
+	<!-- 게시물 목록 + 페이징 -->
+	<select id="listPage" parameterType="hashMap" resultType="NoticeDTO">
+		SELECT * FROM GR_NOTICE
+		ORDER BY NT_NO DESC
+		LIMIT #{displayPost}, #{postNum}
+	</select>
+	
+</mapper>

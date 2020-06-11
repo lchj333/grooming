@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace=" ">
+	<!-- C -->
+	<insert id="insertFaq">
+		INSERT INTO GR_FAQ
+		VALUES (#{f_title}, 'admin', #{f_con})
+	</insert>
+	
+	<!-- R -->
+	<select id="selectAllFaq" resultType="FaqDTO">
+		SELECT * FROM GR_FAQ
+	</select>
+	<select id="selectOnebyf_title" resultType="FaqDTO">
+		SELECT * FROM GR_FAQ WHERE F_TITLE = #{f_title}
+	</select>
+	
+	<!-- U -->
+	<update id="updateFaq">
+		UPDATE GR_FAQ
+		SET F_TITLE = #{f_title}, F_CON = #{f_con}
+		WHERE F_TITLE = #{f_title}
+	</update>
+	
+	<!-- D -->
+	<delete id="deleteFaq">
+		DELETE FROM GR_FAQ WHERE F_TITLE = #{f_title}
+	</delete>
+</mapper>

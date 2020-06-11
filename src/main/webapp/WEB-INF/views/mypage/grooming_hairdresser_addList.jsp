@@ -6,6 +6,71 @@
 <head>
 <meta charset="UTF-8">
 <title>addlist</title>
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function openDaumPost(){
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('adress-text').value = data.zonecode;
+            document.getElementById("addr1").value = data.roadAddress;
+             
+        }
+    }).open();
+}// openDaumPost() end
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		var num = /[^0-9]/g;
+		
+		$("#btn").click(function(){
+			
+			if($("#reg_shopname").val() == ""){
+		    	alert("가게이름 입력해주세요");
+			    $("#reg_shopname").focus();
+			    return false;
+			}
+			
+			if($("#reg_con").val() == ""){
+		    	alert("상세내용을 적어주세요");
+			    $("#reg_con").focus();
+			    return false;
+			}
+			
+			if($("#reg_img").val() == ""){
+		    	alert("썸네일 이미지를 등록해주세요");
+			    $("#reg_img").focus();
+			    return false;
+			}
+			
+			if($("#addr1").val() == ""){
+		    	alert("주소를 입력해주세요");
+			    $("#addr1").focus();
+			    return false;
+			}
+			
+			if($("#addr2").val() == ""){
+		    	alert("상세주소를 입력해주세요");
+			    $("#addr2").focus();
+			    return false;
+			}
+			
+			if($("#reg_price").val() == ""){
+		    	alert("최소가격을 입력해주세요");
+			    $("#reg_price").focus();
+			    return false;
+			}
+							
+			document.frm.action = "<c:url value='/mypage/registShop'/>";
+			document.frm.submit();
+		});
+
+	});
+</script>
 </head>
 <body>
 
@@ -13,718 +78,101 @@
 
  <div class="content-wrapper">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
-        </li>
-        <li class="breadcrumb-item active">Add listing</li>
-      </ol>
-		<div class="box_general padding_bottom">
-			<div class="header_box version_2">
-				<h2><i class="fa fa-file"></i>Basic info</h2>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>Listing Title</label>
-						<input type="text" class="form-control" placeholder="Hotel Mariott">
-					</div>
+    	<form action="" method="post" name="frm" enctype="multipart/form-data">
+	      <!-- Breadcrumbs-->
+	      <ol class="breadcrumb">
+	        <li class="breadcrumb-item">
+	          <span>미용사</span>
+	        </li>
+	        <li class="breadcrumb-item active">가게 등록</li>
+	      </ol>
+			<div class="box_general padding_bottom">
+				<div class="header_box version_2">
+					<h2><i class="fa fa-file"></i>가게등록</h2>
 				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>Category</label>
-						<div class="styled-select">
-						<select>
-							<option>Tour</option>
-							<option>Hotel</option>
-							<option>Restaurant</option>
-							<option>Bar</option>
-						</select>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>가게이름</label>
+							<input type="text" id="reg_shopname" class="form-control" name="reg_shopname" placeholder="가게이름" > 
 						</div>
 					</div>
 				</div>
-			</div>
-			<!-- /row-->
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>Keywords</label>
-						<input type="text" class="form-control" placeholder="Keywords should be separated by commas">
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
-			<div class="row">
-				<div class="col-md-12">
-					<div class="form-group">
-						<label>Description</label>
-						<div class="editor"></div>
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
-			<div class="row">
-				<div class="col-md-4">
-					<div class="form-group">
-						<label>Phone (Optional)</label>
-						<input type="text" class="form-control">
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label>Web site (Optional)</label>
-						<input type="text" class="form-control">
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label>Email (Optional)</label>
-						<input type="text" class="form-control">
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
-			<div class="row">
-				<div class="col-md-4">
-					<div class="form-group">
-						<label>Facebook link (Optional)</label>
-						<input type="text" class="form-control">
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label>Twitter link (Optional)</label>
-						<input type="text" class="form-control">
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="form-group">
-						<label>Google + (Optional)</label>
-						<input type="text" class="form-control">
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
-			<div class="row">
-				<div class="col-md-12">
-<!-- 					<div class="form-group">
-						<label>Photos</label>
-						<form action="addShopimgs" method="post" class="dropzone" enctype="multipart/form-data">
-							<input type="hidden" name="de_licencenum" value="9000"/>
-							<input type="submit" value="전송"/>
-						</form> 
-					</div>
-					-->
-					<div class="form-group">
-						<label>Photos</label>
-						<form action="/file-upload" class="dropzone"></form>
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
-		</div>
-		<!-- /box_general-->
-		
-		<div class="box_general padding_bottom">
-			<div class="header_box version_2">
-				<h2><i class="fa fa-map-marker"></i>Location</h2>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>Select City</label>
-						<div class="styled-select">
-						<select>
-							<option>Miami</option>
-							<option>New York</option>
-							<option>Los Angeles</option>
-							<option>San Francisco</option>
-						</select>
+				
+				<!-- /row-->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>상세내역</label>
+							<textarea name="reg_con" id="reg_con" class="editor">
+							</textarea>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>Address</label>
-						<input type="text" class="form-control" placeholder="ex. 250, Fifth Avenue...">
+	
+	
+				
+				<!-- 썸네일 이미지 input file -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label>썸네일 이미지</label>
+							<br />
+							<input type="file" name="file" id="reg_img" />
+						</div>
 					</div>
 				</div>
+				<!-- /row-->
 			</div>
-			<!-- /row-->
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>State</label>
-						<input type="text" class="form-control">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>Zip Code</label>
-						<input type="text" class="form-control">
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
-		</div>
-		<!-- /box_general-->
-		
-		<div class="box_general padding_bottom">
-			<div class="header_box version_2">
-				<h2><i class="fa fa-clock-o"></i>Opening</h2>
-			</div>
-			<div class="row">
-				<div class="col-md-2">
-					<label class="fix_spacing">월요일</label>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>오픈시간</option>
-							<c:forEach var="i" begin="1" end="24">
-								<option>${i}시</option>
-							</c:forEach>
-						</select>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>Closing Time</option>
-							<option>Closed</option>
-							<option>1 AM</option>
-							<option>2 AM</option>
-							<option>3 AM</option>
-							<option>4 AM</option>
-							<option>5 AM</option>
-							<option>6 AM</option>
-							<option>7 AM</option>
-							<option>8 AM</option>
-							<option>9 AM</option>
-							<option>10 AM</option>
-							<option>11 AM</option>
-							<option>12 AM</option>	
-							<option>1 PM</option>
-							<option>2 PM</option>
-							<option>3 PM</option>
-							<option>4 PM</option>
-							<option>5 PM</option>
-							<option>6 PM</option>
-							<option>7 PM</option>
-							<option>8 PM</option>
-							<option>9 PM</option>
-							<option>10 PM</option>
-							<option>11 PM</option>
-							<option>12 PM</option>
-						</select>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
-			<div class="row">
-				<div class="col-md-2">
-					<label class="fix_spacing">Tuesday</label>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>Opening Time</option>
-							<option>Closed</option>
-							<option>1 AM</option>
-							<option>2 AM</option>
-							<option>3 AM</option>
-							<option>4 AM</option>
-							<option>5 AM</option>
-							<option>6 AM</option>
-							<option>7 AM</option>
-							<option>8 AM</option>
-							<option>9 AM</option>
-							<option>10 AM</option>
-							<option>11 AM</option>
-							<option>12 AM</option>	
-							<option>1 PM</option>
-							<option>2 PM</option>
-							<option>3 PM</option>
-							<option>4 PM</option>
-							<option>5 PM</option>
-							<option>6 PM</option>
-							<option>7 PM</option>
-							<option>8 PM</option>
-							<option>9 PM</option>
-							<option>10 PM</option>
-							<option>11 PM</option>
-							<option>12 PM</option>
-						</select>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>Closing Time</option>
-							<option>Closed</option>
-							<option>1 AM</option>
-							<option>2 AM</option>
-							<option>3 AM</option>
-							<option>4 AM</option>
-							<option>5 AM</option>
-							<option>6 AM</option>
-							<option>7 AM</option>
-							<option>8 AM</option>
-							<option>9 AM</option>
-							<option>10 AM</option>
-							<option>11 AM</option>
-							<option>12 AM</option>	
-							<option>1 PM</option>
-							<option>2 PM</option>
-							<option>3 PM</option>
-							<option>4 PM</option>
-							<option>5 PM</option>
-							<option>6 PM</option>
-							<option>7 PM</option>
-							<option>8 PM</option>
-							<option>9 PM</option>
-							<option>10 PM</option>
-							<option>11 PM</option>
-							<option>12 PM</option>
-						</select>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
-			<div class="row">
-				<div class="col-md-2">
-					<label class="fix_spacing">Wednesday</label>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>Opening Time</option>
-							<option>Closed</option>
-							<option>1 AM</option>
-							<option>2 AM</option>
-							<option>3 AM</option>
-							<option>4 AM</option>
-							<option>5 AM</option>
-							<option>6 AM</option>
-							<option>7 AM</option>
-							<option>8 AM</option>
-							<option>9 AM</option>
-							<option>10 AM</option>
-							<option>11 AM</option>
-							<option>12 AM</option>	
-							<option>1 PM</option>
-							<option>2 PM</option>
-							<option>3 PM</option>
-							<option>4 PM</option>
-							<option>5 PM</option>
-							<option>6 PM</option>
-							<option>7 PM</option>
-							<option>8 PM</option>
-							<option>9 PM</option>
-							<option>10 PM</option>
-							<option>11 PM</option>
-							<option>12 PM</option>
-						</select>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>Closing Time</option>
-							<option>Closed</option>
-							<option>1 AM</option>
-							<option>2 AM</option>
-							<option>3 AM</option>
-							<option>4 AM</option>
-							<option>5 AM</option>
-							<option>6 AM</option>
-							<option>7 AM</option>
-							<option>8 AM</option>
-							<option>9 AM</option>
-							<option>10 AM</option>
-							<option>11 AM</option>
-							<option>12 AM</option>	
-							<option>1 PM</option>
-							<option>2 PM</option>
-							<option>3 PM</option>
-							<option>4 PM</option>
-							<option>5 PM</option>
-							<option>6 PM</option>
-							<option>7 PM</option>
-							<option>8 PM</option>
-							<option>9 PM</option>
-							<option>10 PM</option>
-							<option>11 PM</option>
-							<option>12 PM</option>
-						</select>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
-			<div class="row">
-				<div class="col-md-2">
-					<label class="fix_spacing">Thursday</label>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>Opening Time</option>
-							<option>Closed</option>
-							<option>1 AM</option>
-							<option>2 AM</option>
-							<option>3 AM</option>
-							<option>4 AM</option>
-							<option>5 AM</option>
-							<option>6 AM</option>
-							<option>7 AM</option>
-							<option>8 AM</option>
-							<option>9 AM</option>
-							<option>10 AM</option>
-							<option>11 AM</option>
-							<option>12 AM</option>	
-							<option>1 PM</option>
-							<option>2 PM</option>
-							<option>3 PM</option>
-							<option>4 PM</option>
-							<option>5 PM</option>
-							<option>6 PM</option>
-							<option>7 PM</option>
-							<option>8 PM</option>
-							<option>9 PM</option>
-							<option>10 PM</option>
-							<option>11 PM</option>
-							<option>12 PM</option>
-						</select>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>Closing Time</option>
-							<option>Closed</option>
-							<option>1 AM</option>
-							<option>2 AM</option>
-							<option>3 AM</option>
-							<option>4 AM</option>
-							<option>5 AM</option>
-							<option>6 AM</option>
-							<option>7 AM</option>
-							<option>8 AM</option>
-							<option>9 AM</option>
-							<option>10 AM</option>
-							<option>11 AM</option>
-							<option>12 AM</option>	
-							<option>1 PM</option>
-							<option>2 PM</option>
-							<option>3 PM</option>
-							<option>4 PM</option>
-							<option>5 PM</option>
-							<option>6 PM</option>
-							<option>7 PM</option>
-							<option>8 PM</option>
-							<option>9 PM</option>
-							<option>10 PM</option>
-							<option>11 PM</option>
-							<option>12 PM</option>
-						</select>
-						</div>
-					</div>
-				</div>
-			</div>
-						<!-- /row-->
-			<div class="row">
-				<div class="col-md-2">
-					<label class="fix_spacing">Thursday</label>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>Opening Time</option>
-							<option>Closed</option>
-							<option>1 AM</option>
-							<option>2 AM</option>
-							<option>3 AM</option>
-							<option>4 AM</option>
-							<option>5 AM</option>
-							<option>6 AM</option>
-							<option>7 AM</option>
-							<option>8 AM</option>
-							<option>9 AM</option>
-							<option>10 AM</option>
-							<option>11 AM</option>
-							<option>12 AM</option>	
-							<option>1 PM</option>
-							<option>2 PM</option>
-							<option>3 PM</option>
-							<option>4 PM</option>
-							<option>5 PM</option>
-							<option>6 PM</option>
-							<option>7 PM</option>
-							<option>8 PM</option>
-							<option>9 PM</option>
-							<option>10 PM</option>
-							<option>11 PM</option>
-							<option>12 PM</option>
-						</select>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>Closing Time</option>
-							<option>Closed</option>
-							<option>1 AM</option>
-							<option>2 AM</option>
-							<option>3 AM</option>
-							<option>4 AM</option>
-							<option>5 AM</option>
-							<option>6 AM</option>
-							<option>7 AM</option>
-							<option>8 AM</option>
-							<option>9 AM</option>
-							<option>10 AM</option>
-							<option>11 AM</option>
-							<option>12 AM</option>	
-							<option>1 PM</option>
-							<option>2 PM</option>
-							<option>3 PM</option>
-							<option>4 PM</option>
-							<option>5 PM</option>
-							<option>6 PM</option>
-							<option>7 PM</option>
-							<option>8 PM</option>
-							<option>9 PM</option>
-							<option>10 PM</option>
-							<option>11 PM</option>
-							<option>12 PM</option>
-						</select>
-						</div>
-					</div>
-				</div>
-			</div>
-						<!-- /row-->
-			<div class="row">
-				<div class="col-md-2">
-					<label class="fix_spacing">Thursday</label>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>Opening Time</option>
-							<option>Closed</option>
-							<option>1 AM</option>
-							<option>2 AM</option>
-							<option>3 AM</option>
-							<option>4 AM</option>
-							<option>5 AM</option>
-							<option>6 AM</option>
-							<option>7 AM</option>
-							<option>8 AM</option>
-							<option>9 AM</option>
-							<option>10 AM</option>
-							<option>11 AM</option>
-							<option>12 AM</option>	
-							<option>1 PM</option>
-							<option>2 PM</option>
-							<option>3 PM</option>
-							<option>4 PM</option>
-							<option>5 PM</option>
-							<option>6 PM</option>
-							<option>7 PM</option>
-							<option>8 PM</option>
-							<option>9 PM</option>
-							<option>10 PM</option>
-							<option>11 PM</option>
-							<option>12 PM</option>
-						</select>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>Closing Time</option>
-							<option>Closed</option>
-							<option>1 AM</option>
-							<option>2 AM</option>
-							<option>3 AM</option>
-							<option>4 AM</option>
-							<option>5 AM</option>
-							<option>6 AM</option>
-							<option>7 AM</option>
-							<option>8 AM</option>
-							<option>9 AM</option>
-							<option>10 AM</option>
-							<option>11 AM</option>
-							<option>12 AM</option>	
-							<option>1 PM</option>
-							<option>2 PM</option>
-							<option>3 PM</option>
-							<option>4 PM</option>
-							<option>5 PM</option>
-							<option>6 PM</option>
-							<option>7 PM</option>
-							<option>8 PM</option>
-							<option>9 PM</option>
-							<option>10 PM</option>
-							<option>11 PM</option>
-							<option>12 PM</option>
-						</select>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
-			<div class="row">
-				<div class="col-md-2">
-					<label class="fix_spacing">Thursday</label>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>Opening Time</option>
-							<option>Closed</option>
-							<option>1 AM</option>
-							<option>2 AM</option>
-							<option>3 AM</option>
-							<option>4 AM</option>
-							<option>5 AM</option>
-							<option>6 AM</option>
-							<option>7 AM</option>
-							<option>8 AM</option>
-							<option>9 AM</option>
-							<option>10 AM</option>
-							<option>11 AM</option>
-							<option>12 AM</option>	
-							<option>1 PM</option>
-							<option>2 PM</option>
-							<option>3 PM</option>
-							<option>4 PM</option>
-							<option>5 PM</option>
-							<option>6 PM</option>
-							<option>7 PM</option>
-							<option>8 PM</option>
-							<option>9 PM</option>
-							<option>10 PM</option>
-							<option>11 PM</option>
-							<option>12 PM</option>
-						</select>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>Closing Time</option>
-							<option>Closed</option>
-							<option>1 AM</option>
-							<option>2 AM</option>
-							<option>3 AM</option>
-							<option>4 AM</option>
-							<option>5 AM</option>
-							<option>6 AM</option>
-							<option>7 AM</option>
-							<option>8 AM</option>
-							<option>9 AM</option>
-							<option>10 AM</option>
-							<option>11 AM</option>
-							<option>12 AM</option>	
-							<option>1 PM</option>
-							<option>2 PM</option>
-							<option>3 PM</option>
-							<option>4 PM</option>
-							<option>5 PM</option>
-							<option>6 PM</option>
-							<option>7 PM</option>
-							<option>8 PM</option>
-							<option>9 PM</option>
-							<option>10 PM</option>
-							<option>11 PM</option>
-							<option>12 PM</option>
-						</select>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
+			<!-- /box_general-->
 			
-			
-		</div>
-		<!-- /box_general-->
-		
-		<div class="box_general padding_bottom">
-			<div class="header_box version_2">
-				<h2><i class="fa fa-dollar"></i>Pricing</h2>
-			</div>
 			<div class="row">
-				<div class="col-md-12">
-					<h6>Item</h6>
-					<table id="pricing-list-container" style="width:100%;">
-						<tr class="pricing-list-item">
-							<td>
-								<div class="row">
-									<div class="col-md-4">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Title">
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Description">
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="form-group">
-											<input type="text" class="form-control"  placeholder="Price">
-										</div>
-									</div>
-									<div class="col-md-2">
-										<div class="form-group">
-											<a class="delete" href="#"><i class="fa fa-fw fa-remove"></i></a>
-										</div>
-									</div>
+					<div class="col-md-6">
+						<div class="box_general padding_bottom">
+							<div class="header_box version_2">
+								<h2><i class="fa fa-map"></i>가게 위치</h2>
+							</div>
+							<div class="form-group">
+								<label>우편번호</label>
+								<div id="address-search-outline">
+									<input class="form-control" id="adress-text" type="text" readonly="readonly" placeholder="jstl로 주소" style="background-color: #e9ecef">
+									<input class="form-control" id="adress-btn" type="button" value="검색" onclick="openDaumPost()">
 								</div>
-							</td>
-						</tr>
-					</table>
-					<a href="#0" class="btn_1 gray add-pricing-list-item"><i class="fa fa-fw fa-plus-circle"></i>Add Item</a>
+							</div>
+							<div class="form-group">
+								<label>도로명주소</label>
+								<input class="form-control" name="addr1" id="addr1" type="text" readonly="readonly" placeholder="jstl로 주소" style="background-color: #e9ecef">
+							</div>
+							<div class="form-group">
+								<label>상세주소</label>
+								<input class="form-control" name="addr2" id="addr2" type="text">
+							</div>
+						</div>
 					</div>
-			</div>
-			<!-- /row-->
+					<div class="col-md-6">
+						<div class="box_general padding_bottom">
+							<div class="header_box version_2">
+								<h2><i class="fa fa-dollar"></i>가격</h2>
+							</div>
+							<div class="form-group">
+								<label>최소가격</label>
+								<input class="form-control" type="text" name="reg_price" id="reg_price" placeholder="숫자만 입력" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<p id="myprofile-savebtn">
+					<input type="button" id="btn" value="저장" class="btn_1 medium" />
+				</p>
+			</form>
 		</div>
-		<!-- /box_general-->
-		<p><a href="#0" class="btn_1 medium">Save</a></p>
-	  </div>
 	  <!-- /.container-fluid-->
    	</div>
     <!-- /.container-wrapper-->
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © PANAGEA 2018</small>
+          <small>Copyright © Grooming 2020</small>
         </div>
       </div>
     </footer>
@@ -732,29 +180,15 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    
+
+	<jsp:include page="mypage_logout.jsp"></jsp:include>
+
+
     <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
-    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<c:url value='/resources/mypage/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
+    
     <!-- Page level plugin JavaScript-->
     <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
@@ -765,12 +199,11 @@
     <!-- Custom scripts for all pages-->
     <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
 	<!-- Custom scripts for this page-->
-	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
 	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
 	<script>$('input.date-pick').datepicker();</script>
-  <!-- WYSIWYG Editor -->
-  <script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
-  <script>
+	<!-- WYSIWYG Editor -->
+	<script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
+	<script>
       $('.editor').summernote({
     fontSizes: ['10', '14'],
     toolbar: [
@@ -785,6 +218,8 @@
         height: 200
       });
     </script>
+    
+
 	
 </body>
 </html>
