@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grooming.dao.BookMarkDAO;
+import com.grooming.dao.BookMarkDAOImple;
 import com.grooming.dto.BookMarkDTO;
 
 @Controller
 public class BookMarkController {
 
 	@Inject
-	BookMarkDAO dao;
+	BookMarkDAOImple dao;
 	
 	
 	//찜 테이블 등록 스타트
@@ -37,7 +38,7 @@ public class BookMarkController {
 	}
 	
 	//찜 목록 표시 스타트
-	@RequestMapping(value = "bookmarkSearchID")
+	@RequestMapping(value = "/bookmarkSearchID")
 	public String whatthe() {
 		return "bookmarkSearchID";
 	}
@@ -53,16 +54,17 @@ public class BookMarkController {
 	}
 	
 	//찜 목록 삭제 스타트
-	@RequestMapping(value = "bookmarkdelete")
+	@RequestMapping(value = "/bookmarkdelete")
 	public String deletestart() {
 		return "deletebm";
 	}
 	//찜 목록 삭제
-	@RequestMapping(value = "deletethatiselect")
-	public void deleteBookMark(@RequestParam(value = "id")String id, @RequestParam(value = "licence")int licence, BookMarkDTO dto) {
+	@RequestMapping(value = "/deletethatiselect")
+	public String deleteBookMark(@RequestParam(value = "id")String id, @RequestParam(value = "licence")int licence, BookMarkDTO dto) {
 		dto.setDe_licencenum(licence);
 		dto.setMb_id(id);
 		dao.deleteBookMark(dto);
+		return "deletebm";
 	}
 
 	

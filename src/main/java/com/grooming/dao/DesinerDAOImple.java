@@ -10,8 +10,9 @@ import org.springframework.stereotype.Repository;
 import com.grooming.dto.DesignerDTO;
 import com.grooming.dto.PaylogDTO;
 
+@Repository
 public class DesinerDAOImple implements DesinerDAO{
-
+	@Inject
 	SqlSession ss;
 	
 	public void setSs(SqlSession ss) {
