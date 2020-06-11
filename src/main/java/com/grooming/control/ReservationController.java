@@ -22,7 +22,7 @@ public class ReservationController {
 	  	사용자 입장
 	***********************************************/
 	//사용자 예약 목록
-	@RequestMapping(value = "/reservList")
+	@RequestMapping(value = "/mypage/reservList")
 	public String listForCustomer(HttpServletRequest req) {
 		String mb_id = (String) req.getAttribute("mb_id");//세션에서 사용자 이름
 		
@@ -31,7 +31,7 @@ public class ReservationController {
 		//예약 검색
 		rdao.selectListByCustomer(dto);
 		
-		return "";
+		return "/mypage/grooming_user_booking";
 	}
 	
 	//예약 작성 폼으로 이동

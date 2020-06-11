@@ -71,6 +71,7 @@
 		                </tr>
 		              </tfoot>
 		              <tbody>
+		              /mypage/
 			          	<c:forEach var="i" begin="1" end="2">
 				               	<tr>
 				                  <td style="text-align: center;">
@@ -79,8 +80,8 @@
 				                  <td><%-- <img src="${ }" alt="" /> --%></td>
 				                  <td>
 				                  	<div id="radio-outline">
-					                  	<input type="radio" name="radio+${i }" id="yes" value="y" checked="checked" />YES
-					                  	<input type="radio" name="radio+${i }" id="no" value="n" />NO
+					                  	<input type="radio" name="radio${i }" id="yes" value="y" checked="checked" />YES
+					                  	<input type="radio" name="radio${i }" id="no" value="n" />NO
 				                  	</div>
 				                  	<%-- <c:if test="${yes }=yes"> yes로 들어오면 --%>
 				                  		<div id="present-condition1">현재승인여부: yes</div>
