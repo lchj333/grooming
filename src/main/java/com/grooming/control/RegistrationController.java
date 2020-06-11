@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -90,15 +91,20 @@ public class RegistrationController {
 	//추가폼 (작성 후) ->
 	//샵 상세 이미지 추가 메소드
 	@PostMapping(value = "/mypage/insertInfoImgs")
-	public String addShopImgs(MultipartHttpServletRequest ms, HttpServletRequest req) throws IllegalStateException, IOException {
+	public String addShopImgs(MultipartHttpServletRequest ms, HttpServletRequest req,
+									HttpServletResponse res, RedirectAttributes rtt) 
+														throws IllegalStateException, IOException {
+		//메소드 바디
 		int de_licencenum = (int)req.getAttribute("de_licencenum");	//세션일 경우
 //		int de_licencenum = Integer.parseInt(ms.getParameter("de_licencenum"));//파라미터일 경우
 		
 		List<MultipartFile> list = ms.getFiles("files");
 		//IOException - 파일이 없을 때 발생할 에러. 호출함수인 xml의 DispatcherServlet class로 예외처리 전가//studentNumber - submissionForm의 속성 name 
 		System.out.println("list : "+list);
+		//alert작성을 위한 writer
+		PrintWriter out = res.getWriter();
 		
-		if (list.size() > 0 && list.size() <= 5) { //1개 ~ 5개 제한
+		if (list.size() > 0 && list.size() <= 8) { //1개 ~ 5개 제한
 			for(MultipartFile mfile : list) {
 				//파일 저장 메소드 실행
 				String fileName = fu.saveFile(mfile, realPath);
@@ -109,18 +115,39 @@ public class RegistrationController {
 				rdao.insertShop(dto);
 			}
 		}else {	//넘어온 파일이 없을 경우
-			System.out.println("파일이 담겨있지않습니다.");
+			rtt.addFlashAttribute("de_licencenum", de_licencenum);
+			
+			out.println("<script>alert('파일이 없거나 너무 많습니다!');</script>");
+			out.flush();
+			
+			return "redirect:/mypage/insertInfoImgs";
 		}
 		//유저정보페이지로 이동
+		out.println("<script>alert('완료!');</script>");
+		out.flush();
+		
 		return "mypage/grooming_user_profile";
 	}
 	
 	//가게 정보 블럭 상태 변경 (관리자에 의한)
 	@RequestMapping(value = "/blockShop")
-	public String shopBlockByAdmin(int no) {
-		rdao.changeStateByAdmin(no);
+	public String shopBlockByAdmin(@RequestParam
+										(value = "de_licencenum", required = true)int licencenum, 
+															HttpServletRequest req) {
+		//메소드 바디
+		String ad_id = (String) req.getAttribute("ad_id");
+		if(ad_id==null) {//관리자 아이디 값이 없을 경우
+			return "redirect:"+req.getHeader("Referer");//뒤로 보내기
+		}else {
+			RegistrationDTO dto = new RegistrationDTO();
+			dto.setDe_licencenum(licencenum);
+			dto.setReg_block(Integer.parseInt(req.getParameter("reg_block")));
+			
+			rdao.changeStateByAdmin(dto);
+			
+			return "home";
+		}
 		
-		return "home";
 	}
 	
 	//샵 리스트
