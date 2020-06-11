@@ -36,17 +36,17 @@
 			</div>
 			<div class="list_general">
 				<ul>
-					<c:forEach var="i" begin="1" end="2">
+					<c:forEach var="i" items="${revs}">
 					<li>
 						<figure><img src="img/item_1.jpg" alt=""></figure>
 						<h4>jstl 가게이름 <i class="pending">Pending(jstl 예약정보)</i></h4>
 						<ul class="booking_list">
-							<li><strong style="font-weight: bold;">예약일</strong>jstl 예약일</li>
-							<li><strong style="font-weight: bold;">견종</strong>jstl 강아지 견종</li>
-							<li><strong style="font-weight: bold;">몸무게</strong> jstl 몸무게</li>
-							<li><strong style="font-weight: bold;">원하는컷</strong> jstl 원하는 컷</li>
-							<li><strong style="font-weight: bold;">가게번호</strong> jstl 가게번호</li>
-							<li><strong style="font-weight: bold;">예약번호</strong> jstl 예약번호</li>
+							<li><strong style="font-weight: bold;">예약일</strong>${i.re_date}</li>
+							<li><strong style="font-weight: bold;">견종</strong>${i.re_species}</li>
+							<li><strong style="font-weight: bold;">몸무게</strong>${i.re_weight}</li>
+							<li><strong style="font-weight: bold;">원하는컷</strong>${i.re_cut}</li>
+							<li><strong style="font-weight: bold;">가게번호</strong>${i.de_licencenum}</li>
+							<li><strong style="font-weight: bold;">예약번호</strong>${i.re_num}</li>
 						</ul>
 						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i>1대1대화</a></p>
 						<ul class="buttons">
@@ -62,19 +62,6 @@
 							<li><strong>Client</strong> Mark Twain</li>
 						</ul>
 						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i>Send Message</a></p>
-						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-						</ul>
-					</li>
-					<li>
-						<figure><img src="img/item_3.jpg" alt=""></figure>
-						<h4>Pompidue Museum <i class="approved">Approved</i></h4>
-						<ul class="booking_list">
-							<li><strong>Booking date</strong> 11 November 2017</li>
-							<li><strong>Booking details</strong> 2 People</li>
-							<li><strong>Client</strong> Mark Twain</li>
-						</ul>
-						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i> Send Message</a></p>
 						<ul class="buttons">
 							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
 						</ul>
