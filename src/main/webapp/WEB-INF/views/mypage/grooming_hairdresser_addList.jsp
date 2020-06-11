@@ -199,7 +199,6 @@ function openDaumPost(){
     <!-- Custom scripts for all pages-->
     <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
 	<!-- Custom scripts for this page-->
-	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
 	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
 	<script>$('input.date-pick').datepicker();</script>
 	<!-- WYSIWYG Editor -->
@@ -220,8 +219,7 @@ function openDaumPost(){
       });
     </script>
     
-    	<!-- dropzone -->
-	<script src="./custome_dropzone.js"></script>
+
 	
 </body>
 </html>

@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="Ansonika">
-  <title>PANAGEA - Admin dashboard</title>
+  <title>accept</title>
 	
   <!-- Favicons-->
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -18,8 +18,20 @@
   <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
   <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
   <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
-
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		$(".text-num").css("display", "none");
+		$("#btn").click(function(){
+			document.frm.action = "<c:url value='registShop'/>";
+			document.frm.submit();
+		});
+	});
+</script>
+
+
 
 <body class="fixed-nav sticky-footer" id="page-top">
 
@@ -38,36 +50,53 @@
       <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-table"></i>충전내역</div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                <tr>
-                  <th>날짜</th>
-                  <th>충전금액</th>
-                  <th>충전포인트</th>
-                </tr>
-              </thead>
-              <tfoot>
-                <tr>
-                  <th>날짜</th>
-                  <th>총충전금액</th>
-                  <th>총충전포인트</th>
-                </tr>
-              </tfoot>
-              <tbody>
-              	<c:forEach var="i" begin="1" end="26">
-	                <tr>
-	                  <td>20200506</td>
-	                  <td>30000원</td>
-	                  <td>30000포인트</td>
-	                </tr>
-	           	</c:forEach>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="card-footer small text-muted">포인트 환불은 관리자 문의 해주세요.</div>
+	        <div class="card-body">
+	          <div class="table-responsive">
+		        <form action="#" method="get" name="frm">
+		            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+		              <thead>
+		                <tr>
+		                  <th style="width: 10%;">번호</th>
+		                  <th>실명</th>
+		                  <th>이미지파일</th>
+		                  <th style="width: 25%">확인여부</th>
+		                </tr>
+		              </thead>
+		              <tfoot>
+		                <tr>
+		                  <th>번호</th>
+		                  <th>실명</th>
+		                  <th>이미지파일</th>
+		                  <th>확인여부</th>
+		                </tr>
+		              </tfoot>
+		              <tbody>
+			          	<c:forEach var="i" begin="1" end="2">
+				               	<tr>
+				                  <td style="text-align: center;">
+				                  	${i}<input type="text" name="text-num" class="text-num" readonly="readonly" value="${i}" /></td>
+				                  <td>jstl실명 <%-- ${ } --%></td>
+				                  <td><%-- <img src="${ }" alt="" /> --%></td>
+				                  <td>
+				                  	<div id="radio-outline">
+					                  	<input type="radio" name="radio+${i }" id="yes" value="y" checked="checked" />YES
+					                  	<input type="radio" name="radio+${i }" id="no" value="n" />NO
+				                  	</div>
+				                  	<%-- <c:if test="${yes }=yes"> yes로 들어오면 --%>
+				                  		<div id="present-condition1">현재승인여부: yes</div>
+				                  	<%-- </c:if> --%>
+				                  	<%-- <c:if test="${no }=no"> no로 들어오면 --%>
+				                  		<div id="present-condition2">현재승인여부: no</div>
+				                  	<%-- </c:if> --%>
+				                  </td>
+				                </tr>
+			          	</c:forEach>		        	
+		              </tbody>
+		            </table>
+			  	</form>
+	          </div>
+	        </div>
+        <div class="card-footer small text-muted"><input type="button" value="저장" id="btn" /></div>
       </div>
 	  <!-- /tables-->
 	  </div>
