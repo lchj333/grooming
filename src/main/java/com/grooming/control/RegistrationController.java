@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.grooming.dao.RegistrationDAO;
 import com.grooming.dto.RegistrationDTO;
@@ -48,19 +50,20 @@ public class RegistrationController {
 	//가게 등록 폼
 	@GetMapping(value = "/mypage/registShop")
 	public String insertShopForm() {
-		return "mypage/grooming_user_hairdresserRegist";
+		return "mypage/grooming_hairdresser_addList";
 	}
 	//등록폼 (작성 후)->
 	//가게 등록 (+썸네일 이미지)
 	@PostMapping(value = "/mypage/registShop")
-	public String insertShopInfo(RegistrationDTO dto, MultipartHttpServletRequest ms //스프링에서 알아서 set.
-									) throws IllegalStateException, IOException {
+	public String insertShopInfo(RegistrationDTO dto, MultipartHttpServletRequest ms, //스프링에서 알아서 set.
+									HttpServletRequest req) throws IllegalStateException, IOException {
 		//메소드 바디
+		String lPath = req.getServletContext().getRealPath("/resources/licence/");
 		//post 파라미터
 		MultipartFile mfile = ms.getFile("file");
 		
 		//이미지 추가 메소드
-		String fileName = fu.saveFile(mfile, realPath);
+		String fileName = fu.saveFile(mfile, lPath);
 			
 		//저장된 파일 이름 담기
 		dto.setReg_img(fileName);
@@ -131,18 +134,15 @@ public class RegistrationController {
 		return "listpage";
 	}
 	
-	//샵 디테일
-	@RequestMapping(value = "/shopDetail")
-	public String detailShopInfo(HttpServletRequest req) {
-		//from 샵 등록 테이블
+	//가게 상세 정보
+	@RequestMapping(value = "/detailShop")
+	public String detailShopInfo(int licencenum, HttpSession hs) {
+		//가게 정보
 //		List<RegisterationDTO> list = rdao.sel~~~~
 //		hs.getAttribute(name)
-		
-		//from 미용사 테이블
 		//가게 상세이미지 목록
 //		if()!=null)
-		
-		return "detailpage";
+		return "";
 	}
 	
 	//등록시 포인트 깍기

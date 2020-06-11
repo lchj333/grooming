@@ -12,54 +12,18 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <h5 class="modal-title" id="exampleModalLabel">로그아웃 하시겠습니까?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-body">현재 세션을 종료 할 준비가되면 아래 "로그 아웃"을 선택하십시오.</div>
           <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+            <a class="btn btn-primary" href="login.html">로그아웃</a>
           </div>
         </div>
       </div>
     </div>
-    
-    <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
-    <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Page level plugin JavaScript-->
-    <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
-    <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
-    <script src="<c:url value='/resources/mypage/vendor/datatables/dataTables.bootstrap4.js'/>"></script>
-	<script src="<c:url value='/resources/mypage/vendor/jquery.selectbox-0.2.js'/>"></script>
-	<script src="<c:url value='/resources/mypage/vendor/retina-replace.min.js'/>"></script>
-	<script src="<c:url value='/resources/mypage/vendor/jquery.magnific-popup.min.js'/>"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
-	<!-- Custom scripts for this page-->
-	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
-	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
-	<script>$('input.date-pick').datepicker();</script>
-  <!-- WYSIWYG Editor -->
-  <script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
-  <script>
-      $('.editor').summernote({
-    fontSizes: ['10', '14'],
-    toolbar: [
-      // [groupName, [list of button]]
-      ['style', ['bold', 'italic', 'underline', 'clear']],
-      ['font', ['strikethrough']],
-      ['fontsize', ['fontsize']],
-      ['para', ['ul', 'ol', 'paragraph']]
-      ],
-        placeholder: 'Write here your description....',
-        tabsize: 2,
-        height: 200
-      });
-    </script>
-
 </body>
 </html>
