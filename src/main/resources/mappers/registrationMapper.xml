@@ -5,30 +5,41 @@
   
 <mapper namespace="registrationMapper">
 	<!-- 모든가게 리스트(사용자 입장) -->
-	<select id="list">
-		select * from gr_registration
+	<select id="list" parameterType="Map">
+		select r.de_licencenum, r.ref_shopname, r.reg_shopaddress, 
+				r.reg_price, r.reg_img, m.mb_phone 
+		from gr_registration r, gr_member m
 		where reg_block = 0
 	</select>
 	
-	<!-- 미용사 번호로 조회 -->
-	<select id="searchOneShop" resultType="RegistrationDTO">
-		select * from gr_registration
-		where de_licencenum = #{de_licencenum}
+	<!-- 가게 상세 정보 -->
+	<select id="shopDetail" resultType="RegistrationDTO">
+		select *
+		from gr_registration
+		where de_licencenum = ${de_licencenum}
 	</select>
-
+	
+	<!-- '그'가게 상세이미지들. -->
+	<select id="infoImgs" resultType="String">
+		select reg_addimg
+		from reg_img
+		where de_licencenum = ${de_licencenum}
+	</select>
+	
 	<!-- 가게 등록 -->
 	<insert id="insertShop" parameterType="RegistrationDTO">
 		insert into gr_registration
-		values (#{de_licencenum}, #{reg_title},
-				#{ref_shopname}, #{reg_shopaddress},
-				#{reg_price},#{reg_con}, now(),
-				0, #{reg_img})
+		values (#{de_licencenum}, #{ref_shopname}, 
+				#{reg_shopaddress}, #{reg_price},
+				#{reg_con}, now(), 0, #{reg_img})
 	</insert>
+	
 	<!-- 상세 이미지 등록 -->
 	<insert id="insertShopInfoimg" parameterType="RegistrationDTO">
-		insert into REG_IMG
+		insert into reg_img
 		values (#{de_licencenum}, #{reg_addimg})
 	</insert>
+	
 	<!-- 블럭상태 변경 -->
 	<update id="BlockByAdmin" parameterType="RegistrationDTO">
 		update gr_registration

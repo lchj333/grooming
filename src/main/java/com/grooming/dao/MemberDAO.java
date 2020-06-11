@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import com.grooming.dto.MemberDTO;
 
@@ -67,6 +68,11 @@ public class MemberDAO {
 	// Email변경
 	public void changeEmail(MemberDTO memberDto) {
 		ss.update("changeEmail", memberDto);
+	}
+	
+	// 기본정보 변경
+	public void changeInfo(MemberDTO memberDto) {
+		ss.update("changeInfo", memberDto);
 	}
 	
 	// 미용사 사용신청 메소드

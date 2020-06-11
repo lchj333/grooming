@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.grooming.dto.LoginDTO;
 import com.grooming.dto.MemberDTO;
 
 @Repository
