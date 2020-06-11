@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,51 +30,49 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
+          <a href="#">미용사</a>
         </li>
-        <li class="breadcrumb-item active">Tables</li>
+        <li class="breadcrumb-item active">충전</li>
       </ol>
 		<!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Table Example</div>
+          <i class="fa fa-table"></i>충전내역</div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Price</th>
+                  <th>날짜</th>
+                  <th>충전금액</th>
+                  <th>충전포인트</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>날짜</th>
+                  <th>충전금액</th>
+                  <th>충전포인트</th>
                 </tr>
               </tfoot>
               <tbody>
-                <tr>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                </tr>
+              	<c:forEach var="i" begin="1" end="26">
+	                <tr>
+	                  <td>20200506</td>
+	                  <td>30000원</td>
+	                  <td>30000포인트</td>
+	                </tr>
+	                <tr>
+	                  <td>20200507</td>
+	                  <td>40000원</td>
+	                  <td>40000포인트</td>
+	                </tr>
+	           	</c:forEach>
               </tbody>
             </table>
           </div>
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">포인트 환불은 관리자 문의 해주세요.</div>
       </div>
 	  <!-- /tables-->
 	  </div>
@@ -83,19 +82,19 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © PANAGEA 2018</small>
+          <small>Copyright © Grooming 2020</small>
         </div>
       </div>
     </footer>
-    
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
     
-    <!-- 로그아웃 -->
-	<jsp:include page="mypage_logout.jsp"></jsp:include>
-	
+    <!-- Logout Modal-->
+    <jsp:include page="mypage_logout.jsp"></jsp:include>
+    
+
     <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
@@ -114,8 +113,24 @@
 	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
 	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
 	<script>$('input.date-pick').datepicker();</script>
-  	<!-- WYSIWYG Editor -->
-  	<script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
+	<!-- WYSIWYG Editor -->
+	<script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
+	<script>
+      $('.editor').summernote({
+    fontSizes: ['10', '14'],
+    toolbar: [
+      // [groupName, [list of button]]
+      ['style', ['bold', 'italic', 'underline', 'clear']],
+      ['font', ['strikethrough']],
+      ['fontsize', ['fontsize']],
+      ['para', ['ul', 'ol', 'paragraph']]
+      ],
+        placeholder: 'Write here your description....',
+        tabsize: 2,
+        height: 200
+      });
+    </script>
+	
 	
 </body>
 </html>

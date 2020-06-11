@@ -5,110 +5,122 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>hairdresser_regist</title>
+<title>pointCharging</title>
+</head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-	/* 체크박스 선택시 자격증 보이기 */
-	function checkBox(){
-	    if($('input:radio[id=gr_user]').is(':checked')){
-	        $('#img-upload').slideUp(500);
-	
-	    }else{
-	        $('#img-upload').slideDown(500);
-	    }	
-	}
-	
-	/* 파일보내기 */
+	/* 라디오 버튼 클릭시 value값 입력 */
 	$(function(){
-		$("#btn").click(function(){
-			if($('#img-upload').is(':visible') == false ){
-				alert("asd");
-			}else{
-				if($("#de_licence").val() == ""){
-			    	alert("이미지를 올려주세요");
-				    $("#de_licence").focus();
-				    return false;
-				}else{
-					document.frm.action = "<c:url value='/survey/survey.ok'/>";
-					document.frm.submit();
-					alert("심사후 미용사등록");
-				}
-			}
-		});
-		/* 기본세팅은 일반회원인 처음에는 안보이게 */
-		$('#img-upload').hide();
+		$("input:radio[name=point]").click(function(){
+			 if($('input:radio[id=point1]').is(':checked')==true){
+				 $('#payment-amount').val($('input:radio[id=point1]').val());
+			 }else if($('input:radio[id=point2]').is(':checked')==true){
+				 $('#payment-amount').val($('input:radio[id=point2]').val());
+			 }else if($('input:radio[id=point3]').is(':checked')==true){
+				 $('#payment-amount').val($('input:radio[id=point3]').val());
+			 }else if($('input:radio[id=point4]').is(':checked')==true){
+				 $('#payment-amount').val($('input:radio[id=point4]').val());
+			        }
+			 });
 	});
 	
+	
+	/* 유효성 검사  */
+	$(function(){
+		$("#btn").click(function(){
+			if($('#payment-amount').val()==""){
+				alert("충전금액을 선택해주세요.");
+			}else{
+				document.frm.action = "<c:url value='/survey/survey.ok'/>";
+				document.frm.submit();
+			}
+		});
+	});
+		
+		
+
+
 </script>
 
-</head>
 <body>
 
 <jsp:include page="mypage_nav.jsp"></jsp:include>
 
  <div class="content-wrapper">
     <div class="container-fluid">
-		<form action="#" name="frm" method="post" enctype="multipart/form-data">
 	      <!-- Breadcrumbs-->
 	      <ol class="breadcrumb">
 	        <li class="breadcrumb-item">
-	          	일반회원
+	          <a href="#">미용사</a>
 	        </li>
-	        <li class="breadcrumb-item active">미용사 등록</li>
+	        <li class="breadcrumb-item active">포인트</li>
 	      </ol>
 			<div class="box_general padding_bottom">
 				<div class="header_box version_2">
-					<h2><i class="fa fa-file"></i>미용사 등록</h2>
+					<h2><i class="fa fa-dollar"></i>포인트충전</h2>
 				</div>
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-								<h6><label>미용사 변경</label></h6>
-							<div>
-								<div>일반회원<input type="radio" name="ck" id="gr_user" value="user" checked="checked" onClick="checkBox()" /></div>
-								<div>미용사<input type="radio" name="ck" id="gr_hairdresser" value="hairdresser" onClick="checkBox()" /></div>
-							</div>
+							<input type="radio" name="point" id="point1" value="10000"/> <span>10000point(10000원)</span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<input type="radio" name="point" id="point2" value="50000" /> <span>50000point(50000원)</span>
 						</div>
 					</div>
 				</div>
 				<!-- /row-->
-			</div>
-			<!-- /box_general-->
-			
-		
-			
-			<div class="box_general padding_bottom" id="img-upload">
-				<div class="header_box version_2">
-					<h2><i class="fa fa-file"></i>자격증 등록</h2>
-				</div>
 				<div class="row">
-					<div class="col-md-12">
-						<h6>자격증</h6>
-						<table id="pricing-list-container" style="width:100%;">
-							<tr class="pricing-list-item">
-								<td>
-									<form name="fname" enctype="multipart/form-data" method="post">
-										<div class="dropzone" id="fileDropzone"></div>
-									</form>
-									<!-- 이미지 파일 첨부 -->
-									<input type="file" name="file" id="de_licence" />
-								</td>
-							</tr>
-						</table>
+					<div class="col-md-6">
+						<div class="form-group">
+							<input type="radio" name="point" id="point3" value="100000" /> <span>100000point(100000원)</span>
 						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<input type="radio" name="point" id="point4" value="200000" /> <span>200000point(200000원)</span>
+						</div>
+					</div>
 				</div>
-				<!-- /row-->
+
 			</div>
 			<!-- /box_general-->
-			<p id="myprofile-savebtn">
-				<input type="button" id="btn" value="저장" class="btn_1 medium" />
-			</p>
-	  </form>
+			
+   		<form action="#" name="frm">
+			
+			<div class="row">
+					<div class="col-md-6">
+						<div class="box_general padding_bottom">
+							<div class="header_box version_2">
+								<h2>결제금액</h2>
+							</div>
+							<div class="form-group">
+								<input type="text" name="payment-amount" id="payment-amount" readonly="readonly" style="text-align: right;" />
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="box_general padding_bottom">
+							<div class="header_box version_2">
+								<h2>결제수단</h2>
+							</div>
+							<div class="form-group">
+								<input type="radio" id="point5" checked="checked" /> <span>카카오페이</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+				<p id="myprofile-savebtn">
+					<input type="button" id="btn" value="저장" class="btn_1 medium" />
+				</p>
+	  	</form>
 	  </div>
-	
 	  <!-- /.container-fluid-->
-	</div>
+   	</div>
     <!-- /.container-wrapper-->
     <footer class="sticky-footer">
       <div class="container">
@@ -123,6 +135,7 @@
     </a>
 
 	<jsp:include page="mypage_logout.jsp"></jsp:include>
+
 
     <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
@@ -160,7 +173,7 @@
       });
     </script>
 	
-	
 
+	
 </body>
 </html>

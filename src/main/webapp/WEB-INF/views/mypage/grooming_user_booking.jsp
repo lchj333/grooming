@@ -18,7 +18,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">마이페이지</a>
+          <a href="#">일반회원</a>
         </li>
         <li class="breadcrumb-item active">예약정보</li>
       </ol>
@@ -28,8 +28,8 @@
 				<div class="filter">
 					<select name="orderby" class="selectbox">
 						<option value="Any status">모든 예약</option>
+						<option value="Pending">예약확인전</option>
 						<option value="Approved">완료</option>
-						<!-- <option value="Pending">Pending</option> -->
 						<option value="Cancelled">취소된 예약</option>
 					</select>
 				</div>
@@ -39,16 +39,18 @@
 					<c:forEach var="i" begin="1" end="2">
 					<li>
 						<figure><img src="img/item_1.jpg" alt=""></figure>
-						<h4>jstl 가게이름 <i class="pending">Pending</i></h4>
+						<h4>jstl 가게이름 <i class="pending">Pending(jstl 예약정보)</i></h4>
 						<ul class="booking_list">
-							<li><strong>예약일</strong>jstl 예약일</li>
-							<li><strong>견종</strong>jstl 강아지 견종</li>
-							<li><strong>가게번호</strong> jstl 가게번호</li>
+							<li><strong style="font-weight: bold;">예약일</strong>jstl 예약일</li>
+							<li><strong style="font-weight: bold;">견종</strong>jstl 강아지 견종</li>
+							<li><strong style="font-weight: bold;">몸무게</strong> jstl 몸무게</li>
+							<li><strong style="font-weight: bold;">원하는컷</strong> jstl 원하는 컷</li>
+							<li><strong style="font-weight: bold;">가게번호</strong> jstl 가게번호</li>
+							<li><strong style="font-weight: bold;">예약번호</strong> jstl 예약번호</li>
 						</ul>
-						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i> Send Message</a></p>
+						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i>1대1대화</a></p>
 						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a></li>
-							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
+							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i>취소</a></li>
 						</ul>
 					</li>
 					<li>
@@ -59,9 +61,8 @@
 							<li><strong>Booking details</strong> 2 People</li>
 							<li><strong>Client</strong> Mark Twain</li>
 						</ul>
-						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i> Send Message</a></p>
+						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i>Send Message</a></p>
 						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a></li>
 							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
 						</ul>
 					</li>
@@ -75,7 +76,6 @@
 						</ul>
 						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i> Send Message</a></p>
 						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Approve</a></li>
 							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
 						</ul>
 					</li>
@@ -116,41 +116,44 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-    <!-- Logout Modal-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
+
+    <jsp:include page="mypage_logout.jsp"></jsp:include>
     
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<c:url value='/resources/mypage/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
+    
     <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-	<script src="vendor/jquery.selectbox-0.2.js"></script>
-	<script src="vendor/retina-replace.min.js"></script>
-	<script src="vendor/jquery.magnific-popup.min.js"></script>
+    <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/dataTables.bootstrap4.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.selectbox-0.2.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/retina-replace.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.magnific-popup.min.js'/>"></script>
     <!-- Custom scripts for all pages-->
-    <script src="js/admin.js"></script>
+    <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
 	<!-- Custom scripts for this page-->
-	<script src="vendor/dropzone.min.js"></script>
+	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
+	<script>$('input.date-pick').datepicker();</script>
+	<!-- WYSIWYG Editor -->
+	<script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
+	<script>
+      $('.editor').summernote({
+    fontSizes: ['10', '14'],
+    toolbar: [
+      // [groupName, [list of button]]
+      ['style', ['bold', 'italic', 'underline', 'clear']],
+      ['font', ['strikethrough']],
+      ['fontsize', ['fontsize']],
+      ['para', ['ul', 'ol', 'paragraph']]
+      ],
+        placeholder: 'Write here your description....',
+        tabsize: 2,
+        height: 200
+      });
+    </script>
 
 </body>
 </html>

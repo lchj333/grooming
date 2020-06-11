@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -131,18 +132,15 @@ public class RegistrationController {
 		return "listpage";
 	}
 	
-	//샵 디테일
-	@RequestMapping(value = "/shopDetail")
-	public String detailShopInfo(HttpServletRequest req) {
-		//from 샵 등록 테이블
+	//가게 상세 정보
+	@RequestMapping(value = "/detailShop")
+	public String detailShopInfo(int licencenum, HttpSession hs) {
+		//가게 정보
 //		List<RegisterationDTO> list = rdao.sel~~~~
 //		hs.getAttribute(name)
-		
-		//from 미용사 테이블
 		//가게 상세이미지 목록
 //		if()!=null)
-		
-		return "detailpage";
+		return "";
 	}
 	
 	//등록시 포인트 깍기

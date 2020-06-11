@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +16,6 @@
   <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
   <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
   <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
-
 
   <!-- GOOGLE WEB FONT -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
@@ -36,16 +34,13 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.css">
   <!-- Your custom styles -->
   <link href="${pageContext.request.contextPath}/resources/mypage/css/custom.css" rel="stylesheet">
-  
-    <!-- GOOGLE WEB FONT -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
 	
 </head>
 
 <body class="fixed-nav sticky-footer" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
-    <a class="navbar-brand" href="#"><img src="${pageContext.request.contextPath}/resources/mypage/img/grooming_logo_main.png" data-retina="true" alt="" width="150" height="36"></a>
+    <a class="navbar-brand" href="#"><img src="img/grooming_logo_main.png" data-retina="true" alt="" width="150" height="36"></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -81,8 +76,22 @@
             <span class="nav-link-text">북마크</span>
           </a>
         </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="가게정보">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseInquiry" data-parent="#mylistings">
+            <i class="fa fa-fw fa-list"></i>
+            <span class="nav-link-text">관리자문의</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseInquiry">
+            <li>
+              <a href="grooming_hairdresser_addList.jsp">문의하기<span class="badge badge-pill badge-primary">6</span></a>
+            </li>
+			<li>
+              <a href="grooming_hairdresser_talk.jsp">문의확인<span class="badge badge-pill badge-success">6</span></a>
+            </li>
+          </ul>
+        </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="grooming_user_hairdresserRegist.jsp">
             <i class="fa fa-fw fa-plus-circle"></i>
             <span class="nav-link-text">미용사 등록</span>
           </a>
@@ -100,10 +109,24 @@
               <a href="grooming_hairdresser_talk.jsp">메시지<span class="badge badge-pill badge-success">6</span></a>
             </li>
 			<li>
-              <a href="#">예약승인<span class="badge badge-pill badge-danger">6</span></a>
+              <a href="grooming_hairdresser_approval.jsp">예약승인<span class="badge badge-pill badge-danger">6</span></a>
             </li>
             <li>
               <a href="grooming_hairdresser_review.jsp">내 가게 리뷰 보기<span class="badge badge-pill badge-danger">6</span></a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="가게정보">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePay" data-parent="#mylistings">
+            <i class="fa fa-fw fa-list"></i>
+            <span class="nav-link-text">포인트충전</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapsePay">
+            <li>
+              <a href="grooming_hairdresser_pointCharging.jsp">포인트충전<span class="badge badge-pill badge-primary">6</span></a>
+            </li>
+			<li>
+              <a href="grooming_hairdresser_chargingDetails.jsp">충전내역<span class="badge badge-pill badge-success">6</span></a>
             </li>
           </ul>
         </li>
@@ -118,6 +141,9 @@
             </li>
 			<li>
               <a href="grooming_admin_management.jsp">회원관리</a>
+            </li>
+            <li>
+              <a href="grooming_admin_management.jsp">문의보기</a>
             </li>
           </ul>
         </li>

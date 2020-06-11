@@ -1,61 +1,115 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>mypage_reiview</title>
+<title>booking</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		/* 처음에는 숨김 */
+		$('#reason-cancel').hide();
+		/* 버튼 클릭시 취소사유 텍스트 보이기 */
+/* 		$("#dis").css("display") == "none" */
+		$("#delete-click-btn").click(function(){
+			if($('#reason-cancel').css("display")== 'none'){
+				/* $('#reason-cancel').show(); */
+				$('#reason-cancel').animate({ width : "200px" },5000,"linear");
+			}else{
+				$('#reason-cancel').hide();
+			}
+			
+		});
+	});
+</script>
 </head>
 <body>
+<!-- nav start -->
 <jsp:include page="mypage_nav.jsp"></jsp:include>
-<div class="content-wrapper">
+<!-- nav end -->
+
+<!-- booking contents start -->
+  <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">일반회원</a>
+          <a href="#">미용사</a>
         </li>
-        <li class="breadcrumb-item active">리뷰보기</li>
+        <li class="breadcrumb-item active">예약정보</li>
       </ol>
 		<div class="box_general">
 			<div class="header_box">
-				<h2 class="d-inline-block">내리뷰보기</h2>
+				<h2 class="d-inline-block">예약정보</h2>
 				<div class="filter">
 					<select name="orderby" class="selectbox">
-						<option value="Any time">모두보기</option>
-						<option value="Latest">Latest</option>
-						<option value="Oldest">Oldest</option>
+						<option value="Any status">모든 예약</option>
+						<option value="Pending">예약확인전</option>
+						<option value="Approved">완료</option>
+						<option value="Cancelled">취소된 예약</option>
 					</select>
 				</div>
 			</div>
-			<div class="list_general reviews">
+			<div class="list_general">
 				<ul>
+					<c:forEach var="i" begin="1" end="2">
 					<li>
-						<span>June 15 2017</span>
-						<span class="rating"><i class="fa fa-fw fa-star yellow"></i><i class="fa fa-fw fa-star yellow"></i><i class="fa fa-fw fa-star yellow"></i><i class="fa fa-fw fa-star yellow"></i><i class="fa fa-fw fa-star"></i></span>
-						<figure><img src="img/item_1.jpg" alt=""></figure>
-						<h4>jstl 가게이름</h4>
-						
-						<p>Lorem ipsum dolor sit amet, dolores mandamus moderatius ea ius, sed civibus vivendum imperdiet ei, amet tritani sea id. Ut veri diceret fierent mei, qui facilisi suavitate euripidis ad. In vim mucius menandri convenire, an brute zril vis. Ancillae delectus necessitatibus no eam, at porro solet veniam mel, ad everti nostrud vim. Eam no menandri pertinacia deterruisset.</p>
+
+						<h4>jstl 사용자이름 <i class="pending">Pending(jstl 예약정보)</i></h4>
+						<ul class="booking_list">
+							<li><strong>예약일</strong>jstl 예약일</li>
+							<li><strong>견종</strong>jstl 강아지 견종</li>
+							<li><strong>몸무게</strong> jstl 몸무게</li>
+							<li><strong>원하는컷</strong> jstl 원하는 컷</li>
+							<li><strong>사용자 핸드폰번호</strong> jstl 가게번호</li>
+							<li><strong>예약번호</strong> jstl 예약번호</li>
+						</ul>
+						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i>1대1대화</a></p>
+						<ul class="buttons">
+							<li class="btn_1 gray delete" id="delete-click-btn"><i class="fa fa-fw fa-times-circle-o"></i>취소</li>
+							<li id="reason-cancel">
+								<input type="text" name="" id="" placeholder="취소사유"/>
+							</li>
+						</ul>
+						<ul>
+						</ul>
 					</li>
 					<li>
-						<span>June 15 2017</span>
-						<span class="rating"><i class="fa fa-fw fa-star yellow"></i><i class="fa fa-fw fa-star yellow"></i><i class="fa fa-fw fa-star yellow"></i><i class="fa fa-fw fa-star"></i><i class="fa fa-fw fa-star"></i></span>
 						<figure><img src="img/item_2.jpg" alt=""></figure>
-						<h4>Da Alfredo <small>by M.Giuliani</small></h4>
-						<p>Ex omnis error aliquam quo, eu eos atqui accusam, ex nec sensibus erroribus principes. No pro albucius eloquentiam accommodare. Mei id illud posse persius. Nec eu dico lucilius delicata, qui propriae voluptaria eu.</p>
+						<h4>Da Alfredo <i class="cancel">Cancelled</i></h4>
+						<ul class="booking_list">
+							<li><strong>Booking date</strong> 11 November 2017</li>
+							<li><strong>Booking details</strong> 2 People</li>
+							<li><strong>Client</strong> Mark Twain</li>
+						</ul>
+						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i> Send Message</a></p>
+						<ul class="buttons">
+							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
+						</ul>
 					</li>
 					<li>
-						<span>June 15 2017</span>
-						<span class="rating"><i class="fa fa-fw fa-star yellow"></i><i class="fa fa-fw fa-star yellow"></i><i class="fa fa-fw fa-star yellow"></i><i class="fa fa-fw fa-star yellow"></i><i class="fa fa-fw fa-star"></i></span>
 						<figure><img src="img/item_3.jpg" alt=""></figure>
-						<h4>Pompidue Museum <small>by G.Lukas</small></h4>
-						<p>Cum id mundi admodum menandri, eum errem aperiri at. Ut quas facilis qui, euismod admodum persequeris cum at. Summo aliquid eos ut, eum facilisi salutatus ne. Mazim option abhorreant ne his. Mel simul iisque albucius at, probatus indoctum efficiendi mei ei. Veniam percipit ei sea.</p>
+						<h4>Pompidue Museum <i class="approved">Approved</i></h4>
+						<ul class="booking_list">
+							<li><strong>Booking date</strong> 11 November 2017</li>
+							<li><strong>Booking details</strong> 2 People</li>
+							<li><strong>Client</strong> Mark Twain</li>
+						</ul>
+						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i> Send Message</a></p>
+						<ul class="buttons">
+							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
+						</ul>
 					</li>
+					</c:forEach>
 				</ul>
 			</div>
 		</div>
+		<!-- booking contents end -->
 		<!-- /box_general-->
+		
+		<!-- pagination -->
 		<nav aria-label="...">
 			<ul class="pagination pagination-sm add_bottom_30">
 				<li class="page-item disabled">
@@ -85,11 +139,9 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-	
 
-
-<jsp:include page="mypage_logout.jsp"></jsp:include>
-
+    <jsp:include page="mypage_logout.jsp"></jsp:include>
+    
     <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
@@ -125,6 +177,7 @@
         height: 200
       });
     </script>
+	
 
 </body>
 </html>
