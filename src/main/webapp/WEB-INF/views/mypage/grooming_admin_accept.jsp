@@ -11,7 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="Ansonika">
   <title>accept</title>
-	
+
   <!-- Favicons-->
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
@@ -22,7 +22,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
+
 		$(".text-num").css("display", "none");
 		$("#btn").click(function(){
 			document.frm.action = "<c:url value='registShop'/>";
@@ -36,7 +36,7 @@
 <body class="fixed-nav sticky-footer" id="page-top">
 
 <jsp:include page="mypage_nav.jsp"></jsp:include>
- 
+
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -90,7 +90,7 @@
 				                  	<%-- </c:if> --%>
 				                  </td>
 				                </tr>
-			          	</c:forEach>		        	
+			          	</c:forEach>
 		              </tbody>
 		            </table>
 			  	</form>
@@ -114,16 +114,16 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-    
+
     <!-- Logout Modal-->
     <jsp:include page="mypage_logout.jsp"></jsp:include>
-    
+
 
     <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
     <script src="<c:url value='/resources/mypage/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
-    
+
     <!-- Page level plugin JavaScript-->
     <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
@@ -153,6 +153,6 @@
         height: 200
       });
     </script>
-	
+
 </body>
 </html>
