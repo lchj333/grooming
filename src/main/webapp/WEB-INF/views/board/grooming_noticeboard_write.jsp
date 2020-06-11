@@ -106,7 +106,6 @@
         tabsize: 2,
         height: 500
       });
-    </script>
-    
+    </script>    
 </body>
 </html>
