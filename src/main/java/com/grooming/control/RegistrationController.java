@@ -59,7 +59,7 @@ public class RegistrationController {
 	public String insertShopInfo(RegistrationDTO dto, MultipartHttpServletRequest ms, //스프링에서 알아서 set.
 									HttpServletRequest req) throws IllegalStateException, IOException {
 		//메소드 바디
-		String lPath = req.getServletContext().getRealPath("/resources/licence/");
+		String lPath = req.getServletContext().getRealPath("/resources/thumbnail/");
 		//post 파라미터
 		MultipartFile mfile = ms.getFile("file");
 		
