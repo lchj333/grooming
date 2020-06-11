@@ -1,6 +1,7 @@
 package com.grooming.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -20,9 +21,10 @@ public class RegistrationDAO {
 		this.ss = ss;
 	}
 	
-	//등록된 가게 리스트
-	public List<RegistrationDTO> getList() {
-		return ss.selectList(MAPPER+".list");
+	//등록된 가게 리스트 (허가된)
+	public List<RegistrationDTO> getList(Map<String, Object> map) {
+		
+		return ss.selectList(MAPPER+".list", map);
 	}
 	
 	//가게 정보 등록 메소드 

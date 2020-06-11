@@ -7,7 +7,7 @@
 	<!-- 모든가게 리스트(사용자 입장) -->
 	<select id="list">
 		select * from gr_registration
-		where reg_block = #{reg_block}
+		where reg_block = 0
 	</select>
 	
 	<!-- 미용사 번호로 조회 -->

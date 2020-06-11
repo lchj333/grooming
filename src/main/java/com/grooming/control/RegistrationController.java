@@ -1,25 +1,23 @@
 package com.grooming.control;
 
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -43,7 +41,7 @@ public class RegistrationController {
 	@PostConstruct가 붙은 메서드는 클래스가 service(로직을 탈 때? 로 생각 됨)를 수행하기 전에 발생한다. 
 	이 메서드는 다른 리소스에서 호출되지 않는다해도 수행된다. */
 	@PostConstruct // -> 서버 service를 시작할때 자동으로 실행
-	public void initMethod(HttpServletRequest r) {
+	public void initMethod() {
 		this.realPath = c.getRealPath("/resources/shopimags/");	//저장할 경로
 	}
 	//메뉴 ->
@@ -122,15 +120,29 @@ public class RegistrationController {
 		return "home";
 	}
 	
-	//가게 상세 정보
-	@RequestMapping(value = "/detailShop")
-	public String detailShopInfo(int licencenum, HttpSession hs) {
-		//가게 정보
+	//샵 리스트
+	@RequestMapping(value = "/shopList")
+	public String listShop(HttpServletRequest req) {
+		//필터를 위한 맵
+		Map<String, Object> map = new HashMap<String, Object>();
+//		map.put..
+		rdao.getList(map);
+		
+		return "listpage";
+	}
+	
+	//샵 디테일
+	@RequestMapping(value = "/shopDetail")
+	public String detailShopInfo(HttpServletRequest req) {
+		//from 샵 등록 테이블
 //		List<RegisterationDTO> list = rdao.sel~~~~
 //		hs.getAttribute(name)
+		
+		//from 미용사 테이블
 		//가게 상세이미지 목록
 //		if()!=null)
-		return "";
+		
+		return "detailpage";
 	}
 	
 	//등록시 포인트 깍기
@@ -142,27 +154,6 @@ public class RegistrationController {
 	public String goToTest() {
 		
 		return "upTest";
-	}
-	
-	//실제 파일 저장 메소드
-	public String saveFile(MultipartFile mfile, String filePath) throws IllegalStateException, IOException {
-		//문자열 요리
-		String originalFile = mfile.getOriginalFilename();
-		String originalFileExtension = originalFile.substring(originalFile.lastIndexOf("."));
-		String storedFileName = UUID.randomUUID().toString().replaceAll("-", "") + originalFileExtension;
-		
-		//파일 저장
-		File file = new File(realPath + filePath + storedFileName) ;//realPath : 톰캣내의 주소
-		mfile.transferTo(file);
-			
-		//체크
-		System.out.println("file.getPath() : "+file.getPath());
-//		System.out.println(originalFile + "은 업로드한 파일이다.");
-		System.out.println(storedFileName + "라는 이름으로 업로드 됐다.");
-//		System.out.println("파일사이즈는 " + mfile.getSize());
-	
-		//실제 저장되는 파일이름 리턴
-		return storedFileName;
 	}
 	
 }
