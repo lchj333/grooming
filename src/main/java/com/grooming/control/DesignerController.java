@@ -21,10 +21,10 @@ import com.grooming.utils.FileUpload;
 
 @Controller
 public class DesignerController {
-	
+
 	@Inject
 	DesignerDAO dao;
-	
+
 	// 디자이너 시청하는 메소드
 	@RequestMapping(value = "/designerJoin")
 	public String designerJoin(@ModelAttribute("mb_id") DesignerDTO designerDto,
@@ -39,42 +39,42 @@ public class DesignerController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		if(fileName == null) {//파일이 제대로 저장되지 않았을 경우
 			return "home";
 		}
-		
+
 		designerDto.setDe_licence(fileName);
 		dao.joinDesigner(designerDto);
 		return "redirect:/selectMemberAll";
 	}
-	
+
 	// 디자이너 전체 조회
 	@RequestMapping(value = "/designerList")
 	public String designerList(Model model) {
 		List<DesignerDTO> list = dao.selectDesignerAll();
 		model.addAttribute("designerList", list);
-		
+
 		return "designerList";
 	}
-	
+
 	// 디자이너 신청한 멤버 목록 받아오는 메소드
 	@RequestMapping(value = "/designerApplication")
 	public String designerApplication(Model model) {
-		
+
 		List<DesignerDTO> list = dao.designerApplication();
 		model.addAttribute("designerApplication", list);
-		
+
 		return "designerApplication";
 	}
-	
+
 	// 디자이너 de_approval 승인하는 메소드
 	@RequestMapping(value = "designerAgree")
 	public String designerAgree(@ModelAttribute("mb_id")DesignerDTO designerDto) {
-		
+
 		dao.designerAgree(designerDto);
-		
+
 		return "designerAgree";
 	}
-	
+
 }

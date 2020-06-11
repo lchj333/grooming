@@ -1,51 +1,49 @@
 /*
 Theme Name: Panagea v.1.6
-Theme URI: http://www.ansonika.com/panagea/
-Author: Ansonika
-Author URI: http://themeforest.net/user/Ansonika/
+Theme URI: http://www.ansonika.com/panagea/   테마 정보는 여기서 보세요
 
-[Table of contents]
+[Table of contents] 목차
 
-1. SITE STRUCTURE and TYPOGRAPHY
-- 1.1 Typography
-- 1.2 Buttons
-- 1.3 Structure
+1. SITE STRUCTURE and TYPOGRAPHY  사이트 구조 및 타이포그래피
+- 1.1 Typography   타이포그래피
+- 1.2 Buttons  버튼
+- 1.3 Structure  구조
 
-2. CONTENT
-- 2.1 Home
-- 2.2 About
-- 2.3 Listing
-- 2.4 Detail page
-- 2.5 Login/register
-- 2.6 Map styles
-- 2.7 Contacts
-- 2.8 404 page
-- 2.9 Cart section
-- 2.10 Media Gallery
-- 2.11 Faq
-- 2.12 Adventure
-- 2.13 Home AirBnb
-- 2.14 Half screen map
-- 2.15 Autocomplete Address Search
-- 2.16 OpenStreet Map
+2. CONTENT  콘텐츠
+- 2.1 Home  홈
+- 2.2 About  정보
+- 2.3 Listing 등록하기
+- 2.4 Detail page 상세페이지
+- 2.5 Login/register 로그인 등록
+- 2.6 Map styles 지도 스타일
+- 2.7 Contacts 연락처
+- 2.8 404 page 오류 페이지
+- 2.9 Cart section 카트 색션
+- 2.10 Media Gallery 미디어 갤러리
+- 2.11 Faq  고객센터
+- 2.12 Adventure  모험
+- 2.13 Home AirBnb 홈 에어비앤비
+- 2.14 Half screen map 반 스크린뱁
+- 2.15 Autocomplete Address Search  주소 자동 완성 검색
+- 2.16 OpenStreet Map  오픈스트리트맵
 
-3. COMMON
-- 3.1 Misc
-- 3.2 Accordion
-- 3.3 List
-- 3.4 Spacing
-- 3.5 Block reveal
-- 3.6 Cookie bar
+3. COMMON  공통
+- 3.1 Misc  믹
+- 3.2 Accordion  아코디언
+- 3.3 List  리스트
+- 3.4 Spacing  간격
+- 3.5 Block reveal  블록 레벨
+- 3.6 Cookie bar 쿠키바
 - 3.7 Sing In Modal
 - 3.8 Input Switcher
 - 3.9 Datepicker
 - 3.10 Styles Switcher
 
 /*============================================================================================*/
-/* 1.  SITE STRUCTURE and TYPOGRAPHY */
+/* 1.  SITE STRUCTURE and TYPOGRAPHY   사이트 구조 및 타이포그래피*/
 /*============================================================================================*/
-/* MAIN NAVIGATION */
-/* All styles for screen size over 992px*/
+/* MAIN NAVIGATION  메인 네비에 관련한 css*/
+/* All styles for screen size over 992px   92px 이상의 화면 크기에 대한 모든 스타일*/
 @media only screen and (min-width: 992px) {
 	nav#menu.main-menu {
 		display: block !important;
@@ -57,7 +55,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 		display: none !important;
 	}
 
-	/* Menu */
+	/* Menu  메뉴*/
 	.main-menu {
 		position: relative;
 		z-index: 9;
@@ -71,6 +69,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 		-ms-transition: all 0.3s ease-in-out;
 		transition: all 0.3s ease-in-out;
 		color: #fff;
+
 	}
 	.main-menu ul, .main-menu ul li {
 		position: relative;
@@ -261,7 +260,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 	margin-left: 0;
 }
 
-/* All styles for screen size under 991px */
+/* All styles for screen size under 991px  991px 미만의 화면 크기에 대한 모든 스타일*/
 @media only screen and (max-width: 991px) {
 	nav#menu {
 		display: none !important;
@@ -287,6 +286,7 @@ Author URI: http://themeforest.net/user/Ansonika/
 	display: none !important;
 	visibility: hidden !important;
 }
+
 
 /*-------- Preloader --------*/
 #preloader {
@@ -715,7 +715,7 @@ deg
 
 }
 }
-/*-------- 1.1 Typography --------*/
+/*-------- 1.1 Typography  1.1 타이포그래피--------*/
 /* rem reference
 10px = 0.625rem
 12px = 0.75rem
@@ -727,47 +727,54 @@ deg
 30px = 1.875rem
 32px = 2rem
 */
-html * {
+
+/* 최상위 루트 */
+/* ============================================================================================================================================  */
+html * { /* html */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-}
 
+}
+/* ============================================================================================================================================  */
 body {
-	background: #f8f8f8;
+	background: #f5f6fa;
 	font-size: 0.875rem;
 	line-height: 1.6;
 	font-family: "Poppins", Helvetica, sans-serif;
-	color: #555;
-}
+	color: #ffffff;
 
+}
+/* ============================================================================================================================================  */
 h1, h2, h3, h4, h5, h6 {
 	color: #333;
 }
-
-p {
+/* ============================================================================================================================================  */
+p { /* 문단 */
 	margin-bottom: 30px;
+	color:#ffffff;
 }
-
+/* ============================================================================================================================================  */
 strong {
 	font-weight: 600;
 }
-
+/* ============================================================================================================================================  */
 label {
 	font-weight: 500;
 	margin-bottom: 3px;
+	color: black;
 }
-
+/* ============================================================================================================================================  */
 hr {
 	margin: 30px 0 30px 0;
 	border-color: #ededed;
 }
-
+/* ============================================================================================================================================  */
 hr.large {
 	border-color: #ededed;
 	border-top-width: 4px;
 	margin-top: 60px;
 }
-
+/* ============================================================================================================================================  */
 @media ( max-width : 991px) {
 	hr.large {
 		margin-top: 45px;
@@ -779,13 +786,14 @@ hr.large {
 		margin-bottom: 45px;
 	}
 }
+/* ============================================================================================================================================  */
 
 ul, ol {
 	list-style: none;
 	margin: 0 0 25px 0;
 	padding: 0;
 }
-
+/* ============================================================================================================================================  */
 .main_title {
 	text-align: center;
 	margin-bottom: 45px;
@@ -922,7 +930,7 @@ ul, ol {
 	font-weight: 300;
 	line-height: 1.4;
 }
-
+/* ============================================================================================================================================  */
 /** Layes slider typography ab buttons **/
 h3.slide_typo {
 	white-space: nowrap;
@@ -951,7 +959,7 @@ h3.slide_typo {
 	}
 }
 
-/*General links color*/
+/*General links color   일반 링크 색상*/
 a {
 	color: #fc5b62;
 	text-decoration: none;
@@ -968,9 +976,10 @@ a:hover, a:focus {
 	text-decoration: none;
 	outline: none;
 }
-
-/*-------- 1.2 Buttons --------*/
+/* ============================================================================================================================================  */
+/*-------- 1.2 Buttons  버튼 모음--------*/
 a.btn_1, .btn_1 {
+
 	border: none;
 	color: #fff;
 	background: #1e1e1e;
@@ -992,6 +1001,27 @@ a.btn_1, .btn_1 {
 	-moz-border-radius: 3px;
 	-ms-border-radius: 3px;
 	border-radius: 3px;
+}
+@media ( max-width : 767px) {
+a.btn_1.medium, .btn_1.medium {
+	margin: 0;
+
+	}
+
+}
+@media ( max-width : 1200px) {
+a.btn_1.medium, .btn_1.medium {
+	margin: 0;
+
+	}
+
+}
+@media ( max-width : 3800px) {
+a.btn_1.medium, .btn_1.medium {
+	margin: 0;
+
+	}
+
 }
 
 a.btn_1:hover, .btn_1:hover {
@@ -1020,8 +1050,10 @@ a.btn_1.full-width.wishlist, .btn_1.full-width.wishlist {
 }
 
 a.btn_1.medium, .btn_1.medium {
+	text-align: center;
 	font-size: 16px;
 	font-size: 1rem;
+
 	padding: 18px 40px;
 }
 
@@ -1033,21 +1065,24 @@ a.btn_1.rounded, .btn_1.rounded {
 }
 
 a.btn_1.outline, .btn_1.outline {
-	border: 2px solid #fc5b62;
-	color: #fc5b62;
+	border: 2px solid #000000;
+	color: #000000;
 	padding: 11px 40px;
 	background: none;
+	text-align: center;
 }
 
+
 a.btn_1.outline:hover, .btn_1.outline:hover {
-	background: #0054a6;
+	background: #fbbc42;
 	color: #fff;
-	border-color: #0054a6;
+	border: 2px solid #fbbc42;
 }
 
 a.btn_1.outline:focus, .btn_1.outline:focus {
 	outline: none;
 }
+/* ============================================================================================================================================  */
 
 .closebt {
 	-moz-transition: all 0.3s ease-in-out;
@@ -1146,9 +1181,10 @@ a.btn_map_in:hover, .btn_map_in:hover {
 	background: #0054a6;
 	color: #fff;
 }
-
-/*-------- 1.3 Structure --------*/
-/* Header */
+/* ============================================================================================================================================  */
+/*-------- 1.3 Structure   구조--------*/
+/* Header  헤더*/
+/* ============================================================================================================================================  */
 header {
 	position: fixed;
 	left: 0;
@@ -1373,8 +1409,8 @@ ul#top_menu li a.logged img {
 		top: 0;
 	}
 }
-
-/* Dropdown user logged */
+/* ============================================================================================================================================  */
+/* Dropdown user logged  네비 드롭 다운 부분*/
 .dropdown-user .dropdown-menu {
 	border: none;
 	-webkit-border-radius: 0;
@@ -1482,11 +1518,12 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before,
 		left: 0;
 		width: 100%;
 		text-align: center;
+		height: 10px;
 	}
 	#logo img {
 		width: auto;
 		height: 30px;
-		margin: 12px 0 0 0;
+		margin: 5px 0 0 0;
 	}
 }
 
@@ -1497,6 +1534,7 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before,
 	overflow: hidden;
 	text-align: center;
 	color: #fff;
+
 }
 
 @media ( max-width : 767px) {
@@ -1505,8 +1543,17 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before,
 	}
 }
 
+.hero_in.general{
+
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+
 .hero_in.general:before {
-	background: url(../img/hero_in_bg_2.jpg) center center no-repeat;
+ 	background: url(../img/Grooming_BG.png) center center no-repeat
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -1516,6 +1563,7 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before,
 .hero_in.general .wrapper {
 	background-color: black;
 	background-color: rgba(0, 0, 0, 0.6);
+
 }
 
 .hero_in.tours:before {
@@ -1567,6 +1615,7 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before,
 	}
 }
 
+
 .hero_in.tours_detail:before {
 	background: url(../img/hero_in_tours_detail.jpg) center center no-repeat;
 	-webkit-background-size: cover;
@@ -1604,18 +1653,22 @@ header.sticky .hamburger-inner, header.sticky .hamburger-inner::before,
 	background-color: rgba(0, 0, 0, 0.6);
 }
 
-.hero_in.restaurants_detail {
+/* .hero_in.restaurants_detail {
 	height: 550px;
-}
+	디테일 이미지 넣는 곳
+	background: url(../img/grooming_gogi.jpg) center center;
+} */
 
 @media ( max-width : 575px) {
 	.hero_in.restaurants_detail {
 		height: 500px;
+		background: url(../img/grooming_gogi.jpg) center center
 	}
 }
 
 .hero_in.restaurants_detail:before {
-	background: url(../img/hero_in_restaurants_detail.jpg) center center
+	/* 디테일 이미지 넣는 곳 */
+	background: url(../img/grooming_gogi.jpg) center center
 		no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -1829,15 +1882,15 @@ scale
 	-webkit-animation-duration: 0.3s;
 	-moz-animation-duration: 0.3s;
 }
-
-/* Main */
+/* ============================================================================================================================================  */
+/* Main  메인 */
 main {
 	background-color: #f8f8f8;
-	position: relative;
-	z-index: 1;
+	position: relative; /* 상대성 */
+	z-index: 1; /* 순위 */
 }
-
-/* Footer */
+/* ============================================================================================================================================  */
+/* Footer  풋터*/
 footer {
 	background-color: #121921;
 	color: #fbfbfb;
@@ -1931,8 +1984,8 @@ footer #copy {
 		margin: 5px 0 20px 0;
 	}
 }
-
-/* Newsletter footer*/
+/* ============================================================================================================================================  */
+/* Newsletter footer  뉴스레터 바닥글*/
 #newsletter .form-group {
 	position: relative;
 }
@@ -2057,8 +2110,8 @@ ul#footer-selector li {
 		margin-top: 5px;
 	}
 }
-
-/* Addtional links Footer */
+/* ============================================================================================================================================  */
+/* Addtional links Footer   추가 링크 바닥글*/
 ul#additional_links {
 	margin: 0;
 	padding: 8px 0 0 0;
@@ -2183,13 +2236,13 @@ ul#additional_links li:after {
 
 /* Wow on scroll event */
 .wow {
-	visibility: hidden;
+	visibility: hidden;  /* 가시성 */
 }
-
+/*============================================================================================*/
 /*============================================================================================*/
 /* 2.  CONTENT */
 /*============================================================================================*/
-/*-------- 2.1 Home/front page--------*/
+/*-------- 2.1 Home/front page  홈 프론트 페이지--------*/
 /* ------ jQuery FlexSlider v2.7.0 ----------- */
 /* Resets */
 .flex-container a:hover, .flex-slider a:hover {
@@ -2206,7 +2259,7 @@ ul#additional_links li:after {
 	text-transform: capitalize;
 }
 
-/* Base style */
+/* Base style  기본 스타일*/
 .flexslider {
 	margin: 0;
 	padding: 0;
@@ -2694,15 +2747,26 @@ a#moveDown {
 	-moz-animation-iteration-count: infinite;
 }
 
-/* Home video background*/
+/* Home video background 비디오 부분*/
 .header-video {
 	position: relative;
 	overflow: hidden;
 	background: #000;
-	height: 600px !important;
+	height: 600px !important; /*
+	!important
+	스타일시트 지정시 같은 요소(태그, id, class 등)에
+
+	중복으로 속성설정시 나중의 것이 지정되게 되는데 !important 를 사용해서 정의를 하게 되면
+
+	나중에 지정한 것으로 바뀌지는 않는다.
+
+	스타일시트가 길어지거나 문서구조가 여러 태그나 요소등에 영향을 받을 우려가 있을시
+
+	지정하면 해당 !important 가 지정된 태그나 요소는 다른 것에 영향을 받지 않게 된다.
+ */
 }
 
-@media ( max-width : 991px) {
+@media ( max-width : 991px) { /*  최대 너비: 991px*/
 	.header-video {
 		height: 620px !important;
 	}
@@ -2815,22 +2879,27 @@ video {
 		background: none;
 	}
 }
-/* Home single hero */
+/*========================================================================================================  */
+
+/* div 설정 class */
+/*========================================================================================================  */
+/* Home single hero  홈 싱글 히어로*/
+
 .hero_single {
 	width: 100%;
 	position: relative;
-	overflow: hidden;
-	text-align: center;
+	overflow: hidden; /* overflow 넘칠때 방지 */
+	height: 100%;
 	margin: 0;
 	color: #fff;
 }
-
-.hero_single .wrapper {
-	background-color: black;
-	background-color: rgba(0, 0, 0, 0.8);
+/* 단일 wrapper */
+.hero_single .wrapper { /*  */
+	  background-color: black;
+      background-color: rgba(0, 0, 0, 0.8);
 }
 
-.hero_single.start_bg_zoom:before {
+/* .hero_single.start_bg_zoom:before {
 	animation: pop-in 6s 0.3s cubic-bezier(0, 0.5, 0, 1) forwards;
 	content: "";
 	opacity: 0;
@@ -2840,14 +2909,7 @@ video {
 	bottom: 0;
 	left: 0;
 	z-index: -1;
-}
-
-.hero_single .wrapper {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	height: 100%;
-}
+} */
 
 .hero_single .wrapper h3 {
 	color: #fff;
@@ -2891,33 +2953,48 @@ video {
 		font-size: 18px;
 		font-size: 1.125rem;
 	}
+
+}
+
+@media ( max-width : 767px) {
+	.hero_single.version_2 {
+		margin-top: 12%
+
+
+	}
 }
 
 .hero_single.short {
+
+}
+/*========================================================================================================  */
+/* .hero_single.version_2 div 설정 */
+/*========================================================================================================  */
+.hero_single.version_2 {
+	background-color: #f5f6fa;
 	height: 1080px;
 }
 
-.hero_single.version_2 {
-	height: 980px;
-	background-color: #f5f6fa;
-}
-
 .hero_single.version_2:before {
+	/* 이미지 넣는 곳 */
 	/* background: url(../img/home_section_1.jpg) center center no-repeat; */
-	-webkit-background-size: cover;
+	 -webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	/* background-size: cover; */
 }
-
+.hero_single.short {
+  height: 600px;
+}
 .hero_single.version_2 .wrapper {
 	background-color: #f5f6fa;
+
 }
 
 .hero_single.version_2 .wrapper h3 {
 	font-size: 42px;
 	font-size: 2.625rem;
-	text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+
 }
 
 @media ( max-width : 767px) {
@@ -2925,7 +3002,9 @@ video {
 		font-size: 26px;
 		font-size: 1.625rem;
 		margin-top: 60px;
+
 	}
+
 }
 
 @media ( max-width : 575px) {
@@ -2939,9 +3018,9 @@ video {
 	font-weight: 400;
 	margin: 5px 0 0 0;
 	padding: 0;
-	font-size: 21px;
-	font-size: 1.3125rem;
-	text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+	font-size: 16px;
+	font-size: 1.0rem;
+
 }
 
 .hero_single.version_2 .wrapper p strong {
@@ -2950,12 +3029,16 @@ video {
 
 @media ( max-width : 767px) {
 	.hero_single.version_2 .wrapper p {
+
+		height:640px
+
 		padding: 0;
 		font-size: 14px;
 		font-size: 0.875rem;
 	}
 }
-
+/*=======================================================================================================  */
+/*사용자 정의 검색어  */
 #custom-search-input {
 	padding: 0;
 	width: 1080px;
@@ -2963,7 +3046,7 @@ video {
 	position: relative;
 }
 
-@media ( max-width : 991px) {
+@media ( max-width : 991px) { /*최대 너비: 991px  */
 	#custom-search-input {
 		width: auto;
 	}
@@ -3029,7 +3112,7 @@ video {
 		background: #f4b741 url(../img/search.svg) no-repeat center center;
 	}
 }
-
+/*=======================================================================================================  */
 .custom-search-input-2 {
 	background-color: #fff;
 	-webkit-border-radius: 5px;
@@ -3211,8 +3294,8 @@ video {
 .custom-search-input-2.inner-2 .nice-select {
 	border: 1px solid #ededed;
 }
-
-/* Panel Drop Down */
+/*=======================================================================================================  */
+/* Panel Drop Down   패널 드롭다운*/
 .panel-dropdown {
 	position: relative;
 	text-align: left;
@@ -3321,7 +3404,9 @@ video {
 	opacity: 1;
 	visibility: visible;
 }
-
+/*=======================================================================================================  */
+/*수량 버튼 */
+/*=======================================================================================================  */
 .qtyButtons {
 	display: flex;
 	margin: 0 0 13px 0;
@@ -3394,7 +3479,7 @@ video {
 	height: 18px;
 	width: 18px;
 }
-
+/*=======================================================================================================  */
 .rotate-x {
 	animation-duration: .5s;
 	animation-name: rotate-x;
@@ -3542,7 +3627,7 @@ a.box_news figure img {
 a.box_news figure figcaption {
 	background-color: #FFC107;
 	text-align: center;
-	position: absolute;
+	position: absolute; /* 절대적인 */
 	right: 0;
 	top: 0;
 	display: inline-block;
@@ -3690,7 +3775,7 @@ a.grid_item figure .score {
 	right: 15px;
 	z-index: 9;
 }
-
+/* a 태그 그림 */
 a.grid_item figure small {
 	position: absolute;
 	background-color: black;
@@ -3736,7 +3821,7 @@ a.grid_item:hover figure img {
 	padding: 30px 0 15px 0;
 	border-bottom: 1px solid #ededed;
 }
-
+/* a 박스 feat */
 /*-------- 2.2 About --------*/
 a.box_feat {
 	text-align: center;
@@ -3866,8 +3951,8 @@ a.box_feat h3 {
 	opacity: 1;
 }
 
-/*-------- 2.3 Listing --------*/
-.filters_listing {
+/*-------- 2.3 Listing  목록 --------*/
+.filters_listing {  /* 필터 목록 */
 	padding: 10px 0 5px 0;
 	background: #fff;
 	border-bottom: 1px solid #ededed;
@@ -3906,10 +3991,10 @@ a.box_feat h3 {
 	background-color: #0054a6;
 	color: #fff;
 	line-height: 1;
-	-webkit-border-radius: 5px 5px 5px 0;
-	-moz-border-radius: 5px 5px 5px 0;
-	-ms-border-radius: 5px 5px 5px 0;
-	border-radius: 5px 5px 5px 0;
+	-webkit-border-radius: 5px 5px 5px 0;/* 상 오른쪽 하 왼쪽 */
+	-moz-border-radius: 5px 5px 5px 0;/* 상 오른쪽 하 왼쪽 */
+	-ms-border-radius: 5px 5px 5px 0;/* 상 오른쪽 하 왼쪽 */
+	border-radius: 5px 5px 5px 0;   /* 상 오른쪽 하 왼쪽 */
 	padding: 10px;
 	display: inline-block;
 }
@@ -3934,7 +4019,7 @@ a.box_feat h3 {
 }
 
 .wrapper-grid {
-	padding: 0 20px;
+	padding: 0 20px;  /* 상하 0   좌우 20  */
 }
 
 .box_grid {
@@ -3942,9 +4027,9 @@ a.box_feat h3 {
 	display: block;
 	position: relative;
 	margin-bottom: 30px;
-	-webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);/* 상 오른쪽 하 왼쪽 */
+	-moz-box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);/* 상 오른쪽 하 왼쪽 */
+	box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);/* 상 오른쪽 하 왼쪽 */
 }
 
 .box_grid .price {
@@ -3964,7 +4049,7 @@ a.box_feat h3 {
 	z-index: 1;
 	background-color: black;
 	background-color: rgba(0, 0, 0, 0.6);
-	padding: 9px 10px;
+	padding: 9px 10px; /* 상하 9   좌우 10  */
 	display: inline-block;
 	color: #fff;
 	line-height: 1;
@@ -4337,13 +4422,13 @@ a.box_feat h3 {
 }
 
 .box_list .wrapper {
-	padding: 30px 30px 20px 30px;
+	padding: 30px 30px 20px 30px; /* 상 30 오 30 하 20  왼 30    */
 	min-height: 245px;
 }
 
-@media ( max-width : 991px) {
+@media ( max-width : 991px) { /* 최대 991px */
 	.box_list .wrapper {
-		min-height: inherit;
+		min-height: inherit; /* 물려받다  */
 	}
 }
 
@@ -4426,7 +4511,7 @@ a.box_feat h3 {
 		min-height: inherit;
 	}
 }
-
+/* ================== 레이아웃 뷰======================================== */
 .layout_view {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -4447,7 +4532,8 @@ a.box_feat h3 {
 .layout_view a:hover {
 	color: #fc5b62;
 }
-
+/* ====================================================================  */
+/*  필드 바꾸기 */
 .switch-field {
 	overflow: hidden;
 	border: 1px solid rgba(0, 0, 0, 0.08);
@@ -4604,7 +4690,9 @@ a.boxed_list:hover i {
 	color: #32a067;
 }
 
-/*-------- 2.4 Detail page --------*/
+/*-------- 2.4 Detail page   상세 페이지--------*/
+/*  부가적인 네비 */
+/* =========================================================================  */
 .secondary_nav {
 	background: #fff;
 	border-bottom: 1px solid #ededed;
@@ -4650,7 +4738,9 @@ a.boxed_list:hover i {
 		display: inline-block;
 	}
 }
-
+/* =========================================================================  */
+/* 도입부 타이틀 */
+/* =========================================================================  */
 .intro_title h2 {
 	display: inline-block;
 }
@@ -4665,7 +4755,9 @@ a.boxed_list:hover i {
 	margin-right: 20px;
 	font-weight: 500;
 }
-
+/* =========================================================================  */
+/* 색션 설명  */
+/* =========================================================================  */
 section#description, section#reviews {
 	border-bottom: 3px solid #ededed;
 	margin-bottom: 45px;
@@ -4689,7 +4781,8 @@ section#description h4, section#reviews h4 {
 section#reviews {
 	border-bottom: none;
 }
-
+/* =========================================================================  */
+/* 설명 요약  */
 #review_summary {
 	text-align: center;
 	background-color: #0054a6;
@@ -4784,7 +4877,9 @@ section#reviews {
 	color: #777;
 	margin-bottom: 10px;
 }
-
+/* ================================================================= */
+/* 박스 디테일  */
+/* ================================================================= */
 .box_detail {
 	padding: 25px 25px 15px 25px;
 	border: 1px solid #ededed;
@@ -4839,7 +4934,8 @@ section#reviews {
 }
 
 .box_detail figure {
-	position: relative;
+	position: r
+ative;
 	background-color: #000;
 }
 
@@ -4892,7 +4988,9 @@ section#reviews {
 	-o-transform: scale(1.3);
 	transform: scale(1.3);
 }
-
+/* ================================================================= */
+/* 예약 입력*/
+/* ================================================================= */
 .booking input {
 	font-weight: 500;
 	height: 45px;
@@ -4975,8 +5073,9 @@ section#reviews {
 .booking .form-group i.icon_lock_alt {
 	top: 36px;
 }
-
-/*Timeline --------------- */
+/* ================================================================= */
+/*Timeline  타임라인--------------- */
+/* ================================================================= */
 ul.cbp_tmtimeline {
 	margin: 45px 0 45px 0;
 	padding: 0;
@@ -5062,8 +5161,8 @@ img.thumb_visit {
 	font-size: 16px;
 	font-size: 1rem;
 }
-
-/* The triangle */
+/* ================================================================= */
+/* The triangle    삼각관계*/
 .cbp_tmtimeline>li .cbp_tmlabel:after {
 	right: 100%;
 	border: solid transparent;
@@ -5076,8 +5175,9 @@ img.thumb_visit {
 	border-width: 10px;
 	top: 15px;
 }
-
-/* The icons */
+/* ====================================================================== */
+/* The icons   아이콘*/
+/* ====================================================================== */
 .cbp_tmtimeline>li .cbp_tmicon {
 	width: 48px;
 	height: 48px;
@@ -5096,9 +5196,10 @@ img.thumb_visit {
 	top: 0;
 	margin: 0 0 0 -25px;
 }
-
-/* Media Queries */
-@media screen and (max-width: 65.375em) {
+/* ===================================================== */
+/* Media Queries   미디어 쿼리*/
+/* ===================================================== */
+@media screen and (max-width: 65.375em) { /* @media 화면 및 (최대 너비: 65.375em) { */
 	.cbp_tmtimeline>li .cbp_tmtime span:last-child {
 		font-size: 1.5em;
 	}
@@ -5138,7 +5239,10 @@ img.thumb_visit {
 		margin: -65px 5px 0 0px;
 	}
 }
-
+/* ===================================================== */
+/*  호텔 객실 */
+/* 리스트 부분 */
+/* ===================================================== */
 ul.hotel_facilities {
 	list-style: none;
 	margin: 0;
@@ -5157,7 +5261,8 @@ ul.hotel_facilities li {
 ul.hotel_facilities li img {
 	margin-right: 10px;
 }
-
+/* ===================================================== */
+/* 호텔 방 */
 .room_type {
 	padding: 30px 30px 10px 30px;
 }
@@ -5179,8 +5284,9 @@ ul.hotel_facilities li img {
 		margin-top: 25px;
 	}
 }
-
-/*-------- 2.5 Login/register --------*/
+/* ==================================================================== */
+/*-------- 2.5 Login/register  로그인/ 등록--------*/
+/* ==================================================================== */
 #login_bg, #register_bg {
 	background: url(../img/hero_in_bg_3.jpg) center center no-repeat fixed;
 	-webkit-background-size: cover;
@@ -5214,33 +5320,35 @@ ul.hotel_facilities li img {
 }
 
 #login aside, #register aside {
-	width: 430px;
+	width: 600px;
 	padding: 45px 60px 60px 60px;
 	position: absolute;
-	left: 39%;
-	top: 0;
+	left: 32%;
+	top: 3%;
 	overflow-y: auto;
 	background-color: #fff;
 	min-height: 100vh;
+	margin-bottom: 3%;
 }
 
 @media ( max-width : 767px) {
 	#login aside, #register aside {
 		width: 100%;
 		padding: 30px;
-		left: 0;
-		top: 0;
+		left: 0%;
+		top: 0%;
+
 	}
 }
 
 #login aside form, #register aside form {
-	margin-bottom: 60px;
+
 	display: block;
 }
 
 #login aside form .form-group input, #register aside form .form-group input
 	{
-	padding-left: 10px;
+	/* padding-left: 10px; */
 }
 
 #login aside form .form-group i, #register aside form .form-group i {
@@ -5258,15 +5366,16 @@ ul.hotel_facilities li img {
 
 #login aside .copy, #register aside .copy {
 	text-align: center;
-	position: absolute;
-	height: 30px;
+	/* position: absolute; */
+	margin-top: 10px;
+	height: 50px;
 	left: 0;
 	bottom: 30px;
 	width: 100%;
 	color: #999;
 	font-weight: 500;
 }
-
+/* ==================================================================== */
 .access_social {
 	margin-top: 45px;
 }
@@ -5276,7 +5385,7 @@ ul.hotel_facilities li img {
 		margin-top: 30px;
 	}
 }
-
+/* 분할 */
 .divider {
 	text-align: center;
 	height: 1px;
@@ -5291,15 +5400,16 @@ ul.hotel_facilities li img {
 	display: inline-block;
 	padding: 10px;
 	font-style: italic;
+	color: black;
 }
-
+/* a 공동  btn*/
 a.social_bt {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	-ms-border-radius: 3px;
 	border-radius: 3px;
 	text-align: center;
-	color: #fff;
+	color: #000000;
 	min-width: 200px;
 	margin-bottom: 10px;
 	display: block;
@@ -5318,8 +5428,8 @@ a.social_bt:hover {
 	-webkit-filter: brightness(115%);
 	filter: brightness(115%);
 }
-
-a.social_bt.facebook:before, a.social_bt.google:before, a.social_bt.linkedin:before
+/* 공통 sns 영역*/
+a.social_bt.facebook:before, a.social_bt.kakao:before, a.social_bt.linkedin:before
 	{
 	font-family: 'ElegantIcons';
 	position: absolute;
@@ -5338,12 +5448,12 @@ a.social_bt.facebook:before {
 	content: "\e093";
 }
 
-a.social_bt.google {
-	background-color: #DC4E41;
+a.social_bt.kakao {
+	background-color: #fee800;
 }
 
-a.social_bt.google:before {
-	content: "\e096";
+a.social_bt.kakao:before {
+	/* content: "\e096"; */
 	top: 12px;
 }
 
@@ -5354,8 +5464,9 @@ a.social_bt.linkedin {
 a.social_bt.linkedin:before {
 	content: "\e09d";
 }
-
-/*Password strength */
+/* ================================================ */
+/*Password strength  비밀번호 강도*/
+/* ================================================ */
 #pass-info {
 	width: 100%;
 	margin-bottom: 15px;
@@ -5399,8 +5510,9 @@ a.social_bt.linkedin:before {
 	background: #48B448;
 	color: #CDFFCD;
 }
-
-/* Checkbox style */
+/* ================================================ */
+/* Checkbox style   체크박스 스타일*/
+/* ================================================ */
 .container_check {
 	display: block;
 	position: relative;
@@ -5466,8 +5578,9 @@ a.social_bt.linkedin:before {
 .container_check input:checked ~ .checkmark:after {
 	display: block;
 }
-
-/*-------- 2.6 Map styles --------*/
+/* ================================================ */
+/*-------- 2.6 Map styles   지도 스타일 --------*/
+/* ================================================ */
 .map {
 	width: 100%;
 	height: 500px;
@@ -5649,8 +5762,9 @@ span.infobox_rate {
 	font-size: 12px;
 	font-size: 0.75rem;
 }
-
-/* Cluster styles */
+/* ================================================ */
+/* Cluster styles  사람들 스타일*/
+/* ================================================ */
 .cluster img {
 	display: none;
 }
@@ -5714,8 +5828,9 @@ deg
 
 
 }
+/* ================================================ */
 }
-/*-------- 2.7 Contacts--------*/
+/*-------- 2.7 Contacts 연락처--------*/
 .map_contact {
 	width: 100%;
 	height: 465px;
@@ -5781,8 +5896,10 @@ deg
 	font-weight: 500;
 	color: #e3464c;
 }
-
+/* =============================================================== */
+/* 404 페이지  */
 /*-------- 2.8 404 page --------*/
+/* =============================================================== */
 #error_page {
 	width: 100%;
 	height: 650px;
@@ -5838,7 +5955,9 @@ deg
 		height: 500px;
 	}
 }
-
+/* =============================================================== */
+/* 검색바 에러 영역 */
+/* =============================================================== */
 .search_bar_error {
 	position: relative;
 	margin-bottom: 60px;
@@ -5883,8 +6002,9 @@ deg
 	background-color: #FFC107;
 	color: #333;
 }
+/* =============================================================== */
 
-/*-------- 2.9 Cart section --------*/
+/*-------- 2.9 Cart section   카트 영역--------*/
 .cart_section {
 	background: #0054a6 url(../img/pattern_1.svg) center bottom repeat-x;
 }
@@ -6013,7 +6133,9 @@ deg
 .bs-wizard>.bs-wizard-step.disabled a.bs-wizard-dot {
 	pointer-events: none;
 }
-
+/* =============================================================== */
+/* 테이블 카드 리스트 */
+/* =============================================================== */
 .table.cart-list {
 	margin-bottom: 0;
 }
@@ -6088,7 +6210,9 @@ deg
 		text-align: left !important;
 	}
 }
-
+/* =============================================================== */
+/* 첫번제 카트 영역 */
+/* =============================================================== */
 .thumb_cart {
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
@@ -6111,7 +6235,10 @@ deg
 		display: none;
 	}
 }
-
+/* =============================================================== */
+/* =============================================================== */
+/* 아이템 카트 영역 */
+/* =============================================================== */
 .item_cart {
 	display: inline-block;
 	margin: 20px 0 0 15px;
@@ -6123,7 +6250,10 @@ deg
 		margin: 5px 0 0 0;
 	}
 }
-
+/* =============================================================== */
+/* =============================================================== */
+/* 총합 카트 영역 */
+/* =============================================================== */
 #total_cart {
 	font-size: 24px;
 	font-size: 1.5rem;
@@ -6137,7 +6267,10 @@ deg
 #total_cart span {
 	font-weight: 600;
 }
-
+/* =============================================================== */
+/* =============================================================== */
+/*  카트  리스트 영역 */
+/* =============================================================== */
 ul.cart_details {
 	margin: 0 0 25px 0;
 	padding: 0 0 15px 0;
@@ -6151,7 +6284,9 @@ ul.cart_details li {
 ul.cart_details li span {
 	float: right;
 }
-
+/* =============================================================== */
+/* 폼 타이틀 영역 */
+/* =============================================================== */
 .form_title {
 	position: relative;
 	padding-left: 55px;
@@ -6199,7 +6334,10 @@ ul.cart_details li span {
 	font-size: 0.75rem;
 	line-height: 14px;
 }
-
+/* =============================================================== */
+/* =============================================================== */
+/* 카드 지불 영역 */
+/* =============================================================== */
 .cards-payment {
 	margin-top: 28px;
 }
@@ -6209,7 +6347,7 @@ ul.cart_details li span {
 		display: none;
 	}
 }
-
+/* =============================================================== */
 .box_cart .step {
 	padding: 15px 55px 0 55px;
 	margin: 0 0 0 0;
@@ -6220,7 +6358,7 @@ ul.cart_details li span {
 		padding: 15px 0 0 0;
 	}
 }
-
+/* =============================================================== */
 .message {
 	background-color: #f8f8f8;
 	padding: 15px;
@@ -6230,7 +6368,7 @@ ul.cart_details li span {
 	-ms-border-radius: 3px;
 	border-radius: 3px;
 }
-
+/* =============================================================== */
 .message p {
 	margin: 0;
 }
@@ -6296,8 +6434,9 @@ ul.cart_details li span {
 .apply-coupon .form-control {
 	padding: 0px 12px;
 }
-
-/*-------- 2.10 Media Gallery --------*/
+/* =============================================================== */
+/*-------- 2.10 Media Gallery       갤러리 --------*/
+/* =============================================================== */
 .grid ul {
 	margin: 0 0 25px 0;
 	padding: 0;
@@ -6455,8 +6594,9 @@ ul.cart_details li span {
 .mfp-zoom-in.mfp-removing.mfp-bg {
 	opacity: 0;
 }
-
-/*-------- 2.11 Faq --------*/
+/* =============================================================== */
+/*-------- 2.11 Faq    고객센터--------*/
+/* =============================================================== */
 .box_style_cat {
 	background: #fff;
 	border: 1px solid #ededed;
@@ -6655,8 +6795,9 @@ ul.list_3 li:before {
 	-moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
 	box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
 }
-
-/*-------- 2.12 Adventure --------*/
+/* =============================================================== */
+/*-------- 2.12 Adventure   액티브 영역--------*/
+/* =============================================================== */
 .header-video.adventure .wrapper {
 	padding-top: 60px;
 	text-align: left;
@@ -6798,7 +6939,9 @@ a.grid_item.latest_adventure em {
 	font-weight: 500;
 	font-style: normal;
 }
-
+/* =============================================================== */
+/* 배너   */
+/* =============================================================== */
 .banner {
 	background: url(../img/banner_bg_desktop.jpg) center center no-repeat;
 	-webkit-background-size: cover;
@@ -6850,7 +6993,9 @@ a.grid_item.latest_adventure em {
 	font-size: 21px;
 	font-size: 1.3125rem;
 }
-
+/* =============================================================== */
+/* 문의 전화 영역 */
+/* =============================================================== */
 .call_section.adventure {
 	background: url(../img/bg_call_action_adventure.jpg) center center
 		no-repeat fixed;
@@ -7040,8 +7185,8 @@ ul.list_feat li p {
 	margin: 0;
 	color: #777;
 }
-
-/* Opacity mask when left open */
+/* =============================================================== */
+/* Opacity mask when left open   아직 모르겟음 */
 .layer {
 	position: fixed;
 	top: 0;
@@ -7207,9 +7352,11 @@ ul.list_feat li p {
 	-o-transform: translate(-50%, -50%) scale(1.05);
 	transform: translate(-50%, -50%) scale(1.05);
 }
-
+/* =============================================== */
 /*-------- 2.13 Home AirBnb --------*/
-/* Home single hero */
+/* Home single hero 홈 싱글 히어로 */
+/* 홈 싱글 히어로  version_3*/
+/* =============================================== */
 .hero_single.version_3 {
 	height: 690px;
 }
@@ -7306,8 +7453,9 @@ ul.list_feat li p {
 	-ms-border-radius: 3px;
 	border-radius: 3px;
 }
-
-/*-------- 2.14 Half screen map --------*/
+/* ======================================================================================= */
+/*-------- 2.14 Half screen map  절반 영역 지도 맵--------*/
+/* ======================================================================================= */
 /* Header */
 header.header.map_view {
 	padding: 12px 20px;
@@ -7342,6 +7490,7 @@ header.header.map_view .hamburger-inner, header.header.map_view .hamburger-inner
 
 .full-height {
 	height: 100%;
+	background-color: #f5f6fa;
 }
 
 @media ( max-width : 991px) {
@@ -7354,12 +7503,16 @@ header.header.map_view .hamburger-inner, header.header.map_view .hamburger-inner
 	height: 100%;
 	min-height: 100%;
 	padding-top: 62px;
+
+
 }
+
 
 @media ( max-width : 991px) {
 	.row-height {
-		height: auto;
-		padding-top: 50px;
+		height: 100%;
+  		min-height: 100%;
+		padding-top: 62px;
 	}
 }
 
@@ -7391,7 +7544,7 @@ header.header.map_view .hamburger-inner, header.header.map_view .hamburger-inner
 	height: 100%;
 	min-height: 100%;
 	overflow-y: scroll;
-	background-color: #f8f8f8;
+	background-color: #f5f6fa;
 }
 
 @media ( max-width : 991px) {
@@ -7416,14 +7569,11 @@ header.header.map_view .hamburger-inner, header.header.map_view .hamburger-inner
 }
 
 .search_map_wp input[type='submit'] {
-	background-color: #FFC107;
-	color: #222;
+	background-color: #000000;
+	color: #ffffff;
 }
 
-.search_map_wp input[type='submit']:hover {
-	background-color: #32a067;
-	color: #fff;
-}
+
 
 a.btn_search_map_view {
 	background: url(../img/search.svg) no-repeat center center;
@@ -7438,7 +7588,7 @@ a.btn_search_map_view {
 	padding: 10px 0;
 	margin: 0 -15px;
 	color: #fff;
-	background: #0054a6;
+	background: #fbbc42;
 	position: relative;
 	z-index: 99999999 !important;
 }
@@ -7696,8 +7846,9 @@ a.address:hover {
 .rangeslider__fill {
 	background: #fc5b62 !important;
 }
-
-/*-------- 2.15 Autocomplete Address Search --------*/
+/* ======================================================================================= */
+/*-------- 2.15 Autocomplete Address Search  주소 자동 완성 검색--------*/
+/* ======================================================================================= */
 .pac-container {
 	margin-top: 5px;
 	border-top: none !important;
@@ -7716,7 +7867,7 @@ a.address:hover {
 	color: #555;
 }
 
-/*-------- 2.16 OpenStreet Map --------*/
+/*-------- 2.16 OpenStreet Map    오픈스트리트맵--------*/
 .leaflet-map-pane, .leaflet-tile, .leaflet-marker-icon,
 	.leaflet-marker-shadow, .leaflet-tile-pane, .leaflet-tile-container,
 	.leaflet-overlay-pane, .leaflet-shadow-pane, .leaflet-marker-pane,
@@ -7862,7 +8013,7 @@ a.address:hover {
 	margin-right: 10px;
 }
 
-/* zoom and fade animations */
+/* zoom and fade animations  줌 앤 페이드 애니메이션*/
 .leaflet-fade-anim .leaflet-tile, .leaflet-fade-anim .leaflet-popup {
 	opacity: 0;
 	-webkit-transition: opacity 0.2s linear;
@@ -8439,7 +8590,7 @@ solid
 }
 
 /*============================================================================================*/
-/* 3.  COMMON */
+/* 3.  COMMON   공통*/
 /*============================================================================================*/
 /*-------- 3.1 Misc --------*/
 @media ( min-width : 1400px) {
@@ -8449,7 +8600,7 @@ solid
 		padding-right: 60px;
 	}
 }
-
+/*============================================================================================*/
 .opacity-mask {
 	width: 100%;
 	height: 100%;
@@ -8474,11 +8625,11 @@ solid
 .form-group {
 	position: relative;
 }
-
+/*============================================================================================*/
 .bg_color_1 {
 	background-color: #fff;
 }
-
+/*============================================================================================*/
 .box_1 {
 	background-color: #121921;
 	color: #fff;
@@ -8530,7 +8681,7 @@ solid
 	font-size: 18px;
 	font-size: 1.125rem;
 }
-
+/*============================================================================================*/
 .box_faq i {
 	font-size: 36px;
 	font-size: 2.25rem;
@@ -8539,7 +8690,7 @@ solid
 	top: 0;
 	color: #999;
 }
-
+/*============================================================================================*/
 .custom-select-form .nice-select {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -8969,8 +9120,51 @@ ul.bullets li:before {
 	left: 0;
 	top: 0;
 }
+/* =============================================================== */
+/*-------- 3.4 Spacing 간격에 대한거 --------*/
+/* =============================================================== */
+/* ============================ 좌우================================== */
+.add_left_15 {
+	margin-left: 15px;
+}
 
-/*-------- 3.4 Spacing --------*/
+.add_left_30 {
+	margin-left: 30px;
+}
+
+.add_left_45 {
+	margin-left: 45px;
+}
+
+.add_left_60 {
+	margin-left: 60px;
+}
+
+.add_left_75 {
+	margin-left: 75px;
+}
+
+.add_right_10 {
+	margin-right: 10px;
+}
+
+.add_right_15 {
+	margin-right: 15px;
+}
+
+.add_right_20 {
+	margin-right: 20px;
+}
+
+.add_right_30 {
+	margin-right: 30px;
+}
+
+.add_right_60 {
+	margin-right: 60px;
+}
+
+/* ============================아래 위================================== */
 .add_bottom_15 {
 	margin-bottom: 15px;
 }
@@ -9010,6 +9204,29 @@ ul.bullets li:before {
 .add_top_60 {
 	margin-top: 60px;
 }
+.add_top_70 {
+	margin-top: 70px;
+}
+.add_top_80 {
+	margin-top: 80px;
+}
+.add_top_90 {
+	margin-top: 90px;
+}
+
+
+.add_top_220 {
+	margin-top: 220px;
+}
+@media ( max-width : 575px) {
+.add_top_220 {
+	margin-top: 0px;
+	}
+.add_top_70{
+	margin-top: 30px;
+}
+
+
 
 .more_padding_left {
 	padding-left: 40px;
@@ -9036,15 +9253,35 @@ ul.bullets li:before {
 .margin_60_35 {
 	padding-top: 60px;
 	padding-bottom: 35px;
-}
+	left: 50%;
 
+
+}
+.margin_consent {
+	padding-top: 60px;
+	padding-bottom: 35px;
+	left: 50%;
+	margin-top: 10%;
+
+}
+.main{
+	background-color: #f5f6fa;
+}
+/* ======================== 크게크게===================================== */
 @media ( max-width : 575px) {
 	.margin_60_35 {
 		padding-top: 30px;
 		padding-bottom: 5px;
+		margin-left: 0%;
+		margin-right: 0%;
+		top: 0;
+
+	}
+	h5{
+	font-size: 1.6em;
 	}
 }
-
+/* ======================== 크게크게 상하 80===================================== */
 .margin_80 {
 	padding-top: 80px;
 	padding-bottom: 80px;
@@ -9054,6 +9291,8 @@ ul.bullets li:before {
 	.margin_80 {
 		padding-bottom: 60px;
 		padding-top: 60px;
+		left: 0;
+		top: 0;
 	}
 }
 
@@ -9073,6 +9312,8 @@ ul.bullets li:before {
 	.margin_80_55 {
 		padding-top: 60px;
 		padding-bottom: 35px;
+		left: 0;
+		top: 0;
 	}
 }
 
@@ -9080,6 +9321,8 @@ ul.bullets li:before {
 	.margin_80_55 {
 		padding-top: 45px;
 		padding-bottom: 15px;
+		left: 0;
+		top: 0;
 	}
 }
 
@@ -9145,8 +9388,11 @@ ul.bullets li:before {
 		display: none !important;
 	}
 }
+/* =============================================================== */
+/* =============================================================== */
+/*-------- 3.5 Block reveal   블록 노출 --------*/
 
-/*-------- 3.5 Block reveal --------*/
+/* =============================================================== */
 .animated .block-reveal {
 	height: auto;
 	overflow: hidden;
@@ -9464,7 +9710,8 @@ to {
 }
 
 }
-/*-------- 3.6 Cookie bar --------*/
+/* =============================================================== */
+/*-------- 3.6 Cookie bar  쿠키바--------*/
 #cookie-bar {
 	background: rgba(0, 0, 0, 0.8);
 	height: auto;
@@ -9710,7 +9957,7 @@ a.social_bt {
 	-ms-border-radius: 3px;
 	border-radius: 3px;
 	text-align: center;
-	color: #fff;
+	color: #392325;
 	min-width: 200px;
 	margin-bottom: 15px;
 	display: block;
@@ -9730,14 +9977,14 @@ a.social_bt:hover {
 	filter: brightness(115%);
 }
 
-a.social_bt.facebook:before, a.social_bt.google:before, a.social_bt.linkedin:before
+a.social_bt.facebook:before, a.social_bt.kakao:before, a.social_bt.linkedin:before
 	{
 	font-family: 'ElegantIcons';
 	position: absolute;
 	left: 12px;
 	top: 10px;
 	font-size: 1rem;
-	color: #fff;
+	color: #392325;
 }
 
 a.social_bt.facebook {
@@ -9748,12 +9995,12 @@ a.social_bt.facebook:before {
 	content: "\e093";
 }
 
-a.social_bt.google {
-	background-color: #DC4E41;
+a.social_bt.kakao {
+	background-color: #fee800;
 }
 
-a.social_bt.google:before {
-	content: "\e096";
+a.social_bt.kakao:before {
+	/* content: "\e096"; */
 	top: 12px;
 }
 
@@ -9787,7 +10034,7 @@ a.social_bt.google:before {
 	opacity: 0.8 !important;
 }
 
-/*-------- 3.8 Input Switcher --------*/
+/*-------- 3.8 Input Switcher  입력 전환기--------*/
 .switchery {
 	background-color: #fff;
 	border: 1px solid #dfdfdf;
@@ -9841,7 +10088,7 @@ a.social_bt.google:before {
 	width: 40px;
 }
 
-/*-------- 3.9 Datepicker --------*/
+/*-------- 3.9 Datepicker   파일 선택기--------*/
 .applyBtn.btn.btn-sm.btn-primary {
 	background-color: #fc5b62;
 	border: 0;
