@@ -87,3 +87,40 @@
 }
 
 /* 우명씨 주석 end */
+
+/* 승훈 CUSTOM */
+#container-fluid{
+   width:700px;
+   padding-right:15px;
+   padding-left:15px;
+   margin-right:auto;
+   margin-left:auto;
+}
+
+#qnaboard_question_main{
+   font-size : 14px;
+   width : 100%;
+   height : 60px;
+   
+   
+}
+#qnaboard_question_id{
+   margin-top : 3%;
+   margin-left : 3%;
+   width:85%;
+   height : 60px;
+   float: left;
+}
+
+#qnaboard_question_date{
+   margin-top : 3%;
+   width:12%;
+   height : 60px;
+   float : right;
+}
+#qnaboard{
+   margin-top:2%;
+   margin-bottom: 5%;
+}
+
+/* 승훈 CUSTOM END */

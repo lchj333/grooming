@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,58 +26,73 @@
   <link href="${pageContext.request.contextPath}/resources/mypage/vendor/dropzone.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/mypage/css/date_picker.css" rel="stylesheet">
   <!-- WYSIWYG Editor -->
-<<<<<<< HEAD
-  <link href="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.css" rel="stylesheet" >
-=======
-  <link href="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.css" rel="stylesheet">
->>>>>>> c886cff1ee25b3e13b77ef795d7b4dd4d25691ad
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.css">
   <!-- Your custom styles -->
   <link href="${pageContext.request.contextPath}/resources/mypage/css/custom.css" rel="stylesheet">
-	
+     
+
 </head>
 
 <body class="fixed-nav sticky-footer" id="page-top">
-<%-- <jsp:include page="../header.jsp"></jsp:include> --%>
-  <jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
-  
-  <div class="content-wrapper">
+<jsp:include page="../include/header.jsp"/>
+  <!-- /Navigation-->
+  <div class="content-wrapper" id="grooming_noticeboard_write_maindiv">
     <div class="container-fluid">
-      <!-- Breadcrumbs-->
-     
-		<div class="box_general padding_bottom">
+		<div class="box_general padding_bottom" >
+			<!-- 페이지 TITLE -->
 			<div class="header_box version_2">
-				<h2><i class="fa fa-file"></i>자주하는질문</h2>
+				<h2><i class="fa fa-file"></i>공지사항</h2>
 			</div>
-		
+     		 <!-- 제목-->
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
-						<label>제목</label>
-						<input type="text" class="form-control" placeholder="제목을 입력하세요.">
+						<label>제 목</label>
+						<input type="text" class="form-control" placeholder="제목을 입력하세요">
 					</div>
 				</div>
+	
 			</div>
-			<!-- /row-->
-
-			<!-- /row-->
+			<!-- 내용-->
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-group">
-						<label>문의내용</label>
+						<label>내 용</label>
 						<div class="editor"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- /box_general-->
-		<p><a href="#0" class="btn_1 medium">문의하기</a></p>
+		<!-- /box_general-->
+		<input type="submit" value="저장" class="btn_1 medium" />
+		
 	  </div>
 	  <!-- /.container-fluid-->
    	</div>
+    <!-- /.container-wrapper-->
+    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
     <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="login.html">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Bootstrap core JavaScript-->
     <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
@@ -91,6 +107,10 @@
 	<script src="<c:url value='/resources/mypage/vendor/jquery.magnific-popup.min.js'/>"></script>
     <!-- Custom scripts for all pages-->
     <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
+	<!-- Custom scripts for this page-->
+	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
+	<script>$('input.date-pick').datepicker();</script>
   <!-- WYSIWYG Editor -->
   <script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
   <script>
@@ -103,10 +123,11 @@
       ['fontsize', ['fontsize']],
       ['para', ['ul', 'ol', 'paragraph']]
       ],
-        placeholder: '내용을 입력하세요.',
+        placeholder: '내용을 입력하세요',
         tabsize: 2,
         height: 500
       });
     </script>
+<jsp:include page="../include/footer.jsp"/>
 </body>
 </html>
