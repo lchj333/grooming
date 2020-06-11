@@ -22,7 +22,11 @@
   <!-- Icon fonts-->
   <link href="${pageContext.request.contextPath}/resources/mypage/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Plugin styles -->
+<<<<<<< HEAD
   <link href="${pageContext.request.contextPath}/resources/mypagen/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+=======
+  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+>>>>>>> master
   <link href="${pageContext.request.contextPath}/resources/mypage/vendor/dropzone.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/mypage/css/date_picker.css" rel="stylesheet">
   <!-- WYSIWYG Editor -->
@@ -125,7 +129,10 @@
       ],
         placeholder: '내용을 입력하세요',
         tabsize: 2,
+<<<<<<< HEAD
  
+=======
+>>>>>>> master
         height: 500
       });
     </script>
