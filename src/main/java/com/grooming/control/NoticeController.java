@@ -136,7 +136,7 @@ public class NoticeController {
 		ss.setAttribute("pn", num);
 		model.addAttribute("select", num);
 		
-		return "gr_noticeboard_list";
+		return "board/grooming_noticeboard_list";
 		//return "board/grooming_noticeboard_list"; 
 	}
 	
