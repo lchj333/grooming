@@ -9,11 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.grooming.dao.MemberDAO;
 import com.grooming.dto.MemberDTO;
@@ -30,7 +32,7 @@ public class MemberController {
 	// 회원가입 GET
 	@GetMapping(value = "/join")
 	public String insertOk() {
-		return "joinForm";
+		return "grooming_register_form";
 	}
 	
 	
@@ -44,9 +46,6 @@ public class MemberController {
 		
 		String mb_pw = req.getParameter("mb_pw");
 		String securityPw = securityService.encryptSHA256(mb_pw);
-		
-		System.out.println(mb_pw);
-		System.out.println(securityPw);
 		
 		memberDto.setMb_pw(securityPw);
 		
@@ -82,7 +81,6 @@ public class MemberController {
 		
 		MemberDTO dto = dao.selectOne(mb_id);
 		
-		//System.out.println(dto);
 		
 		model.addAttribute("deinfo", dto);
 		
@@ -107,38 +105,85 @@ public class MemberController {
 		int dto = dao.idCheck(mb_id);
 		
 		model.addAttribute("idCheck", dto);
+		model.addAttribute("testId", mb_id);
 		
 		System.out.println(dto);
 		
-		return "mb_id_check";
+		return "grooming_register_form";
+	}
+
+	
+	// 아이디 찾기 페이지 들어오기
+	@RequestMapping(value = "mb_id_find")
+	public String idFind(@RequestParam(value = "mb_name", required = false)String mb_name,
+						@RequestParam(value = "mb_email", required = false)String mb_email,
+						Model model) {
+		
+		model.addAttribute("name", mb_name);
+		model.addAttribute("email", mb_email);
+		
+		
+		return "grooming_login_id_find_form";
 	}
 	
-	// 아이디 찾기
-	@RequestMapping(value = "/mb_id_find")
-	public String idFind(@RequestParam(value = "mb_name", required = false)String mb_id,
+	// 아이디찾기 
+	@RequestMapping(value = "mb_id_findOk")
+	public String idFind1(@RequestParam(value = "mb_name", required = false)String mb_name,
 						 @RequestParam(value = "mb_email", required = false)String mb_email,
-						 Model model, MemberDTO memberDto) {
-		int dto = dao.idFind(memberDto);
+						 Model model) {
+		MemberDTO dd = new MemberDTO();
+		dd.setMb_email(mb_email);
+		dd.setMb_name(mb_name);
 		
+		System.out.println(mb_email);
+		System.out.println(mb_name);
+		
+		MemberDTO dto = dao.idFind(dd);
 		model.addAttribute("idFind", dto);
 		
 		System.out.println(dto);
 		
-		return "mb_id_find";
+		
+		
+		return "grooming_login_id_find_step2_form";
 	}
 	
+	// 비밀번호 찾기 페이지 들어오기
+		@RequestMapping(value = "mb_pw_find")
+		public String idPw(@RequestParam(value = "mb_id", required = false)String mb_id,
+							@RequestParam(value = "mb_email", required = false)String mb_email,
+							Model model) {
+			
+			model.addAttribute("name", mb_id);
+			model.addAttribute("email", mb_email);
+			
+			
+			return "grooming_login_pw_find_form";
+		}
+	
+	
 	// 비밀번호 찾기
-	@RequestMapping(value = "/mb_pw_find")
-	public String idPw(@RequestParam(value = "mb_id", required = false)String mb_id,
+	@RequestMapping(value = "mb_pw_findOk")
+	public String idPw1(@RequestParam(value = "mb_id", required = false)String mb_id,
 					   @RequestParam(value = "mb_email", required = false)String mb_email,
-					   Model model, MemberDTO memberDto) {
-		int dto = dao.idPw(memberDto);
+					   Model model) {
 		
-		model.addAttribute("idPw", dto);
+		MemberDTO dd = new MemberDTO();
+		
+		dd.setMb_id(mb_id);
+		dd.setMb_email(mb_email);
+		
+		
+		System.out.println(mb_email);
+		System.out.println(mb_id);
+		
+		MemberDTO dto = dao.pwFind(dd);
+		
+		model.addAttribute("pwFind", dto);
 		
 		System.out.println(dto);
 		
-		return "mb_pw_find";
+		return "grooming_login_pw_find_step2_form";
 	}
 	
 	// 비밀번호 체크
@@ -167,17 +212,25 @@ public class MemberController {
 	
 	// 비밀번호 변경
 	@RequestMapping(value = "changePw")
-	public String changePw(HttpServletRequest req, Model model,MemberDTO memberDto) {
+	public String changePw(@RequestParam(value = "mb_id", required = false)String mb_id,
+							@RequestParam(value = "mb_pw", required = false)String mb_pw,
+							Model model) {
+		
+		MemberDTO dd = new MemberDTO();
+		
+		
 		SecurityService securityService = new SecurityService();
 		
-		String mb_pw = req.getParameter("mb_pw");
-		String securityPw = securityService.encryptSHA256(mb_pw);
+		dd.setMb_id(mb_id);
 		
-		memberDto.setMb_pw(securityPw);
+		dd.setMb_pw(securityService.encryptSHA256(mb_pw));
 		
-		dao.changePw(memberDto);
+		System.out.println(dd.getMb_id());
+		System.out.println(dd.getMb_pw());
 		
-		return "changePw";
+		dao.changePw(dd);
+		
+		return "home";
 		
 	}
 	
