@@ -5,167 +5,120 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>addlist</title>
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-function openDaumPost(){
-    new daum.Postcode({
-        oncomplete: function(data) {
-            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
-            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
-            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-            document.getElementById('adress-text').value = data.zonecode;
-            document.getElementById("addr1").value = data.roadAddress;
-             
-        }
-    }).open();
-}// openDaumPost() end
-</script>
+<title>pointCharging</title>
+</head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(function(){
-		
-		var num = /[^0-9]/g;
-		
-		$("#btn").click(function(){
-			
-			if($("#reg_shopname").val() == ""){
-		    	alert("가게이름 입력해주세요");
-			    $("#reg_shopname").focus();
-			    return false;
-			}
-			
-			if($("#reg_con").val() == ""){
-		    	alert("상세내용을 적어주세요");
-			    $("#reg_con").focus();
-			    return false;
-			}
-			
-			if($("#reg_img").val() == ""){
-		    	alert("썸네일 이미지를 등록해주세요");
-			    $("#reg_img").focus();
-			    return false;
-			}
-			
-			if($("#addr1").val() == ""){
-		    	alert("주소를 입력해주세요");
-			    $("#addr1").focus();
-			    return false;
-			}
-			
-			if($("#addr2").val() == ""){
-		    	alert("상세주소를 입력해주세요");
-			    $("#addr2").focus();
-			    return false;
-			}
-			
-			if($("#reg_price").val() == ""){
-		    	alert("최소가격을 입력해주세요");
-			    $("#reg_price").focus();
-			    return false;
-			}
-							
-			document.frm.action = "<c:url value='/mypage/registShop'/>";
-			document.frm.submit();
-		});
 
+	/* 라디오 버튼 클릭시 value값 입력 */
+	$(function(){
+		$("input:radio[name=point]").click(function(){
+			 if($('input:radio[id=point1]').is(':checked')==true){
+				 $('#payment-amount').val($('input:radio[id=point1]').val());
+			 }else if($('input:radio[id=point2]').is(':checked')==true){
+				 $('#payment-amount').val($('input:radio[id=point2]').val());
+			 }else if($('input:radio[id=point3]').is(':checked')==true){
+				 $('#payment-amount').val($('input:radio[id=point3]').val());
+			 }else if($('input:radio[id=point4]').is(':checked')==true){
+				 $('#payment-amount').val($('input:radio[id=point4]').val());
+			        }
+			 });
 	});
+	
+	
+	/* 유효성 검사  */
+	$(function(){
+		$("#btn").click(function(){
+			if($('#payment-amount').val()==""){
+				alert("충전금액을 선택해주세요.");
+			}else{
+				document.frm.action = "<c:url value='/survey/survey.ok'/>";
+				document.frm.submit();
+			}
+		});
+	});
+		
+		
+
+
 </script>
-</head>
+
 <body>
 
 <jsp:include page="mypage_nav.jsp"></jsp:include>
 
  <div class="content-wrapper">
     <div class="container-fluid">
-    	<form action="" method="post" name="frm" enctype="multipart/form-data">
 	      <!-- Breadcrumbs-->
 	      <ol class="breadcrumb">
 	        <li class="breadcrumb-item">
-	          <span>미용사</span>
+	          <a href="#">미용사</a>
 	        </li>
-	        <li class="breadcrumb-item active">가게 등록</li>
+	        <li class="breadcrumb-item active">포인트</li>
 	      </ol>
 			<div class="box_general padding_bottom">
 				<div class="header_box version_2">
-					<h2><i class="fa fa-file"></i>가게등록</h2>
+					<h2><i class="fa fa-dollar"></i>포인트충전</h2>
 				</div>
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label>가게이름</label>
-							<input type="text" id="reg_shopname" class="form-control" name="reg_shopname" placeholder="가게이름" > 
+							<input type="radio" name="point" id="point1" value="10000"/> <span>10000point(10000원)</span>
 						</div>
 					</div>
-				</div>
-				
-				<!-- /row-->
-				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-6">
 						<div class="form-group">
-							<label>상세내역</label>
-							<textarea name="reg_con" id="reg_con" class="editor">
-							</textarea>
-						</div>
-					</div>
-				</div>
-	
-	
-				
-				<!-- 썸네일 이미지 input file -->
-				<div class="row">
-					<div class="col-md-12">
-						<div class="form-group">
-							<label>썸네일 이미지</label>
-							<br />
-							<input type="file" name="file" id="reg_img" />
+							<input type="radio" name="point" id="point2" value="50000" /> <span>50000point(50000원)</span>
 						</div>
 					</div>
 				</div>
 				<!-- /row-->
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<input type="radio" name="point" id="point3" value="100000" /> <span>100000point(100000원)</span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<input type="radio" name="point" id="point4" value="200000" /> <span>200000point(200000원)</span>
+						</div>
+					</div>
+				</div>
+
 			</div>
 			<!-- /box_general-->
+			
+   		<form action="#" name="frm">
 			
 			<div class="row">
 					<div class="col-md-6">
 						<div class="box_general padding_bottom">
 							<div class="header_box version_2">
-								<h2><i class="fa fa-map"></i>가게 위치</h2>
+								<h2>결제금액</h2>
 							</div>
 							<div class="form-group">
-								<label>우편번호</label>
-								<div id="address-search-outline">
-									<input class="form-control" id="adress-text" type="text" readonly="readonly" placeholder="jstl로 주소" style="background-color: #e9ecef">
-									<input class="form-control" id="adress-btn" type="button" value="검색" onclick="openDaumPost()">
-								</div>
-							</div>
-							<div class="form-group">
-								<label>도로명주소</label>
-								<input class="form-control" name="addr1" id="addr1" type="text" readonly="readonly" placeholder="jstl로 주소" style="background-color: #e9ecef">
-							</div>
-							<div class="form-group">
-								<label>상세주소</label>
-								<input class="form-control" name="addr2" id="addr2" type="text">
+								<input type="text" name="payment-amount" id="payment-amount" readonly="readonly" style="text-align: right;" />
 							</div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="box_general padding_bottom">
 							<div class="header_box version_2">
-								<h2><i class="fa fa-dollar"></i>가격</h2>
+								<h2>결제수단</h2>
 							</div>
 							<div class="form-group">
-								<label>최소가격</label>
-								<input class="form-control" type="text" name="reg_price" id="reg_price" placeholder="숫자만 입력" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
+								<input type="radio" id="point5" checked="checked" /> <span>카카오페이</span>
 							</div>
 						</div>
 					</div>
 				</div>
+			
 				<p id="myprofile-savebtn">
 					<input type="button" id="btn" value="저장" class="btn_1 medium" />
 				</p>
-			</form>
-		</div>
+	  	</form>
+	  </div>
 	  <!-- /.container-fluid-->
    	</div>
     <!-- /.container-wrapper-->
@@ -219,9 +172,8 @@ function openDaumPost(){
         height: 200
       });
     </script>
-    
-    	<!-- dropzone -->
-	<script src="./custome_dropzone.js"></script>
+	
+
 	
 </body>
 </html>
