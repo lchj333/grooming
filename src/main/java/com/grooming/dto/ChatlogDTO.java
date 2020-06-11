@@ -2,16 +2,16 @@ package com.grooming.dto;
 
 import java.util.Date;
 
-public class Chatlog {
+public class ChatlogDTO {
 	private String mb_id;
 	private String ch_log;
 	private Date ch_lastchat;
 	
 	// 기본생성자
-	public Chatlog() {}
+	public ChatlogDTO() {}
 
 	// 모든항목 추가 생성자
-	public Chatlog(String mb_id, String ch_log, Date ch_lastchat) {
+	public ChatlogDTO(String mb_id, String ch_log, Date ch_lastchat) {
 		super();
 		this.mb_id = mb_id;
 		this.ch_log = ch_log;
