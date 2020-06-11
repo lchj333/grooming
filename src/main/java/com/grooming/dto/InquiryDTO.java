@@ -10,17 +10,19 @@ public class InquiryDTO {
 	private String in_title;
 	private String in_con;
 	private Date in_nowdate;
+	private String in_category;
 	
 	private String at_file;
 	//생성자
 	public InquiryDTO() {}
-	public InquiryDTO(int in_num, String mb_id, String ad_id, String in_title, String in_con, Date in_nowdate) {
+	public InquiryDTO(int in_num, String mb_id, String ad_id, String in_title, String in_con, Date in_nowdate, String in_category) {
 		this.in_num = in_num;
 		this.mb_id = mb_id;
 		this.ad_id = ad_id;
 		this.in_title = in_title;
 		this.in_con = in_con;
 		this.in_nowdate = in_nowdate;
+		this.in_category = in_category;
 	}
 	
 	// 문의하기첨부파일
@@ -66,6 +68,13 @@ public class InquiryDTO {
 	public void setIn_nowdate(Date in_nowdate) {
 		this.in_nowdate = in_nowdate;
 	}
+	public String getIn_category() {
+		return in_category;
+	}
+	public void setIn_category(String in_category) {
+		this.in_category = in_category;
+	}
+	
 	
 	public String getAt_file() {
 		return at_file;

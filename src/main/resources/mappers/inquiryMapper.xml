@@ -5,8 +5,8 @@
 <mapper namespace=" ">
 	<!-- C -->
 	<insert id="insertInquiry">
-		INSERT INTO GR_INQUIRY(MB_ID, AD_ID, IN_TITLE, IN_CON, IN_NOWDATE)
-		VALUES (#{mb_id}, 'admin', #{in_title}, #{in_con}, now())
+		INSERT INTO GR_INQUIRY(MB_ID, AD_ID, IN_TITLE, IN_CON, IN_NOWDATE, IN_CATEGORY)
+		VALUES (#{mb_id}, 'admin', #{in_title}, #{in_con}, NOW(), #{in_category})
 	</insert>
 	<!-- R -->
 	<select id="selectAllInquiry" resultType="InquiryDTO">
@@ -18,7 +18,7 @@
 	<!-- U -->
 	<update id="updateInquiry">
 		UPDATE GR_INQUIRY
-		SET IN_TITLE = #{in_title}, IN_CON = #{in_con}, IN_NOWDATE = now()
+		SET IN_TITLE = #{in_title}, IN_CON = #{in_con}, IN_NOWDATE = now(), IN_CATEGORY = #{in_category}
 		WHERE IN_NUM = #{in_num}
 	</update>
 	<!-- D -->
