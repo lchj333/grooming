@@ -24,6 +24,11 @@ public class DesignerDAO {
 		ss.insert("joinDesigner", designerDto);
 	}
 	
+	// ID로 미용사 정보 찾는 메소그
+	public DesignerDTO designerInfo(DesignerDTO designerDto) {
+		return ss.selectOne("designerInfo", designerDto);
+	}
+	
 	// 미용사 멤버 전체 조회
 	public List<DesignerDTO> selectDesignerAll(){
 		return ss.selectList("selectDesignerAll");
