@@ -31,7 +31,7 @@ public class PaylogController {
 		List<PaylogDTO> plist = dao.selectAllIPayed(dto);
 		m.addAttribute("plist", plist);
 		
-		return "payedList";
+		return "mypage/grooming_hairdresser_chargingDetails";
 	}
 	
 }

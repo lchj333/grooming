@@ -10,7 +10,7 @@ public class PaylogDTO {
 	private int pay_money;
 	
 	//생성자
-	public PaylogDTO() {}	
+	public PaylogDTO() {}
 	
 	public PaylogDTO(int de_licencenum, Date pay_date, int pay_money) {
 		super();

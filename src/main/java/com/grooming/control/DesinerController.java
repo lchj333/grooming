@@ -78,7 +78,7 @@ public class DesinerController {
 		List<DesignerDTO> olist = dao.selectPointOne(dto);
 		m.addAttribute("olist", olist);
 		
-		return "selectonelist";
+		return "mypage/grooming_hairdresser_chargingDetails";
 	}
 	
 	

@@ -37,32 +37,41 @@
 		<!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i>충전내역</div>
+          <i class="fa fa-table"></i>충충전내역</div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
+                  <th>라이센스 넘버</th>
                   <th>날짜</th>
-                  <th>충전금액</th>
                   <th>충전포인트</th>
                 </tr>
               </thead>
-              <tfoot>
+              
+              <tbody>
+              	<c:forEach var="p" items="${plist }">
+	                <tr>
+	                  <td>${p.de_licencenum }</td>
+	                  <td>${p.pay_date }</td>
+	                  <td>${p.pay_money }원</td>
+	                  <c:set var="total" value="${total + p.pay_money }"/>
+	                </tr>
+	           	</c:forEach>
+	           	
+	           	<tfoot>
                 <tr>
-                  <th>날짜</th>
+                  <th></th>
                   <th>총충전금액</th>
                   <th>총충전포인트</th>
                 </tr>
+	               <tr>
+	               	<td></td>
+	               	<td><c:out value="${total }" />원</td>
+	               	<td><c:out value="${total }" />포인트</td>
+	               </tr>
               </tfoot>
-              <tbody>
-              	<c:forEach var="i" begin="1" end="26">
-	                <tr>
-	                  <td>20200506</td>
-	                  <td>30000원</td>
-	                  <td>30000포인트</td>
-	                </tr>
-	           	</c:forEach>
+	           	
               </tbody>
             </table>
           </div>
