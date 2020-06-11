@@ -3,6 +3,7 @@ package com.grooming.control;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.print.DocFlavor.STRING;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.annotations.Param;
@@ -37,29 +38,19 @@ public class DesinerController {
 	// 결제 후 충전 금액 입력 로직 + 결제정보 테이블에 값 입력 충전금액 대비 충전포인트 비율은 1:1
 	@RequestMapping(value = "/update")
 	public String updatewe() {
-		return "updateForm";
+		return "mypage/grooming_hairdresser_pointCharging";
 	}
-
-	@PostMapping(value = "/update2")
-	public String updatewe2(@RequestParam(value = "de_point")int point1, @RequestParam(value = "de_licencenum")int point2, Model m) {
-		m.addAttribute("point1", point1);
-		m.addAttribute("point2", point2);
-			
-		return "updatePay";
-	}
-
-	@PostMapping(value = "/updateOK")
+	//데이터 베이스에 충전금액 입력 메소드
+	@PostMapping(value = "/updateok")
 	public String updateDes(
-	@RequestParam(value = "pt1")int pt1, @RequestParam(value = "pt2")int pt2,
-	DesignerDTO dto, PaylogDTO dto2) {	
+	@RequestParam(value = "payment-amount")int pt1, @RequestParam(value = "de_licencenum")int pt2,
+	DesignerDTO dto) {
 		dto.setDe_point(pt1); dto.setDe_licencenum(pt2); 
-		dto2.setDe_licencenum(pt2); dto2.setPay_money(pt1);
 		
 		dao.updateDes(dto);
 		dao.insertMoney(dto);
-
-
-		return "redirect:/list";
+		
+		return "mypage/grooming_admin_management";
 	}
 	//요기 까지 충전 금액 입력 로직입니다.
 	
