@@ -8,7 +8,7 @@
 		<div class="container margin_60_35">
 			<div class="row">
 				<div class="col-lg-5 col-md-12 p-r-5">
-					<p><img src="img/Grooming_logo_main2.png" class="add_top_15" width="150" height="36" alt="로고" id="footer-logo"></p>
+					<p><img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main2.png" class="add_top_15" width="150" height="36" alt="로고" id="footer-logo"></p>
 					<p>서울특별시 구로구 구트로 / TEL 02-740-7584 / FAX 02-740-2450 /<br /> e-mail: GROOMING @ gmail.com
 					<br /><strong>	COPYRIGHT 2020 GROOMING</strong></p>
 
@@ -46,13 +46,13 @@
 	</footer>
 	<!--/footer-->
 	<!-- COMMON SCRIPTS -->
-	<script src="js/common_scripts.js"></script>
-	<script src="js/main.js"></script>
-	<script src="assets/validate.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/main_resources/js/common_scripts.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/main_resources/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/main_resources/assets/validate.js"></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
-	<script src="js/markerclusterer.js"></script>
-	<script src="js/map_restaurants_half_screen.js"></script>
-	<script src="js/infobox.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/main_resources/js/markerclusterer.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/main_resources/js/map_restaurants_half_screen.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/main_resources/js/infobox.js"></script>
 
 
 </body>

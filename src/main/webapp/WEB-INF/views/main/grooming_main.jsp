@@ -22,17 +22,20 @@
 <body>
 <div id="page">
 		<!-- header -->
-		<jsp:include page="../include/header.jsp" />
+		<%-- <c:import url="../include/header.jsp"/> --%>
+		<%-- <jsp:include page="../include/header.jsp" /> --%>
+		<%@include file="../include/header.jsp" %>
+
 		<!-- header end -->
 
 		<!-- contents -->
 		<!-- =======================================================================================================================================================================================================================  -->
-		<main>
+		<div>
 			<section class="hero_single version_2" >
 				<div class="wrapper">
 					<div class="container margin_60_35" style="margin-bottom: 10%; text-align: center; padding-bottom: 7%; ">
 						<!-- jstl 로 이미지  -->
-						<img src="img/Grooming_300_200_LOGO.png" alt="Grooming_LOGO" class="add_top_220"/>
+						<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_300_200_LOGO.png" alt="Grooming_LOGO" class="add_top_220"/>
 						<form action="">
 							<div id="custom-search-input">
 								<div class="input-group">
@@ -48,7 +51,7 @@
 					</div>
 				</div>
 			</section>
-		</main>
+		</div>
 		<div id="toTop" style="display: none;"></div>
 		<!-- footer -->
 	<jsp:include page="../include/footer.jsp" />

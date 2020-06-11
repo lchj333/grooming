@@ -2,8 +2,9 @@
     pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
-
+<html>
  <head>
+ <title>sadasd</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,15 +19,17 @@
 
     <link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
 	<!-- 링크 정보  -->
-
-
+	
+	
+	
 </head>
 
+<body>
+
 		<header class="header map_view menu_fixed">
-			<div id="preloader"><div data-loader="circle-side"></div></div><!-- /Page Preload -->
 			<div id="logo">
 				<a href="grooming_main.jsp">
-					<img src="img/Grooming_logo_main.png" width="150" height="36" data-retina="true" alt="">
+					<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main.png" width="150" height="36" data-retina="true" alt="">
 				</a>
 			</div>
 			<ul id="top_menu">
@@ -103,3 +106,5 @@
 		<!-- /header -->
 
 </body>
+
+</html>
