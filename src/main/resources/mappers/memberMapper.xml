@@ -32,15 +32,15 @@
 	</select>
 	
 	<!-- name,Email 확인 -->
-	<select id="idFind" resultType="int">
-		select count(*)
+	<select id="idFind" parameterType="MemberDTO" resultType="MemberDTO">
+		select *
 		from gr_member
 		where mb_name = #{mb_name} and mb_email = #{mb_email}
 	</select>
 	
 	<!-- ID,Email 확인 -->
-	<select id="idPw" resultType="int">
-		select count(*)
+	<select id="pwFind" parameterType="MemberDTO" resultType="MemberDTO">
+		select *
 		from gr_member
 		where mb_id = #{mb_id} and mb_email = #{mb_email}
 	</select>
