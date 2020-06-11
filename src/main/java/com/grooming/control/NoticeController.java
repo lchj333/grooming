@@ -27,13 +27,13 @@ public class NoticeController {
 	NoticeDAO noticedao;
 	
 	//공지사항 전체보기
-	@RequestMapping(value="/noticeList")
-	public String noticeList(Model model) {
-		List<NoticeDTO> list = noticedao.selectList();
-		model.addAttribute("list", list);
-		return "gr_noticeboard_list";
-		//return "board/grooming_noticeboard_list";
-	}
+//	@RequestMapping(value="/noticeList")
+//	public String noticeList(Model model) {
+//		List<NoticeDTO> list = noticedao.selectList();
+//		model.addAttribute("list", list);
+//		return "gr_noticeboard_list";
+//		//return "board/grooming_noticeboard_list";
+//	}
 
 	// 상세내용 보기
 	@RequestMapping(value="/noticeDetail")
@@ -134,6 +134,7 @@ public class NoticeController {
 		
 		HttpSession ss = req.getSession();
 		ss.setAttribute("pn", num);
+		model.addAttribute("select", num);
 		
 		return "gr_noticeboard_list";
 		//return "board/grooming_noticeboard_list"; 
