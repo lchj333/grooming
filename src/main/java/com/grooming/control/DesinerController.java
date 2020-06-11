@@ -36,12 +36,12 @@ public class DesinerController {
 	}
 
 	// 결제 후 충전 금액 입력 로직 + 결제정보 테이블에 값 입력 충전금액 대비 충전포인트 비율은 1:1
-	@RequestMapping(value = "/update")
+	@RequestMapping(value = "mypage/pointcharging")
 	public String updatewe() {
 		return "mypage/grooming_hairdresser_pointCharging";
 	}
 	//데이터 베이스에 충전금액 입력 메소드
-	@PostMapping(value = "/updateok")
+	@PostMapping(value = "mypage/pointcharging")
 	public String updateDes(
 	@RequestParam(value = "payment-amount")int pt1, @RequestParam(value = "de_licencenum")int pt2,
 	DesignerDTO dto) {

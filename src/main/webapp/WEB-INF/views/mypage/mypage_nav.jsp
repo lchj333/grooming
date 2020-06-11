@@ -125,10 +125,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapsePay">
             <li>
-              <a href="grooming_hairdresser_pointCharging.jsp">포인트충전<span class="badge badge-pill badge-primary">6</span></a>
+              <a href="${pageContext.request.contextPath}/mypage/pointcharging">포인트충전<span class="badge badge-pill badge-primary">6</span></a>
             </li>
 			<li>
-              <a href="grooming_hairdresser_chargingDetails.jsp">충전내역<span class="badge badge-pill badge-success">6</span></a>
+              <a href="${pageContext.request.contextPath}/mypage/selectpayed">충전내역<span class="badge badge-pill badge-success">6</span></a>
             </li>
           </ul>
         </li>

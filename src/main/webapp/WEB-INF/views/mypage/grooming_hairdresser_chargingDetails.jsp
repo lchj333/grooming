@@ -71,7 +71,6 @@
 	               	<td><c:out value="${total }" />포인트</td>
 	               </tr>
               </tfoot>
-	           	
               </tbody>
             </table>
           </div>

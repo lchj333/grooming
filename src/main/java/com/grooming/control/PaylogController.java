@@ -20,7 +20,7 @@ public class PaylogController {
 	PaylogDAO dao;
 	
 	//리스트 출렵 메소드
-	@RequestMapping(value = "/selectpay")
+	@RequestMapping(value = "mypage/selectpayed")
 	public String searchPayList() {
 		return "searchListiPayed";
 	}
