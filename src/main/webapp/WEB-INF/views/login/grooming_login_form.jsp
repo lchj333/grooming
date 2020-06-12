@@ -218,7 +218,7 @@
 			</figure>
 			<!-- 상단 로고 -->
 
-			<form>
+			<form action="login" method="post">
 				<!-- sns 로고 -->
 				<div class="access_social">
 					<a href="#0" class="social_bt kakao">Login with kakao</a>
@@ -231,12 +231,12 @@
 					<label>아이디</label>
 
 					<i class="ti-user"></i>
-					<input type="text" class="form-control" name="id" id="id" style="padding-left: 40px;">
+					<input type="text" class="form-control" name="mb_id" id="mb_id" style="padding-left: 40px;">
 				</div>
 				<!-- 비밀번호 입력 -->
 				<div class="form-group">
 					<label>비밀번호</label>
-					<input type="password" class="form-control" name="password" id="password"
+					<input type="password" class="form-control" name="mb_pw" id="mb_pw"
 					style="padding-left: 40px;"
 					 >
 					<i class="icon_lock_alt"></i>
@@ -252,7 +252,7 @@
 					<div class="float-right mt-1"><label>&nbsp; 비밀번호 찾기</label></div>
 					<div class="float-right mt-1" ><label>아이디 찾기 ㅣ&nbsp;</label></div>
 				</div>
-				<input type="button" value="로그인" class="btn_1 rounded full-width"/>
+				<input type="submit" value="로그인" class="btn_1 rounded full-width"/>
 				<input type="button" value="회원가입" class="btn_1 rounded full-width" id=""/>
 
 			</form>

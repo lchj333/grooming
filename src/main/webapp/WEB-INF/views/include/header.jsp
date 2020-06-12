@@ -44,19 +44,20 @@
 				<!-- 회원별로 -->
 
 				<!-- 비로그인시 -->
-				<li></li>
-				<li><a href="grooming_login_form.jsp" class="cart-menu-btn" title="login"></a></li>
-				<li><a href="grooming_register_consent_form.jsp" id="" class="login" title="Sign In"></a></li>
-				<!-- <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li> -->
+				<c:if test="${login == null }">
+					<li></li>
+					<li><a href="grooming_login_form.jsp" class="cart-menu-btn" title="login"></a></li>
+					<li><a href="grooming_register_consent_form.jsp" id="" class="login" title="Sign In"></a></li>
+					<!-- <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li> -->
+				</c:if>
 
-				<%-- </c:if> --%>
-
-				<%--
+				
 				<!-- 사용자 로그인시 -->
-				<c:if test="">
+				<c:if test="${login != null }">
 					<li><a href="cart-1.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
 					<li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
 					<li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+					
 				</c:if>
 
 				<!-- 판매자 로그인시 -->
@@ -67,12 +68,12 @@
 				</c:if>
 
 				<!-- 관리자 로그인시 -->
-				<c:if test="">
+				<c:if test="${admin != null }">
 					<li><a href="cart-1.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
 					<li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
 					<li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
 				</c:if>
-				 --%>
+				
 
 			</ul>
 			<!-- /top_menu -->
