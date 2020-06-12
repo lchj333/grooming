@@ -21,7 +21,7 @@
 	
 	<!-- '그'가게 상세이미지들. -->
 	<select id="infoImgs" resultType="String">
-		select reg_addimg
+		select REG_ADDIMG
 		from reg_img
 		where DE_LICENCENUM = ${de_licencenum}
 	</select>
