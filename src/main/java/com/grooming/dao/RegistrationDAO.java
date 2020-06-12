@@ -52,5 +52,10 @@ public class RegistrationDAO {
 		ss.update(MAPPER+".BlockByAdmin", dto);
 	}
 	
+	// 가게 검색
+	public List<RegistrationDTO> searchShop(RegistrationDTO dto){
+		return ss.selectList(MAPPER+".searchShop", dto);
+	}
+	
 	
 }

@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -190,5 +191,21 @@ public class RegistrationController {
 	/************************************
 		컨트롤에서 사용할 유틸 메소드..
 	*************************************/
+	
+	// 등록글 검색
+	
+	// 가게 검색
+	@RequestMapping(value = "searchShop", method = RequestMethod.POST)
+	public String searchShop(@RequestParam(value = "reg_shopaddress", required = true)String reg_shopaddress,
+							RegistrationDTO dto,HttpServletRequest req) {
+		
+		dto.setReg_shopaddress(reg_shopaddress);
+		
+		rdao.searchShop(dto);
+		
+		return "search/grooming_screen_map";
+		
+		
+	}
 	
 }

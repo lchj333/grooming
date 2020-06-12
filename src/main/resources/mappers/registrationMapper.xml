@@ -46,4 +46,11 @@
 		set reg_block = #{reg_block}
 		where de_licencenum = #{de_licencenum}
 	</update>
+	
+	<!-- 가게 검색 -->
+	<select id="searchShop" parameterType="RegistrationDTO" resultType="RegistrationDTO">
+		select *
+		from gr_registration
+		where reg_shopaddress like '%'#{reg_shopaddress}'%' 
+	</select>
 </mapper>
