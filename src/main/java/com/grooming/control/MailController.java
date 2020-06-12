@@ -74,8 +74,8 @@ public class MailController {
         mv.setViewName("login/grooming_send_email_form");     //뷰의이름
         mv.addObject("dice", dice);
         
-        System.out.println(tomail);
-        System.out.println("mv : "+mv);
+//        System.out.println(tomail);
+//        System.out.println("mv : "+mv);
 
         response_email.setContentType("text/html; charset=UTF-8");
         PrintWriter out_email = response_email.getWriter();
@@ -94,9 +94,9 @@ public class MailController {
 	    
 	    
 	    
-	    System.out.println("마지막 : email_injeung : "+email_injeung);
+//	    System.out.println("마지막 : email_injeung : "+email_injeung);
 	    
-	    System.out.println("마지막 : dice : "+dice);
+//	    System.out.println("마지막 : dice : "+dice);
 	    
 	    
 	    //페이지이동과 자료를 동시에 하기위해 ModelAndView를 사용해서 이동할 페이지와 자료를 담음
@@ -203,8 +203,8 @@ public class MailController {
         mv.setViewName("login/grooming_send_email_form2");     //뷰의이름
         mv.addObject("dice", dice);
         
-        System.out.println(tomail);
-        System.out.println("mv : "+mv);
+//        System.out.println(tomail);
+//        System.out.println("mv : "+mv);
 
         response_email.setContentType("text/html; charset=UTF-8");
         PrintWriter out_email = response_email.getWriter();
@@ -325,8 +325,8 @@ public class MailController {
         mv.setViewName("login/grooming_send_email_form3");     //뷰의이름
         mv.addObject("dice", dice);
         
-        System.out.println(tomail);
-        System.out.println("mv : "+mv);
+//        System.out.println(tomail);
+//        System.out.println("mv : "+mv);
 
         response_email.setContentType("text/html; charset=UTF-8");
         PrintWriter out_email = response_email.getWriter();
