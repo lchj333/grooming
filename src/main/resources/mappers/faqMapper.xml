@@ -34,12 +34,12 @@
 	
 	<!-- 게시물의 총 갯수를 구하기 -->
 	<select id="faqcount" resultType="int">
-		SELECT COUNT(F_TITLE) FROM GR_FAQ
+		SELECT COUNT(F_TITLE) FROM gr_faq
 	</select>
 	
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="faqlistPage" parameterType="hashMap" resultType="FaqDTO">
-		SELECT * FROM GR_FAQ
+		SELECT * FROM gr_faq
 		LIMIT #{displayPost}, #{postNum}
 	</select>
 </mapper>
