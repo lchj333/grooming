@@ -61,7 +61,7 @@
 				</c:if>
 
 				<!-- 판매자 로그인시 -->
-				<c:if test="${dInfo.de_licencenum }">
+				<c:if test="${dInfo.de_licencenum != null }">
 					<li><a href="<c:url value="/logout"/>" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
 					<li><a href="<c:url value="/logout"/>" id="sign-in" class="login" title="Sign In">Sign In</a></li>
 					<li><a href="<c:url value="/logout"/>" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
