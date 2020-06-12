@@ -53,7 +53,7 @@
 					<div class="container margin_60_35" style="margin-bottom: 10%; text-align: center; padding-bottom: 7%; ">
 						<!-- jstl 로 이미지  -->
 						<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_300_200_LOGO.png" alt="Grooming_LOGO" class="add_top_220"/>
-						<form name="frm">
+						<form action="/search/shopList" name="frm">
 							<div id="custom-search-input">
 								<div class="input-group">
 									<!-- # 검색 창 name: -->

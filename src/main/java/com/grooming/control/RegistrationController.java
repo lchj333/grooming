@@ -152,8 +152,9 @@ public class RegistrationController {
 		
 	}
 	
-	//샵 리스트
-	@RequestMapping(value = "/shopList")
+	//grooming_main->
+	//샵 리스트 (+검색)
+	@RequestMapping(value = "/search/shopList")
 	public String listShop(HttpServletRequest req) {
 		//필터를 위한 맵 (예정)
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -162,9 +163,9 @@ public class RegistrationController {
 		
 		req.setAttribute("shopList", list);
 		
-		return "listpage";
+		return "search/grooming_screen_map";
 	}
-	
+	//-> grooming_screen_map (샵 목록) ->
 	//가게 상세 정보
 	@RequestMapping(value = "/detailShop")
 	public String detailShopInfo(@RequestParam(value = "de_licencenum", required = true)int num, 
@@ -180,11 +181,17 @@ public class RegistrationController {
 				req.setAttribute("infoImgs", imgs);
 			}
 			
-			return "detailPage";
+			return "search/grooming_result_detail";
 		}else {//가져온 정보가 없을 때
-			return "listPage";
+			return "main/grooming_main";
 		}
 			
+	}
+	//-> grooming_result_detail -> 예약확인 -> 예약완료 -> 예약 목록 페이지
+	//예약 확인 폼
+	@PostMapping(value = "reservCk")
+	public String reservCk() {
+		return "";
 	}
 	
 	//등록시 포인트 깍기
@@ -205,7 +212,11 @@ public class RegistrationController {
 		
 		return "search/grooming_screen_map";
 		
-		
+	}
+	
+	@RequestMapping(value = "go")
+	public String go() {
+		return "search/grooming_result_detail";
 	}
 	
 }

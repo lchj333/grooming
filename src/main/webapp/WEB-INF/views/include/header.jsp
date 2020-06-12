@@ -47,7 +47,7 @@
 				<c:if test="${login == null }">
 					<li></li>
 					<li><a href="<c:url value="/login"/>" class="cart-menu-btn" title="login"></a></li>
-					<li><a href="<c:url value="/join"/>" id="" class="login" title="Sign In"></a></li>
+					<li><a href="<c:url value="/agreementJoin"/>" id="" class="login" title="Sign In"></a></li>
 					<!-- <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li> -->
 				</c:if>
 
