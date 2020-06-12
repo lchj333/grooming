@@ -258,7 +258,7 @@ public class MemberController {
 		
 		model.addAttribute("checkEmail", dto);
 		
-		return "/mypage/grooming_user_profile";
+		return "mypage/grooming_user_profile";
 		
 	}
 	
@@ -305,7 +305,7 @@ public class MemberController {
 	
 	
 	// 마이페이지 접속 
-	@RequestMapping(value = "mypage")
+	@RequestMapping(value = "/mypage")
 	public String myPage() {
 		
 		
