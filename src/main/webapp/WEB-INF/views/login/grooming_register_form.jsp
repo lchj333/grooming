@@ -32,6 +32,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+function openDaumPost(){
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('adress-text').value = data.zonecode;
+            document.getElementById("profile-addr1").value = data.roadAddress;
+             
+        }
+    }).open();
+}// openDaumPost() end
+
+
 	$(document).ready(function(){
 		var checkIP = /^[a-zA-Z0-9]{4,16}$/; //ID와 PASSWORD 유효성 검사 정규식
 	    var checkEmail = /^[0-9a-zA-Z]([@-_\.]?[0-9a-zA-Z]){1,99}$/;  //Email 유효성 검사 정규
@@ -129,10 +143,6 @@
 		    	alert("메일 인증을 해주세요");
 		         return false;
 		    }
-
-
-
-
 
 		 // 주소 유효성 검사
 		    if(mb_address1.value==""){
