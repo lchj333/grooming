@@ -45,7 +45,8 @@ public class DesinerController {
 	public String updateDes(
 	@RequestParam(value = "payment-amount")int pt1, @RequestParam(value = "de_licencenum")int pt2,
 	DesignerDTO dto) {
-		dto.setDe_point(pt1); dto.setDe_licencenum(pt2); 
+		dto.setDe_point(pt1); 
+		dto.setDe_licencenum(pt2); 
 		
 		dao.updateDes(dto);
 		dao.insertMoney(dto);
