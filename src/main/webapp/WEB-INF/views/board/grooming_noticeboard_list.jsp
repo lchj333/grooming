@@ -50,16 +50,11 @@
 		<c:if test="${next}">
 			<span>[ <a href="/control/noticeListPage?num=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
-		<%-- <c:forEach begin="1" end="${pageNum}" var="num">
-			<span><a href="/control/noticeListPage?num=${num}">${num}</a></span>
-		</c:forEach> --%>
-		
 				</div>
-				
-				<form action="noticeInsert" method="get"><input type="submit" value="공지작성" /></form>
 			</div>
 		</div>
 	</form>
+				<form action="noticeInsert" method="get"><input type="submit" value="공지작성" /></form>
 </div>
 
 	<jsp:include page="../include/footer.jsp" />
