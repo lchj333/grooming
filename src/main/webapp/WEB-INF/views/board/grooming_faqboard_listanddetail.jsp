@@ -45,7 +45,9 @@
 					<h4 class="nomargin_top" id="faq_maintitle">자주묻는질문</h4>
 					<div role="tablist" class="add_bottom_45 accordion_2" id="payment">
 						<div class="card">
-							<c:forEach var="inform" items="${list }"></c:forEach>
+						
+							<c:forEach var="inform" items="${list }">
+							
 							<div class="card-header" role="tab">
 								<h5 class="mb-0">
 									<!-- 제목출력 -->
@@ -59,7 +61,31 @@
 									<p><c:out value="${inform.f_con }"></c:out></p>
 								</div>
 							</div>
+							
+							</c:forEach>							
 						</div>
+		<!-- 페이징 처리 -->
+		<c:if test="${prev}">
+			<span>[ <a href="/control/noticeListPage?num=${startPageNum - 1}">이전</a> ]</span>
+		</c:if>
+		
+		<!-- 페이지 모음 출력 -->
+		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+			<span>
+				<!-- 현재보고있는 페이지 글자 두껍게해서 직관성 향상-->
+				<c:if test="${select != num }">
+					<a href="/control/noticeListPage?num=${num}">${num}</a>									
+				</c:if>
+				<c:if test="${select == num }">
+					<b>${num }</b>
+				</c:if>
+			</span>
+		</c:forEach>
+					
+		<c:if test="${next}">
+			<span>[ <a href="/control/noticeListPage?num=${endPageNum + 1}">다음</a> ]</span>
+		</c:if>
+		<!-- 페이징처리 끝 -->
 						<!-- /card -->
 					</div>
 					<!-- /accordion payment -->

@@ -1,5 +1,6 @@
 package com.grooming.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -40,4 +41,16 @@ public class FaqDAO {
 	public void deleteOne(String f_title) {
 		ss.delete("deleteFaq", f_title);
 	}
+	// 게시물의 총 갯수
+	public int count() {
+		return ss.selectOne("faqcount");
+	}
+	// 게시물 목록 + 페이징
+	public List<FaqDTO> listPage(int displayPost, int postNum){
+		HashMap<String, Integer> data = new HashMap<String, Integer>();
+		data.put("displayPost", displayPost);
+		data.put("postNum", postNum);
+		return ss.selectList("faqlistPage", data);
+	}
+	
 }
