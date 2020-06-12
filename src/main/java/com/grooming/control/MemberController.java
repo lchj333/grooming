@@ -110,7 +110,13 @@ public class MemberController {
     // 아이디 중복확인
 	@RequestMapping(value = "/mb_id_check")
 	public String idCheck(@RequestParam(value = "mb_id", required = false)String mb_id,Model model) {
-		int dto = dao.idCheck(mb_id);
+		MemberDTO dd = new MemberDTO();
+		
+		dd.setMb_id(mb_id);
+		
+		MemberDTO dto = dao.idCheck(dd);
+		
+		
 		
 		model.addAttribute("idCheck", dto);
 		model.addAttribute("testId", mb_id);

@@ -37,8 +37,8 @@ public class MemberDAO {
 	}
 	
 	// ID 중복 체크
-	public int idCheck(String mb_id) {
-		return ss.selectOne("idCheck", mb_id);
+	public MemberDTO idCheck(MemberDTO memberDto) {
+		return ss.selectOne("idCheck", memberDto);
 	}
 	
 	// ID 찾기(name,email 일치여부)
