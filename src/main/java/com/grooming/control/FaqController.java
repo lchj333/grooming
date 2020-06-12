@@ -86,7 +86,6 @@ public class FaqController {
 			return "board/grooming_faqboard_listanddetail";
 		}
 	
-	
 	//상세내용 보기
 	@RequestMapping(value="/faqDetail")
 	public String faqDetail(@RequestParam(value="f_title")String f_title, Model model) {

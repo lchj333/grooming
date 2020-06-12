@@ -47,12 +47,12 @@
 						<div class="card">
 						
 							<c:forEach var="inform" items="${list }">
-							
+														
 							<div class="card-header" role="tab">
 								<h5 class="mb-0">
 									<!-- 제목출력 -->
-									<a data-toggle="collapse" href="#collapseOne_payment" aria-expanded="true"><i class="indicator ti-minus">
-									<c:out value="${inform.f_title }"></c:out></i></a>
+									<a data-toggle="collapse" href="#collapseOne_payment" aria-expanded="true"><c:out value="${inform.f_title }"></c:out><i class="indicator ti-minus">
+									</i></a>
 								</h5>
 							</div>
 							<div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
@@ -66,7 +66,7 @@
 						</div>
 		<!-- 페이징 처리 -->
 		<c:if test="${prev}">
-			<span>[ <a href="/control/noticeListPage?num=${startPageNum - 1}">이전</a> ]</span>
+			<span>[ <a href="/control/faqList?num=${startPageNum - 1}">이전</a> ]</span>
 		</c:if>
 		
 		<!-- 페이지 모음 출력 -->
@@ -74,7 +74,7 @@
 			<span>
 				<!-- 현재보고있는 페이지 글자 두껍게해서 직관성 향상-->
 				<c:if test="${select != num }">
-					<a href="/control/noticeListPage?num=${num}">${num}</a>									
+					<a href="/control/faqList?num=${num}">${num}</a>									
 				</c:if>
 				<c:if test="${select == num }">
 					<b>${num }</b>
@@ -83,7 +83,7 @@
 		</c:forEach>
 					
 		<c:if test="${next}">
-			<span>[ <a href="/control/noticeListPage?num=${endPageNum + 1}">다음</a> ]</span>
+			<span>[ <a href="/control/faqList?num=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
 		<!-- 페이징처리 끝 -->
 						<!-- /card -->

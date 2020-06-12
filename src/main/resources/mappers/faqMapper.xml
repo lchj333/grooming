@@ -37,7 +37,6 @@
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="faqlistPage" parameterType="hashMap" resultType="FaqDTO">
 		SELECT * FROM GR_FAQ
-		ORDER BY F_TITLE DESC
 		LIMIT #{displayPost}, #{postNum}
 	</select>
 </mapper>
