@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
  <head>
- <title>sadasd</title>
+ <title>Header</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,7 +34,7 @@
 </head>
 
 <body>
-
+<%-- 	<c:url value=""/> --%>
 		<header class="header map_view menu_fixed">
 			<div id="logo">
 				<a href="grooming_main.jsp">
@@ -46,8 +47,8 @@
 				<!-- 비로그인시 -->
 				<c:if test="${login == null }">
 					<li></li>
-					<li><a href="grooming_login_form.jsp" class="cart-menu-btn" title="login"></a></li>
-					<li><a href="grooming_register_consent_form.jsp" id="" class="login" title="Sign In"></a></li>
+					<li><a href="<c:url value="/login"/>" class="cart-menu-btn" title="login"></a></li>
+					<li><a href="<c:url value="/join"/>" id="" class="login" title="Sign In"></a></li>
 					<!-- <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li> -->
 				</c:if>
 

@@ -33,7 +33,7 @@ public class MemberController {
 	// 회원가입 GET
 	@GetMapping(value = "/join")
 	public String insertOk() {
-		return "grooming_register_form";
+		return "login/grooming_register_form";
 	}
 	
 	
@@ -52,7 +52,7 @@ public class MemberController {
 		
 		dao.joinMember(memberDto);
 		
-		return "home"; // 회원가입후 이동할 페이지
+		return "main/grooming_main"; // 회원가입후 이동할 페이지
 	}
 	
 	// 회원 전체 조회
