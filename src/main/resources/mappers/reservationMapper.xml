@@ -11,16 +11,16 @@
 		]]>
 		<if test="#{de_licencenum}!=null"><!-- 미용사 -->
 		<![CDATA[
-			where de_licencenum = #{de_licencenum}
-			and not re_approval like 'N'
+			where DE_LICENCENUM = #{de_licencenum}
+			and not RE_APPROVAL like 'N'
 		]]>
 		</if><if test="#{de_licencenum}==null"><!-- 사용자 -->
 		<![CDATA[
-			where mb_id = #{mb_id}
-			and re_approval like 'Y'
+			where MB_ID = #{mb_id}
+			and RE_APPROVAL like 'Y'
 		]]>
 		</if>
-		<![CDATA[ and re_date >= date_add(now(), interval -1 day)
+		<![CDATA[ and RE_DATA >= date_add(now(), interval -1 day)
 		order by RE_DATE desc ]]>
 	</sql>
 	<!-- 현재 승인된 유효한 예약 리스트 (사용자 & 미용사) -->
@@ -31,33 +31,33 @@
 	<!-- 예약 내역 리스트 -->
 	<select id="getAllMyList" parameterType="String" resultType="ReservationDTO">
 		select * from gr_reservation
-		where mb_id = #{mb_id}
+		where MB_ID = #{mb_id}
 		order by RE_DATE desc
 	</select>
 	
 	<!-- 상세정보 -->
 	<select id="selectByNum" parameterType="int" resultType="ReservationDTO">
 		select * from gr_reservation
-		where de_licencenum = #{de_licencenum}
+		where DE_LICENCENUM = #{de_licencenum}
 	</select>
 	
 	<!-- 예약 승인 | 미승인 -->
 	<update id="checkReserv" parameterType="ReservationDTO">
 		update gr_reservation
 		set RE_APPROVAL = #{RE_APPROVAL}
-		where re_num = #{re_num};
+		where RE_NUM = #{re_num};
 	</update>
 	
 	<!-- 미승인 사유 작성 -->
 	<insert id="insertFeedBack" parameterType="ReservationDTO">
 		insert into res_because
-		values #{re_num}, #{bc_con} 
+		values (#{re_num}, #{bc_con}) 
 	</insert>
 	
 	<!-- 예약 작성 -->
 	<insert id="insertReserv" parameterType="ReservationDTO"><!-- 예약 번호는 자동 생성 -->
-		insert into gr_reservation (de_licencenum, mb_id, re_approval, re_date, 
-									re_nowdate,	re_species, re_weight, re_cut)
+		insert into gr_reservation (DE_LICENCENUM, MB_ID, RE_APPROVAL, RE_DATE, 
+									RE_NOWDATE,	RE_SPECIES, RE_WEIGHT, RE_CUT)
 		values (#{de_licencenum}, #{mb_id}, 'U', #{re_date}, 
 				now(), #{re_species}, #{re_weight}, #{re_cut})
 	</insert>
