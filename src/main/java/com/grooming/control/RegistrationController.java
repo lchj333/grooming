@@ -186,13 +186,7 @@ public class RegistrationController {
 			return "main/grooming_main";
 		}
 			
-	}
-	//-> grooming_result_detail -> 예약확인 -> 예약완료 -> 예약 목록 페이지
-	//예약 확인 폼
-	@PostMapping(value = "reservCk")
-	public String reservCk() {
-		return "";
-	}
+	}//-> 예약 체크 페이지
 	
 	//등록시 포인트 깍기
 	/************************************

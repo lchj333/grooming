@@ -97,6 +97,13 @@ public class ReservationController {
 		}
 	}
 	
+	//-> grooming_result_detail -> 예약확인(reserv) -> 예약완료 -> 예약 목록 페이지
+	//예약 확인 폼
+	@PostMapping(value = "reservCk")
+	public String reservCk() {
+		return "";
+	}
+	
 	/******************************
 	 		유틸 메소드
 	******************************/

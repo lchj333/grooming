@@ -97,16 +97,13 @@
 					</li>
 					<li><span><a href="#0">소식</a></span>
 						<ul>
-							<li><a href="<c:url value=""/>">공지사항</a></li>
-							<li><a href="<c:url value=""/>">이벤트</a></li>
-							<li><a href="<c:url value=""/>">뉴스</a></li>
+							<li><a href="<c:url value="/noticeListPage"/>">공지사항</a></li>
 						</ul>
 					</li>
-					<li><span><a href="#0">고객센터</a></span>
+					<li><span><a href="/faqList">고객센터</a></span>
 						<ul>
-							<li><a href="<c:url value=""/>">1:1문의</a></li>
-							<li><a href="<c:url value=""/>">Q&A</a></li>
-							<li><a href="<c:url value=""/>">FAQ</a></li>
+							<li><a href="<c:url value="/inquiryList"/>">1:1문의</a></li>
+							<li><a href="<c:url value="/faqList"/>">FAQ</a></li>
 						</ul>
 					</li>
 
