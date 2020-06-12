@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/main_resources/css/grooming_qnaboard_customlist.css" />
+	href="${pageContext.request.contextPath}/resources/main_resources/css/grooming_noticeboard_list.css" />
 <meta charset="UTF-8">
 <title>noticelist</title>
 </head>
@@ -22,10 +21,10 @@
 					<div id="grooming_qnaboard_customlist_maintitle">공지사항</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 					<c:forEach var="a" items="${list }">
-						<div id="grooming_qnaboard_customlist_tr">
-							<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td1"><a href="noticeDetail?nt_no=${a.nt_no }&num=${pn}">${a.nt_title }</a></div>
-							<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td2"><fmt:formatDate value="${a.nt_regdate }" pattern="YY.MM.dd"/></div>
-						</div>
+							<div id="grooming_qnaboard_customlist_tr">
+								<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td1"><a href="noticeDetail?nt_no=${a.nt_no }&num=${pn}">${a.nt_title }</a></div>
+								<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td2"><c:out value="${a.nt_regdate }"></c:out></div>
+							</div>
 						<div id="grooming_qnaboard_customlist_tr"></div>
 					</c:forEach>
 					</div>
@@ -52,7 +51,10 @@
 			<span>[ <a href="/control/noticeListPage?num=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
 				</div>
+<<<<<<< HEAD
 				<a href="noticeInsert"><input type="button" value="공지등록" class="btn_1 medium" /></a>
+=======
+>>>>>>> cd3901b818d90b32ad708e716ac1d06fed775612
 			</div>
 		</div>
 	</form>

@@ -47,7 +47,7 @@ public class NoticeController {
 		HttpSession ses = req.getSession();
 		//ses.setAttribute("num", 현재페이지값이있는객체);
 		
-		return "board/grooming_noticeboard_detail";
+		return "board/grooming_noticeboard_list";
 	}
 	 
 	//글 작성 페이지로 이동
@@ -60,7 +60,7 @@ public class NoticeController {
 	@PostMapping(value="/noticeInsert")
 	public String WriteOk(@ModelAttribute NoticeDTO noticedto) {
 		noticedao.insertOne(noticedto);
-		return "redirect:/noticeListPage";
+		return "redirect:/noticeList";
 	}
 	
 	// 글 수정페이지로 이동
@@ -68,21 +68,21 @@ public class NoticeController {
 	public String noticeUpdate(@RequestParam(value="nt_no")int nt_no, Model model) {
 		NoticeDTO noticedto = noticedao.selectOne(nt_no);
 		model.addAttribute("inform", noticedto);
-		return "board/grooming_noticeboard_update";
+		return "gr_noticeboard_update";
 	}
 	//글 수정하기
 	@PostMapping(value="/noticeUpdate")
 	public String UpdateOk(@RequestParam(value="nt_no")int nt_no, Model model,
 							@ModelAttribute NoticeDTO noticedto) {
 		noticedao.updateOne(noticedto);
-		return "redirect:/noticeListPage";
+		return "redirect:/noticeList";
 	}
 	
 	// 글 삭제하기
 	@RequestMapping(value="/noticeDelete")
 	public String noticeDelete(@RequestParam(value="nt_no")int nt_no, Model model) {
 		noticedao.deleteOne(nt_no);
-		return "redirect:/noticeListPage";
+		return "redirect:/noticeList";
 	}
 	
 	//공지사항 전체보기+페이징추가

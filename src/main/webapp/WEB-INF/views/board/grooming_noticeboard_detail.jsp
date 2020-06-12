@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,20 +16,15 @@
 
 <!-- contents -->
 	<div id="gr_noticeboard_detail_maindiv">
-      <div id="gr_noticeboard_detail_title"><span><c:out value="${inform.nt_title }"></c:out></span></div>
-      <div id="gr_noticeboard_detail_datehits">
-         <span>등록일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-         <span><fmt:formatDate value="${inform.nt_regdate }"/></span>
-         <span>조회수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-         <span><c:out value="${inform.nt_hits }"></c:out></span>
-      </div>
-      <div id="gr_noticeboard_detail_contents"><c:out value="${inform.nt_con }"></c:out></div>      
-	   <p>
-		   <a href="noticeListPage?num=${pn }" class="btn_1 medium">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		   <a href="noticeUpdate?nt_no=${inform.nt_no }" class="btn_1 medium">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		   <a href="noticeDelete?nt_no=${inform.nt_no }" class="btn_1 medium">삭제</a>
-	   </p>
-   </div>
+		<div id="gr_noticeboard_detail_title"><span>제목입니다.제목입니다.</span></div>
+		<div id="gr_noticeboard_detail_datehits">
+			<span>작성일자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span>2020-06-08&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span>조회수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+			<span>100</span>
+		</div>
+		<div id="gr_noticeboard_detail_contents">내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.내용입니다씨발.</div>
+	</div>
 <!-- footer -->
 <jsp:include page="../include/footer.jsp"/>
 </div>
