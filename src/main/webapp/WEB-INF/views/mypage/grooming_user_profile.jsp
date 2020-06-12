@@ -25,26 +25,74 @@ function openDaumPost(){
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		
+		
 		$("#btn").click(function(){
-			document.frm.action = "<c:url value='/survey/survey.ok'/>";
+			document.frm.action = "<c:url value='changeInfo'/>";
 			document.frm.submit();
+			alert("회원정보 수정이 완료되었습니다");
 		});
 		
 		
 	});
 	
 	$(function(){
+		var checkIP = /^[a-zA-Z0-9]{4,16}$/; //ID와 PASSWORD 유효성 검사 정규식
+		
 		$("#btn2").click(function(){
-			document.frm2.action = "<c:url value='/survey/survey.ok'/>";
+			
+			var mb_pw = document.getElementById("mb_pw");
+			var mb_pwck = document.getElementById("mb_pwck");
+			
+			if(mb_pw.value==''){
+		    	alert("새로운 비밀번호를 입력해주세요.");
+		    	mb_pw.focus();
+		        return false;
+		    }if(!checkIP.test(mb_pw.value)){
+		    	alert("4~16자 영문 대 소문자, 숫자를 사용하세요.");
+		    	mb_pw.focus();
+		         return false;
+		    }if(mb_pwck.value==''){
+		    	alert("새로운 비밀번호를 확인해주세요");
+		    	mb_pwck.focus();
+		          return false;
+		    }if(mb_pw.value!=mb_pwck.value){
+		    	alert("비밀번호가 일치하지 않습니다.");
+		    	mb_pwck.focus();
+		    	return false;
+		    }
+			
+			document.frm2.action = "<c:url value='changePw'/>";
 			document.frm2.submit();
+			alert("회원정보 수정이 완료되었습니다");
 		});
 		
 	});
 	
 	$(function(){
+	    
 		$("#btn3").click(function(){
-			document.frm3.action = "<c:url value='/survey/survey.ok'/>";
+			
+			var mb_email = document.getElementById("mb_email");
+			var mb_emailck = document.getElementById("mb_emailck");
+			
+			if(mb_email.value==''){
+		    	alert("새로운 이메일을 입력해주세요.");
+		    	mb_pw.focus();
+		        return false;
+		    }if(mb_email.value==''){
+		    	alert("새로운 이메일을 확인해주세요.");
+		    	mb_pwck.focus();
+		          return false;
+		    }if(mb_email.value!=mb_emailck.value){
+		    	alert("이메일이 일치하지 않습니다.");
+		    	mb_pwck.focus();
+		    	return false;
+		    }			
+			
+			document.frm3.action = "<c:url value='changeEmail'/>";
 			document.frm3.submit();
+			alert("회원정보 수정이 완료되었습니다");
 		});
 		
 		
@@ -74,11 +122,11 @@ function openDaumPost(){
 						</div>
 						<div class="form-group">
 							<label>아이디</label>
-							<input class="form-control" type="text" name="mb-id" placeholder="원래 id">
+							<input class="form-control" type="text" name="mb_id" placeholder="원래 id">
 						</div>
 						<div class="form-group">
 							<label>핸드폰</label>
-							<input class="form-control" type="text" name="mb-phone" placeholder="원래 핸드폰번호">
+							<input class="form-control" type="text" name="mb_phone" placeholder="원래 핸드폰번호" >
 						</div>
 						<div class="form-group">
 							<label>이메일 (jstl로 *달기)</label>
@@ -100,11 +148,11 @@ function openDaumPost(){
 						</div>
 						<div class="form-group">
 							<label>도로명주소</label>
-							<input class="form-control" name="mb-adress1" id="profile-addr1" type="text" readonly="readonly" placeholder="jstl로 주소" style="background-color: #e9ecef">
+							<input class="form-control" name="mb_address1" id="profile-addr1" type="text" readonly="readonly" placeholder="jstl로 주소" style="background-color: #e9ecef">
 						</div>
 						<div class="form-group">
 							<label>상세주소</label>
-							<input class="form-control" name="mb-adress2" id="profile-addr2" type="text">
+							<input class="form-control" name="mb_address2" id="profile-addr2" type="text">
 						</div>
 					</div>
 				</div>
@@ -122,17 +170,15 @@ function openDaumPost(){
 							<div class="header_box version_2">
 								<h2><i class="fa fa-lock"></i>비밀번호 변경</h2>
 							</div>
-							<div class="form-group">
-								<label>이전 비밀번호</label>
-								<input class="form-control" type="password" name="mb-pw">
-							</div>
+							<input type="hidden" name="mb_id" value="${login.mb_id }" />
+							
 							<div class="form-group">
 								<label>새 비밀번호</label>
-								<input class="form-control" type="password" name="mb-adjust-pw">
+								<input class="form-control" type="password" name="mb_pw" id="mb_pw">
 							</div>
 							<div class="form-group">
 								<label>비밀번호 확인</label>
-								<input class="form-control" type="password" name="mb-adjust-confirmPw">
+								<input class="form-control" type="password" name="mb_pwck" id="mb_pwck">
 							</div>
 							<p id="myprofile-savebtn">
 								<input type="button" id="btn2" value="저장" class="btn_1 medium" />
@@ -146,17 +192,15 @@ function openDaumPost(){
 							<div class="header_box version_2">
 								<h2><i class="fa fa-envelope"></i>이메일 변경</h2>
 							</div>
-							<div class="form-group">
-								<label>이전 이메일</label>
-								<input class="form-control" name="mb-emial" id="old_email" type="email">
-							</div>
+							<input type="hidden" name="mb_id" value="${login.mb_id }" />
+							
 							<div class="form-group">
 								<label>새 이메일</label>
-								<input class="form-control" name="new_email" id="new_email" type="email">
+								<input class="form-control" name="mb_email" id="mb_email" type="email" >
 							</div>
 							<div class="form-group">
 								<label>이메일 확인</label>
-								<input class="form-control" name="confirm_new_email" id="confirm_new_email" type="email">
+								<input class="form-control" name="mb_emailck" id="mb_emailck" type="email">
 							</div>
 							<p id="myprofile-savebtn">
 								<input type="button" id="btn3" value="저장" class="btn_1 medium" />

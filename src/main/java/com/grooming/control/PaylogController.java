@@ -20,18 +20,18 @@ public class PaylogController {
 	PaylogDAO dao;
 	
 	//리스트 출렵 메소드
-	@RequestMapping(value = "/selectpay")
+	@RequestMapping(value = "mypage/selectpayed")
 	public String searchPayList() {
 		return "searchListiPayed";
 	}
 	
-	@PostMapping(value = "/searchListList")
+	@PostMapping(value = "mypage/searchListList")
 	public String paylistselect(@RequestParam("licence")int li, Model m, PaylogDTO dto) {
 		dto.setDe_licencenum(li);
 		List<PaylogDTO> plist = dao.selectAllIPayed(dto);
 		m.addAttribute("plist", plist);
 		
-		return "payedList";
+		return "mypage/grooming_hairdresser_chargingDetails";
 	}
 	
 }

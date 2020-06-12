@@ -69,7 +69,7 @@
 			              
 			        
 			         alert(msg);
-			      	  document.frm.action = "<c:url value='/updateok'/>";
+			      	  document.frm.action = "<c:url value='/pointchargingok'/>";
 					  document.frm.submit();
 			          location.href = 'control/updateok';					/* 결제 후 가고싶은 페이지로 이동 */
 			     
@@ -187,10 +187,7 @@
 				<!-- ============================================================================= -->
 			<td><input type="text" name="de_licencenum" value="10001"/></td>
 				<p id="myprofile-savebtn">
-					<input type="button" id="btn" value="저장" class="btn_1 medium" />
-				</p>
-				<p id="">
-					<input type="button" id="btn" value="결제완료" class="" />
+					<input type="button" id="btn" value="결제 완료" class="btn_1 medium" />
 				</p>
 	  	</form>
 	  </div>

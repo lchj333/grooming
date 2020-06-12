@@ -38,7 +38,6 @@
 	
 </head>
 
-
 <body class="fixed-nav sticky-footer" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
@@ -61,7 +60,7 @@
           </a>
         </li>
 		<li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
-          <a class="nav-link" href="<c:url value='/WEB-INF/views/mypage/grooming_user_booking.jsp'/>">
+          <a class="nav-link" href="${pageContext.request.contextPath}/mypage/reservList">
             <i class="fa fa-fw fa-calendar-check-o"></i>
             <span class="nav-link-text">예약정보<span class="badge badge-pill badge-primary">6 New</span></span>
           </a>
@@ -125,10 +124,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="collapsePay">
             <li>
-              <a href="grooming_hairdresser_pointCharging.jsp">포인트충전<span class="badge badge-pill badge-primary">6</span></a>
+              <a href="${pageContext.request.contextPath}/mypage/pointcharging">포인트충전<span class="badge badge-pill badge-primary">6</span></a>
             </li>
 			<li>
-              <a href="grooming_hairdresser_chargingDetails.jsp">충전내역<span class="badge badge-pill badge-success">6</span></a>
+              <a href="${pageContext.request.contextPath}/mypage/selectpayed">충전내역<span class="badge badge-pill badge-success">6</span></a>
             </li>
           </ul>
         </li>

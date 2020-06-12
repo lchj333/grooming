@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grooming.dao.DesinerDAO;
@@ -36,12 +36,12 @@ public class DesinerController {
 	}
 
 	// 결제 후 충전 금액 입력 로직 + 결제정보 테이블에 값 입력 충전금액 대비 충전포인트 비율은 1:1
-	@RequestMapping(value = "/update")
+	@RequestMapping(value = "mypage/pointcharging", method = {RequestMethod.GET, RequestMethod.POST})
 	public String updatewe() {
 		return "mypage/grooming_hairdresser_pointCharging";
 	}
 	//데이터 베이스에 충전금액 입력 메소드
-	@PostMapping(value = "/updateok")
+	@PostMapping(value = "pointchargingok")
 	public String updateDes(
 	@RequestParam(value = "payment-amount")int pt1, @RequestParam(value = "de_licencenum")int pt2,
 	DesignerDTO dto) {
@@ -50,7 +50,7 @@ public class DesinerController {
 		dao.updateDes(dto);
 		dao.insertMoney(dto);
 		
-		return "mypage/grooming_admin_management";
+		return "mypage/grooming_hairdresser_chargingDetails";
 	}
 	//요기 까지 충전 금액 입력 로직입니다.
 	
@@ -78,7 +78,7 @@ public class DesinerController {
 		List<DesignerDTO> olist = dao.selectPointOne(dto);
 		m.addAttribute("olist", olist);
 		
-		return "selectonelist";
+		return "mypage/grooming_hairdresser_chargingDetails";
 	}
 	
 	

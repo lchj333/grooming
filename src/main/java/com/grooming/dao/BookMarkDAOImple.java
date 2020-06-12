@@ -2,12 +2,17 @@ package com.grooming.dao;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.grooming.dto.BookMarkDTO;
 
+@Repository
 public class BookMarkDAOImple implements BookMarkDAO{
-
+	
+	@Inject
 	SqlSession ss;
 	
 	public void setSs(SqlSession ss) {

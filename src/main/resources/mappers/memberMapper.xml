@@ -81,17 +81,14 @@
 	</update>
 	
 	<!-- 개인정보 수정 -->
-	<update id="updateMember" parameterType="MemberDTO">
-	<![CDATA[
+	<update id="changeInfo" parameterType="MemberDTO">
    		update gr_member
    		<trim prefix="set" suffixOverrides=",">
-      		<if test="mb_phone !=null">mb_phone = #{mb_phone},</if>
-      		<if test="mb_email !=null">mb_email = #{mb_email},</if>
-      		<if test="mb_address1 !=null">mb_address1 = #{mb_address1},</if>
-      		<if test="mb_address2 !=null">mb_address2 = #{mb_address2}</if>
+      		<if test="mb_phone != ''">mb_phone = '${mb_phone}',</if>
+      		<if test="mb_address1 != ''">mb_address1 = '${mb_address1}',</if>
+      		<if test="mb_address2 != ''">mb_address2 = '${mb_address2}'</if>
    		</trim>    
   		 where mb_id = #{mb_id}
-	]]>
 	</update>
 	
 

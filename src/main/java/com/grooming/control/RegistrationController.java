@@ -26,6 +26,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.grooming.dao.RegistrationDAO;
 import com.grooming.dto.RegistrationDTO;
+import com.grooming.dto.ShopListDTO;
 import com.grooming.utils.FileUpload;
 
 @Controller
@@ -59,7 +60,7 @@ public class RegistrationController {
 	public String insertShopInfo(RegistrationDTO dto, MultipartHttpServletRequest ms, //스프링에서 알아서 set.
 									HttpServletRequest req) throws IllegalStateException, IOException {
 		//메소드 바디
-		String lPath = req.getServletContext().getRealPath("/resources/licence/");
+		String lPath = req.getServletContext().getRealPath("/resources/thumbnail/");
 		//post 파라미터
 		MultipartFile mfile = ms.getFile("file");
 		
@@ -153,34 +154,41 @@ public class RegistrationController {
 	//샵 리스트
 	@RequestMapping(value = "/shopList")
 	public String listShop(HttpServletRequest req) {
-		//필터를 위한 맵
+		//필터를 위한 맵 (예정)
 		Map<String, Object> map = new HashMap<String, Object>();
 //		map.put..
-		rdao.getList(map);
+		List<ShopListDTO> list = rdao.getList(map);
+		
+		req.setAttribute("shopList", list);
 		
 		return "listpage";
 	}
 	
 	//가게 상세 정보
 	@RequestMapping(value = "/detailShop")
-	public String detailShopInfo(int licencenum, HttpSession hs) {
-		//가게 정보
-//		List<RegisterationDTO> list = rdao.sel~~~~
-//		hs.getAttribute(name)
-		//가게 상세이미지 목록
-//		if()!=null)
-		return "";
+	public String detailShopInfo(@RequestParam(value = "de_licencenum", required = true)int num, 
+										HttpServletRequest req) {
+		//텍스트 정보
+		RegistrationDTO dto = rdao.infoShop(num);
+		if(dto != null) {//가져온 정보가 있을 때
+			req.setAttribute("RegistrationDTO", dto);
+			
+			//샵 이미지들
+			List<String> imgs = rdao.infoImgs(num);
+			if(imgs != null) {//가져온 이미지들이 있을 때
+				req.setAttribute("infoImgs", imgs);
+			}
+			
+			return "detailPage";
+		}else {//가져온 정보가 없을 때
+			return "listPage";
+		}
+			
 	}
 	
 	//등록시 포인트 깍기
 	/************************************
 		컨트롤에서 사용할 유틸 메소드..
 	*************************************/
-	//컨트롤 테스트용
-	@RequestMapping(value = "/test")
-	public String goToTest() {
-		
-		return "upTest";
-	}
 	
 }
