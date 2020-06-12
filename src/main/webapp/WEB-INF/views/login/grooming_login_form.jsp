@@ -50,7 +50,7 @@
 	    
 	    $("#joingo").on('click', function(){
 
-		    document.frm.action = "<c:url value='grooming_register_consent_form.jsp'/>";
+		    document.frm.action = "agreementJoin";
 			document.frm.method = "POST";
 			document.frm.submit();
 			

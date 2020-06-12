@@ -55,6 +55,13 @@ public class MemberController {
 		return "main/grooming_main"; // 회원가입후 이동할 페이지
 	}
 	
+	// 약관 동의 하는 페이지 이동
+	
+	@RequestMapping(value = "agreementJoin")
+	public String agreementJoin() {
+		return "login/grooming_register_consent_form";
+	}
+	
 	// 회원 전체 조회
 	@RequestMapping(value = "/selectMemberAll")
 	public String showList(Model model) {

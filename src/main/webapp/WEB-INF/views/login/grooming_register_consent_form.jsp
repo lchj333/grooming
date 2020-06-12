@@ -14,6 +14,26 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
  <!-- =======================================================================================================================================================================================================================  -->
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		
+
+	    
+	    $("#join").on('click', function(){
+
+		    document.frm.action = "join";
+			document.frm.method = "GET";
+			document.frm.submit();
+			
+
+	    });
+
+
+
+	});
+
+</script>
 
 <body>
 <div id="page">
@@ -24,7 +44,7 @@
 			<section class="hero_single version_2 add_top_70">
 				<div class="wrapper">
 					<div class="container" >
-						<form action="">
+						<form name="frm">
 							<div class="d add_bottom_15">
 								<h4 class="add_bottom_15 add_top_70" style="font-size: 30px; font-weight: 500;">GROOMING 약관 동의</h4>
 								<h6 class="add_right_15">서비스 이용약관, 개인정보 제공, GROOMING 활동 안내
@@ -167,7 +187,7 @@
 							<!-- 줄  -->
 							<div style="text-align: center;">
 								<input type="button" value="회원가입 하기"
-									class="btn_1 rounded full-width add_bottom_15" />
+									class="btn_1 rounded full-width add_bottom_15" id="join"/>
 							</div>
 						</form>
 						<!-- form end -->
