@@ -69,14 +69,13 @@ public class LoginController {
 			session.setAttribute("login", dao.loginOk(memberDto));
 			session.setAttribute("dInfo", dd.designerInfo(designerDto));
 			
+			mav.setViewName("main/grooming_main");
 			
-			mav.setViewName("/mypage/mypage_nav");
-			mav.setViewName("/mypage/grooming_user_profile");
 		}else if (check == 0 || adcheck == 0) {
 			
 			
 			session.setAttribute("login", null);
-			mav.setViewName("redirect:/login");
+			mav.setViewName("login/grooming_login_form");
 			
 		}
 		
@@ -84,7 +83,7 @@ public class LoginController {
 			
 			session.setAttribute("admin", ad.adminloginOk(adminDto));
 			
-			mav.setViewName("home");
+			mav.setViewName("main/grooming_main");
 			
 		}
 		
@@ -99,7 +98,7 @@ public class LoginController {
 		
 		session.invalidate();
 		
-		return "loginForm";
+		return "main/grooming_main";
 	}
 	
 }

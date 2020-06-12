@@ -172,10 +172,10 @@
       var mb_id = document.getElementById("mb_id").value;
   	  location.href = "mb_id_check?mb_id="+mb_id;
 
-  	if(${idCheck eq 0}){
+  	if(${idCheck == 0}){
     	alert("사용가능한 ID입니다");
         return false;
-    }if(${idCheck eq 1}){
+    }if(${idCheck == 1}){
     	alert("중복된 ID입니다");
         return false;
     }

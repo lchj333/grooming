@@ -45,7 +45,9 @@ public class BookMarkController {
 	
 	//찜 목록 표시
 	@RequestMapping(value = "/bookmarksearch")
-	public String selectBookMark(@RequestParam(value = "mb_id")String id,BookMarkDTO dto, Model m) {
+	public String selectBookMark(BookMarkDTO dto, Model m) {
+		String id = (String)m.getAttribute("mb_id");
+		
 		dto.setMb_id(id);
 		List<BookMarkDTO> blist = dao.selectBookMark(dto);
 		m.addAttribute("blist", blist);

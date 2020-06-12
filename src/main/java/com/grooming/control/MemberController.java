@@ -33,7 +33,7 @@ public class MemberController {
 	// 회원가입 GET
 	@GetMapping(value = "/join")
 	public String insertOk() {
-		return "grooming_register_form";
+		return "login/grooming_register_form";
 	}
 	
 	
@@ -52,7 +52,14 @@ public class MemberController {
 		
 		dao.joinMember(memberDto);
 		
-		return "home"; // 회원가입후 이동할 페이지
+		return "main/grooming_main"; // 회원가입후 이동할 페이지
+	}
+	
+	// 약관 동의 하는 페이지 이동
+	
+	@RequestMapping(value = "agreementJoin")
+	public String agreementJoin() {
+		return "login/grooming_register_consent_form";
 	}
 	
 	// 회원 전체 조회
@@ -110,7 +117,7 @@ public class MemberController {
 		
 		System.out.println(dto);
 		
-		return "grooming_register_form";
+		return "login/grooming_register_form";
 	}
 
 	
@@ -124,7 +131,7 @@ public class MemberController {
 		model.addAttribute("email", mb_email);
 		
 		
-		return "grooming_login_id_find_form";
+		return "login/grooming_login_id_find_form";
 	}
 	
 	// 아이디찾기 
@@ -146,7 +153,7 @@ public class MemberController {
 		
 		
 		
-		return "grooming_login_id_find_step2_form";
+		return "login/grooming_login_id_find_step2_form";
 	}
 	
 	// 비밀번호 찾기 페이지 들어오기
@@ -159,7 +166,7 @@ public class MemberController {
 			model.addAttribute("email", mb_email);
 			
 			
-			return "grooming_login_pw_find_form";
+			return "login/grooming_login_pw_find_form";
 		}
 	
 	
@@ -184,7 +191,7 @@ public class MemberController {
 		
 		System.out.println(dto);
 		
-		return "grooming_login_pw_find_step2_form";
+		return "login/grooming_login_pw_find_step2_form";
 	}
 	
 	
@@ -251,7 +258,7 @@ public class MemberController {
 		
 		model.addAttribute("checkEmail", dto);
 		
-		return "/mypage/grooming_user_profile";
+		return "mypage/grooming_user_profile";
 		
 	}
 	
@@ -298,7 +305,7 @@ public class MemberController {
 	
 	
 	// 마이페이지 접속 
-	@RequestMapping(value = "mypage")
+	@RequestMapping(value = "/mypage")
 	public String myPage() {
 		
 		

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -22,8 +23,7 @@
     <link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
 
     <style>
-        html,
-        body {
+        html, body {
             height: 100%;
         }
     </style>
@@ -33,46 +33,49 @@
 </head>
 
 <body>
-
+<%-- 	<c:url value=""/> --%>
 		<header class="header map_view menu_fixed">
 			<div id="logo">
 				<a href="grooming_main.jsp">
-					<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main.png" width="150" height="36" data-retina="true" alt="">
+					<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main.png" width="150" height="36" data-retina="true" alt="메인이미지">
 				</a>
 			</div>
 			<ul id="top_menu">
 				<!-- 회원별로 -->
 
 				<!-- 비로그인시 -->
-				<li></li>
-				<li><a href="grooming_login_form.jsp" class="cart-menu-btn" title="login"></a></li>
-				<li><a href="grooming_register_consent_form.jsp" id="" class="login" title="Sign In"></a></li>
-				<!-- <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li> -->
+				<c:if test="${login == null }">
+					<li></li>
+					<li><a href="<c:url value="/login"/>" class="cart-menu-btn" title="login"></a></li>
+					<li><a href="<c:url value="/join"/>" id="" class="login" title="Sign In"></a></li>
+					<!-- <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li> -->
+				</c:if>
 
-				<%-- </c:if> --%>
-
-				<%--
+				
 				<!-- 사용자 로그인시 -->
-				<c:if test="">
-					<li><a href="cart-1.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
-					<li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
-					<li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+				<c:if test="${login != null }">
+					<li><a href="<c:url value="/mypage/reservList"/>" class="cart-menu-btn" title="Cart"><strong>예약목록</strong></a></li>
+					<li><a href="<c:url value="/bookmarksearch"/>" class="wishlist_bt_top" title="Your wishlist">찜 목록</a></li>
+					<li><a href="<c:url value="/logout"/>" id="logout" class="login" title="Logout">LOG OUT</a></li>
+					
 				</c:if>
 
 				<!-- 판매자 로그인시 -->
-				<c:if test="">
-					<li><a href="cart-1.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
-					<li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
-					<li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+				<c:if test="${dInfo.de_licencenum != null }">
+					<li><a href="<c:url value="/logout"/>" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
+					<li><a href="<c:url value="/logout"/>" id="sign-in" class="login" title="Sign In">Sign In</a></li>
+					<li><a href="<c:url value="/logout"/>" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+					<li><a href="<c:url value="/logout"/>" id="logout" class="login" title="Logout">LOG OUT</a></li>
 				</c:if>
 
 				<!-- 관리자 로그인시 -->
-				<c:if test="">
-					<li><a href="cart-1.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
-					<li><a href="#sign-in-dialog" id="sign-in" class="login" title="Sign In">Sign In</a></li>
-					<li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+				<c:if test="${admin != null }">
+					<li><a href="<c:url value="/logout"/>" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
+					<li><a href="<c:url value="/logout"/>" id="sign-in" class="login" title="Sign In">Sign In</a></li>
+					<li><a href="<c:url value="/logout"/>" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
+					<li><a href="<c:url value="/logout"/>" class="" title="">여기는 관리자용 페이지 이동칸</a></li>
 				</c:if>
-				 --%>
+				
 
 			</ul>
 			<!-- /top_menu -->
@@ -88,22 +91,22 @@
 
 					<li><span><a href="#0">GROOMING</a></span>
 						<ul>
-							<li><a href="grooming_corporation.jsp">GROOMING ci & 스토리</a></li>
+							<li><a href="<c:url value="/corporation"/>">GROOMING ci & 스토리</a></li>
 
 						</ul>
 					</li>
 					<li><span><a href="#0">소식</a></span>
 						<ul>
-							<li><a href="index.html">공지사항</a></li>
-							<li><a href="index.html">이벤트</a></li>
-							<li><a href="index.html">뉴스</a></li>
+							<li><a href="<c:url value=""/>">공지사항</a></li>
+							<li><a href="<c:url value=""/>">이벤트</a></li>
+							<li><a href="<c:url value=""/>">뉴스</a></li>
 						</ul>
 					</li>
 					<li><span><a href="#0">고객센터</a></span>
 						<ul>
-							<li><a href="index.html">1:1문의</a></li>
-							<li><a href="index.html">Q&A</a></li>
-							<li><a href="index.html">FAQ</a></li>
+							<li><a href="<c:url value=""/>">1:1문의</a></li>
+							<li><a href="<c:url value=""/>">Q&A</a></li>
+							<li><a href="<c:url value=""/>">FAQ</a></li>
 						</ul>
 					</li>
 

@@ -71,7 +71,7 @@ public class MailController {
         }
         
         ModelAndView mv = new ModelAndView();    //ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-        mv.setViewName("grooming_send_email_form");     //뷰의이름
+        mv.setViewName("login/grooming_send_email_form");     //뷰의이름
         mv.addObject("dice", dice);
         
         System.out.println(tomail);
@@ -113,7 +113,7 @@ public class MailController {
 	        
 	    	response_equals.setContentType("text/html;charset=UTF-8");
 	        
-	        mv.setViewName("grooming_register_form");
+	        mv.setViewName("login/grooming_register_form");
 	        
 	        mv.addObject("email",email_injeung);
 	        mv.addObject("email1",dice);
@@ -135,7 +135,7 @@ public class MailController {
 	        
 	        ModelAndView mv2 = new ModelAndView(); 
 	        
-	        mv2.setViewName("grooming_send_email_form");
+	        mv2.setViewName("login/grooming_send_email_form");
 	        
 	        response_equals.setContentType("text/html; charset=UTF-8");
 	        PrintWriter out_equals = response_equals.getWriter();
@@ -200,7 +200,7 @@ public class MailController {
         }
         
         ModelAndView mv = new ModelAndView();    //ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-        mv.setViewName("grooming_send_email_form2");     //뷰의이름
+        mv.setViewName("login/grooming_send_email_form2");     //뷰의이름
         mv.addObject("dice", dice);
         
         System.out.println(tomail);
@@ -239,7 +239,7 @@ public class MailController {
 	        
 	    	response_equals.setContentType("text/html;charset=UTF-8");
 	        
-	        mv.setViewName("grooming_send_email_form2");
+	        mv.setViewName("login/grooming_send_email_form2");
 	        
 	        mv.addObject("e_mail",email_injeung);
 	        
@@ -322,7 +322,7 @@ public class MailController {
         }
         
         ModelAndView mv = new ModelAndView();    //ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-        mv.setViewName("grooming_send_email_form3");     //뷰의이름
+        mv.setViewName("login/grooming_send_email_form3");     //뷰의이름
         mv.addObject("dice", dice);
         
         System.out.println(tomail);
@@ -361,7 +361,7 @@ public class MailController {
 			
 			response_equals.setContentType("text/html;charset=UTF-8");
 			
-			mv.setViewName("joinForm");
+			mv.setViewName("ogin/grooming_send_email_form3");
 			
 			mv.addObject("e_mail",email_injeung);
 			
@@ -380,7 +380,7 @@ public class MailController {
 			
 			ModelAndView mv2 = new ModelAndView(); 
 			
-			mv2.setViewName("email_injeung");
+			mv2.setViewName("ogin/grooming_send_email_form3");
 			
 			response_equals.setContentType("text/html; charset=UTF-8");
 			PrintWriter out_equals = response_equals.getWriter();
