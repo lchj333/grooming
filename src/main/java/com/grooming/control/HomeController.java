@@ -34,7 +34,7 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate );
 
 //		return "reservation/grooming_reservation_detail";
-		return "login/grooming_send_reservation";
+		return "main/grooming_main";
 	}
 
 }
