@@ -7,15 +7,15 @@
 	<select id="loginCheck" parameterType="LoginDTO" resultType="int">
 		select count(*) 
 		from gr_member
-		where mb_id = #{mb_id}
-		and mb_pw = #{mb_pw}
+		where MB_ID = #{mb_id}
+		and MB_PW = #{mb_pw}
 	</select>
 	
 	<select id="loginOk" parameterType="MemberDTO" resultType="MemberDTO">
 		select * 
 		from gr_member
-		where mb_id = #{mb_id}
-		and mb_pw = #{mb_pw}
+		where MB_ID = #{mb_id}
+		and MB_PW = #{mb_pw}
 	</select>
 	
 	
