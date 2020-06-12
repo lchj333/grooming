@@ -2,7 +2,33 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Ansonika">
+  <title>PANAGEA - Admin dashboard</title>
+	
+
+  <!-- GOOGLE WEB FONT -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+	
+  <!-- Bootstrap core CSS-->
+  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Main styles -->
+  <link href="${pageContext.request.contextPath}/resources/mypage/css/admin.css" rel="stylesheet">
+  <!-- Icon fonts-->
+  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <!-- Plugin styles -->
+  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/dropzone.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/mypage/css/date_picker.css" rel="stylesheet">
+  <!-- WYSIWYG Editor -->
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.css">
+  <!-- Your custom styles -->
+  <link href="${pageContext.request.contextPath}/resources/mypage/css/custom.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function (e){
     $("input[type='file']").change(function(e){
@@ -19,9 +45,7 @@
           return false;
         }
       }
-      
       preview(arr);
-      
     });//file change
     
     function checkExtension(fileName,fileSize){
@@ -74,34 +98,6 @@
     }
   });
 </script>
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="Ansonika">
-  <title>PANAGEA - Admin dashboard</title>
-	
-
-  <!-- GOOGLE WEB FONT -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
-	
-  <!-- Bootstrap core CSS-->
-  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Main styles -->
-  <link href="${pageContext.request.contextPath}/resources/mypage/css/admin.css" rel="stylesheet">
-  <!-- Icon fonts-->
-  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <!-- Plugin styles -->
-  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/mypage/vendor/dropzone.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/mypage/css/date_picker.css" rel="stylesheet">
-  <!-- WYSIWYG Editor -->
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.css">
-  <!-- Your custom styles -->
-  <link href="${pageContext.request.contextPath}/resources/mypage/css/custom.css" rel="stylesheet">
-	
 </head>
 
 <body class="fixed-nav sticky-footer" id="page-top">
@@ -114,53 +110,44 @@
      
 		<div class="box_general padding_bottom">
 			<div class="header_box version_2">
-				<h2><i class="fa fa-file"></i>문의하기</h2>
+				<h2><i class="fa fa-file"></i>1:1 문의</h2>
 			</div>
-		
-			<div class="row">
-				<div class="col-md-5">
-					<div class="form-group">
-						<div class="styled-select">
-						<select>
-							<option>미용사 문의하기</option>
-							<option>사용자 문의하기</option>
-						</select>
-						</div>
-					</div>
+			<div id="qnaboard_question_main">
+			<!-- 사용자 아이디 받아올곳 -->
+				<div id="qnaboard_question_id"><span>작성자 : nayoungsfather</span></div>
+			<!-- 사용자 글 작성 날짜 받아올곳 -->
+				<div id="qnaboard_question_date"><span>2020.06.10</span></div>
+			</div>
+			<!-- 사용자 글 내용 받아올곳 -->
+				<div id="qnaboard"><p>(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?</p></div>
+				<div>
+					<table id="imageDetail-table">
+                        <tr>
+                           <th>가게 상세이미지(최소 1장~최대5장)</th>
+                        </tr>
+                        <tr>
+                           <td>
+                                 <input type="file" id="uploadFile" name="files" accept="image/*" title="이미지 파일만 가능" multiple>
+                                  <div id="preview"></div>
+                              </td>
+                         </tr>
+                     </table>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="form-group">
-						<label>제목</label>
-						<input type="text" class="form-control" placeholder="제목을 입력하세요.">
-					</div>
-				</div>
-			</div>
-			<!-- /row-->
-
 			<!-- /row-->
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-group">
-						<label>문의내용</label>
 						<div class="editor"></div>
 					</div>
 				</div>
 			</div>
-			<!-- 파일첨부 -->
-			<table id="imageDetail-table">
-				<tr>
-					<td>
-						<input type="file" id="uploadFile" name="files" accept="image/*" title="이미지 파일만 가능" multiple>
-						<div id="preview"></div>
-					</td>
-				</tr>
-			</table>
 			<!-- /row-->
 		</div>
 		<!-- /box_general-->
-		<p><a href="#0" class="btn_1 medium">문의하기</a></p>
+		
+	
+		<!-- /box_general-->
+		<p><a href="#0" class="btn_1 medium">답변하기</a></p>
 	  </div>
 	  <!-- /.container-fluid-->
    	</div>
@@ -198,9 +185,8 @@
       ['fontsize', ['fontsize']],
       ['para', ['ul', 'ol', 'paragraph']]
       ],
-        placeholder: '내용을 입력하세요.',
         tabsize: 2,
-        height: 500
+        height: 500,
       });
     </script>
 </body>

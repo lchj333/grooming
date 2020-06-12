@@ -48,13 +48,15 @@
 							<c:forEach var="inform" items="${list }"></c:forEach>
 							<div class="card-header" role="tab">
 								<h5 class="mb-0">
-									<a data-toggle="collapse" href="#collapseOne_payment" aria-expanded="true">제목입니다. 제목을 입력하세요.<i class="indicator ti-minus"></i>
-									<c:out value="${inform.f_title }"></c:out></a>
+									<!-- 제목출력 -->
+									<a data-toggle="collapse" href="#collapseOne_payment" aria-expanded="true"><i class="indicator ti-minus">
+									<c:out value="${inform.f_title }"></c:out></i></a>
 								</h5>
 							</div>
 							<div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
 								<div class="card-body">
-									<p>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용<c:out value="${inform.f_con }"></c:out></p>
+								<!-- 내용출력 -->
+									<p><c:out value="${inform.f_con }"></c:out></p>
 								</div>
 							</div>
 						</div>
@@ -69,21 +71,7 @@
 		<!--/container-->
 	</main>
 	<!--/main-->
-	
-
-	<!--/footer-->
 	</div>
-	<!-- page -->
-	
-	<!-- Sign In Popup -->
-	<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
-		<div class="small-dialog-header">
-			<h3>Sign In</h3>
-		</div>
-		<!--form -->
-	</div>
-	<!-- /Sign In Popup -->
-	
 	<div id="toTop"></div><!-- Back to top button -->
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 	

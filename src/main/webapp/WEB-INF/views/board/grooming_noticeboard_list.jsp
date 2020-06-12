@@ -10,46 +10,26 @@
 <title>noticelist</title>
 </head>
 <body>
-	<div id="page">
 
-		<!-- header -->
+<div id="page">
 		<jsp:include page="../include/header.jsp" />
-		<!-- header end -->
-
-		<!-- contents -->
-		<form action="#" id="gr_noticeboard_list_form">
-			<div id="gr_noticeboard_list_div">
-				<section id="gr_noticeboard_list_section">
-					<%-- <ul id="gr_noticeboard_list_pagetitle">전체공지</ul>
-					<ul id="gr_noticeboard_list_articlelist">
-						<c:forEach var="i" begin="1" end="15">
-							<li id="gr_noticeboard_list_li"><a href="$"
-								id="gr_noticeboard_list_li_a"><c:out value="${nt_title }"></c:out></a>
-							</li>
-						</c:forEach>
-					</ul> --%>
-					<table>
-		<tr>
-			<!-- <th>글번호</th> -->
-			<th>제목</th>
-			<!-- <th>작성자</th> -->
-			<!-- <th>내용</th> -->
-			<!-- <th>조회수</th>
-			<th>작성일자</th> -->
-		</tr>
-		<c:forEach var="a" items="${list }">
-		<tr>
-			<%-- <td>${a.nt_no }</td> --%>
-			<td><a href="noticeDetail?nt_no=${a.nt_no }&num=${pn}">${a.nt_title }</a></td>
-			<%-- <td>${a.ad_id }</td> --%>
-			<%-- <td>${a.nt_con }</td> --%>
-			<%-- <td>${a.nt_hits }</td>
-			<td>${a.nt_regdate }</td> --%>
-		</tr>
-		</c:forEach>
-	</table>
-	<div>
-		<!-- [이전] 나오게 하는 부분 -->
+<!-- contents -->
+	<form action="#" id="gr_noticeboard_list_form">
+		<div id="grooming_qnaboard_customl\ist_div">
+			<div id="grooming_qnaboard_customlist_section">
+				<div id="grooming_qnaboard_customlist_articlelist">
+					<div id="grooming_qnaboard_customlist_maintitle">공지사항</div>
+					<div id="grooming_qnaboard_customlist_tablediv">
+					<c:forEach var="a" items="${list }">
+							<div id="grooming_qnaboard_customlist_tr">
+								<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td1"><a href="noticeDetail?nt_no=${a.nt_no }&num=${pn}">${a.nt_title }</a></div>
+								<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td2"><c:out value="${a.nt_regdate }"></c:out></div>
+							</div>
+						<div id="grooming_qnaboard_customlist_tr"></div>
+					</c:forEach>
+					</div>
+				
+		<!-- 페이징 처리 -->
 		<c:if test="${prev}">
 			<span>[ <a href="/control/noticeListPage?num=${startPageNum - 1}">이전</a> ]</span>
 		</c:if>
@@ -73,15 +53,15 @@
 		<%-- <c:forEach begin="1" end="${pageNum}" var="num">
 			<span><a href="/control/noticeListPage?num=${num}">${num}</a></span>
 		</c:forEach> --%>
-	</div>
-				</section>
-			</div>
-		</form>
 		
-		<form action="noticeInsert" method="get"><input type="submit" value="공지작성" /></form>
-	</div>
-	<!-- footer -->
+				</div>
+				
+				<form action="noticeInsert" method="get"><input type="submit" value="공지작성" /></form>
+			</div>
+		</div>
+	</form>
+</div>
+
 	<jsp:include page="../include/footer.jsp" />
-	<!-- footer end -->
 </body>
 </html>
