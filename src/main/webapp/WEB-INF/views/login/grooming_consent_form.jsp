@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>grooming_consent_form</title>
+<title>grooming_약관동의</title>
 <!-- Favicons-->
     <link rel="shortcut icon" href="img/Grooming_icon_72.png" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon" href="img/Grooming_icon_72.png">
