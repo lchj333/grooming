@@ -6,24 +6,24 @@
 <mapper namespace="registrationMapper">
 	<!-- 모든가게 리스트(사용자 입장) -->
 	<select id="list" parameterType="Map">
-		select r.de_licencenum, r.ref_shopname, r.reg_shopaddress, 
-				r.reg_price, r.reg_img, m.mb_phone 
+		select r.DE_LICENCENUM, r.REF_SHIONAME, r.REG_SHOPADDRESS, 
+				r.REG_PRICE, r.REG_IMG, m.MB_PHONE 
 		from gr_registration r, gr_member m
-		where reg_block = 0
+		where REG_BLOCK = 0
 	</select>
 	
 	<!-- 가게 상세 정보 -->
 	<select id="shopDetail" resultType="RegistrationDTO">
 		select *
 		from gr_registration
-		where de_licencenum = ${de_licencenum}
+		where DE_LICENCENUM = ${de_licencenum}
 	</select>
 	
 	<!-- '그'가게 상세이미지들. -->
 	<select id="infoImgs" resultType="String">
-		select reg_addimg
+		select REG_ADDIMG
 		from reg_img
-		where de_licencenum = ${de_licencenum}
+		where DE_LICENCENUM = ${de_licencenum}
 	</select>
 	
 	<!-- 가게 등록 -->
@@ -43,8 +43,8 @@
 	<!-- 블럭상태 변경 -->
 	<update id="BlockByAdmin" parameterType="RegistrationDTO">
 		update gr_registration
-		set reg_block = #{reg_block}
-		where de_licencenum = #{de_licencenum}
+		set REG_BLOCK = #{reg_block}
+		where DE_LICENCENUM = #{de_licencenum}
 	</update>
 	
 	<!-- 가게 검색 -->

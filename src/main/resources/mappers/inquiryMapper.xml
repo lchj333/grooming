@@ -5,24 +5,24 @@
 <mapper namespace=" ">
 	<!-- C -->
 	<insert id="insertInquiry">
-		INSERT INTO GR_INQUIRY(MB_ID, AD_ID, IN_TITLE, IN_CON, IN_NOWDATE, IN_CATEGORY)
+		INSERT INTO gr_inquiry(MB_ID, AD_ID, IN_TITLE, IN_CON, IN_NOWDATE, IN_CATEGORY)
 		VALUES (#{mb_id}, 'admin', #{in_title}, #{in_con}, NOW(), #{in_category})
 	</insert>
 	<!-- R -->
 	<select id="selectAllInquiry" resultType="InquiryDTO">
-		SELECT * FROM GR_INQUIRY ORDER BY IN_NUM DESC
+		SELECT * FROM gr_inquiry ORDER BY IN_NUM DESC
 	</select>
 	<select id="selectOneInquiryByin_num" resultType="InquiryDTO">
-		SELECT * FROM GR_INQUIRY WHERE IN_NUM = #{in_num}
+		SELECT * FROM gr_inquiry WHERE IN_NUM = #{in_num}
 	</select>
 	<!-- U -->
 	<update id="updateInquiry">
-		UPDATE GR_INQUIRY
+		UPDATE gr_inquiry
 		SET IN_TITLE = #{in_title}, IN_CON = #{in_con}, IN_NOWDATE = now(), IN_CATEGORY = #{in_category}
 		WHERE IN_NUM = #{in_num}
 	</update>
 	<!-- D -->
 	<delete id="deleteInquiry">
-		DELETE FROM GR_INQUIRY WHERE IN_NUM = #{in_num}
+		DELETE FROM gr_inquiry WHERE IN_NUM = #{in_num}
 	</delete>
 </mapper>
