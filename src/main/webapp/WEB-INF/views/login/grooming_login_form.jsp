@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -37,173 +38,28 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	$(document).ready(function(){
-		var checkIP = /^[a-zA-Z0-9]{4,16}$/; //ID와 PASSWORD 유효성 검사 정규식
-	    var checkEmail = /^[0-9a-zA-Z]([@-_\.]?[0-9a-zA-Z]){1,99}$/;  //Email 유효성 검사 정규
-	    var checkBirth = /^[0-9]{6}$/;  //Email 유효성 검사 정규
-	    var checkHangle = /^[\uAC00-\uD7A3]+$/; // 한글입력
-		var checkPhone = /^[0-9]{10,11}$/; //ID와 PASSWORD 유효성 검사 정규식
+		
 
-		var mb_id = document.getElementById("mb_id");
-	    var mb_pw = document.getElementById("mb_pw");
-	    var mb_pwck = document.getElementById("mb_pwck");
-	    var mb_name = document.getElementById("mb_name");
-	    var mb_phone = document.getElementById("mb_phone");
-	    var mb_email = document.getElementById("mb_email");
-	    var mb_emailhidden = document.getElementById("verificationNum");
-	    var mb_birth = document.getElementById("birth");
-	    var mb_address1 = document.getElementById("mb_address1");
-	    var mb_address2 = document.getElementById("mb_address2");
-	    var mb_area = document.getElementById("mb_area");
+	    $("#logingo").on('click', function(){
 
-	    $("#join").on('click', function(){
-
-
-	    	//아이디 유효성 검사
-	    	if(mb_id.value == ""){
-	    		mb_id.focus();
-	    		$('#idCheck').text("필수정보 입니다.");
-	    		alert("아뒤 없");
-		    	return false;
-	    	}if(!checkIP.test(mb_id.value)) {
-	    		alert("4자에서 16자입력 ");
-		    	mb_id.focus();
-	    		$('#idCheck').text("4자에서 16자입력 .");
-		        return false;
-		    }
-
-
-	     // 이름 유효성 검사
-		    if(mb_name.value==""){
-		    	alert("필수정보 입니다");
-		    	$('#nameCheck').text("필수정보 입니다.");
-		    	mb_name.focus();
-		        return false;
-		    }if(!checkHangle.test(mb_name.value)){
-		    	alert("한글로 적어주세요");
-		    	$('#nameCheck').text("한글로 입력해주세요");
-		    	mb_name.focus();
-		        return false;
-		    }
-
-
-
-
-	    	//비밀번호 유효성 검사
-		    if(mb_pw.value==''){
-		    	$('#pwCheck').text("비밀번호를 입력해주세요.");
-		    	alert("비번을 입력 ㄱ");
-		    	mb_pw.focus();
-		          return false;
-		    }if(!checkIP.test(mb_pw.value)){
-		    	alert("4~16자 영문 대 소문자, 숫자를 사용하세요.");
-		    	$('#pwCheck').text("4~16자 영문 대 소문자, 숫자를 사용하세요.");
-		    	mb_pw.focus();
-		         return false;
-		    }if(mb_pwck.value==''){
-		    	alert("필수정보 입니다.");
-		    	$('#pwCheck2').text("필수정보 입니다.");
-		    	mb_pwck.focus();
-		          return false;
-		    }if(mb_pw.value!=mb_pwck.value){
-		    	alert("비밀번호가 일치하지 않습니다.");
-		    	$('#pwCheck2').text("비밀번호가 일치하지 않습니다.");
-		    	mb_pwck.focus();
-		    	return false;
-		    }
-
-		 	// 연락처 유효성 검사
-		    if(mb_phone.value==""){
-		    	alert("연락처를 입력해주세요");
-		    	$('#phoneCheck').text("연락처를 입력해주세요");
-		    	return false;
-		    }if(!checkPhone.test(mb_phone.value)){
-		    	alert("형식에 맞게 연락처를 입력해주세요");
-		    	$('#phoneCheck').text("연락처를 정확하게 입력해주세요");
-		    	return false;
-		    }
-
-		    // 생년월일 유효성 검사
-			if(birth.value==''){
-		    	alert("생년월일을 입력해주세요.");
-				$('#birthdayCheck').text("생년월일을 입력해주세요.");
-			      return false;
-			}if(!checkBirth.test(birth.value)){
-		    	alert("형식에 맞에 입력 ㄱ");
-			 	$('#birthdayCheck').text("형식에 맞에 입력 ㄱ");
-			      return false;
-			}
-
-
-			//EMAIL 유효성검사
-		    if(mb_email.value==''){
-		    	$('#mailCheck').text("이메일을 입력해주세요.");
-		    	alert("이메일을 입력해주세요.");
-		        return false;
-		    }if(!checkEmail.test(mb_email.value)){
-		    	$('#mailCheck').text("이메일형식에 맞게 입력해주세요.");
-		    	alert("이메일형식에 맞게 입력해주세요.");
-		         return false;
-		    }if(mb_emailhidden.value=='인증 번호'){
-		    	$('#mailCheck').text("이메일 인증해주세요.");
-		    	alert("메일 인증을 해주세요");
-		         return false;
-		    }
-
-
-
-
-
-		 // 주소 유효성 검사
-		    if(mb_address1.value==""){
-		    	alert("주소를 입력해주세요.");
-		    	$('#addCheck').text("주소를 입력해주세요");
-		    	return false;
-		    }
-
-		    document.frm.action = "join"
+		    document.frm.action = "login";
 			document.frm.method = "POST";
 			document.frm.submit();
-			alert("회원가입이 완료되었습니다.");
+
+	    });
+	    
+	    $("#joingo").on('click', function(){
+
+		    document.frm.action = "<c:url value='grooming_register_consent_form.jsp'/>";
+			document.frm.method = "POST";
+			document.frm.submit();
+			
 
 	    });
 
 
 
 	});
-
-	// 아이디 중복 체크
-    function checkId(){
-      var mb_id = document.getElementById("mb_id").value;
-  	  location.href = "mb_id_check?mb_id="+mb_id;
-
-  	if(${idCheck eq 0}){
-    	alert("사용가능한 ID입니다");
-        return false;
-    }if(${idCheck eq 1}){
-    	alert("중복된 ID입니다");
-        return false;
-    }
-		}
-
-
-	 // 메일 인증
-      var windowObj;
-      function openEmail(){
-
-        // 새창에 대한 세팅(옵션)
-        var settings ='toolbar=0,directories=0,status=no,menubar=0,scrollbars=auto,resizable=no,height=600,width=600,left=0,top=0';
-        // 자식창을 열고 자식창의 window 객체를 windowObj 변수에 저장
-        var mb_email = document.getElementById("mb_email").value;
-
-        windowObj = window.open("email?mb_email=" + mb_email,"메일 인증",settings);
-
-        // 자식창의 childText라는 id를 가진 태그 요소의 값에 부모창의 값을 넣음
-
-      }
-
-
-
-
 
 </script>
 <body >
@@ -218,7 +74,7 @@
 			</figure>
 			<!-- 상단 로고 -->
 
-			<form action="login" method="post">
+			<form name="frm">
 				<!-- sns 로고 -->
 				<div class="access_social">
 					<a href="#0" class="social_bt kakao">Login with kakao</a>
@@ -231,12 +87,12 @@
 					<label>아이디</label>
 
 					<i class="ti-user"></i>
-					<input type="text" class="form-control" name="mb_id" id="mb_id" style="padding-left: 40px;">
+					<input type="text" class="form-control" name="mb_id" id="" style="padding-left: 40px;">
 				</div>
 				<!-- 비밀번호 입력 -->
 				<div class="form-group">
 					<label>비밀번호</label>
-					<input type="password" class="form-control" name="mb_pw" id="mb_pw"
+					<input type="password" class="form-control" name="mb_pw" id=""
 					style="padding-left: 40px;"
 					 >
 					<i class="icon_lock_alt"></i>
@@ -252,8 +108,8 @@
 					<div class="float-right mt-1"><label>&nbsp; 비밀번호 찾기</label></div>
 					<div class="float-right mt-1" ><label>아이디 찾기 ㅣ&nbsp;</label></div>
 				</div>
-				<input type="submit" value="로그인" class="btn_1 rounded full-width"/>
-				<input type="button" value="회원가입" class="btn_1 rounded full-width" id=""/>
+				<input type="button" value="로그인" class="btn_1 rounded full-width" id="logingo"/>
+				<input type="button" value="회원가입" class="btn_1 rounded full-width" id="joingo"/>
 
 			</form>
 			<div class="copy">© 2020 Grooming</div>
