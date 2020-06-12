@@ -30,27 +30,27 @@
 	
 	<!-- 예약 내역 리스트 -->
 	<select id="getAllMyList" parameterType="String" resultType="ReservationDTO">
-		select * from gr_reservation
+		select * from GR_RESERVATION
 		where MB_ID = #{mb_id}
 		order by RE_DATE desc
 	</select>
 	
 	<!-- 상세정보 -->
 	<select id="selectByNum" parameterType="int" resultType="ReservationDTO">
-		select * from gr_reservation
+		select * from GR_RESERVATION
 		where DE_LICENCENUM = #{de_licencenum}
 	</select>
 	
 	<!-- 예약 승인 | 미승인 -->
 	<update id="checkReserv" parameterType="ReservationDTO">
-		update gr_reservation
+		update GR_RESERVATION
 		set RE_APPROVAL = #{RE_APPROVAL}
 		where RE_NUM = #{re_num};
 	</update>
 	
 	<!-- 미승인 사유 작성 -->
 	<insert id="insertFeedBack" parameterType="ReservationDTO">
-		insert into res_because
+		insert into RES_BECAUSE
 		values (#{re_num}, #{bc_con}) 
 	</insert>
 	
