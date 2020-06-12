@@ -117,7 +117,7 @@ public class MemberController {
 		
 		System.out.println(dto);
 		
-		return "grooming_register_form";
+		return "login/grooming_register_form";
 	}
 
 	
@@ -131,7 +131,7 @@ public class MemberController {
 		model.addAttribute("email", mb_email);
 		
 		
-		return "grooming_login_id_find_form";
+		return "login/grooming_login_id_find_form";
 	}
 	
 	// 아이디찾기 
@@ -153,7 +153,7 @@ public class MemberController {
 		
 		
 		
-		return "grooming_login_id_find_step2_form";
+		return "login/grooming_login_id_find_step2_form";
 	}
 	
 	// 비밀번호 찾기 페이지 들어오기
@@ -166,7 +166,7 @@ public class MemberController {
 			model.addAttribute("email", mb_email);
 			
 			
-			return "grooming_login_pw_find_form";
+			return "login/grooming_login_pw_find_form";
 		}
 	
 	
@@ -191,7 +191,7 @@ public class MemberController {
 		
 		System.out.println(dto);
 		
-		return "grooming_login_pw_find_step2_form";
+		return "login/grooming_login_pw_find_step2_form";
 	}
 	
 	
