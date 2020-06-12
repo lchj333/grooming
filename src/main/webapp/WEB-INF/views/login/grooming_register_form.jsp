@@ -63,6 +63,9 @@
 	    		alert("4~16자 영문 대 소문자, 숫자를 사용하세요.");
 		    	mb_id.focus();
 		        return false;
+		    }if(${idCheck != null}){
+		    	alert("중복된 아이디입니다. 중복확인 해주세요");
+		        return false;
 		    }
 
 
@@ -137,7 +140,6 @@
 		 // 주소 유효성 검사
 		    if(mb_address1.value==""){
 		    	alert("주소를 입력해주세요.");
-		    	$('#addCheck').text("주소를 입력해주세요");
 		    	return false;
 		    }
 
@@ -158,16 +160,11 @@
       var mb_id = document.getElementById("mb_id").value;
   	  location.href = "mb_id_check?mb_id="+mb_id;
   	  
-  	  	console.log(checkIP);
   	  
-	  	if(!checkIP.test("#mb_id")) {
-			alert("사용할 수 없는 아이디입니다.");
-	    	mb_id.focus();
-	        return false;
-	    }if(${idCheck == null}){
+	  	if(${idCheck == 0} && mb_id != ""){
 	    	alert("사용가능한 아이디입니다");
 	        return false;
-	    }if(${idCheck != null}){
+	    }if(${idCheck == 1}){
 	    	alert("중복된 아이디입니다");
 	        return false;
 	    }

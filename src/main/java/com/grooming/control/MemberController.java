@@ -112,9 +112,13 @@ public class MemberController {
 	public String idCheck(@RequestParam(value = "mb_id", required = false)String mb_id,Model model) {
 		MemberDTO dd = new MemberDTO();
 		
+		
+		System.out.println(mb_id);
+		
+		
 		dd.setMb_id(mb_id);
 		
-		MemberDTO dto = dao.idCheck(dd);
+		int dto = dao.idCheck(dd);
 		
 		
 		
