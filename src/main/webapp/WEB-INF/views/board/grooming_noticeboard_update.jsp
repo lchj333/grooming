@@ -70,19 +70,19 @@
      <!-- /.container-fluid-->
       </div>
    <jsp:include page="../include/footer.jsp"/>
-   <!-- /.container-wrapper-->
-   <!-- Scroll to Top Button-->
-   <!-- Logout Modal-->
-   <!-- Bootstrap core JavaScript-->
-   <%-- <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script> --%>
-   <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery/jquery.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-   <!-- Core plugin JavaScript-->
-   <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery-easing/jquery.easing.min.js"></script>
-   <!-- Page level plugin JavaScript-->
-   <script src="${pageContext.request.contextPath}/resources/mypage/vendor/chart.js/Chart.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/jquery.dataTables.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- /.container-wrapper-->
+    <!-- Scroll to Top Button-->
+    <!-- Logout Modal-->
+    <!-- Bootstrap core JavaScript-->
+    <%-- <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script> --%>
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/chart.js/Chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/dataTables.bootstrap4.js"></script>
    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery.selectbox-0.2.js"></script>
    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/retina-replace.min.js"></script>
    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery.magnific-popup.min.js"></script>
