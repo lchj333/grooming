@@ -36,7 +36,7 @@
 <%-- 	<c:url value=""/> --%>
 		<header class="header map_view menu_fixed">
 			<div id="logo">
-				<a href="grooming_main.jsp">
+				<a href="<c:url value="/"/>">
 					<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main.png" width="150" height="36" data-retina="true" alt="메인이미지">
 				</a>
 			</div>
