@@ -75,7 +75,7 @@ public class LoginController {
 			
 			
 			session.setAttribute("login", null);
-			mav.setViewName("redirect:/login/grooming_login_form");
+			mav.setViewName("login/grooming_login_form");
 			
 		}
 		

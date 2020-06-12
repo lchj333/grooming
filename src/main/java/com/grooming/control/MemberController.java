@@ -117,7 +117,7 @@ public class MemberController {
 		
 		System.out.println(dto);
 		
-		return "grooming_register_form";
+		return "login/grooming_register_form";
 	}
 
 	
@@ -166,7 +166,7 @@ public class MemberController {
 			model.addAttribute("email", mb_email);
 			
 			
-			return "grooming_login_pw_find_form";
+			return "login/grooming_login_pw_find_form";
 		}
 	
 	
@@ -191,7 +191,7 @@ public class MemberController {
 		
 		System.out.println(dto);
 		
-		return "grooming_login_pw_find_step2_form";
+		return "login/grooming_login_pw_find_step2_form";
 	}
 	
 	
@@ -258,7 +258,7 @@ public class MemberController {
 		
 		model.addAttribute("checkEmail", dto);
 		
-		return "/mypage/grooming_user_profile";
+		return "mypage/grooming_user_profile";
 		
 	}
 	
@@ -305,7 +305,7 @@ public class MemberController {
 	
 	
 	// 마이페이지 접속 
-	@RequestMapping(value = "mypage")
+	@RequestMapping(value = "/mypage")
 	public String myPage() {
 		
 		

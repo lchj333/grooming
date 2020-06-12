@@ -26,5 +26,10 @@ public class HomeController {
 
 		return "main/grooming_main";
 	}
+	
+	@RequestMapping(value = "/corporation")
+	public String goToCorp() {
+		return "corporation/grooming_corporation";
+	}
 
 }
