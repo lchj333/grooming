@@ -24,7 +24,7 @@
 
     <!-- BASE CSS -->
     <link href="${pageContext.request.contextPath}/resources/main_resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/main_resources/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/main_resources/css/style1.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/main_resources/css/vendors.css" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
@@ -37,7 +37,7 @@
 	<div id="page" class="theia-exception">
 	<main>
 	
-	<jsp:include page="../include/header.jsp"></jsp:include>
+	<jsp:include page="../include/header1.jsp"></jsp:include>
 
 		<div class="container margin_60_35">
 			<div class="row" id="grooming_faq_maindiv">
