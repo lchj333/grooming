@@ -6,7 +6,6 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
-import org.springframework.ui.Model;
 
 import com.grooming.dto.MemberDTO;
 
@@ -37,7 +36,7 @@ public class MemberDAO {
 	}
 	
 	// ID 중복 체크
-	public MemberDTO idCheck(MemberDTO memberDto) {
+	public int idCheck(MemberDTO memberDto) {
 		return ss.selectOne("idCheck", memberDto);
 	}
 	
