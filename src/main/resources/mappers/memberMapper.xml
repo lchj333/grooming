@@ -15,7 +15,7 @@
 	
 	<!-- 전체조회 -->
 	<select id="selectMemberAll" resultType="MemberDTO">
-		select * from GR_MEMBER
+		select * from gr_member
 	</select>
 	
 	<!-- ID로 개별조회 -->
@@ -48,7 +48,7 @@
 	<!-- 미용사 체크 확인 -->
 	<update id="designerCheck" parameterType="MemberDTO">
 		update gr_member
-		set mb_check = 'Y'
+		set MB_CHECK = 'Y'
 		where MB_ID = #{mb_id}
 	</update>
 	
