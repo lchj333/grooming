@@ -34,7 +34,6 @@
 <body class="fixed-nav sticky-footer" id="page-top">
 <%-- <jsp:include page="../header.jsp"></jsp:include> --%>
   <jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
-  
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->

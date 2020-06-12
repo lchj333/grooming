@@ -32,7 +32,7 @@
 
 </head>
 
-<jsp:include page="../include/header.jsp"/>
+<jsp:include page="../include/header1.jsp"/>
 <body class="fixed-nav sticky-footer" id="page-top">
   <!-- /Navigation-->
   <div class="content-wrapper" id="grooming_noticeboard_write_maindiv">
