@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-
 
 <body>
 	<footer>
@@ -16,10 +16,9 @@
 				<div class="col-lg-3 col-md-6 ml-lg-auto">
 					<h5>바로가기 링크</h5>
 					<ul class="links">
-						<li><a href="about.html">소개</a></li>
-						<li><a href="login.html">로그인</a></li>
-						<li><a href="regist
-						er.html">회원가입</a></li>
+						<li><a href="<c:url value="/corporation"/>">소개</a></li>
+						<li><a href="<c:url value="/login"/>">로그인</a></li>
+						<li><a href="<c:url value="/agreementJoin"/>">회원가입</a></li>
 						<li><a href="contacts.html">연락처</a></li>
 					</ul>
 				</div>
