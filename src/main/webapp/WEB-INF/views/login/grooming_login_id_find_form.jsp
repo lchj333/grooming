@@ -42,11 +42,11 @@
 	  $("#findId").on('click', function(){
 		  if(mb_name.value == ""){
 			  $('#nameCheck').text("이름을 입력해주세요");
-			  alert("이름 없");
+			  alert("이름이 없습니다");
 			  return false;
 		  }if(mb_email.value == ""){
 			  $('#emailCheck').text("이메일을 입력해주세요");
-			  alert("메일 없");
+			  alert("메일을 적어주세요");
 			  return false;
 		  }if(mb_emailcheck.value == "인증번호를 입력하세요"){
 			  $('#emailCheck').text("메일인증을 해주세요");
@@ -111,9 +111,9 @@
 
 					<div class="add_bottom_15">
 					  <input class="form-control" type="email" id="grooming_login_mail_Text" placeholder="ex) xxxx@naver.com" name="mb_email" value="${email }">
-					  <input class="form-control btn_1" type="submit" name="name"   value="메일인증" onclick="openEmail();">
 					</div>
 					<input type="text" class="form-control add_bottom_15" name="text" id="verificationNum" disabled="disabled" value="인증번호를 입력하세요" >
+					  <input class="form-control btn_1" type="submit" name="name"   value="메일인증" onclick="openEmail();">
 					<h6 class="text-center">인증번호가 오지 않나요?</h6>
 				</div>
 
