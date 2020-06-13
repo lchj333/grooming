@@ -104,8 +104,8 @@
 						</label>
 					</div>
 
-					<div class="float-right mt-1"><label>&nbsp; 비밀번호 찾기</label></div>
-					<div class="float-right mt-1" ><label>아이디 찾기 ㅣ&nbsp;</label></div>
+					<div class="float-right mt-1"><label><a href="mb_pw_find">&nbsp; 비밀번호 찾기</a></label></div>
+					<div class="float-right mt-1" ><label><a href="mb_id_find">아이디 찾기 ㅣ&nbsp;</a></label></div>
 				</div>
 				<input type="button" value="로그인" class="btn_1 rounded full-width" id="logingo"/>
 				<input type="button" value="회원가입" class="btn_1 rounded full-width" id="joingo"/>
