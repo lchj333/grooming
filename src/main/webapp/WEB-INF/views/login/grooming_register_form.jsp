@@ -58,7 +58,7 @@
 	    	if(mb_id.value == ""){
 	    		mb_id.focus();
 	    		$('#idCheck').text("필수정보 입니다.");
-	    		alert("아뒤 없");
+	    		alert("아이디 입력해주세요");
 		    	return false;
 	    	}if(!checkIP.test(mb_id.value)) {
 	    		alert("4자에서 16자입력 ");
@@ -87,7 +87,7 @@
 	    	//비밀번호 유효성 검사
 		    if(mb_pw.value==''){
 		    	$('#pwCheck').text("비밀번호를 입력해주세요.");
-		    	alert("비번을 입력 ㄱ");
+		    	alert("비번을 입력해주세요");
 		    	mb_pw.focus();
 		          return false;
 		    }if(!checkIP.test(mb_pw.value)){
@@ -125,7 +125,7 @@
 			      return false;
 			}if(!checkBirth.test(birth.value)){
 		    	alert("형식에 맞에 입력 ㄱ");
-			 	$('#birthdayCheck').text("형식에 맞에 입력 ㄱ");
+			 	$('#birthdayCheck').text("형식에 맞에 입력해주세요");
 			      return false;
 			}
 
@@ -294,7 +294,8 @@
 				</div>
 				<div class="form-group" style="margin-bottom: 10px;">
 					<label>선호하는 지역</label>
-					<input class="form-control" type="password" id="" placeholder="ex) 서울,경기,수원" name="mb_area">
+					<input class="form-control" type="password" id="" placeholder="ex) 서울,경기,수원" name="">
+
 
 				</div>
 
@@ -302,8 +303,8 @@
 
 
 				<input type="button" value="가입하기" id="join" class="btn_1 rounded outline full-width "  style="height: 50px; margin-top: 30px;"/>
-				<a href="javascript:history.back(-1)" class="btn_1 rounded outline full-width">뒤로가기</a>
-				  style="height: 50px; margin-top: 10px; onclick="history.back(-1)""/>
+				<a href="javascript:history.back(-1)" class="btn_1 rounded outline full-width" style="height: 50px; margin-top: 10px; onclick="history.back(-1)>뒤로가기</a>
+
 
 				<div class="copy">© 2020 Grooming</div>
 			</form>
