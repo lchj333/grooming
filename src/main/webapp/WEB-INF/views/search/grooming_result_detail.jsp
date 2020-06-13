@@ -314,7 +314,7 @@ html, body {
 									<input class="form-control" type="text" name="dates"
 										placeholder="When.."> <i class="icon_calendar"></i>
 								</div>
-								<form action="">
+								<form action="/search/reserv">
 									<div class="panel-dropdown">
 										<a href="#">견종선택 <span class="qtyTotal">1</span></a>
 										<div class="panel-dropdown-content right">
