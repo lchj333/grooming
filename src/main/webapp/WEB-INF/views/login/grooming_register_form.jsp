@@ -50,7 +50,7 @@ function openDaumPost(){
 		var checkIP = /^[a-zA-Z0-9]{4,16}$/; //ID와 PASSWORD 유효성 검사 정규식
 	    var checkEmail = /^[0-9a-zA-Z]([@-_\.]?[0-9a-zA-Z]){1,99}$/;  //Email 유효성 검사 정규
 	    var checkBirth = /^[0-9]{6}$/;  //Email 유효성 검사 정규
-	    var checkHangle = /^[\uAC00-\uD7A3]+$/; // 한글입력
+	    var checkHangle = /^[\uAC00-\uD7A3]+{3,4}$/; // 한글입력
 		var checkPhone = /^[0-9]{10,11}$/; //ID와 PASSWORD 유효성 검사 정규식
 
 		var mb_id = document.getElementById("mb_id");
@@ -159,8 +159,7 @@ function openDaumPost(){
 			alert("회원가입이 완료되었습니다. 메인페이지로 이동합니.");
 
 	    });
-
-
+	    
 
 	});
 
@@ -184,17 +183,37 @@ function openDaumPost(){
 	 // 메일 인증
       var windowObj;
       function openEmail(){
-
-        // 새창에 대한 세팅(옵션)
-        var settings ='toolbar=0,directories=0,status=no,menubar=0,scrollbars=auto,resizable=no,height=600,width=600,left=0,top=0';
-        // 자식창을 열고 자식창의 window 객체를 windowObj 변수에 저장
-        var mb_email = document.getElementById("mb_email").value;
-
-        windowObj = window.open("email?mb_email=" + mb_email,"메일 인증",settings);
-
-        // 자식창의 childText라는 id를 가진 태그 요소의 값에 부모창의 값을 넣음
+		 var mb_email = document.getElementById("mb_email").value;
+			
+    	  console.log(mb_email);
+    	  if(mb_email == null){
+    		  alert("이메일을 적어주세요.");
+    	  }if(mb_email != null){
+    		  
+	        // 새창에 대한 세팅(옵션)
+	        var settings ='toolbar=0,directories=0,status=no,menubar=0,scrollbars=auto,resizable=no,height=600,width=600,left=0,top=0';
+	        // 자식창을 열고 자식창의 window 객체를 windowObj 변수에 저장
+	        var mb_email = document.getElementById("mb_email").value;
+	
+	        windowObj = window.open("email?mb_email=" + mb_email,"메일 인증",settings);
+	
+	        // 자식창의 childText라는 id를 가진 태그 요소의 값에 부모창의 값을 넣음
+    	  }
 
       }
+      
+      function openDaumPost(){
+		    new daum.Postcode({
+		        oncomplete: function(data) {
+		            
+		        	// 우편번호와 주소 정보를 해당 필드에 넣는다.
+	                document.getElementById("mb_address1").value = data.roadAddress;
+	                document.getElementById("mb_address2").value = data.jibunAddress;
+		        	
+	                
+		        }
+		    }).open();
+		}// openDaumPsot() end
 
 </script>
 
@@ -256,7 +275,7 @@ function openDaumPost(){
 				<div class="form-group" style="margin-bottom: 20px;">
 					<label>이메일</label>
 					<div>
-					  <input class="form-control" type="email" id="mb_email" placeholder="ex) xxxx@naver.com" name="mb_email">
+					  <input class="form-control" type="email" id="mb_email" name="mb_email">
 					  <input class="form-control btn_1" type="button" name="name"  id="grooming_login_mail_Button" value="메일인증"
 					  onclick="openEmail();">
 					</div>
@@ -276,20 +295,15 @@ function openDaumPost(){
 				</div>
 				<div class="form-group">
 					<label>주소검색</label>
-
 					<div>
+					  <input class="form-control btn_1" type="button" name="name"  id="grooming_login_mail_Button" value="주소검색" onclick="openDaumPost()" >
 					  <input class="form-control" type="email" id="mb_address1"  name="mb_address1">
-					  <input class="form-control btn_1" type="button" name="name"  id="grooming_login_mail_Button" value="주소검색">
 					</div>
-
 				</div>
+				
 				<div class="form-group" style="margin-bottom: 20px;">
-
 					<input class="form-control" type="text" id="mb_address2"  style="margin-bottom:10px; margin-top: -10px;"
-					placeholder="ex) 상세주소 XX아파트 XX동-xx호" name="mb_address2"
-					>
-
-
+					placeholder="ex) 상세주소 XX아파트 XX동-xx호" name="mb_address2">
 				</div>
 				<div class="form-group" style="margin-bottom: 10px;">
 					<label>선호하는 지역</label>
