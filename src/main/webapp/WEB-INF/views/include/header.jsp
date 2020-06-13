@@ -36,7 +36,7 @@
 <%-- 	<c:url value=""/> --%>
 		<header class="header map_view menu_fixed">
 			<div id="logo">
-				<a href="grooming_main.jsp">
+				<a href="<c:url value="/"/>">
 					<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main.png" width="150" height="36" data-retina="true" alt="메인이미지">
 				</a>
 			</div>
@@ -47,7 +47,7 @@
 				<c:if test="${login == null }">
 					<li></li>
 					<li><a href="<c:url value="/login"/>" class="cart-menu-btn" title="login"></a></li>
-					<li><a href="<c:url value="/join"/>" id="" class="login" title="Sign In"></a></li>
+					<li><a href="<c:url value="/agreementJoin"/>" id="" class="login" title="Sign In"></a></li>
 					<!-- <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li> -->
 				</c:if>
 
@@ -97,16 +97,13 @@
 					</li>
 					<li><span><a href="#0">소식</a></span>
 						<ul>
-							<li><a href="<c:url value=""/>">공지사항</a></li>
-							<li><a href="<c:url value=""/>">이벤트</a></li>
-							<li><a href="<c:url value=""/>">뉴스</a></li>
+							<li><a href="<c:url value="/noticeListPage"/>">공지사항</a></li>
 						</ul>
 					</li>
-					<li><span><a href="#0">고객센터</a></span>
+					<li><span><a href="/faqList">고객센터</a></span>
 						<ul>
-							<li><a href="<c:url value=""/>">1:1문의</a></li>
-							<li><a href="<c:url value=""/>">Q&A</a></li>
-							<li><a href="<c:url value=""/>">FAQ</a></li>
+							<li><a href="<c:url value="/inquiryList"/>">1:1문의</a></li>
+							<li><a href="<c:url value="/faqList"/>">FAQ</a></li>
 						</ul>
 					</li>
 

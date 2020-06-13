@@ -112,9 +112,13 @@ public class MemberController {
 	public String idCheck(@RequestParam(value = "mb_id", required = false)String mb_id,Model model) {
 		MemberDTO dd = new MemberDTO();
 		
+		
+		System.out.println(mb_id);
+		
+		
 		dd.setMb_id(mb_id);
 		
-		MemberDTO dto = dao.idCheck(dd);
+		int dto = dao.idCheck(dd);
 		
 		
 		
@@ -149,8 +153,8 @@ public class MemberController {
 		dd.setMb_email(mb_email);
 		dd.setMb_name(mb_name);
 		
-		System.out.println(mb_email);
-		System.out.println(mb_name);
+//		System.out.println(mb_email);
+//		System.out.println(mb_name);
 		
 		MemberDTO dto = dao.idFind(dd);
 		model.addAttribute("idFind", dto);
@@ -188,14 +192,14 @@ public class MemberController {
 		dd.setMb_email(mb_email);
 		
 		
-		System.out.println(mb_email);
-		System.out.println(mb_id);
+//		System.out.println(mb_email);
+//		System.out.println(mb_id);
 		
 		MemberDTO dto = dao.pwFind(dd);
 		
 		model.addAttribute("pwFind", dto);
 		
-		System.out.println(dto);
+//		System.out.println(dto);
 		
 		return "login/grooming_login_pw_find_step2_form";
 	}
@@ -219,8 +223,8 @@ public class MemberController {
 		int dto = dao.checkPw(memberDto);
 		
 		model.addAttribute("checkPw", dto);
-		System.out.println(dto);
-		System.out.println(securityPw);
+//		System.out.println(dto);
+//		System.out.println(securityPw);
 		
 		return "checkPw";
 		
@@ -241,10 +245,10 @@ public class MemberController {
 		
 		dd.setMb_pw(securityService.encryptSHA256(mb_pw));
 		
-		System.out.println(mb_pw);
+//		System.out.println(mb_pw);
 		
-		System.out.println(dd.getMb_id());
-		System.out.println(dd.getMb_pw());
+//		System.out.println(dd.getMb_id());
+//		System.out.println(dd.getMb_pw());
 		
 		dao.changePw(dd);
 		
