@@ -37,7 +37,7 @@
 	<div id="page" class="theia-exception">
 	<main>
 	
-	<jsp:include page="../include/header1.jsp"></jsp:include>
+	<jsp:include page="../include/header.jsp"></jsp:include>
 
 		<div class="container margin_60_35">
 			<div class="row" id="grooming_faq_maindiv">

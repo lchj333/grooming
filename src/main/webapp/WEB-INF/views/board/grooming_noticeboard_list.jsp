@@ -13,7 +13,7 @@
 <body>
 
 <div id="page">
-		<jsp:include page="../include/header1.jsp" />
+		<jsp:include page="../include/header.jsp" />
 <!-- contents -->
 	<form action="#" id="gr_noticeboard_list_form">
 		<div id="grooming_qnaboard_customl\ist_div">
