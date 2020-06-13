@@ -18,9 +18,21 @@
 <script>
 	$(document).ready(function(){
 		
-
 	    
 	    $("#join").on('click', function(){
+	    	
+	    	
+				var frm = document.frm;
+				
+				for(var i=1; i<=2; i++)
+				{
+					if (!frm['enable'+i].checked)
+				{
+					alert('약관과 개인정보 보호정책에 모두 동의 해 주셔야 회원가입이 정상적으로 이루어집니다');
+		            return;
+				
+		    	}
+			}
 
 		    document.frm.action = "join";
 			document.frm.method = "GET";
@@ -32,6 +44,8 @@
 
 
 	});
+	
+	
 
 </script>
 
@@ -67,7 +81,7 @@
 								<div class="card">
 									<!-- heder -->
 									<div class="card-header" role="tab">
-										<label class="container_check"> <input type="checkbox">
+										<label class="container_check"> <input type="checkbox" name="enable1">
 											<span class="checkmark"></span>
 											<h5 class="mb-0">
 												<a data-toggle="collapse" href="#collapseOne_tips"
@@ -105,7 +119,7 @@
 								<div class="card">
 									<!-- cade 2 -->
 									<div class="card-header" role="tab">
-										<label class="container_check"> <input type="checkbox">
+										<label class="container_check"> <input type="checkbox" name="enable2">
 											<span class="checkmark"></span>
 											<h5 class="mb-0">
 												<a data-toggle="collapse" href="#collapseTwo_tips"
