@@ -46,35 +46,36 @@
 				<!-- 비로그인시 -->
 				<c:if test="${login == null }">
 					<li></li>
-					<li><a href="<c:url value="/login"/>" class="cart-menu-btn" title="login"></a></li>
-					<li><a href="<c:url value="/agreementJoin"/>" id="" class="login" title="Sign In"></a></li>
+					
+					<li><a href="<c:url value="/login"/>" class="cart-menu-btn" title="로그인"></a></li>
+					<li><a href="<c:url value="/agreementJoin"/>" id="" class="login" title="회원가입"></a></li>
 					<!-- <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li> -->
 				</c:if>
 
 				
 				<!-- 사용자 로그인시 -->
 				<c:if test="${login != null }">
-					<li><a href="<c:url value="/mypage/reservList"/>" class="cart-menu-btn" title="Cart"><strong>예약목록</strong></a></li>
-					<li><a href="<c:url value="/bookmarksearch"/>" class="wishlist_bt_top" title="Your wishlist">찜 목록</a></li>
-					<li><a href="<c:url value="/logout"/>" id="logout" class="login" title="Logout">LOG OUT</a></li>
+					<li><a href="<c:url value="/bookmarksearch"/>" class="wishlist_bt_top" title="찜"></a></li>
+					<li><a href="<c:url value="/mypage"/>" id="logout" class="login" title="마이페이지"></a></li> <!-- 마이페이지 이미지로 바꾸셈 -->
+					<li><a href="<c:url value="/logout"/>" class="cart-menu-btn" title="로그아웃"><strong></strong></a></li>
 					
 				</c:if>
 
 				<!-- 판매자 로그인시 -->
-				<c:if test="${dInfo.de_licencenum != null }">
+<%-- 				<c:if test="${dInfo.de_licencenum != null }">
 					<li><a href="<c:url value="/logout"/>" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
 					<li><a href="<c:url value="/logout"/>" id="sign-in" class="login" title="Sign In">Sign In</a></li>
 					<li><a href="<c:url value="/logout"/>" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
 					<li><a href="<c:url value="/logout"/>" id="logout" class="login" title="Logout">LOG OUT</a></li>
-				</c:if>
+				</c:if> --%>
 
 				<!-- 관리자 로그인시 -->
-				<c:if test="${admin != null }">
+			<%-- 	<c:if test="${admin != null }">
 					<li><a href="<c:url value="/logout"/>" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
 					<li><a href="<c:url value="/logout"/>" id="sign-in" class="login" title="Sign In">Sign In</a></li>
 					<li><a href="<c:url value="/logout"/>" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li>
 					<li><a href="<c:url value="/logout"/>" class="" title="">여기는 관리자용 페이지 이동칸</a></li>
-				</c:if>
+				</c:if> --%>
 				
 
 			</ul>
@@ -88,6 +89,7 @@
 			</a>
 			<nav id="menu" class="main-menu">
 				<ul>
+					<li><h6>${login.mb_name }</h6></li>
 
 					<li><span><a href="#0">GROOMING</a></span>
 						<ul>

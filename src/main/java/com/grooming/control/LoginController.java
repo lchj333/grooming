@@ -83,7 +83,7 @@ public class LoginController {
 			
 			session.setAttribute("admin", ad.adminloginOk(adminDto));
 			
-			mav.setViewName("main/grooming_main");
+			mav.setViewName("mypage/grooming_admin_management");
 			
 		}
 		
