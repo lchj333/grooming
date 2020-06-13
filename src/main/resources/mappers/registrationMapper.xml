@@ -4,12 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="registrationMapper">
-	<!-- 모든가게 리스트(사용자 입장) -->
-	<select id="list" parameterType="Map">
+	<!-- 샵 검색(사용자 입장) -->
+	<select id="searchShop" parameterType="Map">
 		select r.DE_LICENCENUM, r.REF_SHIONAME, r.REG_SHOPADDRESS, 
 				r.REG_PRICE, r.REG_IMG, m.MB_PHONE 
 		from gr_registration r, gr_member m
 		where REG_BLOCK = 0
+		<if test='!data.equals("")'>
+			and #{key} like '%'#{data}'%'
+		</if>
 	</select>
 	
 	<!-- 가게 상세 정보 -->
@@ -47,8 +50,8 @@
 		where DE_LICENCENUM = #{de_licencenum}
 	</update>
 	
-	<!-- 가게 검색 -->
-	<select id="searchShop" parameterType="RegistrationDTO" resultType="RegistrationDTO">
+	<!-- 모오든 가게 -->
+	<select id="list" resultType="RegistrationDTO">
 		select *
 		from gr_registration
 		where reg_shopaddress like '%'#{reg_shopaddress}'%' 

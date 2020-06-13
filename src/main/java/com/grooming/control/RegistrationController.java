@@ -153,13 +153,16 @@ public class RegistrationController {
 	}
 	
 	//grooming_main->
-	//샵 리스트 (+검색)
+	// 가게 검색
 	@RequestMapping(value = "/search/shopList")
-	public String listShop(HttpServletRequest req) {
-		//필터를 위한 맵 (예정)
-		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put..
-		List<ShopListDTO> list = rdao.getList(map);
+	public String listShop(@RequestParam(value = "searchData", defaultValue = "")String data, 
+											HttpServletRequest req) {
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map.put("key", "REG_SHOPADDRESS");
+		map.put("data", data);
+		
+		List<ShopListDTO> list = rdao.searchShop(map);
 		
 		req.setAttribute("shopList", list);
 		
@@ -192,25 +195,18 @@ public class RegistrationController {
 	/************************************
 		컨트롤에서 사용할 유틸 메소드..
 	*************************************/
-	
-	// 등록글 검색
-	
-	// 가게 검색
-	@RequestMapping(value = "searchShop", method = RequestMethod.POST)
-	public String searchShop(@RequestParam(value = "reg_shopaddress", required = true)String reg_shopaddress,
-							RegistrationDTO dto,HttpServletRequest req) {
-		
-		dto.setReg_shopaddress(reg_shopaddress);
-		
-		rdao.searchShop(dto);
-		
+	//샵 모든 리스트
+	@RequestMapping(value = "allShop", method = RequestMethod.POST)
+	public String searchShop(HttpServletRequest req) {
+//		rdao.getList(map);
 		return "search/grooming_screen_map";
-		
 	}
 	
 	@RequestMapping(value = "go")
 	public String go() {
 		return "search/grooming_result_detail";
 	}
+	// 등록글 검색
+	
 	
 }
