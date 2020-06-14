@@ -17,6 +17,7 @@ public class MemberDTO {
 	private int mb_block;
 	private Date mb_joindate;
 	private String mb_area;
+	private String de_approval;
 	
 	// 기본생성자
 	public MemberDTO() {}
@@ -24,7 +25,7 @@ public class MemberDTO {
 	// 모든항목이 들어가있는 생성자
 	public MemberDTO(String mb_id, String mb_pw, String mb_name, String mb_birth, String mb_gender, String mb_email,
 			String mb_emailck, String mb_phone, String mb_address1, String mb_address2, String mb_check, int mb_block,
-			Date mb_joindate, String mb_area) {
+			Date mb_joindate, String mb_area, String de_approval) {
 		super();
 		this.mb_id = mb_id;
 		this.mb_pw = mb_pw;
@@ -40,6 +41,7 @@ public class MemberDTO {
 		this.mb_block = mb_block;
 		this.mb_joindate = mb_joindate;
 		this.mb_area = mb_area;
+		this.de_approval = de_approval;
 	}
 
 	// getter,setter
@@ -155,8 +157,13 @@ public class MemberDTO {
 		this.mb_area = mb_area;
 	}
 
-	
-	
-	
+	public String getDe_approval() {
+		return de_approval;
+	}
+
+	public void setDe_approval(String de_approval) {
+		this.de_approval = de_approval;
+	}
+
 	
 }

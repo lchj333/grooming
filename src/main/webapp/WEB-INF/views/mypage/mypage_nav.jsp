@@ -111,6 +111,14 @@
 		          </a>
 		        </li>
 		        </c:if>
+		        <c:if test="${login.mb_check eq 'Y' && dInfo.de_approval eq 'N'}">
+				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Add listing">
+		          <a class="nav-link" href="<c:url value='/designerForm1'/>">
+		            <i class="fa fa-fw fa-plus-circle"></i>
+		            <span class="nav-link-text">미용사 등록</span>
+		          </a>
+		        </li>
+		        </c:if>
 		        <c:if test="${dInfo.de_approval eq 'Y'}"> <!-- 미용사일때 -->
 		        	<li class="nav-item" data-toggle="tooltip" data-placement="right" title="가게정보">
 		          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMylistings" data-parent="#mylistings">
@@ -240,7 +248,7 @@
 	        
 	        <!-- ---------------------------------------------------------------------------- -->
 	        
-	       <c:if test="${admin != null }"> <!-- 관리자일때  -->
+	       <c:if test="${login.mb_id == null && admin != null }"> <!-- 관리자일때  -->
 				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
 		          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#Components">
 		            <i class="fa fa-fw fa-gear"></i>
@@ -251,13 +259,16 @@
 		              <a href="<c:url value='pointchargingok'/>">차트</a>
 		            </li>
 					<li>
-		              <a href="<c:url value='pointchargingok'/>">회원관리</a>
+		              <a href="<c:url value='/selectMemberAll'/>">일반 회원관리</a>
+		            </li>
+		            <li>
+		              <a href="<c:url value='/agreedDesigner'/>">미용사 회원관리</a>
 		            </li>
 		            <li>
 		              <a href="<c:url value='pointchargingok'/>">문의보기</a>
 		            </li>
 		            <li>
-		              <a href="<c:url value='pointchargingok'/>">미용사등록</a>
+		              <a href="<c:url value='/designerApplication'/>">미용사등록</a>
 		            </li>
 		          </ul>
 		        </li>

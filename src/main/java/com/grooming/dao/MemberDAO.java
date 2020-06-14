@@ -30,6 +30,11 @@ public class MemberDAO {
 		return ss.selectList("selectMemberAll");
 	}
 	
+	// 회원전체 전체 조회 메소드
+	public List<MemberDTO> agreedDesigner(){
+		return ss.selectList("agreedDesigner");
+	}
+	
 	// ID로 회원 개별 조회 메소드
 	public MemberDTO selectOne(String mb_id) {
 		return ss.selectOne("selectMemberOne", mb_id);
