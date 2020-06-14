@@ -219,12 +219,12 @@ html, body {
 
 
 
-	<!-- COMMON SCRIPTS -->
+	<!-- 공통 js 파일 footer있으면 필요 없음 -->
     <script src="js/common_scripts.js"></script>
     <script src="js/main.js"></script>
 	<script src="assets/validate.js"></script>
 
-	<!-- Map -->
+	<!-- map에 관련한 js파일  -->
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script src="js/markerclusterer.js"></script>
 	<script src="js/map_hotels_half_screen.js"></script>
