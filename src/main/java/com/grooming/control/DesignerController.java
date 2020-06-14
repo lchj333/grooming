@@ -16,7 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 
 import com.grooming.dao.DesignerDAO;
+import com.grooming.dao.MemberDAO;
 import com.grooming.dto.DesignerDTO;
+import com.grooming.dto.MemberDTO;
 import com.grooming.utils.FileUpload;
 
 @Controller
@@ -24,6 +26,7 @@ public class DesignerController {
 
 	@Inject
 	DesignerDAO dao;
+	MemberDAO md;
 
 	// 디자이너 시청하는 메소드
 	@RequestMapping(value = "/designerJoin")
@@ -61,17 +64,19 @@ public class DesignerController {
 		List<DesignerDTO> list = dao.selectDesignerAll();
 		model.addAttribute("designerList", list);
 
-		return "designerList";
+		return "mypage/grooming_admin_management";
 	}
 
+	
 	// 디자이너 신청한 멤버 목록 받아오는 메소드
 	@RequestMapping(value = "/designerApplication")
 	public String designerApplication(Model model) {
 
 		List<DesignerDTO> list = dao.designerApplication();
-		model.addAttribute("designerApplication", list);
+		
+		model.addAttribute("list", list);
 
-		return "designerApplication";
+		return "mypage/grooming_admin_accept";
 	}
 
 	// 디자이너 de_approval 승인하는 메소드
@@ -80,7 +85,7 @@ public class DesignerController {
 
 		dao.designerAgree(designerDto);
 
-		return "designerAgree";
+		return "mypage/grooming_admin_management";
 	}
 
 }

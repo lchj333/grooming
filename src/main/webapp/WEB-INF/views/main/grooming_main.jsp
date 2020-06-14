@@ -25,7 +25,7 @@
 
 	    $("#search").on('click', function(){
 
-		    document.frm.action = "/search/shopList";
+		    document.frm.action = "<c:url value="/search/shopList"/>";
 			document.frm.method = "POST";
 			document.frm.submit();
 
@@ -57,7 +57,7 @@
 							<div id="custom-search-input">
 								<div class="input-group">
 									<!-- # 검색 창 name: -->
-									<input type="text" name="main_search_data" class=" search-query"
+									<input type="text" name="searchData" class="search-query"
 										placeholder="지역검색">
 
 									<!-- # 검색 버튼 submit 나중에 교체 해야함 -->

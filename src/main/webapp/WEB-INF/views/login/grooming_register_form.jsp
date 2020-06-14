@@ -221,8 +221,8 @@
 <div id="register">
 		<aside>
 			<figure>
-				<a href="/main"><img
-					src="<c:url value='/resources/main_resources/img/Grooming_150_36_LOGO.png'/>"
+				<a href="<c:url value="main/grooming_main"/>">
+					<img src="<c:url value='/resources/main_resources/img/Grooming_150_36_LOGO.png'/>"
 					data-retina="true" alt="" width="150" height="36"></a>
 			</figure>
 			<form autocomplete="off" action="#" name="frm">
@@ -307,7 +307,7 @@
 				</div>
 				<div class="form-group" style="margin-bottom: 10px;">
 					<label>선호하는 지역</label>
-					<input class="form-control" type="password" id="" placeholder="ex) 서울,경기,수원" name="">
+					<input class="form-control" type="text" id="" placeholder="ex) 서울,경기,수원" name="md_area">
 
 
 				</div>

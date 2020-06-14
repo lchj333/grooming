@@ -54,9 +54,9 @@
 		<!-- 페이징처리 끝 -->		
 				</div>
 				<!-- 관리자일경우에만 공지 등록가능 -->
-				<c:if test="${ad_id != null }">
+				<%-- <c:if test="${ad_id != null }"> --%>
 				<a href="noticeInsert"><input type="button" value="공지등록" class="btn_1 medium" /></a>
-				</c:if>
+				<%-- </c:if> --%>
 			</div>
 		</div>
 	</form>

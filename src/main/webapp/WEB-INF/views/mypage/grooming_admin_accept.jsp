@@ -47,7 +47,7 @@
 
 
  			if(yes.is(':checked')==true){
- 				location.href = "ewqew?no="+num+"&we=true";
+ 				location.href = "designerAgree?de_licencenum="+num;
 			}else if(yes.is(':checked')==false){
 				location.href = "ewqew?no=1&we=false";
 			}
@@ -77,15 +77,14 @@
         <li class="breadcrumb-item">
           <a href="#">미용사</a>
         </li>
-        <li class="breadcrumb-item active">충전</li>
+        <li class="breadcrumb-item active">미용사 </li>
       </ol>
 		<!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i>충전내역</div>
+          <i class="fa fa-table"></i>신청목록</div>
 	        <div class="card-body">
-	          <div class="table-responsive">
-		        <form action="#" method="get" name="frm">
+	          <div class="table-responsive">  
 		            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 		              <thead>
 		                <tr>
@@ -104,36 +103,34 @@
 		                </tr>
 		              </tfoot>
 		              <tbody>
-			          	<c:forEach var="i" begin="1" end="2">
+			          	<c:forEach var="list" items="${list }">
 				               	<tr>
-				                  <td style="text-align: center;">${i}</td>
-				                  <td>jstl실명 <%-- ${ } --%></td>
+				                  <td style="text-align: center;"><c:out value="${list.de_licencenum}"></c:out></td>         
+				                  <td><c:out value="${list.mb_name }"></c:out></td>
 				                  <td>
-				                  	<a href="#" onClick="popimage('/resources/licence/dInfo.de_lience',600,1000);return false">
-				                  		<img src="img/logo_2x.png" alt="이미지" style="width: 100px; height: 30px" />
+				                  	<a href="#" onClick="popimage('<c:url value="/resources/licence/${list.de_licence}"/>',1000,600);return false">
+				                  		<img src="<c:url value="/resources/licence/${list.de_licence}"/>" alt="이미지" style="width: 100px; height: 30px" />
 				                  	</a>
 				                  </td>
 				                  <td>
 				                  	<div id="radio-outline">
-					                  	<input type="radio" name="radio${i }" class="yes" value="y" checked="checked" />YES
-					                  	<input type="radio" name="radio${i }" class="no" value="n" />NO
+					                  	<input type="radio" name="radio${list }" class="yes" value="Y" checked="checked" />YES
+					                  	<%-- <input type="radio" name="radio${list }" class="no" value="N" />NO --%>
 				                  	</div>
-				                  	<%-- <c:if test="${yes }=yes"> yes로 들어오면 --%>
+				                  	<%-- <c:if test="${list.de_approval eq 'Y' }">
 				                  		<div id="present-condition1">현재승인여부: yes</div>
-				                  	<%-- </c:if> --%>
-				                  	<%-- <c:if test="${no }=no"> no로 들어오면 --%>
-				                  		<!-- <div id="present-condition2">현재승인여부: no</div> -->
-				                  	<%-- </c:if> --%>
+				                  	</c:if> --%>
+				                  	<c:if test="${list.de_approval eq 'N'  }">
+				                  		<div id="present-condition2">현재승인여부: no</div>
+				                  	</c:if>
 					                <div class="tr-button">저장</div>
 				                  </td>
 				                </tr>
 			          	</c:forEach>
 		              </tbody>
 		            </table>
-			  	</form>
 	          </div>
 	        </div>
-        <div class="card-footer small text-muted"><input type="button" value="저장" id="btn" /></div>
       </div>
 	  <!-- /tables-->
 	  </div>
@@ -156,22 +153,40 @@
     <jsp:include page="mypage_logout.jsp"></jsp:include>
 
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<c:url value='/resources/mypage/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
+    
     <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-	<script src="vendor/jquery.selectbox-0.2.js"></script>
-	<script src="vendor/retina-replace.min.js"></script>
-	<script src="vendor/jquery.magnific-popup.min.js"></script>
+    <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/dataTables.bootstrap4.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.selectbox-0.2.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/retina-replace.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.magnific-popup.min.js'/>"></script>
     <!-- Custom scripts for all pages-->
-    <script src="js/admin.js"></script>
+    <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
 	<!-- Custom scripts for this page-->
-    <script src="js/admin-datatables.js"></script>
-
+	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
+	<script>$('input.date-pick').datepicker();</script>
+	<!-- WYSIWYG Editor -->
+	<script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
+	<script>
+      $('.editor').summernote({
+    fontSizes: ['10', '14'],
+    toolbar: [
+      // [groupName, [list of button]]
+      ['style', ['bold', 'italic', 'underline', 'clear']],
+      ['font', ['strikethrough']],
+      ['fontsize', ['fontsize']],
+      ['para', ['ul', 'ol', 'paragraph']]
+      ],
+        placeholder: 'Write here your description....',
+        tabsize: 2,
+        height: 200
+      });
+    </script>
 </body>
 </html>

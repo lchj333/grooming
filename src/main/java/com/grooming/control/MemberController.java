@@ -68,10 +68,22 @@ public class MemberController {
 	public String showList(Model model) {
 		
 		List<MemberDTO> list = dao.selectMemberAll();
-		model.addAttribute("memberlist", list);
+		model.addAttribute("list", list);
 		
-		return "member";
+		return "mypage/grooming_admin_management";
 	}
+	
+	// 승인된 미용사 리스트
+	@RequestMapping(value = "/agreedDesigner")
+	public String showListDesigner(Model model) {
+		
+		List<MemberDTO> list = dao.agreedDesigner();
+		model.addAttribute("list", list);
+		
+		return "mypage/grooming_admin_management";
+	}
+	
+	
 	
 	// 회원 개별 조회
 	@RequestMapping(value = "/detail")
@@ -329,12 +341,19 @@ public class MemberController {
 	}
 	
 	
-	// 마이페이지 접속 
+	// 내정보 수정 페이지 접속 
 	@RequestMapping(value = "/mypage")
-	public String myPage() {
+	public String myInfoChange() {
 		
 		return "/mypage/grooming_user_profile";
 	}
+	
+	// 내정보 보기 페이지
+	@RequestMapping(value = "/mypageInfo")
+	public String myPage() {
+		
+		return "/mypage/grooming_user_mypage";
+	}	
 	
 	// 미용사 신청 페이지로 들어가기
 	@RequestMapping(value = "/hairdresserRegist")

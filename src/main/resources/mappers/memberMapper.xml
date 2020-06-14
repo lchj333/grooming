@@ -18,6 +18,14 @@
 		select * from gr_member
 	</select>
 	
+	<!-- 승인된 미용사 목록 -->
+	<select id="agreedDesigner" resultType="MemberDTO">
+		select m.*, d.de_approval 
+		from gr_member m, gr_designer d
+		where m.mb_id = d.mb_id
+	</select>
+	
+	
 	<!-- ID로 개별조회 -->
 	<select id="selectMemberOne" resultType="MemberDTO">
 		select * from gr_member

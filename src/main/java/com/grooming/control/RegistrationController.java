@@ -168,14 +168,21 @@ public class RegistrationController {
 											HttpServletRequest req) {
 		Map<String, String> map = new HashMap<String, String>();
 		
+		if(data.equals("")) {
+			data = null;
+		}
 		map.put("key", "REG_SHOPADDRESS");
 		map.put("data", data);
 		
 		List<ShopListDTO> list = rdao.searchShop(map);
 		
-		req.setAttribute("shopList", list);
-		
-		return "search/grooming_screen_map";
+		if(list.size() == 0) { //검색값이 없을 경우
+			return "main/grooming_main";
+		}else {
+			req.setAttribute("shopList", list);
+			
+			return "search/grooming_screen_map";
+		}
 	}
 	//-> grooming_screen_map (샵 목록) ->
 	//가게 상세 정보
