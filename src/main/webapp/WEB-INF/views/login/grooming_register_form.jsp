@@ -36,7 +36,7 @@
 		var checkIP = /^[a-zA-Z0-9]{4,16}$/; //ID와 PASSWORD 유효성 검사 정규식
 	    var checkEmail = /^[0-9a-zA-Z]([@-_\.]?[0-9a-zA-Z]){1,99}$/;  //Email 유효성 검사 정규
 	    var checkBirth = /^[0-9]{6}$/;  //Email 유효성 검사 정규
-	    var checkHangle = /^[\uAC00-\uD7A3]+{3,4}$/; // 한글입력
+	    var checkHangle = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{3,4}$/; // 한글입력
 		var checkPhone = /^[0-9]{10,11}$/; //ID와 PASSWORD 유효성 검사 정규식
 
 		var mb_id = document.getElementById("mb_id");
@@ -52,7 +52,7 @@
 	    var mb_area = document.getElementById("mb_area");
 
 	    $("#join").on('click', function(){
-
+			
 
 	    	//아이디 유효성 검사
 	    	if(mb_id.value == ""){
@@ -64,7 +64,7 @@
 	    		alert("4~16자 영문 대 소문자, 숫자를 사용하세요.");
 		    	mb_id.focus();
 		        return false;
-		    }if(${idCheck != null}){
+		    }if(${idCheck eq 1}){
 		    	alert("중복된 아이디입니다. 중복확인 해주세요");
 		        return false;
 		    }
@@ -153,11 +153,13 @@
 		    	alert("주소를 입력해주세요.");
 		    	return false;
 		    }
-
+		 
+		 
+			console.log("sss");
 		    document.frm.action = "join"
 			document.frm.method = "POST";
 			document.frm.submit();
-			alert("회원가입이 완료되었습니다. 메인페이지로 이동합니.");
+			alert("회원가입이 완료되었습니다. 메인페이지로 이동합니다.");
 
 	    });
 	    
@@ -187,9 +189,9 @@
 		 var mb_email = document.getElementById("mb_email").value;
 			
     	  console.log(mb_email);
-    	  if(mb_email == null){
+    	  if(mb_email == ''){
     		  alert("이메일을 적어주세요.");
-    	  }if(mb_email != null){
+    	  }else if(mb_email != null){
     		  
 	        // 새창에 대한 세팅(옵션)
 	        var settings ='toolbar=0,directories=0,status=no,menubar=0,scrollbars=auto,resizable=no,height=600,width=600,left=0,top=0';
@@ -276,7 +278,7 @@
 				<div class="form-group" style="margin-bottom: 20px;">
 					<label>이메일</label>
 					<div>
-					  <input class="form-control" type="email" id="mb_email" name="mb_email">
+					  <input class="form-control" type="email" id="mb_email" name="mb_email" placeholder="ex)xxx@xxxxx.xxx">
 					  <input class="form-control btn_1" type="button" name="name"  id="grooming_login_mail_Button" value="메일인증"
 					  onclick="openEmail();">
 					</div>
@@ -313,12 +315,8 @@
 
 				</div>
 
-
-
-
 				<input type="button" value="가입하기" id="join" class="btn_1 rounded outline full-width "  style="height: 50px; margin-top: 30px;"/>
 				<a href="javascript:history.back(-1)" class="btn_1 rounded outline full-width" style="height: 50px; margin-top: 10px; onclick="history.back(-1)>뒤로가기</a>
-
 
 				<div class="copy">© 2020 Grooming</div>
 			</form>

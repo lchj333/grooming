@@ -27,13 +27,15 @@ public class DesignerController {
 
 	// 디자이너 시청하는 메소드
 	@RequestMapping(value = "/designerJoin")
-	public String designerJoin(@ModelAttribute("mb_id") DesignerDTO designerDto,
+	public String designerJoin(@RequestParam(value = "mb_id", required = false)String mb_id, 
+			@RequestParam(value = "de_insta", required = false)String de_insta,
+					DesignerDTO designerDto,
 									MultipartRequest mr, HttpServletRequest req) {
 		String fileName = null;
 		//라이센스 이미지 받기
 		try {
 			String realPath = req.getServletContext().getRealPath("/resources/licence/");
-			fileName = new FileUpload().saveFile(mr.getFile(""), realPath);
+			fileName = new FileUpload().saveFile(mr.getFile("file"), realPath);
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -43,10 +45,14 @@ public class DesignerController {
 		if(fileName == null) {//파일이 제대로 저장되지 않았을 경우
 			return "home";
 		}
-
+		
+		designerDto.setDe_insta(de_insta);
+		designerDto.setMb_id(mb_id);
 		designerDto.setDe_licence(fileName);
+		
+		System.out.println(designerDto.getMb_id());
 		dao.joinDesigner(designerDto);
-		return "redirect:/selectMemberAll";
+		return "mypage/grooming_user_profile";
 	}
 
 	// 디자이너 전체 조회

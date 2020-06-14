@@ -107,7 +107,7 @@
 				                  <td style="text-align: center;">${i}</td>         
 				                  <td>jstl실명 <%-- ${ } --%></td>
 				                  <td>
-				                  	<a href="#" onClick="popimage('img/logo_2x.png',600,1000);return false">
+				                  	<a href="#" onClick="popimage('/resources/licence/dInfo.de_lience',600,1000);return false">
 				                  		<img src="img/logo_2x.png" alt="이미지" style="width: 100px; height: 30px" />
 				                  	</a>
 				                  </td>
