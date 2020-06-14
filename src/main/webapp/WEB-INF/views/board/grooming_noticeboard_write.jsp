@@ -91,10 +91,15 @@
    <!-- Custom scripts for this page-->
    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/dropzone.min.js"></script>
    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap-datepicker.js"></script>
-  <!-- WYSIWYG Editor -->
-  <%-- <script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script> --%>
-  <script src="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.min.js"></script>
-  <script>
+   <!-- WYSIWYG Editor -->
+   <%-- <script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script> --%>
+   <script src="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.min.js"></script>
+   <!-- include libraries(jQuery, bootstrap) -->
+   <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+   <!-- include summernote css/js-->
+   <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.3/summernote.js"></script>
+   <script>
       $('.editor').summernote({
       fontSizes: ['10', '14'],
       toolbar: [
@@ -107,15 +112,6 @@
         placeholder: '내용을 입력하세요',
         tabsize: 2,
         height: 500,
-        callbacks: {
-            onChange: function (content) {
-              var html = content.trim()
-              // fix for problem with ENTER and new paragraphs
-              if (html.substring(0, 5) !== '<div>') {
-                $editor.summernote('code', '<div><br></div>' + html)
-              }
-            }
-          }
       });
     </script>     
 </body>
