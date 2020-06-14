@@ -6,15 +6,15 @@
 	<select id="adminCheck" parameterType="AdminDTO" resultType="int">
 		select count(*) 
 		from gr_admin
-		where ad_id = #{ad_id}
-		and ad_pw = #{ad_pw}
+		where AD_ID = #{ad_id}
+		and AD_PW = #{ad_pw}
 	</select>
 	
 	<select id="adminloginOk" parameterType="AdminDTO" resultType="AdminDTO">
 		select * 
 		from gr_admin
-		where ad_id = #{ad_id}
-		and ad_pw = #{ad_pw}
+		where AD_ID = #{ad_id}
+		and AD_PW = #{ad_pw}
 	</select>
 
 </mapper>

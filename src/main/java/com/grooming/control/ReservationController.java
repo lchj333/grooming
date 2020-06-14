@@ -18,7 +18,7 @@ import com.grooming.dto.ReservationDTO;
 public class ReservationController {
 	@Inject
 	ReservationDAO rdao;
-	
+
 	/***********************************************
 	  	사용자 입장
 	***********************************************/
@@ -81,7 +81,7 @@ public class ReservationController {
 		}
 		return "home";
 	}
-	
+
 	//미용사 예약 승인 + 피드백
 	@RequestMapping(value = "/yorn")
 	public String yesOrNo(ReservationDTO dto) {
@@ -97,6 +97,13 @@ public class ReservationController {
 		}
 	}
 	
+	//-> grooming_result_detail -> 예약확인(reserv) -> 예약완료 -> 예약 목록 페이지
+	//예약 확인 폼
+	@PostMapping(value = "reservCk")
+	public String reservCk() {
+		return "";
+	}
+	
 	/******************************
 	 		유틸 메소드
 	******************************/
@@ -106,5 +113,5 @@ public class ReservationController {
 			return true;
 		}else return false;
 	}
-	
+
 }

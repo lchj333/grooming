@@ -62,7 +62,7 @@
 
 		<!-- contents -->
 		<!-- =======================================================================================================================================================================================================================  -->
-		<main style="height: 80%">
+		<main >
 
 			<div class="container add_top_60 ">
 				<div class="row magin_60">
@@ -84,14 +84,18 @@
 				</div>
 				<hr>
 					<div class="row col-6 add_bottom_75">
-						<div class="col-3">
-							<input type="button" class="btn_1  add_top_15"
-								value="마이페이지 가기" />
+						<div class="add_right_15">
+							<input type="button" class="btn_1  add_top_15 "
+								value="예약하기" />
+
 						</div>
-						<div class="col-3">
-							<input type="button" class="btn_1  add_top_15"
+						<div class="">
+							<input type="button" class="btn_1  add_top_15 "
 								value="되돌아가기" />
+
 						</div>
+
+
 				</div>
 
 			</div>

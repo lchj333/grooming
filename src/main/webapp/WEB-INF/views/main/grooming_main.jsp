@@ -18,6 +18,23 @@
  <!-- =======================================================================================================================================================================================================================  -->
 
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		
+
+	    $("#search").on('click', function(){
+
+		    document.frm.action = "searchShop";
+			document.frm.method = "POST";
+			document.frm.submit();
+
+	    });
+	   
+
+	});
+
+</script>
 
 <body>
 <div id="page">
@@ -36,14 +53,15 @@
 					<div class="container margin_60_35" style="margin-bottom: 10%; text-align: center; padding-bottom: 7%; ">
 						<!-- jstl 로 이미지  -->
 						<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_300_200_LOGO.png" alt="Grooming_LOGO" class="add_top_220"/>
-						<form action="">
+						<form action="/search/shopList" name="frm">
 							<div id="custom-search-input">
 								<div class="input-group">
 									<!-- # 검색 창 name: -->
-									<input type="text" name="#" class=" search-query"
+									<input type="text" name="main_search_data" class=" search-query"
 										placeholder="지역검색">
+
 									<!-- # 검색 버튼 submit 나중에 교체 해야함 -->
-									<input type="submit" class="btn_search" value="Search">
+									<input type="submit" class="btn_search" value="Search" id="search" name="reg_shopaddress"/>
 								</div>
 							</div>
 						</form>

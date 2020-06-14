@@ -5,38 +5,41 @@
 <mapper namespace=" ">
 	<!-- C -->
 	<insert id="insertFaq">
-		INSERT INTO GR_FAQ
+		INSERT INTO gr_faq
 		VALUES (#{f_title}, 'admin', #{f_con})
 	</insert>
 	
 	<!-- R -->
 	<select id="selectAllFaq" resultType="FaqDTO">
-		SELECT * FROM GR_FAQ
+		SELECT * 
+		FROM gr_faq
 	</select>
 	<select id="selectOnebyf_title" resultType="FaqDTO">
-		SELECT * FROM GR_FAQ WHERE F_TITLE = #{f_title}
+		SELECT * 
+		FROM gr_faq 
+		WHERE F_TITLE = #{f_title}
 	</select>
 	
 	<!-- U -->
 	<update id="updateFaq">
-		UPDATE GR_FAQ
+		UPDATE gr_faq
 		SET F_TITLE = #{f_title}, F_CON = #{f_con}
 		WHERE F_TITLE = #{f_title}
 	</update>
 	
 	<!-- D -->
 	<delete id="deleteFaq">
-		DELETE FROM GR_FAQ WHERE F_TITLE = #{f_title}
+		DELETE FROM gr_faq WHERE F_TITLE = #{f_title}
 	</delete>
 	
 	<!-- 게시물의 총 갯수를 구하기 -->
 	<select id="faqcount" resultType="int">
-		SELECT COUNT(F_TITLE) FROM GR_FAQ
+		SELECT COUNT(F_TITLE) FROM gr_faq
 	</select>
 	
 	<!-- 게시물 목록 + 페이징 -->
 	<select id="faqlistPage" parameterType="hashMap" resultType="FaqDTO">
-		SELECT * FROM GR_FAQ
+		SELECT * FROM gr_faq
 		LIMIT #{displayPost}, #{postNum}
 	</select>
 </mapper>

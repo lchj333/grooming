@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
-    <title>Grooming login</title>
+    <title>Grooming 로그인</title>
 <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/Grooming_icon_72.png" type="image/x-icon">
@@ -25,12 +25,12 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
 
     <!-- BASE CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-	<link href="css/vendors.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/main_resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/main_resources/css/style.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/main_resources/css/vendors.css" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
-    <link href="css/custom.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
 
  <!-- =======================================================================================================================================================================================================================  -->
 </head>
@@ -38,7 +38,6 @@
 <script>
 	$(document).ready(function(){
 		
-
 	    $("#logingo").on('click', function(){
 
 		    document.frm.action = "login";
@@ -53,13 +52,10 @@
 			document.frm.method = "POST";
 			document.frm.submit();
 			
-
 	    });
 
 
-
 	});
-
 </script>
 <body >
 <div id="login">
@@ -75,12 +71,12 @@
 
 			<form name="frm">
 				<!-- sns 로고 -->
-				<div class="access_social">
+			<!-- 	<div class="access_social">
 					<a href="#0" class="social_bt kakao">Login with kakao</a>
-				</div>
+				</div> -->
 				<!-- sns 로고 -->
 
-				<div class="divider"><span>Or</span></div>
+				<!-- <div class="divider"><span>Or</span></div> -->
 				<!-- 아이디 입력 -->
 				<div class="form-group">
 					<label>아이디</label>
@@ -98,14 +94,14 @@
 				</div>
 				<!-- 아이디 저장 체크 박스 -->
 				<div class="clearfix add_bottom_30">
-					<div class="checkboxes float-left">
+					<!-- <div class="checkboxes float-left">
 						<label class="container_check">아이디 저장 <input
 							type="checkbox"> <span class="checkmark"></span>
 						</label>
-					</div>
+					</div> -->
 
-					<div class="float-right mt-1"><label>&nbsp; 비밀번호 찾기</label></div>
-					<div class="float-right mt-1" ><label>아이디 찾기 ㅣ&nbsp;</label></div>
+					<div class="float-right mt-1"><label><a href="mb_pw_find">&nbsp; 비밀번호 찾기</a></label></div>
+					<div class="float-right mt-1" ><label><a href="mb_id_find">아이디 찾기 ㅣ&nbsp;</a></label></div>
 				</div>
 				<input type="button" value="로그인" class="btn_1 rounded full-width" id="logingo"/>
 				<input type="button" value="회원가입" class="btn_1 rounded full-width" id="joingo"/>

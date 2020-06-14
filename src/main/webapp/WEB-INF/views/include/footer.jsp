@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-
 
 <body>
 	<footer>
 		<div class="container margin_60_35">
 			<div class="row">
 				<div class="col-lg-5 col-md-12 p-r-5">
-					<p><img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main2.png" class="add_top_15" width="150" height="36" alt="로고" id="footer-logo"></p>
+					<p style="color: white;"><img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main2.png" class="add_top_15" width="150" height="36" alt="로고" id="footer-logo"></p>
 					<p>서울특별시 구로구 구트로 / TEL 02-740-7584 / FAX 02-740-2450 /<br /> e-mail: GROOMING @ gmail.com
 					<br /><strong>	COPYRIGHT 2020 GROOMING</strong></p>
 
@@ -16,10 +16,9 @@
 				<div class="col-lg-3 col-md-6 ml-lg-auto">
 					<h5>바로가기 링크</h5>
 					<ul class="links">
-						<li><a href="about.html">소개</a></li>
-						<li><a href="login.html">로그인</a></li>
-						<li><a href="regist
-						er.html">회원가입</a></li>
+						<li><a href="<c:url value="/corporation"/>">소개</a></li>
+						<li><a href="<c:url value="/login"/>">로그인</a></li>
+						<li><a href="<c:url value="/agreementJoin"/>">회원가입</a></li>
 						<li><a href="contacts.html">연락처</a></li>
 					</ul>
 				</div>

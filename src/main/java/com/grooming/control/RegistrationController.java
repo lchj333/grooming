@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -151,19 +152,23 @@ public class RegistrationController {
 		
 	}
 	
-	//샵 리스트
-	@RequestMapping(value = "/shopList")
-	public String listShop(HttpServletRequest req) {
-		//필터를 위한 맵 (예정)
-		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put..
-		List<ShopListDTO> list = rdao.getList(map);
+	//grooming_main->
+	// 가게 검색
+	@RequestMapping(value = "/search/shopList")
+	public String listShop(@RequestParam(value = "searchData", defaultValue = "")String data, 
+											HttpServletRequest req) {
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map.put("key", "REG_SHOPADDRESS");
+		map.put("data", data);
+		
+		List<ShopListDTO> list = rdao.searchShop(map);
 		
 		req.setAttribute("shopList", list);
 		
-		return "listpage";
+		return "search/grooming_screen_map";
 	}
-	
+	//-> grooming_screen_map (샵 목록) ->
 	//가게 상세 정보
 	@RequestMapping(value = "/detailShop")
 	public String detailShopInfo(@RequestParam(value = "de_licencenum", required = true)int num, 
@@ -179,16 +184,29 @@ public class RegistrationController {
 				req.setAttribute("infoImgs", imgs);
 			}
 			
-			return "detailPage";
+			return "search/grooming_result_detail";
 		}else {//가져온 정보가 없을 때
-			return "listPage";
+			return "main/grooming_main";
 		}
 			
-	}
+	}//-> 예약 체크 페이지
 	
 	//등록시 포인트 깍기
 	/************************************
 		컨트롤에서 사용할 유틸 메소드..
 	*************************************/
+	//샵 모든 리스트
+	@RequestMapping(value = "allShop", method = RequestMethod.POST)
+	public String searchShop(HttpServletRequest req) {
+//		rdao.getList(map);
+		return "search/grooming_screen_map";
+	}
+	
+	@RequestMapping(value = "go")
+	public String go() {
+		return "search/grooming_result_detail";
+	}
+	// 등록글 검색
+	
 	
 }

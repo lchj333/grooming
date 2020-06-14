@@ -34,11 +34,11 @@
 	rel="stylesheet">
 
 <!-- BASE CSS -->
-<link href="${pageContext.request.contextPath}/resources/main_resources/css/bootstrap.min.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/main_resources/css/style.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 
 <!-- YOUR CUSTOM CSS -->
-<link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
+<link href="css/custom.css" rel="stylesheet">
 
 <style>
 .invoice-title h2, .invoice-title h3 {
@@ -64,7 +64,7 @@
 <body>
 	<div id="page">
 		<!-- header -->
-		<jsp:include page="../include/header.jsp" />
+		<%@include file="../include/header.jsp" %>
 		<!-- header end -->
 
 		<!-- contents -->
@@ -96,8 +96,13 @@
 							<hr>
 							<div class="row col-6 add_bottom_75">
 
-								<div class="col-3">
-									<input type="button" class="btn_1  add_top_15" value="mypage가기" />
+								<div class="add_right_15">
+									<input type="button" class="btn_1  add_top_15 " value="mypage가기" />
+
+								</div>
+								<div class="">
+									<input type="button" class="btn_1  add_top_15 " value="home" />
+
 								</div>
 							</div>
 							<!-- 더넣을곳 -->
@@ -113,7 +118,8 @@
 		</main>
 		<div id="toTop" style="display: none;"></div>
 		<!-- footer -->
-		<jsp:include page="../include/footer.jsp" />
+
+		<%@include file="../include/footer.jsp" %>
 		<!-- footer end -->
 	</div>
 

@@ -21,74 +21,74 @@
 	<!-- ID로 개별조회 -->
 	<select id="selectMemberOne" resultType="MemberDTO">
 		select * from gr_member
-		where mb_id = #{mb_id}
+		where MB_ID = #{mb_id}
 	</select>
 	
 	<!-- ID 중복체크 -->
 	<select id="idCheck" resultType="int">
 		select count(*)
 		from gr_member
-		where mb_id = #{mb_id}
+		where MB_ID = #{mb_id}
 	</select>
 	
 	<!-- name,Email 확인 -->
 	<select id="idFind" parameterType="MemberDTO" resultType="MemberDTO">
 		select *
 		from gr_member
-		where mb_name = #{mb_name} and mb_email = #{mb_email}
+		where MB_NAME = #{mb_name} and MB_EMAIL = #{mb_email}
 	</select>
 	
 	<!-- ID,Email 확인 -->
 	<select id="pwFind" parameterType="MemberDTO" resultType="MemberDTO">
 		select *
 		from gr_member
-		where mb_id = #{mb_id} and mb_email = #{mb_email}
+		where MB_ID = #{mb_id} and MB_EMAIL = #{mb_email}
 	</select>
 	
 	<!-- 미용사 체크 확인 -->
 	<update id="designerCheck" parameterType="MemberDTO">
 		update gr_member
-		set mb_check = 'Y'
-		where mb_id = #{mb_id}
+		set MB_CHECK = 'Y'
+		where MB_ID = #{mb_id}
 	</update>
 	
 	<!-- 비밀번호 일치 확인 -->
 	<select id="checkPw"  resultType="int">
 		select count(*)
 		from gr_member
-		where mb_id = #{mb_id} and mb_pw = #{mb_pw}
+		where MB_ID = #{mb_id} and MB_PW = #{mb_pw}
 	</select>
 	
 	<!-- 비밀번호 수정 -->
 	<update id="changePw" parameterType="MemberDTO">
 		update gr_member
-		set mb_pw = #{mb_pw}
-		where mb_id = #{mb_id}
+		set MB_PW = #{mb_pw}
+		where MB_ID = #{mb_id}
 	</update>
 	
 	<!-- 이메일 일치 확인 -->
 	<select id="checkEmail"  resultType="int">
 		select count(*)
 		from gr_member
-		where mb_id = #{mb_id} and mb_email = #{mb_email}
+		where MB_ID = #{mb_id} and MB_EMAIL = #{mb_email}
 	</select>
 	
 	<!-- 이메일 수정 -->
 	<update id="changeEmail" parameterType="MemberDTO">
 		update gr_member
-		set mb_email = #{mb_email}
-		where mb_id = #{mb_id}
+		set MB_EMAIL = #{mb_email}
+		where MB_ID = #{mb_id}
 	</update>
 	
 	<!-- 개인정보 수정 -->
 	<update id="changeInfo" parameterType="MemberDTO">
    		update gr_member
    		<trim prefix="set" suffixOverrides=",">
-      		<if test="mb_phone != ''">mb_phone = '${mb_phone}',</if>
-      		<if test="mb_address1 != ''">mb_address1 = '${mb_address1}',</if>
-      		<if test="mb_address2 != ''">mb_address2 = '${mb_address2}'</if>
+      		<if test="mb_phone != ''">MB_PHONE = '${mb_phone}',</if>
+      		<if test="mb_address1 != ''">MB_ADDRESS1 = '${mb_address1}',</if>
+      		<if test="mb_address2 != ''">MB_ADDRESS2 = '${mb_address2}'</if>
    		</trim>    
-  		 where mb_id = #{mb_id}
+  		 where MB_ID = #{mb_id}
 	</update>
 	
 

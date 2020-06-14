@@ -7,7 +7,7 @@
 			{
 				type_point: 'Italian Food',
 				name: 'Restaurant Name',
-				location_latitude: 48.865633, 
+				location_latitude: 48.865633,
 				location_longitude: 2.321236,
 				map_image_url: 'img/thumb_map_single_restaurant.jpg',
 				rate: 'Superb | 7.5',
@@ -31,7 +31,7 @@
 			{
 				type_point: 'Italian Food',
 				name: 'Restaurant Name',
-				location_latitude: 48.863893, 
+				location_latitude: 48.863893,
 				location_longitude: 2.342348,
 				map_image_url: 'img/thumb_map_single_restaurant.jpg',
 				rate: 'Superb | 7.5',
@@ -55,7 +55,7 @@
 			{
 				type_point: 'Italian Food',
 				name: 'Restaurant Name',
-				location_latitude: 48.858370, 
+				location_latitude: 48.858370,
 				location_longitude: 2.294481,
 				map_image_url: 'img/thumb_map_single_restaurant.jpg',
 				rate: 'Superb | 7.5',
@@ -79,7 +79,7 @@
 			{
 				type_point: 'Italian Food',
 				name: 'Restaurant Name',
-				location_latitude: 48.860819, 
+				location_latitude: 48.860819,
 				location_longitude: 2.354507,
 				map_image_url: 'img/thumb_map_single_restaurant.jpg',
 				rate: 'Superb | 7.5',
@@ -103,7 +103,7 @@
 			{
 				type_point: 'Italian Food',
 				name: 'Restaurant Name',
-				location_latitude: 48.862880, 
+				location_latitude: 48.862880,
 				location_longitude: 2.287205,
 				map_image_url: 'img/thumb_map_single_restaurant.jpg',
 				rate: 'Superb | 7.5',
@@ -126,7 +126,7 @@
 			{
 				type_point: 'Italian Food',
 				name: 'Restaurant Name',
-				location_latitude: 48.852729, 
+				location_latitude: 48.852729,
 				location_longitude: 2.350564,
 				map_image_url: 'img/thumb_map_single_restaurant.jpg',
 				rate: 'Superb | 7.5',
@@ -138,7 +138,7 @@
 			{
 				type_point: 'Italian Food',
 				name: 'Restaurant Name',
-				location_latitude: 48.870587, 
+				location_latitude: 48.870587,
 				location_longitude: 2.318943,
 				map_image_url: 'img/thumb_map_single_restaurant.jpg',
 				rate: 'Superb | 7.5',
@@ -153,7 +153,7 @@
 
 			var mapOptions = {
 				zoom: 14,
-				center: new google.maps.LatLng(48.865633, 2.321236),
+				center: new google.maps.LatLng(37.566535, 126.9779692),
 				mapTypeId: google.maps.MapTypeId.ROADMAP,
 
 				mapTypeControl: false,
@@ -459,9 +459,9 @@
 				 }));
 
 	});
-	
+
 		new MarkerClusterer(mapObject, markers[key]);
-	
+
 		function hideAllMarkers () {
 			for (var key in markers)
 				markers[key].forEach(function (marker) {
@@ -478,7 +478,7 @@
 				content:
 				'<div class="marker_info" id="marker_info">' +
 				'<img src="' + item.map_image_url + '" alt=""/>' +
-				'<span>'+ 
+				'<span>'+
 					'<span class="infobox_rate">'+ item.rate +'</span>' +
 					'<h3>'+ item.name_point +'</h3>' +
 				'<em>'+ item.type_point +'</em>' +
