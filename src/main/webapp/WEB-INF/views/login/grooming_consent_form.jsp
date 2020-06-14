@@ -12,6 +12,68 @@
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/Grooming_icon_114.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/Grooming_icon_144.png">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+
+		$('#divECI_ISDVSAVE').click(function() {
+			$('.ab1').prop('checked', this.checked);
+			$('.ab2').prop('checked', this.checked);
+		});// 전체동의 함께 function
+
+		$('.ab1').click(function() {
+			if ($(".ab2").is(":checked") == true) {
+				//alert("체크박스 체크했음!");
+				$('#divECI_ISDVSAVE').prop('checked', this.checked);
+				$('.btn').css("background", "#3E66AE");
+				$('.btn').css("color", "white");
+			} else if ($(".ab2").is(":checked") == false) {
+				$('.btn').css("background", "#61564b");
+				$('.btn').css("color", "white");
+				//alert("체크박스 체크 해제!");
+			}
+		});
+		$('.ab2').click(function() {
+			if ($(".ab1").is(":checked") == true) {
+				//alert("체크박스 체크했음!");
+				$('#divECI_ISDVSAVE').prop('checked', this.checked);
+				$('.btn').css("background", "#3E66AE");
+				$('.btn').css("color", "white");
+			} else if ($(".ab1").is(":checked") == false) {
+				$('.btn').css("background", "#61564b");
+				$('.btn').css("color", "white");
+				//alert("체크박스 체크 해제!");
+			}
+		});//전체 체크까지 선택
+
+		$("#divECI_ISDVSAVE").change(function() {
+			if ($("#divECI_ISDVSAVE").is(":checked")) {
+				//alert("체크박스 체크했음!");
+				$('.btn').css("background", "#3E66AE");
+				$('.btn').css("color", "white");
+			} else {
+				$('.btn').css("background", "#61564b");
+				$('.btn').css("color", "white");
+				//alert("체크박스 체크 해제!");
+			}
+		});//checkall change function
+
+		$(".btn").click(function() {
+			if ($("#divECI_ISDVSAVE").is(":checked")) {
+				$(location).attr('href', 'join3_1.jsp');
+
+			} else {
+
+				alert("모든약관에 동의해주세요!");
+			}
+		});
+
+	});
+</script>
+
+
+
 </head>
 <!-- header -->
 <jsp:include page="../include/header.jsp" />

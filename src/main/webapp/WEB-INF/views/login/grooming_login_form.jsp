@@ -55,12 +55,12 @@
 
 			<form>
 				<!-- sns 로고 -->
-				<div class="access_social">
+			<!-- 	<div class="access_social">
 					<a href="#0" class="social_bt kakao">Login with kakao</a>
-				</div>
+				</div> -->
 				<!-- sns 로고 -->
 
-				<div class="divider"><span>Or</span></div>
+				<!-- <div class="divider"><span>Or</span></div> -->
 				<!-- 아이디 입력 -->
 				<div class="form-group">
 					<label>아이디</label>
@@ -78,11 +78,11 @@
 				</div>
 				<!-- 아이디 저장 체크 박스 -->
 				<div class="clearfix add_bottom_30">
-					<div class="checkboxes float-left">
+					<!-- <div class="checkboxes float-left">
 						<label class="container_check">아이디 저장 <input
 							type="checkbox"> <span class="checkmark"></span>
 						</label>
-					</div>
+					</div> -->
 
 					<div class="float-right mt-1"><label>&nbsp; 비밀번호 찾기</label></div>
 					<div class="float-right mt-1" ><label>아이디 찾기 ㅣ&nbsp;</label></div>
