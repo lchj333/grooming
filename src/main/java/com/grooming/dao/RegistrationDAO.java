@@ -38,7 +38,7 @@ public class RegistrationDAO {
 	
 	//서치 가게 리스트
 	public List<ShopListDTO> searchShop(Map<String, String> map){
-		return ss.selectList(MAPPER+".searchShop", map);
+		return ss.selectList(MAPPER+".list", map);
 	}
 	
 	//샵 상세 정보

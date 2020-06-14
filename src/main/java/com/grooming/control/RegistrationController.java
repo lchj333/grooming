@@ -173,9 +173,13 @@ public class RegistrationController {
 		
 		List<ShopListDTO> list = rdao.searchShop(map);
 		
-		req.setAttribute("shopList", list);
-		
-		return "search/grooming_screen_map";
+		if(list == null) { //검색값이 없을 경우
+			return "main/grooming_main";
+		}else {
+			req.setAttribute("shopList", list);
+			
+			return "search/grooming_screen_map";
+		}
 	}
 	//-> grooming_screen_map (샵 목록) ->
 	//가게 상세 정보
