@@ -6,19 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Grooming_기업소개</title>
-<!-- 최상단 메뉴 icon -->
-<!-- =======================================================================================================================================================================================================================  -->
-<link rel="shortcut icon" href="img/Grooming_icon_72.png"
-	type="image/x-icon">
-<link rel="apple-touch-icon" type="image/x-icon"
-	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
-<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
-	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
-<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
-	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
-<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
-	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
-<!-- =======================================================================================================================================================================================================================  -->
+<!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <!-- =======================================================================================================================================================================================================================  -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <!-- GOOGLE WEB FONT -->
@@ -43,7 +38,7 @@
 		<!-- header end -->
 
 		<main>
-			<section class="hero_in general" style="background-image: url('img/Grooming_BG.png');">
+			<section class="hero_in general" style="background-image: url('${pageContext.request.contextPath}/resources/main_resources/img/Grooming_BG.png');">
 
 				<div class="wrapper" >
 					<div class="container add_top_30">
@@ -64,8 +59,8 @@
 				<div class="row">
 
 					<div class="col-lg-4 col-md-6">
-						<a class="box_feat" href="#0"> <img src="img/grooming_강아지.png" alt="" />
-						
+						<a class="box_feat" href="#0"> <img src="${pageContext.request.contextPath}/resources/main_resources/img/grooming_강아지.png" alt="" />
+
 							<h3> 강아지 미용컷</h3>
 							<p style="color: gray;">
 								고객이 맞는 날짜와 견종에 맞는 맞춤 미용시스템 적용
@@ -74,7 +69,7 @@
 					</div>
 
 					<div class="col-lg-4 col-md-6">
-						<a class="box_feat" href="#0"> <img src="img/grooming_고양이.png" alt="" />
+						<a class="box_feat" href="#0"> <img src="${pageContext.request.contextPath}/resources/main_resources/img/grooming_고양이.png" alt="" />
 							<h3>고양이 미용컷</h3>
 							<p style="color: gray;">
 							고객이 맞는 날짜와 고양이에 맞는 맞춤 미용시스템 적용
@@ -83,7 +78,7 @@
 					</div>
 
 					<div class="col-lg-4 col-md-6">
-						<a class="box_feat" href="#0"><img src="img/grooming_맞춤.png" alt="" />
+						<a class="box_feat" href="#0"><img src="${pageContext.request.contextPath}/resources/main_resources/img/grooming_맞춤.png" alt="" />
 							<h3>AS 서비스 </h3>
 							<p style="color: gray;">미용 도중 고객 변심이 아닌 이상
 								무료 AS 실행 고객문의 000-0000-0000
@@ -108,7 +103,7 @@
 					<div class="col-lg-12 ">
 						<a class="box_feat" href="#0">
 
-							<img src="img/Grooming_logo_600_400.png" alt="" />
+							<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_600_400.png" alt="" />
 							<p style="color: gray;">
 								Grooming logo
 							</p>
