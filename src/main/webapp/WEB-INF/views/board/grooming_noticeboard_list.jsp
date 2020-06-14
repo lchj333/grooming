@@ -51,12 +51,15 @@
 		<c:if test="${next}">
 			<span>[ <a href="/control/noticeListPage?num=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
+		<!-- 페이징처리 끝 -->		
 				</div>
+				<!-- 관리자일경우에만 공지 등록가능 -->
+				<c:if test="${ad_id != null }">
 				<a href="noticeInsert"><input type="button" value="공지등록" class="btn_1 medium" /></a>
+				</c:if>
 			</div>
 		</div>
 	</form>
-				<form action="noticeInsert" method="get"><input type="submit" value="공지작성" /></form>
 </div>
 
 	<jsp:include page="../include/footer.jsp" />

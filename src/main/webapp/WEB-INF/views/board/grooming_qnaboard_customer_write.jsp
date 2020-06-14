@@ -109,6 +109,7 @@
   <jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
   
   <div class="content-wrapper">
+		<form action="inquiryInsert" method="post">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
      
@@ -116,14 +117,13 @@
 			<div class="header_box version_2">
 				<h2><i class="fa fa-file"></i>문의하기</h2>
 			</div>
-		
 			<div class="row">
 				<div class="col-md-5">
 					<div class="form-group">
 						<div class="styled-select">
-						<select>
-							<option>미용사 문의하기</option>
-							<option>사용자 문의하기</option>
+						<select name="in_category">
+							<option value="미용사 문의하기">미용사 문의하기</option>
+							<option value="사용자 문의하기">사용자 문의하기</option>
 						</select>
 						</div>
 					</div>
@@ -133,7 +133,7 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>제목</label>
-						<input type="text" class="form-control" placeholder="제목을 입력하세요.">
+						<input type="text" class="form-control" name="in_title" placeholder="제목을 입력하세요.">
 					</div>
 				</div>
 			</div>
@@ -144,7 +144,7 @@
 				<div class="col-md-12">
 					<div class="form-group">
 						<label>문의내용</label>
-						<div class="editor"></div>
+						<textarea class="editor" name="in_con" placeholder="내용을 입력하세요"> </textarea>
 					</div>
 				</div>
 			</div>
@@ -160,8 +160,9 @@
 			<!-- /row-->
 		</div>
 		<!-- /box_general-->
-		<p><a href="#0" class="btn_1 medium">문의하기</a></p>
+		<p><input type="submit" class="btn_1 medium" value="문의하기" /></p>
 	  </div>
+		</form>
 	  <!-- /.container-fluid-->
    	</div>
     <a class="scroll-to-top rounded" href="#page-top">
