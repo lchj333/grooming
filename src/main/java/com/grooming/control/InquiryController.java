@@ -20,12 +20,20 @@ public class InquiryController {
 
 	@Inject
 	InquiryDAO dao;
-	//문의사항 전체 보기
+	//문의사항(관리자) 전체 보기
 	@RequestMapping(value="inquiryAdminList")
-	public String inquiryList(Model model) {
+	public String inquiryAdminList(Model model) {
 		List<InquiryDTO> list = dao.selectList();
 		model.addAttribute("list", list);
 		return "board/grooming_qnaboard_adminlist";
+	}
+	
+	//문의사항(사용자) 전체 보기
+	@RequestMapping(value="inquiryCustomerList")
+	public String inquiryCustomerList(Model model) {
+		List<InquiryDTO> list = dao.selectList();
+		model.addAttribute("list", list);
+		return "board/grooming_qnaboard_customer_list";
 	}
 	
 	// 문의하기 detail

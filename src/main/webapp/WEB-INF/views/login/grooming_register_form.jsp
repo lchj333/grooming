@@ -307,7 +307,7 @@
 				</div>
 				<div class="form-group" style="margin-bottom: 10px;">
 					<label>선호하는 지역</label>
-					<input class="form-control" type="password" id="" placeholder="ex) 서울,경기,수원" name="">
+					<input class="form-control" type="text" id="" placeholder="ex) 서울,경기,수원" name="md_area">
 
 
 				</div>
