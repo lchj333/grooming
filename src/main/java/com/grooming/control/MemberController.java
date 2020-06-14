@@ -352,7 +352,7 @@ public class MemberController {
 	@RequestMapping(value = "/mypageInfo")
 	public String myPage() {
 		
-		return "/mypage/grooming_user_mypage";
+		return "mypage/grooming_user_mypage";
 	}	
 	
 	// 미용사 신청 페이지로 들어가기
