@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>grooming_consent_form</title>
+<title>grooming_약관동의</title>
 
 <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
     <link rel="shortcut icon" href="img/Grooming_icon_72.png" type="image/x-icon">
@@ -17,49 +17,49 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
-		
+
 	    $("input:checkbox[name=checkAll]").click(function(){
 	    	var chk = $(this).is(":checked");
-	    	
+
 	    	for(var i=1; i<=3; i++){
-	    		
+
 	    	if(chk){
 	    		$("input[id=enable]").prop("checked",true);
 	    	}else {
 	    		$("input[id=enable]").prop("checked",false);
-	    		
+
 	    	}
 	    	}
 	    });
-		
-		
+
+
 	    $("#join").on('click', function(){
-	    	
-	    	
+
+
 				var frm = document.frm;
-				
+
 				for(var i=1; i<=2; i++)
 				{
 					if (!frm['enable'+i].checked)
 				{
 					alert('약관과 개인정보 보호정책에 모두 동의 해 주셔야 회원가입이 정상적으로 이루어집니다');
 		            return;
-				
+
 		    	}
 			}
 
 		    document.frm.action = "join";
 			document.frm.method = "GET";
 			document.frm.submit();
-			
+
 
 	    });
 
 
 
 	});
-	
-	
+
+
 
 </script>
 
