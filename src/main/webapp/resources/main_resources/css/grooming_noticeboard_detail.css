@@ -8,6 +8,7 @@
 	margin-top : 100px;
 	margin-bottom : 20%; 
 	width: 40%;
+	color : black;
 }
 
 #gr_noticeboard_detail_title{
@@ -35,4 +36,8 @@
 		width : 80%;
 		
 	}
+}
+
+#notice_button{
+	float : right;
 }

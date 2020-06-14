@@ -106,7 +106,16 @@
       ],
         placeholder: '내용을 입력하세요',
         tabsize: 2,
-        height: 500
+        height: 500,
+        callbacks: {
+            onChange: function (content) {
+              var html = content.trim()
+              // fix for problem with ENTER and new paragraphs
+              if (html.substring(0, 5) !== '<div>') {
+                $editor.summernote('code', '<div><br></div>' + html)
+              }
+            }
+          }
       });
     </script>     
 </body>
