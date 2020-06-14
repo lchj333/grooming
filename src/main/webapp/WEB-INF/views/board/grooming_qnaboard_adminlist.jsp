@@ -33,18 +33,17 @@ $(document).ready(function(){
 <div id="page">
 <!-- contents -->
 	<form action="#" id="grooming_qnaboard_customlist_form">
-		<div id="grooming_qnaboard_customl\ist_div">
+		<div id="grooming_qnaboard_customlist_div">
 			<div id="grooming_qnaboard_customlist_section">
 				<div id="grooming_qnaboard_customlist_articlelist">
-					<div id="grooming_qnaboard_customlist_maintitle">1:1문의(사용자페이지)</div>
+					<div id="grooming_qnaboard_customlist_maintitle">1:1문의(관리자페이지)</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
-							<c:forEach items="list">
+							<c:forEach var="a" items="list">
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
 									<!-- 제목 -->
-									<div id="gr_qna_title"><<c:out value="${a.in_title }"></c:out> 
-										
+									<div id="gr_qna_title"><c:out value="${a.in_title }"></c:out> 
 									</div>
 									<!-- 날짜 -->
 									<div id="gr_qna_regdate" >
@@ -59,7 +58,7 @@ $(document).ready(function(){
 								</li>
 							</c:forEach>
 						</ul>	
-					</div>			
+					</div>
 				</div>
 			</div>
 		</div>
