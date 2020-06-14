@@ -42,12 +42,13 @@
 			<div class="header_box version_2">
 				<h2><i class="fa fa-file"></i>자주하는질문</h2>
 			</div>
+		<form action="faqInsert" method="post">
 		
 			<div class="row">
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>제목</label>
-						<input type="text" class="form-control" placeholder="제목을 입력하세요.">
+						<input type="text" class="form-control" name="f_title" placeholder="제목을 입력하세요.">
 					</div>
 				</div>
 			</div>
@@ -59,13 +60,14 @@
 				<div class="col-md-12">
 					<div class="form-group">
 						<label>문의내용</label>
-						<div class="editor"></div>
+						<textarea class="editor" name="f_con"> </textarea>
 					</div>
 				</div>
 			</div>
-		</div>
 		<!-- /box_general-->
-		<p><a href="#0" class="btn_1 medium">문의하기</a></p>
+		<p><input type="submit" class="btn_1 medium" value="자주묻는질문 작성" /></p>
+		</form>
+		</div>
 	  </div>
 	  <!-- /.container-fluid-->
    	</div>
@@ -74,21 +76,21 @@
     </a>
     <!-- Logout Modal-->
     <!-- Bootstrap core JavaScript-->
-    <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
-    <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
-    <script src="<c:url value='/resources/mypage/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
-    <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
-    <script src="<c:url value='/resources/mypage/vendor/datatables/dataTables.bootstrap4.js'/>"></script>
-	<script src="<c:url value='/resources/mypage/vendor/jquery.selectbox-0.2.js'/>"></script>
-	<script src="<c:url value='/resources/mypage/vendor/retina-replace.min.js'/>"></script>
-	<script src="<c:url value='/resources/mypage/vendor/jquery.magnific-popup.min.js'/>"></script>
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/chart.js/Chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/dataTables.bootstrap4.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery.selectbox-0.2.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/retina-replace.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery.magnific-popup.min.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
+    <script src="${pageContext.request.contextPath}/resources/mypage/js/admin.js"></script>
   <!-- WYSIWYG Editor -->
-  <script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
+  <script src="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.min.js"></script>
   <script>
       $('.editor').summernote({
     fontSizes: ['10', '14'],
