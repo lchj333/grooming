@@ -220,15 +220,16 @@ html, body {
 
 
 	<!-- 공통 js 파일 footer있으면 필요 없음 -->
-    <script src="js/common_scripts.js"></script>
-    <script src="js/main.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main_resources/js/common_scripts.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main_resources/js/main.js"></script>
 	<script src="assets/validate.js"></script>
 
 	<!-- map에 관련한 js파일  -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 넣으시면 됩니다."></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
-	<script src="js/markerclusterer.js"></script>
-	<script src="js/map_hotels_half_screen.js"></script>
-	<script src="js/infobox.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/main_resources/js/markerclusterer.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/main_resources/js/map_hotels_half_screen.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/main_resources/js/infobox.js"></script>
 
 
 </body>
