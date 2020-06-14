@@ -86,12 +86,8 @@
 
 	    	//비밀번호 유효성 검사
 		    if(mb_pw.value==''){
-<<<<<<< HEAD
-		    	alert("비밀번호를 입력해주세요");
-=======
 		    	$('#pwCheck').text("비밀번호를 입력해주세요.");
 		    	alert("비번을 입력해주세요");
->>>>>>> 419c36a66e7d0970c4a58c243d1a82e0ee595254
 		    	mb_pw.focus();
 		          return false;
 		    }if(!checkIP.test(mb_pw.value)){
@@ -122,12 +118,8 @@
 		    	alert("생년월일을 입력해주세요.");
 			      return false;
 			}if(!checkBirth.test(birth.value)){
-<<<<<<< HEAD
-		    	alert("형식에 맞에 생년월일을 입력해주세요.");
-=======
 		    	alert("형식에 맞에 입력 ㄱ");
 			 	$('#birthdayCheck').text("형식에 맞에 입력해주세요");
->>>>>>> 419c36a66e7d0970c4a58c243d1a82e0ee595254
 			      return false;
 			}
 
