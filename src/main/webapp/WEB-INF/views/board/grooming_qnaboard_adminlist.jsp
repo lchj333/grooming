@@ -36,15 +36,22 @@ $(document).ready(function(){
 		<div id="grooming_qnaboard_customlist_div">
 			<div id="grooming_qnaboard_customlist_section">
 				<div id="grooming_qnaboard_customlist_articlelist">
-					<div id="grooming_qnaboard_customlist_maintitle">1:1문의(사용자페이지)</div>
+					<div id="grooming_qnaboard_customlist_maintitle">1:1문의(관리자페이지)</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
+<<<<<<< HEAD
 							<c:forEach var="a" items="${list}">
+=======
+							<c:forEach var="a" items="list">
+>>>>>>> seonghoon
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a">
 									<!-- 제목 -->
 									<div id="gr_qna_title"><c:out value="${a.in_title }"></c:out> 
+<<<<<<< HEAD
 										
+=======
+>>>>>>> seonghoon
 									</div>
 									<!-- 날짜 -->
 									<div id="gr_qna_regdate" >
@@ -58,8 +65,13 @@ $(document).ready(function(){
 									</ul>
 								</li>
 							</c:forEach>
+<<<<<<< HEAD
 						</ul>
 					</div>			
+=======
+						</ul>	
+					</div>
+>>>>>>> seonghoon
 				</div>
 						<a href="inquiryInsert"><input type="button" value="문의하기" class="btn_1 medium" /></a>
 			</div>
