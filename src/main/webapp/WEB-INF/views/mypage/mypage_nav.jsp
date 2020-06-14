@@ -57,7 +57,7 @@
 		          </a>
 		          <ul class="sidenav-second-level collapse" id="collapseMypage">
 		            <li>
-		              <a href="<c:url value='/mypage'/>">내정보</a>
+		              <a href="<c:url value='/mypageInfo'/>">내정보</a>
 		            </li>
 					<li>
 		              <a href="<c:url value='/mypage'/>">내장보수정</a>
