@@ -25,7 +25,7 @@ public class InquiryController {
 	public String inquiryList(Model model) {
 		List<InquiryDTO> list = dao.selectList();
 		model.addAttribute("list", list);
-		return "gr_inquiryboard_list";
+		return "board/grooming_qnaboard_customer_list";
 	}
 	
 	// 문의하기 detail
@@ -38,7 +38,7 @@ public class InquiryController {
 	// 문의작성페이지로 이동하기
 	@GetMapping(value="/inquiryInsert")
 	public String inquiryWrite(Model model) {
-		return "gr_inquiryboard_insert";
+		return "board/grooming_qnaboard_customer_write";
 	}
 	
 	// 문의 작성하기
