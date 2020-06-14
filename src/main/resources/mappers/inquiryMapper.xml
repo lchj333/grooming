@@ -6,7 +6,7 @@
 	<!-- 문의작성 -->
 	<insert id="insertInquiry">
 		INSERT INTO gr_inquiry(MB_ID, AD_ID, IN_TITLE, IN_CON, IN_NOWDATE, IN_CATEGORY)
-		VALUES (#{mb_id}, 'admin', #{in_title}, #{in_con}, NOW(), #{in_category})
+		VALUES ('mins2', 'admin', #{in_title}, #{in_con}, NOW(), #{in_category})
 	</insert>
 	<!-- 문의전체조회 -->
 	<select id="selectAllInquiry" resultType="InquiryDTO">

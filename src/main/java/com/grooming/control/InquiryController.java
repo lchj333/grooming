@@ -25,7 +25,7 @@ public class InquiryController {
 	public String inquiryList(Model model) {
 		List<InquiryDTO> list = dao.selectList();
 		model.addAttribute("list", list);
-		return "board/grooming_qnaboard_customer_list";
+		return "board/grooming_qnaboard_adminlist";
 	}
 	
 	// 문의하기 detail
