@@ -221,8 +221,8 @@
 <div id="register">
 		<aside>
 			<figure>
-				<a href="/main"><img
-					src="<c:url value='/resources/main_resources/img/Grooming_150_36_LOGO.png'/>"
+				<a href="<c:url value="main/grooming_main"/>">
+					<img src="<c:url value='/resources/main_resources/img/Grooming_150_36_LOGO.png'/>"
 					data-retina="true" alt="" width="150" height="36"></a>
 			</figure>
 			<form autocomplete="off" action="#" name="frm">
