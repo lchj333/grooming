@@ -21,13 +21,6 @@
 	href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800"
 	rel="stylesheet">
 
-<!-- BASE CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
-
-<!-- YOUR CUSTOM CSS -->
-<link href="css/custom.css" rel="stylesheet">
-
 
 </head>
 <body>
@@ -103,7 +96,7 @@
 					<div class="col-lg-12 ">
 						<a class="box_feat" href="#0">
 
-							<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_600_400.png" alt="" />
+							<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_600_400.png" alt="" class="grooming_cp_img"/>
 							<p style="color: gray;">
 								Grooming logo
 							</p>
