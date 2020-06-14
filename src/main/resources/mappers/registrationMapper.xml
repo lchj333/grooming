@@ -4,29 +4,26 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="registrationMapper">
-	<!-- 샵 검색(사용자 입장) -->
-	<select id="searchShop" parameterType="Map">
-		select r.DE_LICENCENUM, r.REF_SHIONAME, r.REG_SHOPADDRESS, 
-				r.REG_PRICE, r.REG_IMG, m.MB_PHONE 
+	<!-- 모든가게 리스트(사용자 입장) -->
+	<select id="list" parameterType="Map">
+		select r.de_licencenum, r.ref_shopname, r.reg_shopaddress, 
+				r.reg_price, r.reg_img, m.mb_phone 
 		from gr_registration r, gr_member m
-		where REG_BLOCK = 0
-		<if test='!data.equals("")'>
-			and #{key} like '%'#{data}'%'
-		</if>
+		where reg_block = 0
 	</select>
 	
 	<!-- 가게 상세 정보 -->
 	<select id="shopDetail" resultType="RegistrationDTO">
 		select *
 		from gr_registration
-		where DE_LICENCENUM = ${de_licencenum}
+		where de_licencenum = ${de_licencenum}
 	</select>
 	
 	<!-- '그'가게 상세이미지들. -->
 	<select id="infoImgs" resultType="String">
-		select REG_ADDIMG
+		select reg_addimg
 		from reg_img
-		where DE_LICENCENUM = ${de_licencenum}
+		where de_licencenum = ${de_licencenum}
 	</select>
 	
 	<!-- 가게 등록 -->
@@ -46,14 +43,7 @@
 	<!-- 블럭상태 변경 -->
 	<update id="BlockByAdmin" parameterType="RegistrationDTO">
 		update gr_registration
-		set REG_BLOCK = #{reg_block}
-		where DE_LICENCENUM = #{de_licencenum}
+		set reg_block = #{reg_block}
+		where de_licencenum = #{de_licencenum}
 	</update>
-	
-	<!-- 모오든 가게 -->
-	<select id="list" resultType="RegistrationDTO">
-		select *
-		from gr_registration
-		where reg_shopaddress like '%'#{reg_shopaddress}'%' 
-	</select>
 </mapper>
