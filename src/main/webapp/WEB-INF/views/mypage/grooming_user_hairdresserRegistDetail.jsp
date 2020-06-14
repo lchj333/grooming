@@ -8,14 +8,13 @@
 <title>hairdresser_regist</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-
 	
 	/* 파일보내기 */
 	$(function(){
 		$("#btn").click(function(){
-			document.frm.action = "<c:url value='/designerCheck'/>";
-			alert("심사후 미용사등록");
+			document.frm.action = "<c:url value='/designerJoin'/>";
 			document.frm.submit();
+			alert("심사후 미용사등록");
 		});
 
 	});
@@ -29,7 +28,7 @@
 
  <div class="content-wrapper">
     <div class="container-fluid">
-		<form action="#" name="frm">
+		<form action="" name="frm" enctype="multipart/form-data" method="post">
 	      <!-- Breadcrumbs-->
 	      <ol class="breadcrumb">
 	        <li class="breadcrumb-item">
@@ -37,31 +36,33 @@
 	        </li>
 	        <li class="breadcrumb-item active">미용사 등록</li>
 	      </ol>
-			<div class="box_general padding_bottom">
+
+			<div class="box_general padding_bottom" id="img-upload">
 				<div class="header_box version_2">
-					<h2><i class="fa fa-file"></i>미용사 등록</h2>
+					<h2><i class="fa fa-file"></i>자격증 등록</h2>
 				</div>
 				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-								<h6><label>미용사 변경</label></h6>
-							<div>
-								<input type="hidden" name="mb_id" value="${login.mb_id }"/>
-								<div>일반회원<input type="radio" name="mb_check" id="gr_user" value="N" checked="checked" onClick="checkBox()" /></div>
-								<div>미용사<input type="radio" name="mb_check" id="gr_hairdresser" value="Y" onClick="checkBox()" /></div>
-							</div>
-						</div>
+					<div class="col-md-12">
+						<h6>자격증</h6>
+						<table id="pricing-list-container" style="width:100%;">
+							<tr class="pricing-list-item">
+								<td>
+									<!-- 이미지 파일 첨부 -->
+									<input type="hidden" name="mb_id" id="mb_id" value="${login.mb_id }"/>
+									<input type="file" name="file" id="de_licence" />
+									<input type="text" name="de_insta" id="de_insta" />
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<!-- /row-->
 			</div>
 			<!-- /box_general-->
-			
-			<!-- /box_general-->
 			<p id="myprofile-savebtn">
-				<input type="button" id="btn" value="다음" class="btn_1 medium" />
+				<input type="button" id="btn" value="저장" class="btn_1 medium" />
 			</p>
-	  </form>
+	 	 </form>
 	  </div>
 	
 	  <!-- /.container-fluid-->
@@ -116,6 +117,7 @@
         height: 200
       });
     </script>
+	
 	
 
 </body>
