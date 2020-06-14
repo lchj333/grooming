@@ -1,10 +1,13 @@
 package com.grooming.control;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +25,7 @@ public class ReservationController {
 	/***********************************************
 	  	사용자 입장
 	***********************************************/
+	//예약 작성은 샵 상세페이지에서 한번에 한다.
 	//사용자 예약 목록
 	@RequestMapping(value = "/mypage/reservList")
 	public String listForCustomer(HttpServletRequest req) {
@@ -37,19 +41,18 @@ public class ReservationController {
 		return "/mypage/grooming_user_booking";
 	}
 	
-	//예약 작성 폼으로 이동
-	@GetMapping(value = "/reserv")
-	public String ReservForm() {
-		return "insertForm";
-	}
-	
 	//사용자의 미용 예약 적용
-	@PostMapping(value = "/reserv")
-	public String takeReserv(ReservationDTO dto) {
+	@PostMapping(value = "mypage/addReserv")
+	public String takeReserv(ReservationDTO dto,
+						HttpServletResponse res) throws IOException {
 		rdao.insertReserv(dto);
 		
+		PrintWriter out = res.getWriter();
+		out.println("<script>alert('예약 목록으로 이동합니다.');</script>");
+		out.flush();
+		
 		//적용 후 메인으로~ 
-		return "home";
+		return "mypage/grooming_user_booking";
 	}
 	
 	//사용자 미용 후기 작성 폼
@@ -59,7 +62,7 @@ public class ReservationController {
 	}
 	
 //	@PostMapping(value = "/writeReview")
-//	public String writeReviewReal(HttpServletRequest req, ) {
+//	public String writeReviewReal(HttpServletRequest req) {
 //		
 //		return "home";
 //	}
