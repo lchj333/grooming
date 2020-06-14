@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +64,7 @@ html, body {
 						   <div class="container-fluid">
 							   <div class="row">
 				 				  <div class="col-10">
-					   				<h4><strong>145개</strong>검색되었습니다.</h4>
+					   				<h4><strong>${count}개</strong>검색되었습니다.</h4>
 				   				  </div>
 								   <div class="col-2">
 									   <a href="#0" class="search_map btn_search_map_view"></a> <!-- /open search panel -->
@@ -79,13 +79,7 @@ html, body {
 											<i class="icon_search"></i>
 										</div>
 
-										<!-- <select class="wide">
-											<option>전체</option>
-											<option>고양이샵</option>
-											<option>강아지샵</option>
-											<option>방문 고양이샵</option>
-											<option>방문 강아지샵</option>
-										</select> -->
+
 										<!-- 검색 서치 버튼 -->
 										<input type="submit" value="검색하기">
 									</div>
@@ -122,61 +116,53 @@ html, body {
 					<div class="collapse map_view" id="filters">
 						<div class="container-fluid margin_30_5">
 							<h6>지역</h6>
-							<div class="row">
-							   <div class="col-md-6">
-							    <div class="filter_type">
-							        <ul>
-							            <li>
-							                <label>
-							                    <input type="checkbox" class="icheck" checked>경기 <small>(23)<!-- 나중에 갯수 표시--></small>
-							                </label>
-							            </li>
-							            <li>
-							                <label>
-							                    <input type="checkbox" class="icheck">서울 <small>(45)<!-- 나중에 갯수 표시--></small>
-							                </label>
-							            </li>
-							        </ul>
-							    </div>
-							</div>
-							<div class="col-md-6">
-							    <div class="filter_type">
-							        <ul>
-							            <li>
-							                <label>
-							                    <input type="checkbox" class="icheck">성남 <small>(30)<!-- 나중에 갯수 표시--></small>
-							                </label>
-							            </li>
-							            <li>
-							                <label>
-							                    <input type="checkbox" class="icheck">수원<small>(25)</small>
-							                </label>
-							            </li>
-							        </ul>
-							    </div>
-							</div>
-							</div>
-								<!-- <div class="row">
-								<div class="col-md-12">
-									<div class="add_bottom_30">
-										<h6>거리</h6>
-										<div class="distance" style="color: gray;"> 주변근처 <span></span> km</div>
-										<input type="range" min="10" max="100" step="10" value="30" data-orientation="horizontal">
+								<form action="">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="filter_type">
+												<ul>
+													<li><label> <input type="checkbox"
+															class="icheck" name="area" value="경기" checked>경기
+															<small>
+																<!-- 나중에 갯수 표시-->
+														</small>
+													</label></li>
+													<li><label> <input type="checkbox"
+															class="icheck" name="area" value="서울">서울 <small>
+																<!-- 나중에 갯수 표시-->
+														</small>
+													</label></li>
+												</ul>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="filter_type">
+												<ul>
+													<li><label> <input type="checkbox"
+															class="icheck" name="area" value="성남">성남 <small>
+																<!-- 나중에 갯수 표시-->
+														</small>
+													</label></li>
+													<li><label> <input type="checkbox"
+															class="icheck" name="area" value="수원">수원<small></small>
+													</label></li>
+												</ul>
+											</div>
+										</div>
 									</div>
-								</div>
-								</div> -->
-							<!-- /row -->
-						</div>
+								</form>
+							</div>
 					</div>
 					<!-- /필터 세부 -->
 		<!-- 썸네일 결과 1 (찜,맵 , 평점)-->
+		<c:forEach var="shoplist" items="${shopList}" varStatus="status">
 		<div class="box_list map_view">
 		    <div class="row no-gutters add_top_20">
 		    	<!-- 썸네일  -->
 		        <div class="col-4">
 
 		            <figure>
-		                <a href="hotel-detail.html"><img src="img/hotel_1.jpg" class="img-fluid" alt="" width="800" height="533"></a>
+		                <a href='<c:url value="${shoplist.de_licencenum}"></c:url>'><img src="<c:out value="${reg_img}"/>" class="img-fluid" alt="" width="800" height="533"></a>
 		            </figure>
 
 		        </div>
@@ -191,23 +177,21 @@ html, body {
 
 						<!-- 가게 정보 DB 넣는곳 -->
 		                <h3 style="color:gray; margin-top: 8px;"><a href="hotel-detail.html" style="color:gray; margin-top: 5px;">
-		                	미미 샵</a>
+		                	<c:out value="${shoplist.ref_shopname}"/></a>
 		                </h3>
 
-		                <!-- 상세 정보  DB 정보 넣는곳 -->
-		                <span class="price">비비비비비비비비비</span>
 
 						<br />
-		                <strong><span style="color:#fbbc41;">30000원~</span></strong>
+		                <strong><span style="color:#fbbc41;"><c:out value="${shoplist.reg_price}"/></span></strong>
 		            </div>
 
-		            <div class="add_left_15"> <a href="#0" onclick="onHtmlClick('Marker',0)" class="address float_left">경기도 시흥시 은행동 대우 2차</a></div>
-		            <div class="add_left_15"> <span style="color:gray;"><strong>TEL: </strong> 010-7360-3725</span></div>
+		            <div class="add_left_15"> <a href="#0" onclick="onHtmlClick('Marker',0)" class="address float_left"><c:out value="${shoplist.reg_shopaddress}"/></a></div>
+		            <div class="add_left_15"> <span style="color:gray;"><strong>TEL: </strong> <c:out value="${shoplist.mb_phone}"/></span></div>
 		        </div>
 		    </div>
 		</div>
 		<!-- /썸네일 결과 1 (찜,맵 ,)-->
-
+		</c:forEach>
 
 		<!-- 더보기 버튼 -->
 		<p class="text-center add_top_30"><a href="#0" class="btn_1 rounded"><strong>+더보기</strong></a></p>
