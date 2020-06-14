@@ -82,7 +82,9 @@
 
 		<aside>
 			<figure>
-				<a href="grooming_main.jsp"><img src="img/Grooming_150_36_LOGO.png" width="155" height="36" data-retina="true" alt="" class="logo_sticky"></a>
+				<a href="grooming_main.jsp"><img
+					src="<c:url value='/resources/main_resources/img/Grooming_150_36_LOGO.png'/>"
+					data-retina="true" alt="" width="150" height="36"></a>
 			</figure>
 				<div class="access_social" style="text-align: center;">
 					<h4 style="font-weight: 600;">비밀번호 변경</h4>
