@@ -86,12 +86,10 @@
 
 	    	//비밀번호 유효성 검사
 		    if(mb_pw.value==''){
-<<<<<<< HEAD
-		    	alert("비밀번호를 입력해주세요");
-=======
+
 		    	$('#pwCheck').text("비밀번호를 입력해주세요.");
-		    	alert("비번을 입력해주세요");
->>>>>>> 419c36a66e7d0970c4a58c243d1a82e0ee595254
+		    	alert("비밀번호를 입력해주세요");
+
 		    	mb_pw.focus();
 		          return false;
 		    }if(!checkIP.test(mb_pw.value)){
@@ -122,12 +120,10 @@
 		    	alert("생년월일을 입력해주세요.");
 			      return false;
 			}if(!checkBirth.test(birth.value)){
-<<<<<<< HEAD
+
 		    	alert("형식에 맞에 생년월일을 입력해주세요.");
-=======
-		    	alert("형식에 맞에 입력 ㄱ");
 			 	$('#birthdayCheck').text("형식에 맞에 입력해주세요");
->>>>>>> 419c36a66e7d0970c4a58c243d1a82e0ee595254
+
 			      return false;
 			}
 
@@ -160,7 +156,7 @@
 			alert("회원가입이 완료되었습니다. 메인페이지로 이동합니.");
 
 	    });
-	    
+
 
 	});
 
@@ -169,8 +165,8 @@
     	var checkIP = /^[a-zA-Z0-9]{4,16}$/; //ID와 PASSWORD 유효성 검사 정규식
       var mb_id = document.getElementById("mb_id").value;
   	  location.href = "mb_id_check?mb_id="+mb_id;
-  	  
-  	  
+
+
 	  	if(${idCheck == 0} && mb_id != ""){
 	    	alert("사용가능한 아이디입니다");
 	        return false;
@@ -185,33 +181,33 @@
       var windowObj;
       function openEmail(){
 		 var mb_email = document.getElementById("mb_email").value;
-			
+
     	  console.log(mb_email);
     	  if(mb_email == null){
     		  alert("이메일을 적어주세요.");
     	  }if(mb_email != null){
-    		  
+
 	        // 새창에 대한 세팅(옵션)
 	        var settings ='toolbar=0,directories=0,status=no,menubar=0,scrollbars=auto,resizable=no,height=600,width=600,left=0,top=0';
 	        // 자식창을 열고 자식창의 window 객체를 windowObj 변수에 저장
 	        var mb_email = document.getElementById("mb_email").value;
-	
+
 	        windowObj = window.open("email?mb_email=" + mb_email,"메일 인증",settings);
-	
+
 	        // 자식창의 childText라는 id를 가진 태그 요소의 값에 부모창의 값을 넣음
     	  }
 
       }
-      
+
       function openDaumPost(){
 		    new daum.Postcode({
 		        oncomplete: function(data) {
-		            
+
 		        	// 우편번호와 주소 정보를 해당 필드에 넣는다.
 	                document.getElementById("mb_address1").value = data.roadAddress;
 	                document.getElementById("mb_address2").value = data.jibunAddress;
-		        	
-	                
+
+
 		        }
 		    }).open();
 		}// openDaumPsot() end
@@ -224,7 +220,9 @@
 <div id="register">
 		<aside>
 			<figure>
-				<a href="grooming_main.jsp"><img src="img/Grooming_150_36_LOGO.png" width="155" height="36" data-retina="true" alt="" class="logo_sticky"></a>
+				<a href="/main"><img
+					src="<c:url value='/resources/main_resources/img/Grooming_150_36_LOGO.png'/>"
+					data-retina="true" alt="" width="150" height="36"></a>
 			</figure>
 			<form autocomplete="off" action="#" name="frm">
 				<!-- 아이디 -->
@@ -301,7 +299,7 @@
 					  <input class="form-control" type="email" id="mb_address1"  name="mb_address1">
 					</div>
 				</div>
-				
+
 				<div class="form-group" style="margin-bottom: 20px;">
 					<input class="form-control" type="text" id="mb_address2"  style="margin-bottom:10px; margin-top: -10px;"
 					placeholder="ex) 상세주소 XX아파트 XX동-xx호" name="mb_address2">

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
     <meta name="author" content="Ansonika">
-    <title>Grooming id_find</title>
+    <title>Grooming 비밀번호 찾기</title>
 
     <!-- Favicons-->
     <link rel="shortcut icon" href="img/Grooming_icon_72.png" type="image/x-icon">
@@ -90,7 +90,7 @@
 
 		<aside>
 			<figure>
-				<a href="grooming_main.jsp"><img
+				<a href="/main"><img
 					src="<c:url value='/resources/main_resources/img/Grooming_150_36_LOGO.png'/>"
 					data-retina="true" alt="" width="150" height="36"></a>
 			</figure>
