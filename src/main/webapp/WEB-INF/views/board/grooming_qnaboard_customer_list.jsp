@@ -6,7 +6,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/grooming_qnaboard_customlist.css" />
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>inquirylist</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
    $(function(){
