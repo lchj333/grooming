@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +11,13 @@
 <link rel="shortcut icon" href="img/Grooming_icon_72.png"
 	type="image/x-icon">
 <link rel="apple-touch-icon" type="image/x-icon"
-	href="img/Grooming_icon_72.png">
+	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
 <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
-	href="img/Grooming_icon_72.png">
+	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
 <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
-	href="img/Grooming_icon_114.png">
+	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
 <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
-	href="img/Grooming_icon_144.png">
+	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
 <!-- =======================================================================================================================================================================================================================  -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -64,6 +65,7 @@
 
 					<div class="col-lg-4 col-md-6">
 						<a class="box_feat" href="#0"> <img src="img/grooming_강아지.png" alt="" />
+						
 							<h3> 강아지 미용컷</h3>
 							<p style="color: gray;">
 								고객이 맞는 날짜와 견종에 맞는 맞춤 미용시스템 적용

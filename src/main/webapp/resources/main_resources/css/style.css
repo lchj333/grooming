@@ -1927,7 +1927,7 @@ footer ul li a {
 }
 
 footer ul li a:hover {
-	color: #ffffff;
+	color: #fc5b62;
 	opacity: 1;
 }
 
@@ -2889,7 +2889,7 @@ video {
 	width: 100%;
 	position: relative;
 	overflow: hidden; /* overflow 넘칠때 방지 */
-	height: 100%;
+
 	margin: 0;
 	color: #fff;
 }
@@ -2899,7 +2899,7 @@ video {
       background-color: rgba(0, 0, 0, 0.8);
 }
 
- .hero_single.start_bg_zoom:before {
+/* .hero_single.start_bg_zoom:before {
 	animation: pop-in 6s 0.3s cubic-bezier(0, 0.5, 0, 1) forwards;
 	content: "";
 	opacity: 0;
@@ -2909,13 +2909,7 @@ video {
 	bottom: 0;
 	left: 0;
 	z-index: -1;
-}
-.hero_single .wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-}
+} */
 
 .hero_single .wrapper h3 {
 	color: #fff;
@@ -3026,7 +3020,7 @@ video {
 	padding: 0;
 	font-size: 16px;
 	font-size: 1.0rem;
-	text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+
 }
 
 .hero_single.version_2 .wrapper p strong {
@@ -3035,9 +3029,12 @@ video {
 
 @media ( max-width : 767px) {
 	.hero_single.version_2 .wrapper p {
-	   padding: 0;
-  	   font-size: 14px;
-       font-size: 0.875rem;
+
+		height:640px
+
+		padding: 0;
+		font-size: 14px;
+		font-size: 0.875rem;
 	}
 }
 /*=======================================================================================================  */
@@ -9267,7 +9264,7 @@ ul.bullets li:before {
 	margin-top: 10%;
 
 }
-.main{
+main{
 	background-color: #f5f6fa;
 }
 /* ======================== 크게크게===================================== */

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -46,7 +47,7 @@
 		//비밀번호 유효성 검사
 	    if(mb_pw.value==''){
 	    	$('#pwCheck').text("비밀번호를 입력해주세요.");
-	    	alert("비번을 입력 ㄱ");
+	    	alert("비밀번호를 입력해주세요");
 	    	mb_pw.focus();
 	          return false;
 	    }if(!checkIP.test(mb_pw.value)){

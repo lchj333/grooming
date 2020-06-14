@@ -8,8 +8,8 @@
 		<div class="container margin_60_35">
 			<div class="row">
 				<div class="col-lg-5 col-md-12 p-r-5">
-					<p style="color: white;"><img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main2.png" class="add_top_15" width="150" height="36" alt="로고" id="footer-logo"></p>
-					<p>서울특별시 구로구 구트로 / TEL 02-740-7584 / FAX 02-740-2450 /<br /> e-mail: GROOMING @ gmail.com
+					<p ><img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main2.png" class="add_top_15" width="150" height="36" alt="로고" id="footer-logo"></p>
+					<p style="color: white;">서울특별시 구로구 구트로 / TEL 02-740-7584 / FAX 02-740-2450 /<br /> e-mail: GROOMING @ gmail.com
 					<br /><strong>	COPYRIGHT 2020 GROOMING</strong></p>
 
 				</div>
