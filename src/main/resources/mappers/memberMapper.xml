@@ -6,7 +6,7 @@
 <mapper namespace=" ">
 	<!-- 회원가입 -->
 	<insert id="joinMember" parameterType="MemberDTO">
-		insert into GR_MEMBER(MB_ID, MB_PW, MB_NAME, MB_BIRTH, MB_GENDER, MB_EMAIL, MB_EMAILCK, MB_PHONE, MB_ADDRESS1, MB_ADDRESS2, MB_JOINDATE, MB_AREA)
+		insert into gr_member(MB_ID, MB_PW, MB_NAME, MB_BIRTH, MB_GENDER, MB_EMAIL, MB_EMAILCK, MB_PHONE, MB_ADDRESS1, MB_ADDRESS2, MB_JOINDATE, MB_AREA)
 		values (#{mb_id}, #{mb_pw}, #{mb_name},
 				#{mb_birth}, #{mb_gender}, #{mb_email},
 				#{mb_emailck}, #{mb_phone}, #{mb_address1}, 

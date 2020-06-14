@@ -61,20 +61,29 @@ public class RegistrationController {
 	public String insertShopInfo(RegistrationDTO dto, MultipartHttpServletRequest ms, //스프링에서 알아서 set.
 									HttpServletRequest req) throws IllegalStateException, IOException {
 		//메소드 바디
-		String lPath = req.getServletContext().getRealPath("/resources/thumbnail/");
-		//post 파라미터
-		MultipartFile mfile = ms.getFile("file");
-		
-		//이미지 추가 메소드
-		String fileName = fu.saveFile(mfile, lPath);
+		String lnum = (String)req.getAttribute("dInfo.de_licencenum");
+		if(lnum == null & lnum.equals("")) {
+			return "mypage/grooming_user_profile";//미용사 값 없을 경우
+		}else {
+			//미용사 넘버 저장
+			int num = Integer.parseInt(lnum); 
+			dto.setDe_licencenum(num);
 			
-		//저장된 파일 이름 담기
-		dto.setReg_img(fileName);
-		
-		//최종적 DB저장
-		rdao.insertShop(dto);
-		
-		return "redirect:/mypage/insertInfoImgs";
+			String lPath = req.getServletContext().getRealPath("/resources/thumbnail/");
+			//post 파라미터
+			MultipartFile mfile = ms.getFile("file");
+			
+			//이미지 추가 메소드
+			String fileName = fu.saveFile(mfile, lPath);
+				
+			//저장된 파일 이름 담기
+			dto.setReg_img(fileName);
+			
+			//최종적 DB저장
+			rdao.insertShop(dto);
+			
+			return "redirect:/mypage/insertInfoImgs";
+		}
 	}
 	//↕(컨트롤끼리 이동)
 	//샵 상세 이미지 추가 폼
@@ -159,14 +168,21 @@ public class RegistrationController {
 											HttpServletRequest req) {
 		Map<String, String> map = new HashMap<String, String>();
 		
+		if(data.equals("")) {
+			data = null;
+		}
 		map.put("key", "REG_SHOPADDRESS");
 		map.put("data", data);
 		
 		List<ShopListDTO> list = rdao.searchShop(map);
 		
-		req.setAttribute("shopList", list);
-		
-		return "search/grooming_screen_map";
+		if(list.size() == 0) { //검색값이 없을 경우
+			return "main/grooming_main";
+		}else {
+			req.setAttribute("shopList", list);
+			
+			return "search/grooming_screen_map";
+		}
 	}
 	//-> grooming_screen_map (샵 목록) ->
 	//가게 상세 정보

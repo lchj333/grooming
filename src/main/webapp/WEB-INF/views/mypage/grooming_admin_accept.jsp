@@ -11,13 +11,15 @@
   <meta name="description" content="">
   <meta name="author" content="Ansonika">
   <title>accept</title>
-	
-  <!-- Favicons-->
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-  <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-  <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
-  <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+
+ <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <!-- =======================================================================================================================================================================================================================  -->
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -28,30 +30,30 @@
 			document.frm.action = "<c:url value='registShop'/>";
 			document.frm.submit();
 		});
-	
-		
+
+
 		/* 데이터 */
 		$(".tr-button").click(function(){
 			var str = "";
 			var tdArr = new Array();
 			var button = $(this);
-			
+
 			/* 현재 클릭된 버튼의 tr들 */
 			var tr = button.parent().parent();
 			var td = tr.children();
 			var num = td.eq(0).text();
 			var yes = td.eq(3).children().children("input:radio[class=yes]");
-			var no = td.eq(3).children().children("input:radio[class=no]");		
+			var no = td.eq(3).children().children("input:radio[class=no]");
 
-	
+
  			if(yes.is(':checked')==true){
  				location.href = "designerAgree?de_licencenum="+num;
 			}else if(yes.is(':checked')==false){
 				location.href = "ewqew?no=1&we=false";
-			} 			
+			}
 		});
 	});
-	
+
 	/* 이미지 팝업창 */
 	function popimage(imagesrc,winwidth,winheight){
 	    var look='width='+winwidth+',height='+winheight+','
@@ -59,7 +61,7 @@
 	        popwin.document.open()
 	        popwin.document.write('<title>Image Window</title><body topmargin=0 leftmargin=0><img style=cursor:hand; onclick="self.close()" src="'+imagesrc+'"></body>')
 	        popwin.document.close()
-	}	
+	}
 </script>
 
 
@@ -67,7 +69,7 @@
 <body class="fixed-nav sticky-footer" id="page-top">
 
 <jsp:include page="mypage_nav.jsp"></jsp:include>
- 
+
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -124,7 +126,7 @@
 					                <div class="tr-button">저장</div>
 				                  </td>
 				                </tr>
-			          	</c:forEach>		        	
+			          	</c:forEach>
 		              </tbody>
 		            </table>
 	          </div>
@@ -146,10 +148,10 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-    
+
     <!-- Logout Modal-->
     <jsp:include page="mypage_logout.jsp"></jsp:include>
-    
+
 
     <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
@@ -186,6 +188,5 @@
         height: 200
       });
     </script>
-	
 </body>
 </html>

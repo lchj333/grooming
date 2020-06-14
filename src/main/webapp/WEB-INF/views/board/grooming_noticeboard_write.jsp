@@ -15,7 +15,7 @@
   <!-- GOOGLE WEB FONT -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
    
-  <!-- Bootstrap core CSS-->
+  <!-- Bootstrap core CSS-->  
   <link href="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Main styles -->
   <link href="${pageContext.request.contextPath}/resources/mypage/css/admin.css" rel="stylesheet">
