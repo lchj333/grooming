@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
     <meta name="author" content="Ansonika">
     <!-- 메타 정보 -->
 
-<title>GROOMING</title>
+<title>Grooming 검색 결과</title>
  <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
     <link rel="shortcut icon" href="img/Grooming_icon_72.png" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon" href="img/Grooming_icon_72.png">
@@ -48,115 +49,10 @@ html, body {
 
 	<div id="page">
 <!-- 네비 =============================================================== -->
-		<header class="header map_view menu_fixed">
-<!-- 			<div id="preloader">
-				<div data-loader="circle-side"></div>
-			</div> -->
-			<!-- /메인 해더 로고 -->
-			<div id="logo">
-				<a href=" "> <img src="img/Grooming_logo_main.png"
-					width="150" height="36" data-retina="true" alt="">
-				</a>
-			</div>
-			<ul id="top_menu">
-				<li><a href="cart-1.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
-				<li><a href="#sign-in-dialog" id="sign-in" class="login"
-					title="Sign In">Sign In</a></li>
-				<li><a href="wishlist.html" class="wishlist_bt_top"
-					title="Your wishlist">Your wishlist</a></li>
-			</ul>
-			<!-- /네비 에 해당 아이콘들  -->
-			<a href="#menu" class="btn_mobile">
-				<div class="hamburger hamburger--spin" id="hamburger">
-					<div class="hamburger-box">
-						<div class="hamburger-inner"></div>
-					</div>
-				</div>
-			</a>
-			<!-- 반응형 햄버거 영역 -->
-			<nav id="menu" class="main-menu">
-				<ul>
-					<!-- ====1번========================================================= -->
-					<li><span><a href="#0">커뮤니티</a></span>
-						<ul>
-							<li><a href="index.html">menu </a></li>
-							<li><a href="index-2.html">menu</a></li>
-							<li><a href="index-3.html">menu </a></li>
-							<li><a href="index-4.html">menu </a></li>
-							<li><a href="index-5.html">menu </a></li>
-							<li><a href="index-6.html">menu </a></li>
-							<li><a href="index-7.html">menu</a></li>
 
-						</ul></li>
-					<!-- ============================================================= -->
-					<!-- ====2번========================================================= -->
-					<li><span><a href="#0">리얼후기</a></span>
-						<ul>
-							<li><span><a href="#0">평점보기</a></span>
-								<ul>
-									<li><a href="hotels-grid-isotope.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar-2.html">menu</a></li>
-
-									<li><a href="hotels-grid.html">menu</a></li>
-								</ul></li>
-							<li><span><a href="#0">후기게시판</a></span>
-								<ul>
-									<li><a href="hotels-grid-isotope.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar-2.html">menu</a></li>
-
-									<li><a href="hotels-grid.html">menu</a></li>
-								</ul></li>
-						</ul></li>
-					<!-- ============================================================= -->
-
-					<!-- 3번 ==================================================================-->
-					<li><span><a href="#0">소식</a></span>
-						<ul>
-							<li><span><a href="#0">공지사항</a></span>
-								<ul>
-									<li><a href="hotels-grid-isotope.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar-2.html">menu</a></li>
-
-									<li><a href="hotels-grid.html">menu</a></li>
-								</ul></li>
-							<li><span><a href="#0">이벤트</a></span>
-								<ul>
-									<li><a href="hotels-grid-isotope.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar-2.html">menu</a></li>
-
-									<li><a href="hotels-grid.html">menu</a></li>
-								</ul></li>
-
-						</ul></li>
-					<!-- /3번 ==================================================================-->
-					<!-- 4번 ==================================================================-->
-
-					<li><span><a href="#0">고객센터</a></span>
-						<ul>
-							<li><a href="about.html">faq</a></li>
-							<li><a href="media-gallery.html">QNA</a></li>
-							<li><a href="help.html">1대1문의</a></li>
-
-						</ul></li>
-					<!-- /4번 ==================================================================-->
-				</ul>
-				<!-- 메뉴 end -->
-			</nav>
-			<!-- //네비 end -->
-		</header>
-		<!-- //헤더 end -->
+<!-- header -->
+		<jsp:include page="../include/header.jsp" />
+		<!-- header end -->
 
 		<main>  <!-- 메인 시작  -->
 			<div class="container-fluid full-height">  <!-- 최고 루트 div  -->
