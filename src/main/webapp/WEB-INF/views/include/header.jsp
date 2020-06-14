@@ -100,7 +100,7 @@
 					</li>
 					<li><span><a href="/faqList">고객센터</a></span>
 						<ul>
-							<li><a href="<c:url value="/inquiryList"/>">1:1문의</a></li>
+							<li><a href="<c:url value="/inquiryCustomerList"/>">1:1문의</a></li>
 							<li><a href="<c:url value="/faqList"/>">FAQ</a></li>
 						</ul>
 					</li>
