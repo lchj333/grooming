@@ -25,7 +25,7 @@
 
 	    $("#search").on('click', function(){
 
-		    document.frm.action = "/search/shopList";
+		    document.frm.action = "<c:url value="/search/shopList"/>";
 			document.frm.method = "POST";
 			document.frm.submit();
 
