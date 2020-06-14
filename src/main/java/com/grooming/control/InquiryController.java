@@ -31,19 +31,10 @@ public class InquiryController {
 	//문의사항 전체 보기에 페이징 추가하기
 	@RequestMapping(value="inquiryList")
 	public String inquiryList(Model model) {
-		
-		
-		
-		
-		
-		
-		
-		
 		List<InquiryDTO> list = dao.selectList();
 		model.addAttribute("list", list);
 		return "gr_inquiryboard_list";
 	}
-	
 	
 	// 문의하기 detail
 	@RequestMapping(value="inquiryDetail")
