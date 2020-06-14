@@ -11,7 +11,7 @@
 				r.reg_img, m.mb_phone 
 		from gr_registration r, gr_member m
 		where reg_block = 0
-		<if test="data != null">
+		<if test='!data == null'>
 			and reg_shopaddress like '%'#{data}'%'
 		</if>
 	</select>
