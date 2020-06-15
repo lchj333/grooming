@@ -18,7 +18,7 @@
 		<div id="grooming_qnaboard_customlist_div">
 			<div id="grooming_qnaboard_customlist_section">
 				<div id="grooming_qnaboard_customlist_articlelist">
-					<div id="grooming_qnaboard_customlist_maintitle">공지사항</div>
+					<div id="grooming_qnaboard_customlist_maintitle">공지사항(관리자)</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 					<c:forEach var="a" items="${list }">
 						<div id="grooming_qnaboard_customlist_tr">
@@ -57,6 +57,9 @@
 				</c:if>
 			</div>
 		</div>
+		<a href="noticeListPage?num=${pn }"class="btn_1 medium">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="noticeUpdate?nt_no=${inform.nt_no }" class="btn_1 medium">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="noticeDelete?nt_no=${inform.nt_no }" class="btn_1 medium">삭제</a>
 	</form>
 </div>
 
