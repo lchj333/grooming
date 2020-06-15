@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="reservationMapper">
+	<!-- 현재 예약 리스트 중복 쿼리문 -->
+	<sql id="list">
+		<![CDATA[
+		select * from gr_reservation
+		]]>
+		<if test="#{de_licencenum}!=null"><!-- 미용사 -->
+		<![CDATA[
+			where DE_LICENCENUM = #{de_licencenum}
+			and not RE_APPROVAL like 'N'
+		]]>
+		</if><if test="#{de_licencenum}==null"><!-- 사용자 -->
+		<![CDATA[
+			where MB_ID = #{mb_id}
+			and RE_APPROVAL like 'Y'
+		]]>
+		</if>
+		<![CDATA[ and RE_DATA >= date_add(now(), interval -1 day)
+		order by RE_DATE desc ]]>
+	</sql>
+	<!-- 현재 승인된 유효한 예약 리스트 (사용자 & 미용사) -->
+	<select id="getReservList" parameterType="ReservationDTO" resultType="ReservationDTO">
+			<include refid="list"/>
+	</select>
+	
+	<!-- 예약 내역 리스트 -->
+	<select id="getAllMyList" parameterType="String" resultType="ReservationDTO">
+		select * from GR_RESERVATION
+		where MB_ID = #{mb_id}
+		order by RE_DATE desc
+	</select>
+	
+	<!-- 상세정보 -->
+	<select id="selectByNum" parameterType="int" resultType="ReservationDTO">
+		select * from GR_RESERVATION
+		where DE_LICENCENUM = #{de_licencenum}
+	</select>
+	
+	<!-- 예약 승인 | 미승인 -->
+	<update id="checkReserv" parameterType="ReservationDTO">
+		update GR_RESERVATION
+		set RE_APPROVAL = #{RE_APPROVAL}
+		where RE_NUM = #{re_num};
+	</update>
+	
+	<!-- 미승인 사유 작성 -->
+	<insert id="insertFeedBack" parameterType="ReservationDTO">
+		insert into RES_BECAUSE
+		values (#{re_num}, #{bc_con}) 
+	</insert>
+	
+	<!-- 예약 작성 -->
+	<insert id="insertReserv" parameterType="ReservationDTO"><!-- 예약 번호는 자동 생성 -->
+		insert into gr_reservation (DE_LICENCENUM, MB_ID, RE_APPROVAL, RE_DATE, 
+									RE_NOWDATE,	RE_SPECIES, RE_WEIGHT, RE_CUT)
+		values (#{de_licencenum}, #{mb_id}, 'U', #{re_date}, 
+				now(), #{re_species}, #{re_weight}, #{re_cut})
+	</insert>
+	
+</mapper>

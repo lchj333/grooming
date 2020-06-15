@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace=" ">
+
+	 <insert id="insertBookmark" parameterType="BookMarkDTO">
+	 	INSERT INTO mb_bookmark SELECT #{mb_id}, #{de_licencenum} FROM DUAL WHERE NOT EXISTS(SELECT DE_LICENCENUM FROM MB_BOOKMARK WHERE MB_ID = #{mb_id} and DE_LICENCENUM = #{de_licencenum})
+	 </insert>
+
+	<select id="selectBookMark"  parameterType="BookMarkDTO" resultType="BookMarkDTO">
+		select * from mb_bookmark
+		where MB_ID = #{mb_id}
+	</select>
+	
+	<delete id="deleteBookMark" parameterType="BookMarkDTO">
+		DELETE FROM mb_bookmark where DE_LICENCENUM = #{de_licencenum} and MB_ID = #{mb_id};
+	</delete>
+	
+</mapper>

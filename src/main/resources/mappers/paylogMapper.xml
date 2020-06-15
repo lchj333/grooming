@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace=" ">
+
+	<select id="selectAllIPayed"  parameterType="PaylogDTO" resultType="PaylogDTO">
+		select g.DE_LICENCENUM, p.PAY_DATE, p.PAY_MONEY
+		from gr_paylog p , gr_designer g 
+		where g.DE_LICENCENUM = #{de_licencenum};
+	</select>
+	
+</mapper>

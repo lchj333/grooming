@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+@media all and (min-width:375px){
+	#gr_noticeboard_list_form{
+		width:100%
+	}
+}
+
+@media all and (min-width:320px){
+	
+ 	#gr_noticeboard_list_div{
+ 	margin-left: 0;
+ 	margin-right: 0;
+ 	}
+}
+
+@media all and (min-width:770px){
+	#gr_noticeboard_list_form{
+		width: 70%;
+	}
+	#gr_noticeboard_list_div{
+ 	margin-left: 10%;
+ 	margin-right: 10%;
+ 	}
+}c
+/* 공지사항 폼 */
+#gr_noticeboard_ol{
+	margin-top : 70px;
+}
+
+#gr_noticeboard_list_form{
+	max-width: 1160px;
+}
+
+/* 공지사항 리스트 최상위 div */
+#grooming_qnaboard_customlist_div{
+	margin-top: 150px;
+	margin-left : 30%;
+	margin-right : 30%;
+}
+
+/* 공지사항 (제목=공지사항) */
+#gr_noticeboard_list_pagetitle{
+	font-size: 28px;
+    font-weight: 700;
+    color: #333333;
+}
+#gr_noticeboard_list_li{
+	padding: 15px 0px;
+}
+/* 공지사항(게시판 글 list) */
+#gr_noticeboard_list_li_a{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
