@@ -72,7 +72,7 @@
 		          </a>
 		        </li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
-		          <a class="nav-link" href="<c:url value='/mypage/reservList'/>">
+		          <a class="nav-link" href="<c:url value='/myReservation'/>">
 		            <i class="fa fa-fw fa-calendar-check-o"></i>
 		            <span class="nav-link-text">예약정보</span>
 		          </a>
@@ -133,7 +133,7 @@
 		              <a href="<c:url value='/mypage/'/>">메시지<span class="badge badge-pill badge-success">6</span></a>
 		            </li>
 					<li>
-		              <a href="<c:url value='/mypage/'/>">예약승인<span class="badge badge-pill badge-danger">6</span></a>
+		              <a href="<c:url value='/agreedReservation'/>">예약승인<span class="badge badge-pill badge-danger">6</span></a>
 		            </li>
 		            <li>
 		              <a href="<c:url value='/mypage/bookmark'/>">내 가게 리뷰 보기<span class="badge badge-pill badge-danger">6</span></a>
@@ -157,95 +157,6 @@
 		        </c:if>
 		     </c:if> <!-- 일반회원일때 end --> 
 		    
-		    <!-- ---------------------------------------------------------------------------- -->
- 		    
-		   <%--  
-		    <c:if test="${dInfo.de_approval eq 'Y'}"> <!-- 미용사일때 -->
-				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="My profile">
-		          <a class="nav-link" href="<c:url value='/mypage'/>">
-		            <i class="fa fa-fw fa-user"></i>
-		            <span class="nav-link-text">회원정보</span>
-		          </a>
-		        </li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Messages">
-		          <a class="nav-link" href="<c:url value='/mypage/'/>">
-		            <i class="fa fa-fw fa-envelope-open"></i>
-		            <span class="nav-link-text">1대1 대화</span>
-		          </a>
-		        </li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
-		          <a class="nav-link" href="<c:url value='/mypage/reservList'/>">
-		            <i class="fa fa-fw fa-calendar-check-o"></i>
-		            <span class="nav-link-text">예약정보<span class="badge badge-pill badge-primary">6 New</span></span>
-		          </a>
-		        </li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reviews">
-		          <a class="nav-link" href="<c:url value='/mypage/review'/>">
-		            <i class="fa fa-fw fa-star"></i>
-		            <span class="nav-link-text">내리뷰</span>
-		          </a>
-		        </li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Bookmarks">
-		          <a class="nav-link" href="<c:url value='/mypage/bookmark'/>">
-		            <i class="fa fa-fw fa-heart"></i>
-		            <span class="nav-link-text">북마크</span>
-		          </a>
-		        </li>
-		        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="가게정보">
-		          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseInquiry" data-parent="#mylistings">
-		            <i class="fa fa-fw fa-list"></i>
-		            <span class="nav-link-text">관리자문의</span>
-		          </a>
-		          <ul class="sidenav-second-level collapse" id="collapseInquiry">
-		            <li>
-		              <a href="<c:url value='/mypage/'/>">문의하기<span class="badge badge-pill badge-primary">6</span></a>
-		            </li>
-					<li>
-		              <a href="<c:url value='/mypage/bookmark'/>">문의확인<span class="badge badge-pill badge-success">6</span></a>
-		            </li>
-		          </ul>
-		        </li>
-					   
-		   
-		   
-		   
-				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="가게정보">
-		          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMylistings" data-parent="#mylistings">
-		            <i class="fa fa-fw fa-list"></i>
-		            <span class="nav-link-text">가게정보</span>
-		          </a>
-		          <ul class="sidenav-second-level collapse" id="collapseMylistings">
-		            <li>
-		              <a href="<c:url value='/mypage/'/>">가게등록<span class="badge badge-pill badge-primary">6</span></a>
-		            </li>
-					<li>
-		              <a href="<c:url value='/mypage/'/>">메시지<span class="badge badge-pill badge-success">6</span></a>
-		            </li>
-					<li>
-		              <a href="<c:url value='/mypage/'/>">예약승인<span class="badge badge-pill badge-danger">6</span></a>
-		            </li>
-		            <li>
-		              <a href="<c:url value='/mypage/bookmark'/>">내 가게 리뷰 보기<span class="badge badge-pill badge-danger">6</span></a>
-		            </li>
-		          </ul>
-		        </li>
-		        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="가게정보">
-		          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePay" data-parent="#mylistings">
-		            <i class="fa fa-fw fa-list"></i>
-		            <span class="nav-link-text">포인트충전</span>
-		          </a>
-		          <ul class="sidenav-second-level collapse" id="collapsePay">
-		            <li>
-		              <a href="<c:url value='/mypage/pointcharging'/>">포인트충전<span class="badge badge-pill badge-primary">6</span></a>
-		            </li>
-					<li>
-		              <a href="<c:url value='/pointchargingok'/>">충전내역<span class="badge badge-pill badge-success">6</span></a>
-		            </li>
-		          </ul>
-		        </li>
-	        </c:if>  <!-- 미용사일때 end --> --%>
-	        
-	        
 	        <!-- ---------------------------------------------------------------------------- -->
 	        
 	       <c:if test="${login.mb_id == null && admin != null }"> <!-- 관리자일때  -->
