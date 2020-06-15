@@ -259,7 +259,7 @@ public class MailController {
 	        
 	        ModelAndView mv2 = new ModelAndView(); 
 	        
-	        mv2.setViewName("email_injeung");
+	        mv2.setViewName("login/grooming_send_email_form2");
 	        
 	        response_equals.setContentType("text/html; charset=UTF-8");
 	        PrintWriter out_equals = response_equals.getWriter();
