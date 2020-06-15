@@ -15,16 +15,16 @@
 
 <!-- 최상단 메뉴 icon -->
 <!-- =======================================================================================================================================================================================================================  -->
-<link rel="shortcut icon" href="img/Grooming_icon_72.png"
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png"
 	type="image/x-icon">
 <link rel="apple-touch-icon" type="image/x-icon"
-	href="img/Grooming_icon_72.png">
+	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
 <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
-	href="img/Grooming_icon_72.png">
+	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
 <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
-	href="img/Grooming_icon_114.png">
+	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
 <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
-	href="img/Grooming_icon_144.png">
+	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
 
 <!-- =======================================================================================================================================================================================================================  -->
 <link rel="stylesheet"
@@ -35,11 +35,11 @@
 	rel="stylesheet">
 
 <!-- BASE CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/main_resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/main_resources/css/style.css" rel="stylesheet">
 
 <!-- YOUR CUSTOM CSS -->
-<link href="css/custom.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
 
 <style>
 .invoice-title h2, .invoice-title h3 {
