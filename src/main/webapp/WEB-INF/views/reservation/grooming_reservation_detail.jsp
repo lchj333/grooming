@@ -63,26 +63,27 @@
 
 		<!-- contents -->
 		<!-- =======================================================================================================================================================================================================================  -->
-		<main >
+		<main>
 		
 			<div class="container add_top_60 ">
 				<div class="row magin_60">
 					<div class="col-12">
 						<div class="invoice-title add_top_30" style="color: black">
-							<strong><h2>GROOMING 미용예약 완료</h2></strong>
-							<h5 class="float-right">
-								<strong>예약번호#55555 </strong>
-							</h5>
-						</div>rsvrsvrsvrsvrsvrsvrsvrsvrsvrsv rsv rsv rsv  rsvrsvrsvrsvrsvrsv
+							<strong><h2>GROOMING 미용확인</h2></strong>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							
+							
+						</div>
 						<!-- 여기로 이동 -->
 						<form action="<c:url value="/reservation/addReserv"/>">
+						
+						
+						
 						</form>
 						<hr>
-						<div>
-							<h2>ddd 님 예약이 되었습니다.</h2>
-							<h5>판매자가 확인후 쪽지 및 연ㄹ</h5>
-
-						</div>
 					</div>
 				</div>
 				<hr>
