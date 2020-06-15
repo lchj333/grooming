@@ -5,8 +5,24 @@
 @media ( max-width : 767px) {
 	.grooming_cp_img{
 	width: 300px;
+	}
+	.Grooming_logo_header_main{
+	margin-top: 20px;
+	}
+
+	.nv_login_li_icon_1{
+	style="margin-top: -50px;"
+	}
+
+
 }
 
-
+@media (max-width: 991px){
+#logo img {
+    width: auto;
+    height: 30px;
+    margin: 10px 0 0 0;
+}
 
 }
+
