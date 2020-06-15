@@ -29,8 +29,9 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<jsp:include page="../include/header.jsp"></jsp:include>
+
 <div id="page">
+<jsp:include page="../mypage/mypage_nav.jsp" />
 <!-- contents -->
 	<form action="#" id="grooming_qnaboard_customlist_form">
 		<div id="grooming_qnaboard_customlist_div">
@@ -49,14 +50,17 @@ $(document).ready(function(){
 									<div id="gr_qna_regdate" ></div>
 								</div> 
 									<ul class="hide" id="gr_qna_slideul">
-										<li id="gr_qna_slideli"><c:out value="${inform.f_con }"></c:out></li>
+										<li id="gr_qna_slideli">
+										<c:out value="${inform.f_con }"></c:out>
+         <a href="faqDelete?f_title=${inform.f_title }" class="btn_1 medium">삭제</a>
+										</li>
 									</ul>
 								</li>
 							</c:forEach>
 						</ul>
 						<!-- 페이징 처리 -->
 		<c:if test="${prev}">
-			<span>[ <a href="/control/faqList?num=${startPageNum - 1}">이전</a> ]</span>
+			<span>[ <a href="/control/faqList2?num=${startPageNum - 1}">이전</a> ]</span>
 		</c:if>
 		
 		<!-- 페이지 모음 출력 -->
@@ -64,7 +68,7 @@ $(document).ready(function(){
 			<span>
 				<!-- 현재보고있는 페이지 글자 두껍게해서 직관성 향상-->
 				<c:if test="${select != num }">
-					<a href="/control/faqList?num=${num}">${num}</a>									
+					<a href="/control/faqList2?num=${num}">${num}</a>									
 				</c:if>
 				<c:if test="${select == num }">
 					<b>${num }</b>
@@ -73,37 +77,31 @@ $(document).ready(function(){
 		</c:forEach>
 					
 		<c:if test="${next}">
-			<span>[ <a href="/control/faqList?num=${endPageNum + 1}">다음</a> ]</span>
+			<span>[ <a href="/control/faqList2?num=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
 		<!-- 페이징처리 끝 -->	
 					</div>			
 				</div>
 			</div>
-		<!-- 페이징 처리 -->
-		<c:if test="${prev}">
-			<span>[ <a href="/control/faqListPage?num=${startPageNum - 1}">이전</a> ]</span>
-		</c:if>
-		
-		<!-- 페이지 모음 출력 -->
-		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
-			<span>
-				<!-- 현재보고있는 페이지 글자 두껍게해서 직관성 향상-->
-				<c:if test="${select != num }">
-					<a href="/control/faqList?num=${num}">${num}</a>									
-				</c:if>
-				<c:if test="${select == num }">
-					<b>${num }</b>
-				</c:if>
-			</span>
-		</c:forEach>
-					
-		<c:if test="${next}">
-			<span>[ <a href="/control/faqList?num=${endPageNum + 1}">다음</a> ]</span>
-		</c:if>
-		<!-- 페이징처리 끝 -->		
 		</div>
 	</form>
 </div>
-<jsp:include page="../include/footer.jsp"></jsp:include>
+   <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="<c:url value='/resources/mypage/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
+    
+    <!-- Page level plugin JavaScript-->
+    <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/dataTables.bootstrap4.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.selectbox-0.2.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/retina-replace.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.magnific-popup.min.js'/>"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
+	<!-- Custom scripts for this page-->
+	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
 </body>
 </html>

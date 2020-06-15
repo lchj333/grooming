@@ -94,7 +94,7 @@ function openDaumPost(){
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>가게이름</label>
-							<input type="text" id="reg_shopname" class="form-control" name="reg_shopname" placeholder="가게이름" > 
+							<input type="text" id="reg_shopname" class="form-control" name="ref_shopname" placeholder="가게이름" > 
 						</div>
 					</div>
 				</div>
@@ -163,6 +163,7 @@ function openDaumPost(){
 				</div>
 				<p id="myprofile-savebtn">
 					<input type="button" id="btn" value="저장" class="btn_1 medium" />
+					<input type="hidden" name="de_licencenum" value="${dInfo.de_licencenum }"/>
 				</p>
 			</form>
 		</div>

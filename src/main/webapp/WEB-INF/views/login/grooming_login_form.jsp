@@ -51,7 +51,8 @@
 	$(document).ready(function(){
 
 	    $("#logingo").on('click', function(){
-
+			
+	    	
 		    document.frm.action = "login";
 			document.frm.method = "POST";
 			document.frm.submit();
@@ -92,15 +93,13 @@
 				<!-- <div class="divider"><span>Or</span></div> -->
 				<!-- 아이디 입력 -->
 				<div class="form-group">
-					<label>아이디</label> <i class="ti-user"></i> <input type="text"
-						class="form-control" name="mb_id" id=""
-						style="padding-left: 40px;">
+					<label>아이디</label> <i class="ti-user"></i> 
+					<input type="text" class="form-control" name="mb_id" id="mb_id" style="padding-left: 40px;">
 				</div>
 				<!-- 비밀번호 입력 -->
 				<div class="form-group">
-					<label>비밀번호</label> <input type="password" class="form-control"
-						name="mb_pw" id="" style="padding-left: 40px;"> <i
-						class="icon_lock_alt"></i>
+					<label>비밀번호</label>
+					<input type="password" class="form-control" name="mb_pw" id="mb_pw" style="padding-left: 40px;"> <i class="icon_lock_alt"></i>
 				</div>
 				<!-- 아이디 저장 체크 박스 -->
 				<div class="clearfix add_bottom_30">
@@ -117,9 +116,8 @@
 						<label><a href="mb_id_find">아이디 찾기 ㅣ&nbsp;</a></label>
 					</div>
 				</div>
-				<input type="button" value="로그인" class="btn_1 rounded full-width"
-					id="logingo" /> <input type="button" value="회원가입"
-					class="btn_1 rounded full-width" id="joingo" />
+				<input type="button" value="로그인" class="btn_1 rounded full-width" id="logingo" />
+				<input type="button" value="회원가입" class="btn_1 rounded full-width" id="joingo" />
 
 			</form>
 			<div class="copy">© 2020 Grooming</div>
