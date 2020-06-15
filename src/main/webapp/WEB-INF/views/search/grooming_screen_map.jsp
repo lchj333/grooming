@@ -38,6 +38,14 @@
         }
 </style>
 
+<!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <!-- =======================================================================================================================================================================================================================  -->
   <!-- ====================링크============================ -->
   <!-- GOOGLE WEB FONT -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
@@ -230,13 +238,17 @@ html, body {
 	
 
 	    <script>
+
+// 		<!-- 지도 결과  -->
+// 		<div class="col-lg-7 map-right">
+// 			<div id="map"></div>
         /**
          * Google Map API 주소의 callback 파라미터와 동일한 이름의 함수이다.
          * Google Map API에서 콜백으로 실행시킨다.
          */
         function initMap() {
             console.log('Map is initialized.');
- 
+            
             /**
              * 맵을 설정한다.
              * 1번째 파라미터 : 구글 맵을 표시할 위치. 여기서는 #google-map
@@ -296,7 +308,7 @@ html, body {
                 geocoder.geocode({'address': address}, function(result, status) {
                     console.log(result);
                     console.log(status);
- 
+                    
                     if (status === 'OK') {
                         // 맵의 중심 좌표를 설정한다.
                         resultMap.setCenter(result[0].geometry.location);
@@ -307,7 +319,7 @@ html, body {
                             map: resultMap,
                             position: result[0].geometry.location
                         });
- 
+                        
                         // 위도
                         console.log('위도(latitude) : ' + marker.position.lat());
                         // 경도
@@ -319,6 +331,7 @@ html, body {
             }
         }
     </script>
+
 
 	</div>
 	<!-- /row-->
@@ -343,6 +356,8 @@ html, body {
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc68i0R0J8OuZbjoZ-Nukwn9U0QnyRPfs&callback=initMap">
     </script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+	<script src="http://maps.googleapis.com/maps/api/js"></script><!-- 돈갑이형 브랜치꺼 임시 주석 -->
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/markerclusterer.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/map_hotels_half_screen.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/infobox.js"></script>
