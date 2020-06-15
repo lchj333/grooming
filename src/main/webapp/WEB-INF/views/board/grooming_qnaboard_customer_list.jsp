@@ -44,7 +44,7 @@ $(document).ready(function(){
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
 									<!-- 제목 -->
-									<div id="gr_qna_title"><c:out value="${a.in_title }"></c:out> 
+									<div id="gr_qna_title">[<c:out value="${a.in_category }"/>]<c:out value="${a.in_title }"></c:out> 
 									</div>
 									<!-- 날짜 -->
 									<div id="gr_qna_regdate" >

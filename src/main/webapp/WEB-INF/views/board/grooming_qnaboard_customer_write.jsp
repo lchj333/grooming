@@ -109,10 +109,9 @@
   <jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
   
   <div class="content-wrapper">
-		<form action="inquiryInsert" method="post">
+    <form action="inquiryInsert" name="frm" enctype="multipart/form-data" method="post">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-     
 		<div class="box_general padding_bottom">
 			<div class="header_box version_2">
 				<h2><i class="fa fa-file"></i>문의하기</h2>
@@ -161,7 +160,7 @@
 		</div>
 		<!-- /box_general-->
 		<p><input type="submit" class="btn_1 medium" value="문의하기" /></p>
-	  </div>
+	  	</div>
 		</form>
 	  <!-- /.container-fluid-->
    	</div>
@@ -188,8 +187,8 @@
 	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap-datepicker.js"></script>
 	<script>$('input.date-pick').datepicker();</script>
   <!-- WYSIWYG Editor -->
-  <script src="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.min.js"></script>
-  <script>
+	<script src="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.min.js"></script>
+	<script>
       $('.editor').summernote({
     fontSizes: ['10', '14'],
     toolbar: [

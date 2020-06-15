@@ -58,7 +58,8 @@ $(document).ready(function(){
 								</li>
 							</c:forEach>
 						</ul>
-						<!-- 페이징 처리 -->
+		<!-- 페이징 처리 -->
+		<div style="color:black; float:right; font-size: 20px; margin-top: 20px; margin-right:20px;">				
 		<c:if test="${prev}">
 			<span>[ <a href="/control/faqList2?num=${startPageNum - 1}">이전</a> ]</span>
 		</c:if>
@@ -79,6 +80,7 @@ $(document).ready(function(){
 		<c:if test="${next}">
 			<span>[ <a href="/control/faqList2?num=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
+		</div>
 		<!-- 페이징처리 끝 -->	
 					</div>			
 				</div>

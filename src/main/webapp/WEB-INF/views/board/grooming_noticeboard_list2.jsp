@@ -20,18 +20,18 @@
 				<div id="grooming_qnaboard_customlist_articlelist">
 					<div id="grooming_qnaboard_customlist_maintitle">공지사항(관리자)</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
-					<c:forEach var="a" items="${list }">
-						<div id="grooming_qnaboard_customlist_tr">
-							<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td1"><a href="noticeDetail2?nt_no=${a.nt_no }&num=${pn}">${a.nt_title }</a></div>
-							<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td2"><fmt:formatDate value="${a.nt_regdate }" pattern="YY.MM.dd"/></div>
-						</div>
-					</c:forEach>
+						<c:forEach var="a" items="${list }">
+							<div id="grooming_qnaboard_customlist_tr">
+								<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td1"><a href="noticeDetail2?nt_no=${a.nt_no }&num=${pn}">${a.nt_title }</a></div>
+								<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td2"><fmt:formatDate value="${a.nt_regdate }" pattern="YY.MM.dd"/></div>
+							</div>
+						</c:forEach>
+						<div style="border-top:1px solid #D5D5D5;"></div>
 					</div>
-				
-		<!-- 페이징 처리 -->
-		<c:if test="${prev}">
-			<span>[ <a href="/control/noticeListPage2?num=${startPageNum - 1}">이전</a> ]</span>
-		</c:if>
+				<div style="color:black; float:right; font-size: 20px; margin-top: 20px; margin-right:20px;">
+			<c:if test="${prev}">
+				<span>[ <a href="/control/noticeListPage2?num=${startPageNum - 1}">이전</a> ]</span>
+			</c:if>
 		
 		<!-- 페이지 모음 출력 -->
 		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
@@ -49,13 +49,16 @@
 		<c:if test="${next}">
 			<span>[ <a href="/control/noticeListPage2?num=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
-		<!-- 페이징처리 끝 -->		
 				</div>
-				<!-- 관리자일경우에만 공지 등록가능 -->
-				<c:if test="${ad_id != null }"> 
-				<a href="noticeInsert"><input type="button" value="공지등록" class="btn_1 medium" /></a>
-				</c:if>
-			</div>
+		<!-- 페이징 처리 -->
+	
+		</div>
+		<!-- 페이징처리 끝 -->		
+		</div>
+			<!-- 관리자일경우에만 공지 등록가능 -->
+			<c:if test="${ad_id != null }"> 
+			<a href="noticeInsert"><input type="button" value="공지등록" class="btn_1 medium" /></a>
+			</c:if>
 		</div>
 	</form>
 </div>
