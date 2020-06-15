@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -67,10 +68,22 @@ public class MemberController {
 	public String showList(Model model) {
 		
 		List<MemberDTO> list = dao.selectMemberAll();
-		model.addAttribute("memberlist", list);
+		model.addAttribute("list", list);
 		
-		return "member";
+		return "mypage/grooming_admin_management";
 	}
+	
+	// 승인된 미용사 리스트
+	@RequestMapping(value = "/agreedDesigner")
+	public String showListDesigner(Model model) {
+		
+		List<MemberDTO> designerList = dao.agreedDesigner();
+		model.addAttribute("designerList", designerList);
+		
+		return "mypage/grooming_admin_management2";
+	}
+	
+	
 	
 	// 회원 개별 조회
 	@RequestMapping(value = "/detail")
@@ -83,9 +96,17 @@ public class MemberController {
 		
 	}
 	
+	// 디자이너 양식 페이지 보기
+	@RequestMapping(value = "/designerForm1")
+	public String showdeeigner() {
+		
+		return "mypage/grooming_user_hairdresserRegist";
+		
+	}
+	
 	// 디자이너 신청 양식
-	@RequestMapping(value = "/designerForm")
-	public String showdeeigner(@RequestParam(value = "mb_id", required = true)String mb_id,Model model) {
+	@RequestMapping(value = "/designerForm", method = RequestMethod.GET)
+	public String showdeeigner(@RequestParam(value = "mb_id", required = false)String mb_id,Model model) {
 		
 		MemberDTO dto = dao.selectOne(mb_id);
 		
@@ -93,18 +114,24 @@ public class MemberController {
 		model.addAttribute("deinfo", dto);
 		
 		
-		return "designerForm";
+		return "mypage/grooming_user_hairdresserRegistDetail";
 		
 	}
 	
 	// 디자이너로 바꿔주는 메소드
 	@RequestMapping(value = "/designerCheck")
-	public String designerCheck(MemberDTO memberDto) {
+	public String designerCheck(@RequestParam(value = "mb_id", required = false)String mb_id,
+							MemberDTO memberDto) {
+		
+		memberDto.setMb_id(mb_id);
+		System.out.println(mb_id);
 		
 		dao.designerCheck(memberDto);
 		
+		System.out.println(memberDto.getMb_check());
 		
-		return "redirect:/selectMemberAll";
+		return "mypage/grooming_user_hairdresserRegistDetail";
+		
 	}
 
     // 아이디 중복확인
@@ -245,10 +272,10 @@ public class MemberController {
 		
 		dd.setMb_pw(securityService.encryptSHA256(mb_pw));
 		
-//		System.out.println(mb_pw);
+		System.out.println(mb_pw);
 		
-//		System.out.println(dd.getMb_id());
-//		System.out.println(dd.getMb_pw());
+		System.out.println(dd.getMb_id());
+		System.out.println(dd.getMb_pw());
 		
 		dao.changePw(dd);
 		
@@ -314,13 +341,24 @@ public class MemberController {
 	}
 	
 	
-	// 마이페이지 접속 
+	// 내정보 수정 페이지 접속 
 	@RequestMapping(value = "/mypage")
-	public String myPage() {
-		
-		
+	public String myInfoChange() {
 		
 		return "/mypage/grooming_user_profile";
+	}
+	
+	// 내정보 보기 페이지
+	@RequestMapping(value = "/mypageInfo")
+	public String myPage() {
+		
+		return "mypage/grooming_user_mypage";
+	}	
+	
+	// 미용사 신청 페이지로 들어가기
+	@RequestMapping(value = "/hairdresserRegist")
+	public String hairdresserRegist() {
+		return "mypage/grooming_user_hairdresserRegist";
 	}
 	
 }

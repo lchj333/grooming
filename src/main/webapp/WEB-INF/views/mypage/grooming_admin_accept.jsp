@@ -11,13 +11,15 @@
   <meta name="description" content="">
   <meta name="author" content="Ansonika">
   <title>accept</title>
-	
-  <!-- Favicons-->
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-  <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-  <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
-  <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+
+ <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <!-- =======================================================================================================================================================================================================================  -->
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -28,30 +30,30 @@
 			document.frm.action = "<c:url value='registShop'/>";
 			document.frm.submit();
 		});
-	
-		
+
+
 		/* 데이터 */
 		$(".tr-button").click(function(){
 			var str = "";
 			var tdArr = new Array();
 			var button = $(this);
-			
+
 			/* 현재 클릭된 버튼의 tr들 */
 			var tr = button.parent().parent();
 			var td = tr.children();
 			var num = td.eq(0).text();
 			var yes = td.eq(3).children().children("input:radio[class=yes]");
-			var no = td.eq(3).children().children("input:radio[class=no]");		
+			var no = td.eq(3).children().children("input:radio[class=no]");
 
-	
+
  			if(yes.is(':checked')==true){
- 				location.href = "ewqew?no="+num+"&we=true";
+ 				location.href = "designerAgree?de_licencenum="+num;
 			}else if(yes.is(':checked')==false){
 				location.href = "ewqew?no=1&we=false";
-			} 			
+			}
 		});
 	});
-	
+
 	/* 이미지 팝업창 */
 	function popimage(imagesrc,winwidth,winheight){
 	    var look='width='+winwidth+',height='+winheight+','
@@ -59,7 +61,7 @@
 	        popwin.document.open()
 	        popwin.document.write('<title>Image Window</title><body topmargin=0 leftmargin=0><img style=cursor:hand; onclick="self.close()" src="'+imagesrc+'"></body>')
 	        popwin.document.close()
-	}	
+	}
 </script>
 
 
@@ -67,7 +69,7 @@
 <body class="fixed-nav sticky-footer" id="page-top">
 
 <jsp:include page="mypage_nav.jsp"></jsp:include>
- 
+
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -75,15 +77,14 @@
         <li class="breadcrumb-item">
           <a href="#">미용사</a>
         </li>
-        <li class="breadcrumb-item active">충전</li>
+        <li class="breadcrumb-item active">미용사 </li>
       </ol>
 		<!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i>충전내역</div>
+          <i class="fa fa-table"></i>신청목록</div>
 	        <div class="card-body">
-	          <div class="table-responsive">
-		        <form action="#" method="get" name="frm">
+	          <div class="table-responsive">  
 		            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 		              <thead>
 		                <tr>
@@ -102,36 +103,34 @@
 		                </tr>
 		              </tfoot>
 		              <tbody>
-			          	<c:forEach var="i" begin="1" end="2">
+			          	<c:forEach var="list" items="${list }">
 				               	<tr>
-				                  <td style="text-align: center;">${i}</td>         
-				                  <td>jstl실명 <%-- ${ } --%></td>
+				                  <td style="text-align: center;"><c:out value="${list.de_licencenum}"></c:out></td>         
+				                  <td><c:out value="${list.mb_name }"></c:out></td>
 				                  <td>
-				                  	<a href="#" onClick="popimage('img/logo_2x.png',600,1000);return false">
-				                  		<img src="img/logo_2x.png" alt="이미지" style="width: 100px; height: 30px" />
+				                  	<a href="#" onClick="popimage('<c:url value="/resources/licence/${list.de_licence}"/>',1000,600);return false">
+				                  		<img src="<c:url value="/resources/licence/${list.de_licence}"/>" alt="이미지" style="width: 100px; height: 30px" />
 				                  	</a>
 				                  </td>
 				                  <td>
 				                  	<div id="radio-outline">
-					                  	<input type="radio" name="radio${i }" class="yes" value="y" checked="checked" />YES
-					                  	<input type="radio" name="radio${i }" class="no" value="n" />NO
+					                  	<input type="radio" name="radio${list }" class="yes" value="Y" checked="checked" />YES
+					                  	<%-- <input type="radio" name="radio${list }" class="no" value="N" />NO --%>
 				                  	</div>
-				                  	<%-- <c:if test="${yes }=yes"> yes로 들어오면 --%>
+				                  	<%-- <c:if test="${list.de_approval eq 'Y' }">
 				                  		<div id="present-condition1">현재승인여부: yes</div>
-				                  	<%-- </c:if> --%>
-				                  	<%-- <c:if test="${no }=no"> no로 들어오면 --%>
-				                  		<!-- <div id="present-condition2">현재승인여부: no</div> -->
-				                  	<%-- </c:if> --%>
+				                  	</c:if> --%>
+				                  	<c:if test="${list.de_approval eq 'N'  }">
+				                  		<div id="present-condition2">현재승인여부: no</div>
+				                  	</c:if>
 					                <div class="tr-button">저장</div>
 				                  </td>
 				                </tr>
-			          	</c:forEach>		        	
+			          	</c:forEach>
 		              </tbody>
 		            </table>
-			  	</form>
 	          </div>
 	        </div>
-        <div class="card-footer small text-muted"><input type="button" value="저장" id="btn" /></div>
       </div>
 	  <!-- /tables-->
 	  </div>
@@ -149,27 +148,45 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
-    
+
     <!-- Logout Modal-->
     <jsp:include page="mypage_logout.jsp"></jsp:include>
-    
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<c:url value='/resources/mypage/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
+    
     <!-- Page level plugin JavaScript-->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-	<script src="vendor/jquery.selectbox-0.2.js"></script>
-	<script src="vendor/retina-replace.min.js"></script>
-	<script src="vendor/jquery.magnific-popup.min.js"></script>
+    <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/dataTables.bootstrap4.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.selectbox-0.2.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/retina-replace.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.magnific-popup.min.js'/>"></script>
     <!-- Custom scripts for all pages-->
-    <script src="js/admin.js"></script>
+    <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
 	<!-- Custom scripts for this page-->
-    <script src="js/admin-datatables.js"></script>
-	
+	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
+	<script>$('input.date-pick').datepicker();</script>
+	<!-- WYSIWYG Editor -->
+	<script src="<c:url value='/resources/mypage/js/editor/summernote-bs4.min.js'/>"></script>
+	<script>
+      $('.editor').summernote({
+    fontSizes: ['10', '14'],
+    toolbar: [
+      // [groupName, [list of button]]
+      ['style', ['bold', 'italic', 'underline', 'clear']],
+      ['font', ['strikethrough']],
+      ['fontsize', ['fontsize']],
+      ['para', ['ul', 'ol', 'paragraph']]
+      ],
+        placeholder: 'Write here your description....',
+        tabsize: 2,
+        height: 200
+      });
+    </script>
 </body>
 </html>

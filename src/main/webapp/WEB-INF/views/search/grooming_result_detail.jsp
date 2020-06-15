@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,7 @@
 <meta name="author" content="Ansonika">
 <!-- 메타 정보 -->
 
-<title>GROOMING</title>
+<title>Grooming 가게정보</title>
 <!-- 최상단 메뉴 icon -->
 <!-- =======================================================================================================================================================================================================================  -->
 <link rel="shortcut icon" href="img/Grooming_icon_72.png"
@@ -117,10 +118,10 @@ html, body {
 										<ul class="magnific-gallery">
 											<li>
 												<figure>
-													<img src="img/gallery/large/pic_1.jpg" alt="">
+													<img src="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_1.jpg" alt="">
 													<figcaption>
 														<div class="caption-content">
-															<a href="img/gallery/large/pic_1.jpg" title="Photo title"
+															<a href="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_1.jpg" title="Photo title"
 																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
 																<p>Your caption</p>
 															</a>
@@ -130,10 +131,10 @@ html, body {
 											</li>
 											<li>
 												<figure>
-													<img src="img/gallery/large/pic_2.jpg" alt="">
+													<img src="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_2.jpg" alt="">
 													<figcaption>
 														<div class="caption-content">
-															<a href="img/gallery/large/pic_2.jpg" title="Photo title"
+															<a href="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_2.jpg" title="Photo title"
 																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
 																<p>Your caption</p>
 															</a>
@@ -143,10 +144,10 @@ html, body {
 											</li>
 											<li>
 												<figure>
-													<img src="img/gallery/large/pic_3.jpg" alt="">
+													<img src="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_3.jpg" alt="">
 													<figcaption>
 														<div class="caption-content">
-															<a href="img/gallery/large/pic_3.jpg" title="Photo title"
+															<a href="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_3.jpg" title="Photo title"
 																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
 																<p>Your caption</p>
 															</a>
@@ -156,7 +157,7 @@ html, body {
 											</li>
 											<li>
 												<figure>
-													<img src="img/gallery/large/pic_4.jpg" alt="">
+													<img src="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_4.jpg" alt="">
 													<figcaption>
 														<div class="caption-content">
 															<a href="img/gallery/large/pic_1.jpg" title="Photo title"
@@ -242,7 +243,7 @@ html, body {
 									<hr>
 									<div class="review-box clearfix">
 										<figure class="rev-thumb">
-											<img src="img/Grooming_300_200_LOGO.png" alt="">
+											<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_300_200_LOGO.png" alt="">
 										</figure>
 										<div class="rev-content">
 											<div class="rating">
@@ -314,7 +315,7 @@ html, body {
 									<input class="form-control" type="text" name="dates"
 										placeholder="When.."> <i class="icon_calendar"></i>
 								</div>
-								<form action="">
+								<form action="/search/reserv">
 									<div class="panel-dropdown">
 										<a href="#">견종선택 <span class="qtyTotal">1</span></a>
 										<div class="panel-dropdown-content right">

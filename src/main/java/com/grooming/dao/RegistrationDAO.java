@@ -22,8 +22,22 @@ public class RegistrationDAO {
 		this.ss = ss;
 	}
 	
-	//등록된 가게 리스트 (허가된)
-	public List<ShopListDTO> getList(Map<String, Object> map) {
+	//가게 정보 등록 메소드 
+	public void insertShop(RegistrationDTO dto) {
+		ss.insert(MAPPER+".insertShop", dto);
+	}
+	//가게 상세 이미지 추가
+	public void insertShopInfoimg(RegistrationDTO dto) {
+		ss.insert(MAPPER+".insertShopInfoimg", dto);
+	}
+	
+	//가게 정보 블럭 상태 변경 (관리자에 의한)
+	public void changeStateByAdmin(RegistrationDTO dto) {
+		ss.update(MAPPER+".BlockByAdmin", dto);
+	}
+	
+	//서치 가게 리스트
+	public List<ShopListDTO> searchShop(Map<String, String> map){
 		return ss.selectList(MAPPER+".list", map);
 	}
 	
@@ -37,25 +51,9 @@ public class RegistrationDAO {
 		return ss.selectList(MAPPER+".infoImgs", de_licencenum);
 	}
 	
-	//가게 정보 등록 메소드 
-	public void insertShop(RegistrationDTO dto) {
-		ss.insert(MAPPER+".insertShop", dto);
-	}
-	
-	//가게 상세 이미지 추가
-	public void insertShopInfoimg(RegistrationDTO dto) {
-		ss.insert(MAPPER+".insertShopInfoimg", dto);
-	}
-	
-	//가게 정보 블럭 상태 변경 (관리자에 의한)
-	public void changeStateByAdmin(RegistrationDTO dto) {
-		ss.update(MAPPER+".BlockByAdmin", dto);
-	}
-	
-	// 가게 검색
-	public List<RegistrationDTO> searchShop(RegistrationDTO dto){
-		return ss.selectList(MAPPER+".searchShop", dto);
-	}
-	
-	
+	// 모든 가게
+//	public List<ShopListDTO> getList(Map<String, String> map) {
+//		return ss.selectList(MAPPER+".searchShop", map);
+//	}
+//	
 }

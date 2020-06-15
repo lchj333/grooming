@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.grooming.dao.RegistrationDAO;
+import com.grooming.dto.DesignerDTO;
 import com.grooming.dto.RegistrationDTO;
 import com.grooming.dto.ShopListDTO;
 import com.grooming.utils.FileUpload;
@@ -59,22 +60,37 @@ public class RegistrationController {
 	//가게 등록 (+썸네일 이미지)
 	@PostMapping(value = "/mypage/registShop")
 	public String insertShopInfo(RegistrationDTO dto, MultipartHttpServletRequest ms, //스프링에서 알아서 set.
+									@RequestParam(value = "addr1")String addr1,
+									@RequestParam(value = "addr2")String addr2,
 									HttpServletRequest req) throws IllegalStateException, IOException {
 		//메소드 바디
-		String lPath = req.getServletContext().getRealPath("/resources/thumbnail/");
-		//post 파라미터
-		MultipartFile mfile = ms.getFile("file");
+		HttpSession ss = req.getSession();
 		
-		//이미지 추가 메소드
-		String fileName = fu.saveFile(mfile, lPath);
+		DesignerDTO info = (DesignerDTO)ss.getAttribute("dInfo");
+		if(info == null) {
+			return "mypage/grooming_user_profile";//미용사 값 없을 경우
+		}else {
+			//미용사 넘버 저장
+			dto.setDe_licencenum(info.getDe_licencenum());
 			
-		//저장된 파일 이름 담기
-		dto.setReg_img(fileName);
-		
-		//최종적 DB저장
-		rdao.insertShop(dto);
-		
-		return "redirect:/mypage/insertInfoImgs";
+			String lPath = req.getServletContext().getRealPath("/resources/thumbnail/");
+			//post 파라미터
+			MultipartFile mfile = ms.getFile("file");
+			
+			//이미지 추가 메소드
+			String fileName = fu.saveFile(mfile, lPath);
+				
+			//저장된 파일 이름 담기
+			dto.setReg_img(fileName);
+			
+			//샵 주소
+			dto.setReg_shopaddress(addr1+" "+addr2);
+			
+			//최종적 DB저장
+			rdao.insertShop(dto);
+			
+			return "redirect:/mypage/insertInfoImgs";
+		}
 	}
 	//↕(컨트롤끼리 이동)
 	//샵 상세 이미지 추가 폼
@@ -97,8 +113,8 @@ public class RegistrationController {
 									HttpServletResponse res, RedirectAttributes rtt) 
 														throws IllegalStateException, IOException {
 		//메소드 바디
-		int de_licencenum = (int)req.getAttribute("de_licencenum");	//세션일 경우
-//		int de_licencenum = Integer.parseInt(ms.getParameter("de_licencenum"));//파라미터일 경우
+		HttpSession ss = req.getSession();
+		int de_licencenum = (int)ss.getAttribute("de_licencenum");
 		
 		List<MultipartFile> list = ms.getFiles("files");
 		//IOException - 파일이 없을 때 발생할 에러. 호출함수인 xml의 DispatcherServlet class로 예외처리 전가//studentNumber - submissionForm의 속성 name 
@@ -132,12 +148,14 @@ public class RegistrationController {
 	}
 	
 	//가게 정보 블럭 상태 변경 (관리자에 의한)
-	@RequestMapping(value = "/blockShop")
+	@RequestMapping(value = "mypage/blockShop")
 	public String shopBlockByAdmin(@RequestParam
 										(value = "de_licencenum", required = true)int licencenum, 
 															HttpServletRequest req) {
 		//메소드 바디
-		String ad_id = (String) req.getAttribute("ad_id");
+		HttpSession ss = req.getSession();
+		
+		String ad_id = (String) ss.getAttribute("ad_id");
 		if(ad_id==null) {//관리자 아이디 값이 없을 경우
 			return "redirect:"+req.getHeader("Referer");//뒤로 보내기
 		}else {
@@ -147,23 +165,34 @@ public class RegistrationController {
 			
 			rdao.changeStateByAdmin(dto);
 			
-			return "home";
+			return "mypage/grooming_admin_management";
 		}
 		
 	}
 	
 	//grooming_main->
-	//샵 리스트 (+검색)
+	// 가게 검색
 	@RequestMapping(value = "/search/shopList")
-	public String listShop(HttpServletRequest req) {
-		//필터를 위한 맵 (예정)
-		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put..
-		List<ShopListDTO> list = rdao.getList(map);
+	public String listShop(@RequestParam(value = "searchData", defaultValue = "")String data, 
+											HttpServletRequest req) {
+		Map<String, String> map = new HashMap<String, String>();
 		
-		req.setAttribute("shopList", list);
+		if(data.equals("")) {
+			data = null;
+		}
+		map.put("key", "REG_SHOPADDRESS");
+		map.put("data", data);
 		
-		return "search/grooming_screen_map";
+		List<ShopListDTO> list = rdao.searchShop(map);
+		
+		if(list == null) { //검색값이 없을 경우
+			return "main/grooming_main";
+		}else {
+			req.setAttribute("shopList", list);
+			req.setAttribute("count", list.size());
+			
+			return "search/grooming_screen_map";
+		}
 	}
 	//-> grooming_screen_map (샵 목록) ->
 	//가게 상세 정보
@@ -192,25 +221,18 @@ public class RegistrationController {
 	/************************************
 		컨트롤에서 사용할 유틸 메소드..
 	*************************************/
-	
-	// 등록글 검색
-	
-	// 가게 검색
-	@RequestMapping(value = "searchShop", method = RequestMethod.POST)
-	public String searchShop(@RequestParam(value = "reg_shopaddress", required = true)String reg_shopaddress,
-							RegistrationDTO dto,HttpServletRequest req) {
-		
-		dto.setReg_shopaddress(reg_shopaddress);
-		
-		rdao.searchShop(dto);
-		
+	//샵 모든 리스트
+	@RequestMapping(value = "allShop", method = RequestMethod.POST)
+	public String searchShop(HttpServletRequest req) {
+//		rdao.getList(map);
 		return "search/grooming_screen_map";
-		
 	}
 	
 	@RequestMapping(value = "go")
 	public String go() {
 		return "search/grooming_result_detail";
 	}
+	// 등록글 검색
+	
 	
 }

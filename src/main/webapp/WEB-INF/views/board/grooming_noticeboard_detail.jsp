@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +11,7 @@
 <body>
 <div id="page">
 <!-- header -->
-<jsp:include page="../include/header1.jsp"/>
+<jsp:include page="../include/header.jsp"/>
 <!-- header end -->
 
 <!-- contents -->
@@ -20,15 +19,17 @@
       <div id="gr_noticeboard_detail_title"><span><c:out value="${inform.nt_title }"></c:out></span></div>
       <div id="gr_noticeboard_detail_datehits">
          <span>등록일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-         <span><fmt:formatDate value="${inform.nt_regdate }"/></span>
+         <span><fmt:formatDate value="${inform.nt_regdate }"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
          <span>조회수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
          <span><c:out value="${inform.nt_hits }"></c:out></span>
       </div>
       <div id="gr_noticeboard_detail_contents"><c:out value="${inform.nt_con }"></c:out></div>      
-	   <p>
+	   <p id="notice_button">
 		   <a href="noticeListPage?num=${pn }" class="btn_1 medium">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%-- 		   <c:if test="${admin.ad_id eq ad_id }">
 		   <a href="noticeUpdate?nt_no=${inform.nt_no }" class="btn_1 medium">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		   <a href="noticeDelete?nt_no=${inform.nt_no }" class="btn_1 medium">삭제</a>
+		   </c:if> --%>
 	   </p>
    </div>
 <!-- footer -->

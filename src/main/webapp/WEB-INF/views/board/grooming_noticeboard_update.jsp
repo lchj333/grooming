@@ -32,7 +32,6 @@
 
 </head>
 
-<jsp:include page="../include/header1.jsp"/>
 <body class="fixed-nav sticky-footer" id="page-top">
   <!-- /Navigation-->
   <div class="content-wrapper" id="grooming_noticeboard_write_maindiv">
@@ -69,7 +68,7 @@
      </div>
      <!-- /.container-fluid-->
       </div>
-   <jsp:include page="../include/footer.jsp"/>
+<jsp:include page="../mypage/mypage_nav.jsp" />
     <!-- /.container-wrapper-->
     <!-- Scroll to Top Button-->
     <!-- Logout Modal-->

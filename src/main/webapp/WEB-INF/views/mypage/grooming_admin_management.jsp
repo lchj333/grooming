@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +10,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="Ansonika">
-  <title>PANAGEA - Admin dashboard</title>
+  <title>management</title>
 	
   <!-- Favicons-->
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-  <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-  <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
-  <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+  <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <!-- =======================================================================================================================================================================================================================  -->
 
 </head>
 
@@ -29,47 +33,49 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Dashboard</a>
+          	관리자
         </li>
-        <li class="breadcrumb-item active">Tables</li>
+        <li class="breadcrumb-item active">회원정보</li>
       </ol>
 		<!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Table Example</div>
+          <i class="fa fa-table"></i>회원정보</div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Price</th>
+                  <th>이름</th>
+                  <th>아이디</th>
+                  <th>이메일</th>
+                  <th>전화번호</th>
+                  <th>가입일</th>
                 </tr>
               </thead>
               <tfoot>
                 <tr>
-                  <th>Name</th>
-                  <th>Position</th>
-                  <th>Office</th>
-                  <th>Age</th>
-                  <th>Start date</th>
-                  <th>Salary</th>
+                  <th>이름</th>
+                  <th>아이디</th>
+                  <th>이메일</th>
+                  <th>전화번호</th>
+                  <th>가입일</th>
                 </tr>
               </tfoot>
-              <tbody>
-                <tr>
-                  <td>Tiger Nixon</td>
-                  <td>System Architect</td>
-                  <td>Edinburgh</td>
-                  <td>61</td>
-                  <td>2011/04/25</td>
-                  <td>$320,800</td>
-                </tr>
-              </tbody>
+              
+              <!-- select All 반복문 -->
+                 <tbody>
+               <c:forEach var="list" items="${list }">
+                   <tr>
+                     <td><c:out value="${list.mb_name}"/></td>
+                     <td><c:out value="${list.mb_id}"/></td>
+                     <td><c:out value="${list.mb_email}"/></td>
+                     <td><c:out value="${list.mb_phone}"/></td>
+                     <td><fmt:formatDate value="${list.mb_joindate}" pattern="YYYY-MM-dd"/></td>
+                   </tr>
+             </c:forEach>
+                 </tbody>
+              
             </table>
           </div>
         </div>
@@ -83,7 +89,7 @@
     <footer class="sticky-footer">
       <div class="container">
         <div class="text-center">
-          <small>Copyright © PANAGEA 2018</small>
+          <small>Copyright © Grooming 2020</small>
         </div>
       </div>
     </footer>
@@ -95,7 +101,6 @@
     
     <!-- 로그아웃 -->
 	<jsp:include page="mypage_logout.jsp"></jsp:include>
-	
 	
     <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
@@ -112,6 +117,7 @@
     <!-- Custom scripts for all pages-->
     <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
 	<!-- Custom scripts for this page-->
+	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
 	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
 	<script>$('input.date-pick').datepicker();</script>
 	<!-- WYSIWYG Editor -->
@@ -131,6 +137,6 @@
         height: 200
       });
     </script>
-    
+	
 </body>
 </html>

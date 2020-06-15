@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,14 +13,20 @@
 <meta name="author" content="Ansonika">
 <title>GROOMING 예약완료</title>
 
-<!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
-    <link rel="shortcut icon" href="img/Grooming_icon_72.png" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="img/Grooming_icon_72.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/Grooming_icon_72.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/Grooming_icon_114.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/Grooming_icon_144.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
- <!-- =======================================================================================================================================================================================================================  -->
+<!-- 최상단 메뉴 icon -->
+<!-- =======================================================================================================================================================================================================================  -->
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png"
+	type="image/x-icon">
+<link rel="apple-touch-icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
+	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
+	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
+	href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
+
+<!-- =======================================================================================================================================================================================================================  -->
 
 <!-- GOOGLE WEB FONT -->
 <link
@@ -27,11 +34,11 @@
 	rel="stylesheet">
 
 <!-- BASE CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/main_resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/main_resources/css/style.css" rel="stylesheet">
 
 <!-- YOUR CUSTOM CSS -->
-<link href="css/custom.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
 
 <style>
 .invoice-title h2, .invoice-title h3 {
@@ -62,7 +69,7 @@
 
 		<!-- contents -->
 		<!-- =======================================================================================================================================================================================================================  -->
-		<main style="height: 80%">
+		<main >
 
 			<div class="container add_top_60 ">
 				<div class="row magin_60">
@@ -84,14 +91,18 @@
 				</div>
 				<hr>
 					<div class="row col-6 add_bottom_75">
-						<div class="col-3">
-							<input type="button" class="btn_1  add_top_15"
-								value="마이페이지 가기" />
+						<div class="add_right_15">
+							<input type="button" class="btn_1  add_top_15 "
+								value="예약하기" />
+
 						</div>
-						<div class="col-3">
-							<input type="button" class="btn_1  add_top_15"
+						<div class="">
+							<input type="button" class="btn_1  add_top_15 "
 								value="되돌아가기" />
+
 						</div>
+
+
 				</div>
 
 			</div>

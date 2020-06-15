@@ -83,7 +83,7 @@ public class LoginController {
 			
 			session.setAttribute("admin", ad.adminloginOk(adminDto));
 			
-			mav.setViewName("mypage/grooming_admin_management");
+			mav.setViewName("redirect:/selectMemberAll");
 			
 		}
 		

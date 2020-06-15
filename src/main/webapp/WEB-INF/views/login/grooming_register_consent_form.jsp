@@ -1,37 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>grooming_consent_form</title>
+<title>grooming_약관동의</title>
 
 <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
-    <link rel="shortcut icon" href="img/Grooming_icon_72.png" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="img/Grooming_icon_72.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/Grooming_icon_72.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/Grooming_icon_114.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/Grooming_icon_144.png">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
  <!-- =======================================================================================================================================================================================================================  -->
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
-		
 
-	    
+	    $("input:checkbox[name=checkAll]").click(function(){
+	    	var chk = $(this).is(":checked");
+
+	    	for(var i=1; i<=3; i++){
+
+	    	if(chk){
+	    		$("input[id=enable]").prop("checked",true);
+	    	}else {
+	    		$("input[id=enable]").prop("checked",false);
+
+	    	}
+	    	}
+	    });
+
+
 	    $("#join").on('click', function(){
+
+
+				var frm = document.frm;
+
+				for(var i=1; i<=2; i++)
+				{
+					if (!frm['enable'+i].checked)
+				{
+					alert('약관과 개인정보 보호정책에 모두 동의 해 주셔야 회원가입이 정상적으로 이루어집니다');
+		            return;
+
+		    	}
+			}
 
 		    document.frm.action = "join";
 			document.frm.method = "GET";
 			document.frm.submit();
-			
+
 
 	    });
 
 
 
 	});
+
+
 
 </script>
 
@@ -53,13 +82,20 @@
 								<!-- 줄  -->
 
 							</div>
-							<div>
+							<div class="" role="tab">
+										<label class="container_check"> <input type="checkbox" name="checkAll">
+											<span class="checkmark"></span>
+											<h5 class="mb-0">전체 동의</h5>
+										</label>
+
+									</div>
+							 <!-- <div>
 								<div class="add_top_15 add_bottom_15"></div>
 								<div class="add_bottom_15 ">
 									<input type="submit"
 										class="add_left_45 btn_1 left outline medium " value="전체동의">
 								</div>
-							</div>
+							</div>  -->
 							<br>
 
 							<div role="tablist" class="add_bottom_30 accordion_2" id="tips">
@@ -67,7 +103,7 @@
 								<div class="card">
 									<!-- heder -->
 									<div class="card-header" role="tab">
-										<label class="container_check"> <input type="checkbox">
+										<label class="container_check"> <input type="checkbox" name="enable1" id="enable">
 											<span class="checkmark"></span>
 											<h5 class="mb-0">
 												<a data-toggle="collapse" href="#collapseOne_tips"
@@ -105,7 +141,7 @@
 								<div class="card">
 									<!-- cade 2 -->
 									<div class="card-header" role="tab">
-										<label class="container_check"> <input type="checkbox">
+										<label class="container_check"> <input type="checkbox" name="enable2" id="enable">
 											<span class="checkmark"></span>
 											<h5 class="mb-0">
 												<a data-toggle="collapse" href="#collapseTwo_tips"
@@ -143,7 +179,7 @@
 								<div class="card">
 									<!-- card 3 -->
 									<div class="card-header" role="tab">
-										<label class="container_check"> <input type="checkbox">
+										<label class="container_check"> <input type="checkbox" name="enable3" id="enable">
 											<span class="checkmark"></span>
 											<h5 class="mb-0">
 												<a data-toggle="collapse" href="#collapseThree_tips"

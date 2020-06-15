@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,12 +22,14 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
 
-    <!-- Favicons-->
-    <link rel="shortcut icon" href="img/Grooming_icon_72.png" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="img/Grooming_icon_72.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/Grooming_icon_72.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/Grooming_icon_114.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/Grooming_icon_144.png">
+    <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <!-- =======================================================================================================================================================================================================================  -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -50,7 +53,7 @@ function openDaumPost(){
 		var checkIP = /^[a-zA-Z0-9]{4,16}$/; //ID와 PASSWORD 유효성 검사 정규식
 	    var checkEmail = /^[0-9a-zA-Z]([@-_\.]?[0-9a-zA-Z]){1,99}$/;  //Email 유효성 검사 정규
 	    var checkBirth = /^[0-9]{6}$/;  //Email 유효성 검사 정규
-	    var checkHangle = /^[\uAC00-\uD7A3]+{3,4}$/; // 한글입력
+	    var checkHangle = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{3,4}$/; // 한글입력
 		var checkPhone = /^[0-9]{10,11}$/; //ID와 PASSWORD 유효성 검사 정규식
 
 		var mb_id = document.getElementById("mb_id");
@@ -66,18 +69,19 @@ function openDaumPost(){
 	    var mb_area = document.getElementById("mb_area");
 
 	    $("#join").on('click', function(){
-
+			
 
 	    	//아이디 유효성 검사
 	    	if(mb_id.value == ""){
 	    		mb_id.focus();
-	    		alert("사용할 아이디를 적어주세요");
+	    		$('#idCheck').text("필수정보 입니다.");
+	    		alert("아이디 입력해주세요");
 		    	return false;
 	    	}if(!checkIP.test(mb_id.value)) {
 	    		alert("4~16자 영문 대 소문자, 숫자를 사용하세요.");
 		    	mb_id.focus();
 		        return false;
-		    }if(${idCheck != null}){
+		    }if(${idCheck eq 1}){
 		    	alert("중복된 아이디입니다. 중복확인 해주세요");
 		        return false;
 		    }
@@ -99,6 +103,7 @@ function openDaumPost(){
 
 	    	//비밀번호 유효성 검사
 		    if(mb_pw.value==''){
+		    	$('#pwCheck').text("비밀번호를 입력해주세요.");
 		    	alert("비밀번호를 입력해주세요");
 		    	mb_pw.focus();
 		          return false;
@@ -131,6 +136,7 @@ function openDaumPost(){
 			      return false;
 			}if(!checkBirth.test(birth.value)){
 		    	alert("형식에 맞에 생년월일을 입력해주세요.");
+			 	$('#birthdayCheck').text("형식에 맞에 입력해주세요");
 			      return false;
 			}
 
@@ -152,14 +158,16 @@ function openDaumPost(){
 		    	alert("주소를 입력해주세요.");
 		    	return false;
 		    }
-
+		 
+		 
+			console.log("sss");
 		    document.frm.action = "join"
 			document.frm.method = "POST";
 			document.frm.submit();
-			alert("회원가입이 완료되었습니다. 메인페이지로 이동합니.");
+			alert("회원가입이 완료되었습니다. 메인페이지로 이동합니다.");
 
 	    });
-	    
+
 
 	});
 
@@ -168,8 +176,8 @@ function openDaumPost(){
     	var checkIP = /^[a-zA-Z0-9]{4,16}$/; //ID와 PASSWORD 유효성 검사 정규식
       var mb_id = document.getElementById("mb_id").value;
   	  location.href = "mb_id_check?mb_id="+mb_id;
-  	  
-  	  
+
+
 	  	if(${idCheck == 0} && mb_id != ""){
 	    	alert("사용가능한 아이디입니다");
 	        return false;
@@ -184,33 +192,33 @@ function openDaumPost(){
       var windowObj;
       function openEmail(){
 		 var mb_email = document.getElementById("mb_email").value;
-			
+
     	  console.log(mb_email);
-    	  if(mb_email == null){
+    	  if(mb_email == ''){
     		  alert("이메일을 적어주세요.");
-    	  }if(mb_email != null){
+    	  }else if(mb_email != null){
     		  
 	        // 새창에 대한 세팅(옵션)
 	        var settings ='toolbar=0,directories=0,status=no,menubar=0,scrollbars=auto,resizable=no,height=600,width=600,left=0,top=0';
 	        // 자식창을 열고 자식창의 window 객체를 windowObj 변수에 저장
 	        var mb_email = document.getElementById("mb_email").value;
-	
+
 	        windowObj = window.open("email?mb_email=" + mb_email,"메일 인증",settings);
-	
+
 	        // 자식창의 childText라는 id를 가진 태그 요소의 값에 부모창의 값을 넣음
     	  }
 
       }
-      
+
       function openDaumPost(){
 		    new daum.Postcode({
 		        oncomplete: function(data) {
-		            
+
 		        	// 우편번호와 주소 정보를 해당 필드에 넣는다.
 	                document.getElementById("mb_address1").value = data.roadAddress;
 	                document.getElementById("mb_address2").value = data.jibunAddress;
-		        	
-	                
+
+
 		        }
 		    }).open();
 		}// openDaumPsot() end
@@ -223,7 +231,9 @@ function openDaumPost(){
 <div id="register">
 		<aside>
 			<figure>
-				<a href="grooming_main.jsp"><img src="img/Grooming_150_36_LOGO.png" width="155" height="36" data-retina="true" alt="" class="logo_sticky"></a>
+				<a href="<c:url value="main/grooming_main"/>">
+					<img src="<c:url value='/resources/main_resources/img/Grooming_150_36_LOGO.png'/>"
+					data-retina="true" alt="" width="150" height="36"></a>
 			</figure>
 			<form autocomplete="off" action="#" name="frm">
 				<!-- 아이디 -->
@@ -275,7 +285,7 @@ function openDaumPost(){
 				<div class="form-group" style="margin-bottom: 20px;">
 					<label>이메일</label>
 					<div>
-					  <input class="form-control" type="email" id="mb_email" name="mb_email">
+					  <input class="form-control" type="email" id="mb_email" name="mb_email" placeholder="ex)xxx@xxxxx.xxx">
 					  <input class="form-control btn_1" type="button" name="name"  id="grooming_login_mail_Button" value="메일인증"
 					  onclick="openEmail();">
 					</div>
@@ -300,23 +310,20 @@ function openDaumPost(){
 					  <input class="form-control" type="email" id="mb_address1"  name="mb_address1">
 					</div>
 				</div>
-				
+
 				<div class="form-group" style="margin-bottom: 20px;">
 					<input class="form-control" type="text" id="mb_address2"  style="margin-bottom:10px; margin-top: -10px;"
 					placeholder="ex) 상세주소 XX아파트 XX동-xx호" name="mb_address2">
 				</div>
 				<div class="form-group" style="margin-bottom: 10px;">
 					<label>선호하는 지역</label>
-					<input class="form-control" type="password" id="" placeholder="ex) 서울,경기,수원" name="mb_area">
+					<input class="form-control" type="text" id="" placeholder="ex) 서울,경기,수원" name="md_area">
+
 
 				</div>
 
-
-
-
 				<input type="button" value="가입하기" id="join" class="btn_1 rounded outline full-width "  style="height: 50px; margin-top: 30px;"/>
-				<a href="javascript:history.back(-1)" class="btn_1 rounded outline full-width">뒤로가기</a>
-				  style="height: 50px; margin-top: 10px; onclick="history.back(-1)""/>
+				<a href="javascript:history.back(-1)" class="btn_1 rounded outline full-width" style="height: 50px; margin-top: 10px; onclick="history.back(-1)>뒤로가기</a>
 
 				<div class="copy">© 2020 Grooming</div>
 			</form>

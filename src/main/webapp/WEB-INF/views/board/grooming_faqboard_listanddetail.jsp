@@ -3,68 +3,58 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
-    <meta name="author" content="Ansonika">
-    <title>grooming_faq_listanddetail.jsp</title>
-
-    <!-- Favicons-->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
-
-    <!-- GOOGLE WEB FONT -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
-
-    <!-- BASE CSS -->
-    <link href="${pageContext.request.contextPath}/resources/main_resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/main_resources/css/style1.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/resources/main_resources/css/vendors.css" rel="stylesheet">
-
-    <!-- YOUR CUSTOM CSS -->
-    <link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage/css/grooming_qnaboard_customlist.css" />
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    .menu #gr_qna_a{cursor:pointer;}
+    .menu .hide{display:none;}
+</style>
+<script type="text/javascript">
+// html dom 이 다 로딩된 후 실행된다.
+$(document).ready(function(){
+    // menu 클래스 바로 하위에 있는 a 태그를 클릭했을때
+    $(".menu>#gr_qna_a").click(function(){
+        var submenu = $(this).next("ul");
+        // submenu 가 화면상에 보일때는 위로 보드랍게 접고 아니면 아래로 보드랍게 펼치기
+        if( submenu.is(":visible") ){
+            submenu.slideUp();
+        }else{
+            submenu.slideDown();
+        }
+    });
+});
+</script>
 </head>
-
 <body>
-	
-	<div id="page" class="theia-exception">
-	<main>
-	
-	<jsp:include page="../include/header1.jsp"></jsp:include>
-
-		<div class="container margin_60_35">
-			<div class="row" id="grooming_faq_maindiv">
-				<div class="col-lg-9" id="faq">
-					<h4 class="nomargin_top" id="faq_maintitle">자주묻는질문</h4>
-					<div role="tablist" class="add_bottom_45 accordion_2" id="payment">
-						<div class="card">
-						
+<jsp:include page="../include/header.jsp"></jsp:include>
+<div id="page">
+<!-- contents -->
+	<form action="#" id="grooming_qnaboard_customlist_form">
+		<div id="grooming_qnaboard_customlist_div">
+			<div id="grooming_qnaboard_customlist_section">
+				<div id="grooming_qnaboard_customlist_articlelist">
+					<div id="grooming_qnaboard_customlist_maintitle">자주 묻는 질문</div>
+					<div id="grooming_qnaboard_customlist_tablediv">
+						<ul id="gr_qna_ul">
+								<div style="border-bottom : 1px solid black;"></div>
 							<c:forEach var="inform" items="${list }">
-														
-							<div class="card-header" role="tab">
-								<h5 class="mb-0">
-									<!-- 제목출력 -->
-									<a data-toggle="collapse" href="#collapseOne_payment" aria-expanded="true"><c:out value="${inform.f_title }"></c:out><i class="indicator ti-minus">
-									</i></a>
-								</h5>
-							</div>
-							<div id="collapseOne_payment" class="collapse show" role="tabpanel" data-parent="#payment">
-								<div class="card-body">
-								<!-- 내용출력 -->
-									<p><c:out value="${inform.f_con }"></c:out></p>
-								</div>
-							</div>
-							
-							</c:forEach>							
-						</div>
-		<!-- 페이징 처리 -->
+								<li class="menu" id="gr_qna_li">
+								<div id="gr_qna_a"> 
+									<!-- 제목 -->
+									<div id="gr_qna_title"><c:out value="${inform.f_title }"></c:out></div>
+									<!-- 날짜 -->
+									<div id="gr_qna_regdate" ></div>
+								</div> 
+									<ul class="hide" id="gr_qna_slideul">
+										<li id="gr_qna_slideli"><c:out value="${inform.f_con }"></c:out></li>
+									</ul>
+								</li>
+							</c:forEach>
+						</ul>
+						<!-- 페이징 처리 -->
 		<c:if test="${prev}">
 			<span>[ <a href="/control/faqList?num=${startPageNum - 1}">이전</a> ]</span>
 		</c:if>
@@ -85,24 +75,13 @@
 		<c:if test="${next}">
 			<span>[ <a href="/control/faqList?num=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
-		<!-- 페이징처리 끝 -->
-						<!-- /card -->
-					</div>
-					<!-- /accordion payment -->
+		<!-- 페이징처리 끝 -->	
+					</div>			
 				</div>
-				<!-- /col -->
 			</div>
-			<!-- /row -->
 		</div>
-		<!--/container-->
-	</main>
-	<!--/main-->
-	</div>
-	<div id="toTop"></div><!-- Back to top button -->
-	<jsp:include page="../include/footer.jsp"></jsp:include>
-	
-	<!-- COMMON SCRIPTS -->
-
+	</form>
+</div>
+<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
-
 </html>

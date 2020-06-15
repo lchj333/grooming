@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +11,9 @@
     <meta name="author" content="Ansonika">
     <!-- 메타 정보 -->
 
-<title>GROOMING</title>
- <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
-    <link rel="shortcut icon" href="img/Grooming_icon_72.png" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="img/Grooming_icon_72.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/Grooming_icon_72.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/Grooming_icon_114.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/Grooming_icon_144.png">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+<title>Grooming 검색 결과</title>
+
+
   <!-- ====================링크============================ -->
   <!-- GOOGLE WEB FONT -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
@@ -31,15 +26,6 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
    <!-- ====================링크============================ -->
-<!-- ====================css============================ -->
-<style>
-html, body {
-	height: 100%;
-}
-</style>
-<!-- ====================css============================ -->
-
-
 
 
 </head>
@@ -48,115 +34,10 @@ html, body {
 
 	<div id="page">
 <!-- 네비 =============================================================== -->
-		<header class="header map_view menu_fixed">
-<!-- 			<div id="preloader">
-				<div data-loader="circle-side"></div>
-			</div> -->
-			<!-- /메인 해더 로고 -->
-			<div id="logo">
-				<a href=" "> <img src="img/Grooming_logo_main.png"
-					width="150" height="36" data-retina="true" alt="">
-				</a>
-			</div>
-			<ul id="top_menu">
-				<li><a href="cart-1.html" class="cart-menu-btn" title="Cart"><strong>4</strong></a></li>
-				<li><a href="#sign-in-dialog" id="sign-in" class="login"
-					title="Sign In">Sign In</a></li>
-				<li><a href="wishlist.html" class="wishlist_bt_top"
-					title="Your wishlist">Your wishlist</a></li>
-			</ul>
-			<!-- /네비 에 해당 아이콘들  -->
-			<a href="#menu" class="btn_mobile">
-				<div class="hamburger hamburger--spin" id="hamburger">
-					<div class="hamburger-box">
-						<div class="hamburger-inner"></div>
-					</div>
-				</div>
-			</a>
-			<!-- 반응형 햄버거 영역 -->
-			<nav id="menu" class="main-menu">
-				<ul>
-					<!-- ====1번========================================================= -->
-					<li><span><a href="#0">커뮤니티</a></span>
-						<ul>
-							<li><a href="index.html">menu </a></li>
-							<li><a href="index-2.html">menu</a></li>
-							<li><a href="index-3.html">menu </a></li>
-							<li><a href="index-4.html">menu </a></li>
-							<li><a href="index-5.html">menu </a></li>
-							<li><a href="index-6.html">menu </a></li>
-							<li><a href="index-7.html">menu</a></li>
 
-						</ul></li>
-					<!-- ============================================================= -->
-					<!-- ====2번========================================================= -->
-					<li><span><a href="#0">리얼후기</a></span>
-						<ul>
-							<li><span><a href="#0">평점보기</a></span>
-								<ul>
-									<li><a href="hotels-grid-isotope.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar-2.html">menu</a></li>
-
-									<li><a href="hotels-grid.html">menu</a></li>
-								</ul></li>
-							<li><span><a href="#0">후기게시판</a></span>
-								<ul>
-									<li><a href="hotels-grid-isotope.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar-2.html">menu</a></li>
-
-									<li><a href="hotels-grid.html">menu</a></li>
-								</ul></li>
-						</ul></li>
-					<!-- ============================================================= -->
-
-					<!-- 3번 ==================================================================-->
-					<li><span><a href="#0">소식</a></span>
-						<ul>
-							<li><span><a href="#0">공지사항</a></span>
-								<ul>
-									<li><a href="hotels-grid-isotope.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar-2.html">menu</a></li>
-
-									<li><a href="hotels-grid.html">menu</a></li>
-								</ul></li>
-							<li><span><a href="#0">이벤트</a></span>
-								<ul>
-									<li><a href="hotels-grid-isotope.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar.html">menu</a></li>
-
-									<li><a href="hotels-grid-sidebar-2.html">menu</a></li>
-
-									<li><a href="hotels-grid.html">menu</a></li>
-								</ul></li>
-
-						</ul></li>
-					<!-- /3번 ==================================================================-->
-					<!-- 4번 ==================================================================-->
-
-					<li><span><a href="#0">고객센터</a></span>
-						<ul>
-							<li><a href="about.html">faq</a></li>
-							<li><a href="media-gallery.html">QNA</a></li>
-							<li><a href="help.html">1대1문의</a></li>
-
-						</ul></li>
-					<!-- /4번 ==================================================================-->
-				</ul>
-				<!-- 메뉴 end -->
-			</nav>
-			<!-- //네비 end -->
-		</header>
-		<!-- //헤더 end -->
+<!-- header -->
+		<jsp:include page="../include/header.jsp" />
+		<!-- header end -->
 
 		<main>  <!-- 메인 시작  -->
 			<div class="container-fluid full-height">  <!-- 최고 루트 div  -->
@@ -168,7 +49,7 @@ html, body {
 						   <div class="container-fluid">
 							   <div class="row">
 				 				  <div class="col-10">
-					   				<h4><strong>145개</strong>검색되었습니다.</h4>
+					   				<h4><strong>${count}개</strong>검색되었습니다.</h4>
 				   				  </div>
 								   <div class="col-2">
 									   <a href="#0" class="search_map btn_search_map_view"></a> <!-- /open search panel -->
@@ -183,13 +64,7 @@ html, body {
 											<i class="icon_search"></i>
 										</div>
 
-										<!-- <select class="wide">
-											<option>전체</option>
-											<option>고양이샵</option>
-											<option>강아지샵</option>
-											<option>방문 고양이샵</option>
-											<option>방문 강아지샵</option>
-										</select> -->
+
 										<!-- 검색 서치 버튼 -->
 										<input type="submit" value="검색하기">
 									</div>
@@ -226,61 +101,55 @@ html, body {
 					<div class="collapse map_view" id="filters">
 						<div class="container-fluid margin_30_5">
 							<h6>지역</h6>
-							<div class="row">
-							   <div class="col-md-6">
-							    <div class="filter_type">
-							        <ul>
-							            <li>
-							                <label>
-							                    <input type="checkbox" class="icheck" checked>경기 <small>(23)<!-- 나중에 갯수 표시--></small>
-							                </label>
-							            </li>
-							            <li>
-							                <label>
-							                    <input type="checkbox" class="icheck">서울 <small>(45)<!-- 나중에 갯수 표시--></small>
-							                </label>
-							            </li>
-							        </ul>
-							    </div>
-							</div>
-							<div class="col-md-6">
-							    <div class="filter_type">
-							        <ul>
-							            <li>
-							                <label>
-							                    <input type="checkbox" class="icheck">성남 <small>(30)<!-- 나중에 갯수 표시--></small>
-							                </label>
-							            </li>
-							            <li>
-							                <label>
-							                    <input type="checkbox" class="icheck">수원<small>(25)</small>
-							                </label>
-							            </li>
-							        </ul>
-							    </div>
-							</div>
-							</div>
-								<!-- <div class="row">
-								<div class="col-md-12">
-									<div class="add_bottom_30">
-										<h6>거리</h6>
-										<div class="distance" style="color: gray;"> 주변근처 <span></span> km</div>
-										<input type="range" min="10" max="100" step="10" value="30" data-orientation="horizontal">
+								<form action="">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="filter_type">
+												<ul>
+													<li><label> <input type="checkbox"
+															class="icheck" name="area" value="경기" checked>경기
+															<small>
+																<!-- 나중에 갯수 표시-->
+														</small>
+													</label></li>
+													<li><label> <input type="checkbox"
+															class="icheck" name="area" value="서울">서울 <small>
+																<!-- 나중에 갯수 표시-->
+														</small>
+													</label></li>
+												</ul>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="filter_type">
+												<ul>
+													<li><label> <input type="checkbox"
+															class="icheck" name="area" value="성남">성남 <small>
+																<!-- 나중에 갯수 표시-->
+														</small>
+													</label></li>
+													<li><label> <input type="checkbox"
+															class="icheck" name="area" value="수원">수원<small></small>
+													</label></li>
+												</ul>
+											</div>
+										</div>
 									</div>
-								</div>
-								</div> -->
-							<!-- /row -->
-						</div>
+								</form>
+							</div>
 					</div>
 					<!-- /필터 세부 -->
 		<!-- 썸네일 결과 1 (찜,맵 , 평점)-->
+		<c:forEach var="shoplist" items="${shopList}" varStatus="status">
 		<div class="box_list map_view">
 		    <div class="row no-gutters add_top_20">
 		    	<!-- 썸네일  -->
 		        <div class="col-4">
 
 		            <figure>
-		                <a href="hotel-detail.html"><img src="img/hotel_1.jpg" class="img-fluid" alt="" width="800" height="533"></a>
+
+		                  <a href='<c:url value="${shoplist.de_licencenum}"></c:url>'><img src="<c:out value="${shoplist.reg_img}"/>" class="img-fluid" alt="" width="800" height="533"></a>
+
 		            </figure>
 
 		        </div>
@@ -294,24 +163,26 @@ html, body {
 		                <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
 
 						<!-- 가게 정보 DB 넣는곳 -->
-		                <h3 style="color:gray; margin-top: 8px;"><a href="hotel-detail.html" style="color:gray; margin-top: 5px;">
-		                	미미 샵</a>
-		                </h3>
+						<form action="">
 
-		                <!-- 상세 정보  DB 정보 넣는곳 -->
-		                <span class="price">비비비비비비비비비</span>
+			                <h3 style="color:gray; margin-top: 8px;">
+
+			                <a href="hotel-detail.html" style="color:gray; margin-top: 5px;">
+			                	<c:out value="${shoplist.ref_shopname}"/></a>
+			                </h3>
+						</form>
 
 						<br />
-		                <strong><span style="color:#fbbc41;">30000원~</span></strong>
+		                <strong><span style="color:#fbbc41;"><c:out value="${shoplist.reg_price}"/></span></strong>
 		            </div>
 
-		            <div class="add_left_15"> <a href="#0" onclick="onHtmlClick('Marker',0)" class="address float_left">경기도 시흥시 은행동 대우 2차</a></div>
-		            <div class="add_left_15"> <span style="color:gray;"><strong>TEL: </strong> 010-7360-3725</span></div>
+		            <div class="add_left_15"> <a href="#0" onclick="onHtmlClick('Marker',0)" class="address float_left"><c:out value="${shoplist.reg_shopaddress}"/></a></div>
+		            <div class="add_left_15"> <span style="color:gray;"><strong>TEL: </strong> <c:out value="${shoplist.mb_phone}"/></span></div>
 		        </div>
 		    </div>
 		</div>
 		<!-- /썸네일 결과 1 (찜,맵 ,)-->
-
+		</c:forEach>
 
 		<!-- 더보기 버튼 -->
 		<p class="text-center add_top_30"><a href="#0" class="btn_1 rounded"><strong>+더보기</strong></a></p>
@@ -339,16 +210,17 @@ html, body {
 
 
 
-	<!-- COMMON SCRIPTS -->
-    <script src="js/common_scripts.js"></script>
-    <script src="js/main.js"></script>
+	<!-- 공통 js 파일 footer있으면 필요 없음 -->
+    <script src="${pageContext.request.contextPath}/resources/main_resources/js/common_scripts.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/main_resources/js/main.js"></script>
 	<script src="assets/validate.js"></script>
 
-	<!-- Map -->
+	<!-- map에 관련한 js파일  -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 넣으시면 됩니다."></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
-	<script src="js/markerclusterer.js"></script>
-	<script src="js/map_hotels_half_screen.js"></script>
-	<script src="js/infobox.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/main_resources/js/markerclusterer.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/main_resources/js/map_hotels_half_screen.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/main_resources/js/infobox.js"></script>
 
 
 </body>

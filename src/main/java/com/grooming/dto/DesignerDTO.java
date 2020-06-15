@@ -8,10 +8,11 @@ public class DesignerDTO {
 	private String de_approval;
 	private int de_point;
 	private String de_insta;
+	private String mb_name;
 	
 	//생성자
 	public DesignerDTO() {}
-	public DesignerDTO(int de_licencenum, String mb_id, String de_licence, String de_approval, int de_point, String de_insta) {
+	public DesignerDTO(int de_licencenum, String mb_id, String de_licence, String de_approval, int de_point, String de_insta, String mb_name) {
 		super();
 		this.de_licencenum = de_licencenum;
 		this.mb_id = mb_id;
@@ -19,6 +20,7 @@ public class DesignerDTO {
 		this.de_approval = de_approval;
 		this.de_point = de_point;
 		this.de_insta = de_insta;
+		this.mb_name = mb_name;
 	}
 	//ㄱㅌㅅㅌ
 	public int getDe_licencenum() {
@@ -57,6 +59,13 @@ public class DesignerDTO {
 	public void setDe_insta(String de_insta) {
 		this.de_insta = de_insta;
 	}
+	public String getMb_name() {
+		return mb_name;
+	}
+	public void setMb_name(String mb_name) {
+		this.mb_name = mb_name;
+	}
+	
 	
 	
 }

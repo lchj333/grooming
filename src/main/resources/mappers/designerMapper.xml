@@ -6,10 +6,8 @@
 <mapper namespace=" ">
 	<!-- 디자이너 테이블 생성 -->
 	<insert id="joinDesigner" parameterType="DesignerDTO">
-		insert ignore into gr_designer(MB_ID, DE_LICENCE,DE_APPROVAL, DE_POINT, DE_INSTA)
-		select #{mb_id}, #{de_licence}, 'N', 0 , #{de_insta}
-		from gr_member
-		where MB_CHECK = "Y"
+		insert into gr_designer(MB_ID, DE_LICENCE,DE_APPROVAL, DE_POINT, DE_INSTA)
+		values (#{mb_id}, #{de_licence}, 'N', 0 , #{de_insta})
 	</insert>
 	
 	<select id="designerInfo" parameterType="DesignerDTO" resultType="DesignerDTO">
@@ -27,16 +25,17 @@
 	
 	<!-- 디자이너 신청한사람 찾는 쿼리 -->
 	<select id="designerApplication" resultType="DesignerDTO">
-		select *
-		from gr_designer
-		where de_approval = 'N'
+		select d.*, m.mb_name
+		from gr_designer d , gr_member m
+		where d.mb_id = m.mb_id 
+		and d.de_approval = 'N'
 	</select>
 	
 	<!-- 디자이너 승인하면 de_approval Y 로 바꿔주는 쿼리 -->
 	<update id="designerAgree" parameterType="DesignerDTO">
 		update gr_designer
 		set DE_APPROVAL = 'Y'
-		where MB_ID = #{mb_id}
+		where DE_LICENCENUM = #{de_licencenum}
 	</update>
 	
 </mapper>

@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 #gr_noticeboard_detail_maindiv{
 	
 	margin-left : 30%;
@@ -8,6 +7,11 @@
 	margin-top : 100px;
 	margin-bottom : 20%; 
 	width: 40%;
+	height : 400px;
+	color : black;
+}
+#gr_noticeboard_detail_contents{
+	height : 450px;
 }
 
 #gr_noticeboard_detail_title{
@@ -35,4 +39,8 @@
 		width : 80%;
 		
 	}
+}
+
+#notice_button{
+	float : right;
 }

@@ -16,7 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
 
 import com.grooming.dao.DesignerDAO;
+import com.grooming.dao.MemberDAO;
 import com.grooming.dto.DesignerDTO;
+import com.grooming.dto.MemberDTO;
 import com.grooming.utils.FileUpload;
 
 @Controller
@@ -24,16 +26,19 @@ public class DesignerController {
 
 	@Inject
 	DesignerDAO dao;
+	MemberDAO md;
 
 	// 디자이너 시청하는 메소드
 	@RequestMapping(value = "/designerJoin")
-	public String designerJoin(@ModelAttribute("mb_id") DesignerDTO designerDto,
+	public String designerJoin(@RequestParam(value = "mb_id", required = false)String mb_id, 
+			@RequestParam(value = "de_insta", required = false)String de_insta,
+					DesignerDTO designerDto,
 									MultipartRequest mr, HttpServletRequest req) {
 		String fileName = null;
 		//라이센스 이미지 받기
 		try {
 			String realPath = req.getServletContext().getRealPath("/resources/licence/");
-			fileName = new FileUpload().saveFile(mr.getFile(""), realPath);
+			fileName = new FileUpload().saveFile(mr.getFile("file"), realPath);
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -43,10 +48,13 @@ public class DesignerController {
 		if(fileName == null) {//파일이 제대로 저장되지 않았을 경우
 			return "home";
 		}
-
+		
+		designerDto.setDe_insta(de_insta);
+		designerDto.setMb_id(mb_id);
 		designerDto.setDe_licence(fileName);
+		
 		dao.joinDesigner(designerDto);
-		return "redirect:/selectMemberAll";
+		return "mypage/grooming_user_profile";
 	}
 
 	// 디자이너 전체 조회
@@ -55,17 +63,19 @@ public class DesignerController {
 		List<DesignerDTO> list = dao.selectDesignerAll();
 		model.addAttribute("designerList", list);
 
-		return "designerList";
+		return "mypage/grooming_admin_management";
 	}
 
+	
 	// 디자이너 신청한 멤버 목록 받아오는 메소드
 	@RequestMapping(value = "/designerApplication")
 	public String designerApplication(Model model) {
 
 		List<DesignerDTO> list = dao.designerApplication();
-		model.addAttribute("designerApplication", list);
+		
+		model.addAttribute("list", list);
 
-		return "designerApplication";
+		return "mypage/grooming_admin_accept";
 	}
 
 	// 디자이너 de_approval 승인하는 메소드
@@ -74,7 +84,7 @@ public class DesignerController {
 
 		dao.designerAgree(designerDto);
 
-		return "designerAgree";
+		return "mypage/grooming_admin_management";
 	}
 
 }
