@@ -48,7 +48,6 @@
                   <th>충전포인트</th>
                 </tr>
               </thead>
-              
               <tbody>
               	<c:forEach var="p" items="${plist }">
 	                <tr>

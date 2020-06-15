@@ -150,7 +150,7 @@
 		              <a href="<c:url value='/mypage/pointcharging'/>">포인트충전<span class="badge badge-pill badge-primary">6</span></a>
 		            </li>
 					<li>
-		              <a href="<c:url value='/pointchargingok'/>">충전내역<span class="badge badge-pill badge-success">6</span></a>
+		              <a href="<c:url value='/mypage/searchPayList'/>">충전내역<span class="badge badge-pill badge-success">6</span></a>
 		            </li>
 		          </ul>
 		        </li>
