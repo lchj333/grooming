@@ -81,7 +81,7 @@
 			              msg += '에러내용 : ' + rsp.error_msg; 
 			              alert(msg);
 			              
-			              location.href = 'update';					/* 결제 후 가고싶은 페이지로 이동 */    
+			              location.href = 'pointCharging';					/* 결제 후 가고싶은 페이지로 이동 */    
 			          }
 			          
 			          
