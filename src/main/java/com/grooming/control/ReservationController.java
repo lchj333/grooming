@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.grooming.dao.ReservationDAO;
+import com.grooming.dto.MemberDTO;
 import com.grooming.dto.ReservationDTO;
 
 @Controller
@@ -51,7 +53,7 @@ public class ReservationController {
 		out.println("<script>alert('예약 목록으로 이동합니다.');</script>");
 		out.flush();
 		
-		//적용 후 메인으로~ 
+		//적용 후 목록으로~ 
 		return "mypage/grooming_user_booking";
 	}
 	
@@ -116,5 +118,19 @@ public class ReservationController {
 			return true;
 		}else return false;
 	}
+	
+	
+	// 내 예약 정보 보는 페이지
+		@RequestMapping(value = "/myReservation")
+		public String myReservation(Model model) {
+			
+			List<ReservationDTO> myList = rdao.myReservation();
+			
+			model.addAttribute("myList", myList);
+			
+			
+			
+			return "mypage/grooming_user_booking";
+		}
 
 }

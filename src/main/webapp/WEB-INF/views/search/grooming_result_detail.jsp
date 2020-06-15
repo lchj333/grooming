@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -44,7 +44,7 @@ html, body {
 .hero_in.restaurants_detail {
 	height: 550px;
 	/* 디테일 이미지 넣는 곳 */
-	background: url(img/grooming_gogi.jpg) center center;
+	background-image: url('${pageContext.request.contextPath}/resources/main_resources/img/Grooming_BG.png');
 
 }
 </style>
@@ -74,7 +74,7 @@ html, body {
 					<!-- 미리 보기 div & 모아보기-->
 					<span class="magnific-gallery">
 					<!-- 등록되는 서브 이미지 받기 -->
-					<a href="img/grooming_gogi.jpg" class="btn_photos"
+					<a href="<c:url value="/resource/img/grooming_gogi.jpg"/>" class="btn_photos"
 						title="Photo title" data-effect="mfp-zoom-in">모아보기</a>
 
 						 <a href="img/grooming_gogi.jpg" title="Photo title"
@@ -118,10 +118,10 @@ html, body {
 										<ul class="magnific-gallery">
 											<li>
 												<figure>
-													<img src="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_1.jpg" alt="">
+													<img src="img/gallery/large/pic_1.jpg" alt="">
 													<figcaption>
 														<div class="caption-content">
-															<a href="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_1.jpg" title="Photo title"
+															<a href="img/gallery/large/pic_1.jpg" title="Photo title"
 																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
 																<p>Your caption</p>
 															</a>
@@ -131,10 +131,10 @@ html, body {
 											</li>
 											<li>
 												<figure>
-													<img src="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_2.jpg" alt="">
+													<img src="img/gallery/large/pic_2.jpg" alt="">
 													<figcaption>
 														<div class="caption-content">
-															<a href="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_2.jpg" title="Photo title"
+															<a href="img/gallery/large/pic_2.jpg" title="Photo title"
 																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
 																<p>Your caption</p>
 															</a>
@@ -144,10 +144,10 @@ html, body {
 											</li>
 											<li>
 												<figure>
-													<img src="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_3.jpg" alt="">
+													<img src="img/gallery/large/pic_3.jpg" alt="">
 													<figcaption>
 														<div class="caption-content">
-															<a href="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_3.jpg" title="Photo title"
+															<a href="img/gallery/large/pic_3.jpg" title="Photo title"
 																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
 																<p>Your caption</p>
 															</a>
@@ -157,7 +157,7 @@ html, body {
 											</li>
 											<li>
 												<figure>
-													<img src="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_4.jpg" alt="">
+													<img src="img/gallery/large/pic_4.jpg" alt="">
 													<figcaption>
 														<div class="caption-content">
 															<a href="img/gallery/large/pic_1.jpg" title="Photo title"
@@ -243,7 +243,7 @@ html, body {
 									<hr>
 									<div class="review-box clearfix">
 										<figure class="rev-thumb">
-											<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_300_200_LOGO.png" alt="">
+											<img src="img/Grooming_300_200_LOGO.png" alt="">
 										</figure>
 										<div class="rev-content">
 											<div class="rating">
