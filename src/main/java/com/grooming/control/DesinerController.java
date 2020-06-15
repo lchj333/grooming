@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grooming.dao.DesinerDAO;
 import com.grooming.dao.DesinerDAOImple;
+import com.grooming.dao.PaylogDAO;
 import com.grooming.dto.DesignerDTO;
 import com.grooming.dto.PaylogDTO;
 
@@ -26,6 +27,9 @@ public class DesinerController {
 	@Inject
 	DesinerDAOImple dao;
 
+	@Inject
+	PaylogDAO dao2;
+	
 
 	@RequestMapping(value = "/list")
 	public String showList(Model model) {
@@ -41,15 +45,20 @@ public class DesinerController {
 		return "mypage/grooming_hairdresser_pointCharging";
 	}
 	//데이터 베이스에 충전금액 입력 메소드
-	@PostMapping(value = "pointchargingok")
+	@RequestMapping(value = "pointchargingok", method = {RequestMethod.GET, RequestMethod.POST})
 	public String updateDes(
 	@RequestParam(value = "payment-amount")int pt1, @RequestParam(value = "de_licencenum")int pt2,
-	DesignerDTO dto) {
+	DesignerDTO dto,PaylogDTO dto2, Model m) {
 		dto.setDe_point(pt1); 
 		dto.setDe_licencenum(pt2); 
 		
 		dao.updateDes(dto);
 		dao.insertMoney(dto);
+		
+		
+		dto2.setDe_licencenum(pt2);
+		List<PaylogDTO> plist = dao2.selectAllIPayed(dto2);
+		m.addAttribute("plist", plist);
 		
 		return "mypage/grooming_hairdresser_chargingDetails";
 	}
