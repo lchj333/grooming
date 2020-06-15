@@ -81,7 +81,7 @@
 			              msg += '에러내용 : ' + rsp.error_msg; 
 			              alert(msg);
 			              
-			              location.href = 'update';					/* 결제 후 가고싶은 페이지로 이동 */    
+			              location.href = 'pointCharging';					/* 결제 후 가고싶은 페이지로 이동 */    
 			          }
 			          
 			          
@@ -185,7 +185,7 @@
 					</div>
 				</div>
 				<!-- ============================================================================= -->
-			<td><input type="text" name="de_licencenum" value="10001"/></td>
+			 <input type="hidden" name="de_licencenum" value="${dInfo.de_licencenum }" />
 				<p id="myprofile-savebtn">
 					<input type="button" id="btn" value="결제 완료" class="btn_1 medium" />
 				</p>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,12 +115,12 @@
 			</div>
 			<div id="qnaboard_question_main">
 			<!-- 사용자 아이디 받아올곳 -->
-				<div id="qnaboard_question_id"><span>작성자 : nayoungsfather</span></div>
+				<div id="qnaboard_question_id"><span>작성자 : <c:out value="${mb_id }"></c:out></span></div>
 			<!-- 사용자 글 작성 날짜 받아올곳 -->
-				<div id="qnaboard_question_date"><span>2020.06.10</span></div>
+				<div id="qnaboard_question_date"><span><c:out value="${in_nowdate }"></c:out></span></div>
 			</div>
 			<!-- 사용자 글 내용 받아올곳 -->
-				<div id="qnaboard"><p>(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?</p></div>
+				<div id="qnaboard"><p><c:out value="${in_con }"></c:out></p></div>
 				<div>
 					<table id="imageDetail-table">
                         <tr>
@@ -127,9 +128,9 @@
                         </tr>
                         <tr>
                            <td>
-                                 <input type="file" id="uploadFile" name="files" accept="image/*" title="이미지 파일만 가능" multiple>
-                                  <div id="preview"></div>
-                              </td>
+                				<input type="file" id="uploadFile" name="files" accept="image/*" title="이미지 파일만 가능" multiple>
+                				<div id="preview"></div>
+                           </td>
                          </tr>
                      </table>
 				</div>

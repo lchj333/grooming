@@ -98,7 +98,7 @@
 							<li><a href="<c:url value="/noticeListPage"/>">공지사항</a></li>
 						</ul>
 					</li>
-					<li><span><a href="/faqList">고객센터</a></span>
+					<li><span><a href="<c:url value="/faqList"/>">고객센터</a></span>
 						<ul>
 							<li><a href="<c:url value="/inquiryCustomerList"/>">1:1문의</a></li>
 							<li><a href="<c:url value="/faqList"/>">FAQ</a></li>
