@@ -177,15 +177,9 @@ html, body {
 
 						<!-- 가게 정보 DB 넣는곳 -->
 			                <h3 style="color:gray; margin-top: 8px;">
-<<<<<<< HEAD
-
-			                <a href="/detailShop" style="color:gray; margin-top: 5px;">
-			                	<c:out value="${shoplist.ref_shopname}"/></a>
-=======
 			                	<a href="#" style="color:gray; margin-top: 5px;" id="shoptag" onclick="godetail(${shop.de_licencenum})">
 			                		<c:out value="${shop.ref_shopname}"/>
 			                	</a>
->>>>>>> dae190847523159be615c5fd9ff3925bde8d6296
 			                </h3>
 
 						<br />
