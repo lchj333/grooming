@@ -60,7 +60,7 @@
 								<div class="search_map_wp">
 									<div class="custom-search-input-2 map_view">
 										<div class="form-group">
-											<input class="form-control" type="text" placeholder="검색">
+											<input class="form-control" type="text" name="searchData" placeholder="검색">
 											<i class="icon_search"></i>
 										</div>
 
@@ -167,7 +167,7 @@
 
 			                <h3 style="color:gray; margin-top: 8px;">
 
-			                <a href="hotel-detail.html" style="color:gray; margin-top: 5px;">
+			                <a href="<c:url value="/search/detailShop"/>" style="color:gray; margin-top: 5px;">
 			                	<c:out value="${shoplist.ref_shopname}"/></a>
 			                </h3>
 						</form>

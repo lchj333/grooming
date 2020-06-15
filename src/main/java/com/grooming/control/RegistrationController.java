@@ -185,18 +185,21 @@ public class RegistrationController {
 		
 		List<ShopListDTO> list = rdao.searchShop(map);
 		
-		if(list == null) { //검색값이 없을 경우
-			return "main/grooming_main";
-		}else {
+		System.out.println(map.get("data"));
+		
+		if(list.size() != 0) { //검색값 있을 경우
 			req.setAttribute("shopList", list);
 			req.setAttribute("count", list.size());
 			
 			return "search/grooming_screen_map";
+//			return "test";
+		}else {//없을 떄
+			return "main/grooming_main";
 		}
 	}
 	//-> grooming_screen_map (샵 목록) ->
 	//가게 상세 정보
-	@RequestMapping(value = "/detailShop")
+	@RequestMapping(value = "/search/detailShop")
 	public String detailShopInfo(@RequestParam(value = "de_licencenum", required = true)int num, 
 										HttpServletRequest req) {
 		//텍스트 정보
