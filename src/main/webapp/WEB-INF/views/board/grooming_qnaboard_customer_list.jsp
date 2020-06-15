@@ -40,7 +40,7 @@ $(document).ready(function(){
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
 							<%-- <c:if test="${mb.id eq login.md_id"> --%>
-							<c:forEach var="a" items="list">
+							<c:forEach var="a" items="${list }">
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
 									<!-- 제목 -->
