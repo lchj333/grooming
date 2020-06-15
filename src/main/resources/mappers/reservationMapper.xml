@@ -62,4 +62,12 @@
 				now(), #{re_species}, #{re_weight}, #{re_cut})
 	</insert>
 	
+	<!-- 내 예약정보 가져오기 -->
+	<select id="myReservation" resultType="ReservationDTO">
+		select r.*, m.mb_id, d.ref_shopname
+		from GR_RESERVATION r, GR_MEMBER m, GR_REGISTRATION d
+		where r.de_licencenum = d.de_licencenum
+		and r.mb_id = m.mb_id
+	</select>
+	
 </mapper>

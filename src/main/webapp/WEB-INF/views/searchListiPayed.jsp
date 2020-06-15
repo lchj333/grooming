@@ -8,11 +8,17 @@
 </head>
 <body>
 	
-	<form action="searchListList" method="post">
-		<h4>licence 입력</h4>
-		<input type="text" name="licence" />
-		<input type="submit" value="검색" />
-	</form>
+	
+    <script>
+   
+            window.onload = function() {
+                console.log('submit 버튼 클릭 이벤트 실행');
+ 
+                // 여기서 실행
+                geocodeAddress(geocoder, map);
+            }
+            
+            </script>
 
 </body>
 </html>

@@ -55,7 +55,6 @@
 				<c:if test="${idFind == null }">
 				<div class="form-group" style="border: 1px solid black; height: 20%; padding: 2%; color: black;">
 						<input type="radio" name="ck" id="" value="아이디" checked="checked"/> 아이디 : 가입된 아이디가 없습니다
-						<p style="color: black;" class="float-right">가입 날짜 :</p>
 				</div>
 
 				</c:if>
