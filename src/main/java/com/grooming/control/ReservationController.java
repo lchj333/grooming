@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grooming.dao.ReservationDAO;
 import com.grooming.dto.MemberDTO;
@@ -88,18 +89,33 @@ public class ReservationController {
 	}
 
 	//미용사 예약 승인 + 피드백
-	@RequestMapping(value = "/yorn")
-	public String yesOrNo(ReservationDTO dto) {
-		//승인 체크 여부 <-- DAO 에서 처리
-		//기본값상태로 넘어왓는지만 판별 [기본값 : U]
-		if(!dto.getRe_approval().equalsIgnoreCase("U")) {
-			//기본값이 아닐 경우 (상태 변경)
-			rdao.checkReserv(dto);
-			return "";
-		}else {	//기본값인 상태
-			System.out.println("잘못된 접근");
-			return "";
-		}
+	@RequestMapping(value = "/appReservationY")
+	public String appReservationY(@RequestParam(value = "re_num", required = false)String re_num,
+							ReservationDTO dto) {
+		
+		int renum = Integer.parseInt(re_num);
+		
+		dto.setRe_num(renum);
+		
+		rdao.checkReservY(dto);
+		
+		return "mypage/grooming_user_profile";
+	}
+	
+	//미용사 예약 승인 + 피드백
+	@RequestMapping(value = "/appReservationN")
+	public String appReservationN(@RequestParam(value = "re_num", required = false)String re_num,
+			@RequestParam(value = "bc_con", required = false)String bc_con,
+			ReservationDTO dto) {
+		
+		int renum = Integer.parseInt(re_num);
+		dto.setRe_num(renum);
+		dto.setBc_con(bc_con);
+		
+		rdao.checkReservN(dto);
+		rdao.insertFeedBack(dto);
+		
+		return "mypage/grooming_user_profile";
 	}
 	
 	//-> grooming_result_detail -> 예약확인(reserv) -> 예약완료 -> 예약 목록 페이지
@@ -121,7 +137,7 @@ public class ReservationController {
 	
 	
 	// 내 예약 정보 보는 페이지
-		@RequestMapping(value = "/myReservation")
+		@RequestMapping(value="/myReservation")
 		public String myReservation(Model model) {
 			
 			List<ReservationDTO> myList = rdao.myReservation();
@@ -129,8 +145,19 @@ public class ReservationController {
 			model.addAttribute("myList", myList);
 			
 			
-			
 			return "mypage/grooming_user_booking";
 		}
-
+		
+		// 내 예약 정보 보는 페이지
+		@RequestMapping(value= "/agreedReservation")
+		public String agreedReservation(Model model) {
+			
+			List<ReservationDTO> myList = rdao.myReservation();
+			
+			model.addAttribute("myList", myList);
+			
+			
+			return "mypage/grooming_hairdresser_approval";
+		}
+	
 }

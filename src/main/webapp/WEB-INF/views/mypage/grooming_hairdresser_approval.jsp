@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,18 +10,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		/* 처음에는 숨김 */
-		$('#reason-cancel').hide();
-		/* 버튼 클릭시 취소사유 텍스트 보이기 */
-/* 		$("#dis").css("display") == "none" */
-		$("#delete-click-btn").click(function(){
-			if($('#reason-cancel').css("display")== 'none'){
-				/* $('#reason-cancel').show(); */
-				$('#reason-cancel').animate({ width : "200px" },5000,"linear");
-			}else{
-				$('#reason-cancel').hide();
-			}
-			
+		$("#btn1").click(function(){
+			var re_num = document.getElementById("re_num");
+			var bc_con = document.getElementById("bc_con");
+			document.frm.action = "<c:url value='/appReservationN'/>";
+			document.frm.re_num.val = re_num;
+			document.frm.bc_con.val = bc_con;
+			document.frm.submit();
+		});
+		
+		$("#btn2").click(function(){
+			var re_num = document.getElementById("re_num");
+			document.frm.action = "<c:url value='/appReservationY'/>";
+			document.frm.re_num.val = re_num;
+			document.frm.submit();
 		});
 	});
 </script>
@@ -31,6 +34,7 @@
 <!-- nav end -->
 
 <!-- booking contents start -->
+<form name="frm" >
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -54,57 +58,32 @@
 			</div>
 			<div class="list_general">
 				<ul>
-					<c:forEach var="i" begin="1" end="2">
+					<c:forEach var="myList" items="${myList}">
 					<li>
 
-						<h4>jstl 사용자이름 <i class="pending">Pending(jstl 예약정보)</i></h4>
+						<h4>${myList.ref_shopname } <i class="pending"><c:set var="대기" value="${myList.re_approval }"/></i></h4>
 						<ul class="booking_list">
-							<li><strong>예약일</strong>jstl 예약일</li>
-							<li><strong>견종</strong>jstl 강아지 견종</li>
-							<li><strong>몸무게</strong> jstl 몸무게</li>
-							<li><strong>원하는컷</strong> jstl 원하는 컷</li>
-							<li><strong>사용자 핸드폰번호</strong> jstl 가게번호</li>
-							<li><strong>예약번호</strong> jstl 예약번호</li>
+							<li><strong style="font-weight: bold;">예약번호</strong>${myList.re_num}</li>
+							<li><strong style="font-weight: bold;">예약일</strong><fmt:formatDate value="${myList.re_date}" pattern="YYYY-MM-dd hh:mm:ss"/></li>
+							<li><strong style="font-weight: bold;">견종</strong>${myList.re_species}</li>
+							<li><strong style="font-weight: bold;">몸무게</strong>${myList.re_weight}</li>
+							<li><strong style="font-weight: bold;">원하는컷</strong>${myList.re_cut}</li>
+							<li><strong style="font-weight: bold;">신청인 연락처</strong>${myList.mb_phone}</li>
 						</ul>
 						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i>1대1대화</a></p>
 						<ul class="buttons">
-							<li class="btn_1 gray delete" id="delete-click-btn"><i class="fa fa-fw fa-times-circle-o"></i>취소</li>
-							<li id="reason-cancel">
-								<input type="text" name="" id="" placeholder="취소사유"/>
-							</li>
+						<!-- <input type="button" value="" class="btn_1 gray approve" /> -->
+							<li><input type="button" value="승인" class="btn_1 gray approve" id="btn2" /></li>
+							<li class="btn_1 gray delete" id="delete-click-btn" data-toggle="modal" data-target="#cancel"><i class="fa fa-fw fa-times-circle-o"></i>취소</li>
 						</ul>
 						<ul>
 						</ul>
 					</li>
-					<li>
-						<figure><img src="img/item_2.jpg" alt=""></figure>
-						<h4>Da Alfredo <i class="cancel">Cancelled</i></h4>
-						<ul class="booking_list">
-							<li><strong>Booking date</strong> 11 November 2017</li>
-							<li><strong>Booking details</strong> 2 People</li>
-							<li><strong>Client</strong> Mark Twain</li>
-						</ul>
-						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i> Send Message</a></p>
-						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-						</ul>
-					</li>
-					<li>
-						<figure><img src="img/item_3.jpg" alt=""></figure>
-						<h4>Pompidue Museum <i class="approved">Approved</i></h4>
-						<ul class="booking_list">
-							<li><strong>Booking date</strong> 11 November 2017</li>
-							<li><strong>Booking details</strong> 2 People</li>
-							<li><strong>Client</strong> Mark Twain</li>
-						</ul>
-						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i> Send Message</a></p>
-						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-						</ul>
-					</li>
+							<input type="hidden" name="re_num" id="re_num" value="${myList.re_num}"/>
 					</c:forEach>
 				</ul>
 			</div>
+			<!-- </form> -->
 		</div>
 		<!-- booking contents end -->
 		<!-- /box_general-->
@@ -139,6 +118,32 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
+    
+    
+    <!-- 예약취소 사유 창 -->
+    <!-- <form action="" method="post" name="frm"> -->
+       <div class="modal fade" id="cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">이 유저의 예약을 취소하시겠습니까?</h5>
+               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">×</span>
+               </button>
+             </div>
+             <div class="modal-body"><input type="text" name="bc_con" id="cancel-btn" placeholder="취소사유" style="width: 100%; height: 50px;" /></div>
+							<%-- <input type="hidden" name="re_num" id="re_num" value="${myList.re_num}"/> --%>
+             <div class="modal-footer">
+               <button class="btn btn-secondary" type="button" data-dismiss="modal" id="btn1">예약취소</button>
+               <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
+             </div>
+           </div>
+         </div>
+       </div>
+    </form>    
+    
+    
+    
 
     <jsp:include page="mypage_logout.jsp"></jsp:include>
     

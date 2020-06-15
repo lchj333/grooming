@@ -35,15 +35,19 @@ public class ReservationDAO {
 		return ss.selectOne(MAPPER+".selectByNum", num);
 	}
 	
-	//예약 상태 변경 (승인 | 미승인) +@피드백
-	public void checkReserv(ReservationDTO dto) {
-		//승인 or 미승인 (기본값 'U')
-		ss.update(MAPPER+".checkReserv", dto);
-		
-		//미 승인을 입력 할 경우 추가 내용 삽입
-		if(dto.getRe_approval() != null) {
-			ss.insert(MAPPER+".insertFeedBack", dto);
-		}
+	//예약 상태 변경 (승인 )
+	public void checkReservY(ReservationDTO dto) {
+		ss.update(MAPPER+".checkReservY", dto);
+	}
+	
+	//예약 상태 변경 (미승인) 
+	public void checkReservN(ReservationDTO dto) {
+		ss.update(MAPPER+".checkReserN", dto);
+	}
+	
+	// 취소 이유 작성(취소 이유)
+	public void insertFeedBack(ReservationDTO dto) {
+		ss.update(MAPPER+".insertFeedBack", dto);
 	}
 	
 	//예약 작성
@@ -55,5 +59,7 @@ public class ReservationDAO {
 	public List<ReservationDTO> myReservation() {
 		return ss.selectList("myReservation");
 	}
+
+	
 	
 }
