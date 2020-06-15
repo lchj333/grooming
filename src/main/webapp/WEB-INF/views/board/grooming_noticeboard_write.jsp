@@ -63,7 +63,6 @@
       </div>
       <!-- /box_general-->
       <!-- /box_general-->
-      <input type="submit" value="저장" class="btn_1 medium" />
      </div>
      <!-- /.container-fluid-->
       </div>

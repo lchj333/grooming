@@ -5,7 +5,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/main_resources/css/grooming_noticeboard_list.css" />
+	href="${pageContext.request.contextPath}/resources/main_resources/css/grooming_noticeboard_list1.css" />
 <meta charset="UTF-8">
 <title>noticelist</title>
 </head>
