@@ -167,7 +167,7 @@
 
 			                <h3 style="color:gray; margin-top: 8px;">
 
-			                <a href="hotel-detail.html" style="color:gray; margin-top: 5px;">
+			                <a href="/detailShop" style="color:gray; margin-top: 5px;">
 			                	<c:out value="${shoplist.ref_shopname}"/></a>
 			                </h3>
 						</form>
