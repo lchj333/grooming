@@ -228,7 +228,7 @@ html, body {
 									<input class="form-control" type="text" name="dates"
 										placeholder="When.."> <i class="icon_calendar"></i>
 								</div>
-								<form action="/search/reserv">
+								<form action="/reservation/reservCk">
 											<!-- 임시 태그 -->
 											<input type="hidden" name="re_species" value="대형견" />
 											

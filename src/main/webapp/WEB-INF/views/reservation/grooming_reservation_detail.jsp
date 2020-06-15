@@ -11,7 +11,7 @@
 <meta name="description"
 	content="Panagea - Premium site template for travel agencies, hotels and restaurant listing.">
 <meta name="author" content="Ansonika">
-<title>GROOMING 예약완료</title>
+<title>GROOMING 예약확인</title>
 
 <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
     <link rel="shortcut icon" href="img/Grooming_icon_72.png" type="image/x-icon">
@@ -64,7 +64,7 @@
 		<!-- contents -->
 		<!-- =======================================================================================================================================================================================================================  -->
 		<main >
-
+		
 			<div class="container add_top_60 ">
 				<div class="row magin_60">
 					<div class="col-12">
@@ -74,7 +74,9 @@
 								<strong>예약번호#55555 </strong>
 							</h5>
 						</div>
-
+						<!-- 여기로 이동 -->
+						<form action="/reservation/addReserv">
+						</form>
 						<hr>
 						<div>
 							<h2>ddd 님 예약이 되었습니다.</h2>
