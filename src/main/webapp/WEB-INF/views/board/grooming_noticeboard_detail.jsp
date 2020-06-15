@@ -27,7 +27,6 @@
       <div id="gr_noticeboard_detail_contents"><c:out value="${inform.nt_con }"></c:out></div>      
 	   <p id="notice_button">
 		   <a href="noticeListPage?num=${pn }" class="btn_1 medium">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 	   </p>
    </div>
 <!-- footer -->
