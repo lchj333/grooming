@@ -13,6 +13,28 @@
 
 <title>Grooming 검색 결과</title>
 
+<style>
+        html,
+        body,
+        #google-map {
+            width: 1200px;
+            height: 1200px;
+            margin-left : 600px;
+            padding: 0
+            
+        }
+        #search-panel {
+            position: absolute;
+            top: 10px;
+            left: 25%;
+            z-index: 5;
+            background-color: #FFFFFF;
+            padding: 5px;
+            border: 1px solid black;
+            text-align: center;
+            padding: left: 10px
+        }
+    </style>
 
   <!-- ====================링크============================ -->
   <!-- GOOGLE WEB FONT -->
@@ -189,13 +211,106 @@
 		<!-- /더보기 버튼 -->
 	</div>
 	<!-- /검색 결과 좌측 div-->
+	
+	    <div id="search-panel" >
+        <input id="address" type="text" value="대구광역시 북구 침산로 158" />
+        <button id="submit" type="button" value="Geocode">지도 검색</button>
+    </div>
+    <div id="google-map">
+    </div>
+	
 
-		<!-- 지도 결과  -->
-		<div class="col-lg-7 map-right">
-			<div id="map"></div>
-			<!-- map-->
-		</div>
-		<!-- /지도 결과  -->
+	    <script>
+        /**
+         * Google Map API 주소의 callback 파라미터와 동일한 이름의 함수이다.
+         * Google Map API에서 콜백으로 실행시킨다.
+         */
+        function initMap() {
+            console.log('Map is initialized.');
+ 
+            /**
+             * 맵을 설정한다.
+             * 1번째 파라미터 : 구글 맵을 표시할 위치. 여기서는 #google-map
+             * 2번째 파라미터 : 맵 옵션.
+             *      ㄴ zoom : 맵 확대 정도
+             *      ㄴ center : 맵 중심 좌표 설정
+             *              ㄴ lat : 위도 (latitude)
+             *              ㄴ lng : 경도 (longitude)
+             */
+            var map = new google.maps.Map(document.getElementById('google-map'), {
+                zoom: 12.5,
+                center: {
+                    lat: -34.397,
+                    lng: 150.644
+                }
+            });
+ 
+            /**
+             * Google Geocoding. Google Map API에 포함되어 있다.
+             */
+            var geocoder = new google.maps.Geocoder();
+ 
+            // submit 버튼 클릭 이벤트 실행
+            document.getElementById('submit').addEventListener('click', function() {
+                console.log('submit 버튼 클릭 이벤트 실행');
+ 
+                // 여기서 실행
+                geocodeAddress(geocoder, map);
+            });
+            
+            window.onload = function() {
+                console.log('submit 버튼 클릭 이벤트 실행');
+ 
+                // 여기서 실행
+                geocodeAddress(geocoder, map);
+            }
+ 
+            /**
+             * geocodeAddress
+             * 
+             * 입력한 주소로 맵의 좌표를 바꾼다.
+             */
+            function geocodeAddress(geocoder, resultMap) {
+                console.log('geocodeAddress 함수 실행');
+ 
+                // 주소 설정
+                var address = document.getElementById('address').value;
+ 
+                /**
+                 * 입력받은 주소로 좌표에 맵 마커를 찍는다.
+                 * 1번째 파라미터 : 주소 등 여러가지. 
+                 *      ㄴ 참고 : https://developers.google.com/maps/documentation/javascript/geocoding#GeocodingRequests
+                 * 
+                 * 2번째 파라미터의 함수
+                 *      ㄴ result : 결과값
+                 *      ㄴ status : 상태. OK가 나오면 정상.
+                 */
+                geocoder.geocode({'address': address}, function(result, status) {
+                    console.log(result);
+                    console.log(status);
+ 
+                    if (status === 'OK') {
+                        // 맵의 중심 좌표를 설정한다.
+                        resultMap.setCenter(result[0].geometry.location);
+                        // 맵의 확대 정도를 설정한다.
+                        resultMap.setZoom(18);
+                        // 맵 마커
+                        var marker = new google.maps.Marker({
+                            map: resultMap,
+                            position: result[0].geometry.location
+                        });
+ 
+                        // 위도
+                        console.log('위도(latitude) : ' + marker.position.lat());
+                        // 경도
+                        console.log('경도(longitude) : ' + marker.position.lng());
+                    } else {
+                        alert('지오코드가 다음의 이유로 성공하지 못했습니다 : ' + status);
+                    }
+                });
+            }
+        }
+    </script>
 
 	</div>
 	<!-- /row-->
@@ -216,8 +331,10 @@
 	<script src="assets/validate.js"></script>
 
 	<!-- map에 관련한 js파일  -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 넣으시면 됩니다."></script>
-	<script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDc68i0R0J8OuZbjoZ-Nukwn9U0QnyRPfs&callback=initMap">
+    </script>
+	    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/markerclusterer.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/map_hotels_half_screen.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/infobox.js"></script>
