@@ -118,10 +118,10 @@ html, body {
 										<ul class="magnific-gallery">
 											<li>
 												<figure>
-													<img src="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_1.jpg" alt="">
+													<img src="img/gallery/large/pic_1.jpg" alt="">
 													<figcaption>
 														<div class="caption-content">
-															<a href="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_1.jpg" title="Photo title"
+															<a href="img/gallery/large/pic_1.jpg" title="Photo title"
 																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
 																<p>Your caption</p>
 															</a>
@@ -131,10 +131,10 @@ html, body {
 											</li>
 											<li>
 												<figure>
-													<img src="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_2.jpg" alt="">
+													<img src="img/gallery/large/pic_2.jpg" alt="">
 													<figcaption>
 														<div class="caption-content">
-															<a href="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_2.jpg" title="Photo title"
+															<a href="img/gallery/large/pic_2.jpg" title="Photo title"
 																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
 																<p>Your caption</p>
 															</a>
@@ -144,10 +144,10 @@ html, body {
 											</li>
 											<li>
 												<figure>
-													<img src="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_3.jpg" alt="">
+													<img src="img/gallery/large/pic_3.jpg" alt="">
 													<figcaption>
 														<div class="caption-content">
-															<a href="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_3.jpg" title="Photo title"
+															<a href="img/gallery/large/pic_3.jpg" title="Photo title"
 																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
 																<p>Your caption</p>
 															</a>
@@ -157,7 +157,7 @@ html, body {
 											</li>
 											<li>
 												<figure>
-													<img src="${pageContext.request.contextPath}/resources/main_resources/img/gallery/large/pic_4.jpg" alt="">
+													<img src="img/gallery/large/pic_4.jpg" alt="">
 													<figcaption>
 														<div class="caption-content">
 															<a href="img/gallery/large/pic_1.jpg" title="Photo title"
@@ -243,7 +243,7 @@ html, body {
 									<hr>
 									<div class="review-box clearfix">
 										<figure class="rev-thumb">
-											<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_300_200_LOGO.png" alt="">
+											<img src="img/Grooming_300_200_LOGO.png" alt="">
 										</figure>
 										<div class="rev-content">
 											<div class="rating">

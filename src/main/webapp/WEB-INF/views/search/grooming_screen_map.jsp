@@ -12,8 +12,14 @@
     <!-- 메타 정보 -->
 
 <title>Grooming 검색 결과</title>
-
-
+ <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
   <!-- ====================링크============================ -->
   <!-- GOOGLE WEB FONT -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
@@ -26,6 +32,15 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
    <!-- ====================링크============================ -->
+<!-- ====================css============================ -->
+<style>
+html, body {
+	height: 100%;
+}
+</style>
+<!-- ====================css============================ -->
+
+
 
 
 </head>
@@ -147,9 +162,7 @@
 		        <div class="col-4">
 
 		            <figure>
-
 		                  <a href='<c:url value="${shop.de_licencenum}"></c:url>'><img src="<c:out value="${shop.reg_img}"/>" class="img-fluid" alt="" width="800" height="533"></a>
-
 		            </figure>
 
 		        </div>
@@ -208,12 +221,11 @@
 
 
 	<!-- 공통 js 파일 footer있으면 필요 없음 -->
-    <script src="${pageContext.request.contextPath}/resources/main_resources/js/common_scripts.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/main_resources/js/main.js"></script>
+    <script src="js/common_scripts.js"></script>
+    <script src="js/main.js"></script>
 	<script src="assets/validate.js"></script>
 
 	<!-- map에 관련한 js파일  -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 넣으시면 됩니다."></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/markerclusterer.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/map_hotels_half_screen.js"></script>
@@ -230,6 +242,5 @@
 	<form action="" name="goform">
 		<input type="hidden" name="de_licencenum" id="pknum" />
 	</form>
-
 </body>
 </html>
