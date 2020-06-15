@@ -102,7 +102,7 @@ Theme URI: http://www.ansonika.com/panagea/   테마 정보는 여기서 보세�
 	}
 	header.sticky .main-menu>ul>li span:hover>a {
 		opacity: 1;
-		color: #fc5b62;
+		color: #000000;
 	}
 
 	/* Submenu*/
@@ -962,6 +962,7 @@ h3.slide_typo {
 /*General links color   일반 링크 색상*/
 a {
 	color: #353533;
+	
 	text-decoration: none;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;

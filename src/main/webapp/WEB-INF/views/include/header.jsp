@@ -22,6 +22,8 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
 
+    <!-- icon 링크 -->
+	<link href="${pageContext.request.contextPath}/resources/main_resources/css/icon_fonts/css/icon_set_1.css" rel="stylesheet">
 
 
 	<!-- 링크 정보  -->
@@ -33,7 +35,7 @@
 		<header class="header map_view menu_fixed">
 			<div id="logo">
 				<a href="<c:url value="/"/>">
-					<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main.png" width="150" height="36" data-retina="true" alt="메인이미지">
+					<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main.png" width="150" height="36" data-retina="true" class="Grooming_logo_header_main" alt="메인이미지">
 				</a>
 			</div>
 			<ul id="top_menu">
@@ -42,7 +44,6 @@
 				<!-- 비로그인시 -->
 				<c:if test="${login == null }">
 					<li></li>
-
 					<li><a href="<c:url value="/login"/>" class="cart-menu-btn" title="로그인"></a></li>
 					<li><a href="<c:url value="/agreementJoin"/>" id="" class="login" title="회원가입"></a></li>
 					<!-- <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li> -->
@@ -52,8 +53,8 @@
 				<!-- 사용자 로그인시 -->
 				<c:if test="${login != null}">
 					<li><a href="<c:url value="/bookmarksearch"/>" class="wishlist_bt_top" title="찜"></a></li>
-					<li><a href="<c:url value="/mypageInfo"/>" id="logout" class="login" title="마이페이지"></a></li> <!-- 마이페이지 이미지로 바꾸셈 -->
-					<li><a href="<c:url value="/logout"/>" class="cart-menu-btn" title="로그아웃"><strong></strong></a></li>
+					<li class="nv_login_li_icon_1"  style="margin-top: 7px;"><a href="<c:url value="/mypageInfo"/>" id="logout" class="icon-doc-1" title="마이페이지" style="color: black; font-size: 22px; "></a></li> <!-- 마이페이지 이미지로 바꾸셈 -->
+					<li class="nv_login_li_icon_1" style="margin-top: 7px;"><a href="<c:url value="/logout"/>" class="icon-logout" title="로그아웃" style="color: black; font-size: 22px;"><strong></strong></a></li>
 
 				</c:if>
 
@@ -85,7 +86,7 @@
 			</a>
 			<nav id="menu" class="main-menu">
 				<ul>
-					<li><h6>${login.mb_name }</h6></li>
+					<li><span><h6 class="grooming-main-menu-name">${login.mb_name}</h6></span></li>
 
 					<li><span><a href="#0">GROOMING</a></span>
 						<ul>
