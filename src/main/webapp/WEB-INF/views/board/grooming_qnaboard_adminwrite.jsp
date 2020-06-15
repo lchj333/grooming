@@ -114,7 +114,7 @@
 			</div>
 			<div id="qnaboard_question_main">
 			<!-- 사용자 아이디 받아올곳 -->
-				<div id="qnaboard_question_id"><span>작성자 : nayoungsfather</span></div>
+				<div id="qnaboard_question_id"><span>작성자 : </span></div>
 			<!-- 사용자 글 작성 날짜 받아올곳 -->
 				<div id="qnaboard_question_date"><span>2020.06.10</span></div>
 			</div>

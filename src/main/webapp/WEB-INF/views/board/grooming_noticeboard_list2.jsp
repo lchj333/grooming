@@ -53,15 +53,6 @@
 		<!-- 페이징처리 끝 -->		
 		</div>
 		<!-- 페이지 처리 div end -->
-			</div>
-			<!-- button -->
-			<div style="margin-right:150px; margin-top:50px;">
-			<p style="float:right; margin-right:200px;">
-			<a href="noticeListPage?num=${pn }"class="btn_1 medium">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="noticeUpdate?nt_no=${inform.nt_no }" class="btn_1 medium">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="noticeDelete?nt_no=${inform.nt_no }" class="btn_1 medium">삭제</a>
-			</p>
-			</div>
 				<!-- 관리자일경우에만 공지 등록가능 -->
 				<c:if test="${ad_id != null }"> 
 				<a href="noticeInsert"><input type="button" value="공지등록" class="btn_1 medium" /></a>
@@ -87,6 +78,5 @@
 	<!-- Custom scripts for this page-->
 	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
 	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
-	
 </body>
 </html>
