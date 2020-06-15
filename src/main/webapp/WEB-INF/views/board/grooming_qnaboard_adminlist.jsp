@@ -38,7 +38,7 @@ $(document).ready(function(){
 					<div id="grooming_qnaboard_customlist_maintitle">1:1문의(사용자페이지)</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
-							<c:forEach var="a" items="list">
+							<c:forEach var="a" items="${list }">
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
 									<!-- 제목 -->
