@@ -15,21 +15,14 @@
 <!-- 메타 정보 -->
 
 <title>Grooming 가게정보</title>
-<!-- 최상단 메뉴 icon -->
-<!-- =======================================================================================================================================================================================================================  -->
-<link rel="shortcut icon" href="img/Grooming_icon_72.png"
-	type="image/x-icon">
-<link rel="apple-touch-icon" type="image/x-icon"
-	href="img/Grooming_icon_72.png">
-<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
-	href="img/Grooming_icon_72.png">
-<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
-	href="img/Grooming_icon_114.png">
-<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
-	href="img/Grooming_icon_144.png">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<!-- 최상단 메뉴 icon -->
+<!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <!-- =======================================================================================================================================================================================================================  -->
 <!-- =======================================================================================================================================================================================================================  -->
 <!-- ====================링크============================ -->
 <!-- 구글 폰트 -->
@@ -43,12 +36,26 @@ html, body {
 }
 .hero_in.restaurants_detail {
 	height: 550px;
-	/* 디테일 이미지 넣는 곳 */
+	/* 상단 백그라운드 */
 	background-image: url('${pageContext.request.contextPath}/resources/main_resources/img/Grooming_BG.png');
 
 }
 </style>
 <!-- ====================css============================ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+
+		$("#btn").click(function(){
+			document.frm.action = "<c:url value='/reservation/reservCk'/>";
+			document.frm.submit();
+		});
+
+	});
+
+
+</script>
 
 </head>
 <body>
@@ -74,12 +81,13 @@ html, body {
 					<!-- 미리 보기 div & 모아보기-->
 					<span class="magnific-gallery">
 					<!-- 등록되는 서브 이미지 받기 -->
-					<a href="<c:url value="/resource/img/grooming_gogi.jpg"/>" class="btn_photos"
+					<a href="<c:url value="/resource/shopimags/${sessionScope.infoImgs[0]}"/>" class="btn_photos"
 						title="Photo title" data-effect="mfp-zoom-in">모아보기</a>
-
-						 <a href="img/grooming_gogi.jpg" title="Photo title"
-						data-effect="mfp-zoom-in"></a> <a href="img/grooming_gogi.jpg"
-						title="Photo title" data-effect="mfp-zoom-in"></a>
+						
+						<c:forEach var="img" items="${infoImgs}" step="1">
+						 <a href="<c:url value="/resources/shopimags/${img}"/>" title="Photo title"
+						data-effect="mfp-zoom-in"></a>
+						</c:forEach>
 					</span>
 				</div>
 			</section>
@@ -116,11 +124,13 @@ html, body {
 								<div class="container margin_60_35">
 									<div class="grid">
 										<ul class="magnific-gallery">
+											<c:forEach var="img" items="${infoImgs}">
 											<li>
 												<figure>
-													<img src="img/gallery/large/pic_1.jpg" alt="">
+															<img src="<c:url value="/resources/shopimags/${img}"/>" width="50px;" height="" alt="상세 이미지" />
 													<figcaption>
 														<div class="caption-content">
+															<img src="img/gallery/large/pic_1.jpg" alt="">
 															<a href="img/gallery/large/pic_1.jpg" title="Photo title"
 																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
 																<p>Your caption</p>
@@ -129,97 +139,7 @@ html, body {
 													</figcaption>
 												</figure>
 											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_2.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_2.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_3.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_3.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_4.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_1.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_5.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_1.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_6.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_6.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_7.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_7.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_8.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_8.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
+											</c:forEach>
 										</ul>
 									</div>
 									<!-- /grid gallery -->
@@ -309,28 +229,33 @@ html, body {
 									<span style="font-size: 20px;">GROOMING 미용예약</span>
 
 								</div>
-
+								
+							<!-- 예약폼 -->
+							<form action="" name="frm" method="post">
+								
 
 								<div class="form-group" id="input_date">
 									<input class="form-control" type="text" name="dates"
 										placeholder="When.."> <i class="icon_calendar"></i>
 								</div>
-								<form action="/search/reserv">
+											<!-- 임시 태그 -->
+											<input type="hidden" name="re_species" value="대형견" />
+											
 									<div class="panel-dropdown">
 										<a href="#">견종선택 <span class="qtyTotal">1</span></a>
 										<div class="panel-dropdown-content right">
-											<div class="qtyButtons">
-												<label>대형견</label> <input type="text" name="qtyInput"
-													value="1">
+<!-- 											<div class="qtyButtons">
+												<label>대형견</label> 
+												<input type="text" name="re_specie" value="1">
 											</div>
 											<div class="qtyButtons">
-												<label>중형견</label> <input type="text" name="qtyInput"
-													value="0">
+												<label>중형견</label> 
+												<input type="text" name="re_specie" value="0">
 											</div>
 											<div class="qtyButtons">
-												<label>소형견</label> <input type="text" name="qtyInput"
-													value="0">
-											</div>
+												<label>소형견</label> 
+												<input type="text" name="re_specie" value="0">
+											</div> -->
 										</div>
 									</div>
 
@@ -342,14 +267,14 @@ html, body {
 									<option>Lunch</option>
 									<option>Dinner</option>
 								</select> -->
-											<input class="form-control" type="text" name="mb_pw"
-												id="mb_pw" placeholder="견종 몸무게"> <input
-												class="form-control add_top_15" type="text" name="mb_pw"
-												id="mb_pw" placeholder="견종 컷 및 특이사항">
+											<input class="form-control" type="text" name="re_weight"
+												id="" placeholder="견종 몸무게"> 
+											<input class="form-control add_top_15" type="text" name="re_cut"
+												id="" placeholder="견종 컷 및 특이사항">
 										</div>
 									</div>
+									<input type="button" value="예약하기" id="btn" class="add_top_30 btn_1 full-width"/>
 								</form>
-								<a href="cart-1.html" class=" add_top_30 btn_1 full-width ">예약하기</a>
 								<a href="wishlist.html"
 									class="btn_1 full-width outline wishlist"><i
 									class="icon_heart"></i> 찜목록에 추가하기</a>
@@ -378,9 +303,9 @@ html, body {
 		<!-- 끌어 올리기 -->
 
 		<!-- Map -->
-	<script src="http://maps.googleapis.com/maps/api/js"></script>
-	<script src="js/map_single_restaurant.js"></script>
-	<script src="js/infobox.js"></script>
+		<script src="http://maps.googleapis.com/maps/api/js"></script>
+		<script src="js/map_single_restaurant.js"></script>
+		<script src="js/infobox.js"></script>
 
 
 		<!-- 푸터 -->
