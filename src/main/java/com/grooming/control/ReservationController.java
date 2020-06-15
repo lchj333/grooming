@@ -51,7 +51,7 @@ public class ReservationController {
 		out.println("<script>alert('예약 목록으로 이동합니다.');</script>");
 		out.flush();
 		
-		//적용 후 메인으로~ 
+		//적용 후 목록으로~ 
 		return "mypage/grooming_user_booking";
 	}
 	

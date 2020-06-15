@@ -53,6 +53,7 @@ public class DesignerController {
 		designerDto.setMb_id(mb_id);
 		designerDto.setDe_licence(fileName);
 		
+		System.out.println(designerDto.getMb_id());
 		dao.joinDesigner(designerDto);
 		return "mypage/grooming_user_profile";
 	}

@@ -27,8 +27,7 @@
 						</div>
 					</c:forEach>
 					</div>
-		<!-- 페이지 처리 div -->
-		<div style="font-size: 20px; float : left;">
+				
 		<!-- 페이징 처리 -->
 		<c:if test="${prev}">
 			<span>[ <a href="/control/noticeListPage2?num=${startPageNum - 1}">이전</a> ]</span>
@@ -51,8 +50,7 @@
 			<span>[ <a href="/control/noticeListPage2?num=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
 		<!-- 페이징처리 끝 -->		
-		</div>
-		<!-- 페이지 처리 div end -->
+				</div>
 				<!-- 관리자일경우에만 공지 등록가능 -->
 				<c:if test="${ad_id != null }"> 
 				<a href="noticeInsert"><input type="button" value="공지등록" class="btn_1 medium" /></a>

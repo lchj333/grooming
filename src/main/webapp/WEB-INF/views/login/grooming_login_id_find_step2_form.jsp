@@ -54,21 +54,22 @@
 
 				<c:if test="${idFind == null }">
 				<div class="form-group" style="border: 1px solid black; height: 20%; padding: 2%; color: black;">
-						<input type="radio" name="ck" id="" value="아이디" checked="checked"/> 아이디 : 가입된 아이디가 없습니다.
+						<input type="radio" name="ck" id="" value="아이디" checked="checked"/> 아이디 : 가입된 아이디가 없습니다
+						<p style="color: black;" class="float-right">가입 날짜 :</p>
 				</div>
 
 				</c:if>
 				<c:if test="${idFind != null }">
 				<div class="form-group" style="border: 1px solid black; height: 20%; padding: 2%; color: black;">
-						<input type="radio" name="mb_id" id="mb_id" value="아이디" checked="checked"/> 아이디 : ${idFind.mb_id}
+						<input type="radio" name="ck" id="" value="아이디" checked="checked"/> 아이디 : ${idFind.mb_id}
 						<p style="color: black;" class="float-right">가입 날짜  : <fmt:formatDate value="${idFind.mb_joindate}" pattern="YYYY-MM-dd"/></p>
 				</div>
 				</c:if>
 
 				<div class="form-group add_top_30">
 					<div class="clearfix" style="text-align: center;">
-						<a href="login"  class="btn_1" style="text-align: center;" >로그인하기</a>
-						<a href="mb_pw_find"  class="btn_1" style="text-align: center;" >비밀번호 찾기</a>
+						<input type="button" value="로그인하기" class="btn_1" style="text-align: center;"/>
+						 <input type="button" value="비밀번호 찾기" class="btn_1" />
 
 					</div>
 

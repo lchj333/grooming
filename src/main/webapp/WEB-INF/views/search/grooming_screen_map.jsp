@@ -12,8 +12,14 @@
     <!-- 메타 정보 -->
 
 <title>Grooming 검색 결과</title>
-
-
+ <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
   <!-- ====================링크============================ -->
   <!-- GOOGLE WEB FONT -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
@@ -26,6 +32,15 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
    <!-- ====================링크============================ -->
+<!-- ====================css============================ -->
+<style>
+html, body {
+	height: 100%;
+}
+</style>
+<!-- ====================css============================ -->
+
+
 
 
 </head>
@@ -60,7 +75,7 @@
 								<div class="search_map_wp">
 									<div class="custom-search-input-2 map_view">
 										<div class="form-group">
-											<input class="form-control" type="text" placeholder="검색">
+											<input class="form-control" type="text" name="searchData" placeholder="검색">
 											<i class="icon_search"></i>
 										</div>
 
@@ -140,16 +155,14 @@
 					</div>
 					<!-- /필터 세부 -->
 		<!-- 썸네일 결과 1 (찜,맵 , 평점)-->
-		<c:forEach var="shoplist" items="${shopList}" varStatus="status">
+		<c:forEach var="shop" items="${shopList}" varStatus="status">
 		<div class="box_list map_view">
 		    <div class="row no-gutters add_top_20">
 		    	<!-- 썸네일  -->
 		        <div class="col-4">
 
 		            <figure>
-
-		                  <a href='<c:url value="${shoplist.de_licencenum}"></c:url>'><img src="<c:out value="${shoplist.reg_img}"/>" class="img-fluid" alt="" width="800" height="533"></a>
-
+		                  <a href='<c:url value="${shop.de_licencenum}"></c:url>'><img src="<c:out value="${shop.reg_img}"/>" class="img-fluid" alt="" width="800" height="533"></a>
 		            </figure>
 
 		        </div>
@@ -163,21 +176,18 @@
 		                <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
 
 						<!-- 가게 정보 DB 넣는곳 -->
-						<form action="">
-
 			                <h3 style="color:gray; margin-top: 8px;">
-
-			                <a href="hotel-detail.html" style="color:gray; margin-top: 5px;">
-			                	<c:out value="${shoplist.ref_shopname}"/></a>
+			                	<a href="#" style="color:gray; margin-top: 5px;" id="shoptag" onclick="godetail(${shop.de_licencenum})">
+			                		<c:out value="${shop.ref_shopname}"/>
+			                	</a>
 			                </h3>
-						</form>
 
 						<br />
-		                <strong><span style="color:#fbbc41;"><c:out value="${shoplist.reg_price}"/></span></strong>
+		                <strong><span style="color:#fbbc41;"><c:out value="${shop.reg_price}"/></span></strong>
 		            </div>
 
-		            <div class="add_left_15"> <a href="#0" onclick="onHtmlClick('Marker',0)" class="address float_left"><c:out value="${shoplist.reg_shopaddress}"/></a></div>
-		            <div class="add_left_15"> <span style="color:gray;"><strong>TEL: </strong> <c:out value="${shoplist.mb_phone}"/></span></div>
+		            <div class="add_left_15"> <a href="#" onclick="onHtmlClick('Marker',0)" class="address float_left"><c:out value="${shop.reg_shopaddress}"/></a></div>
+		            <div class="add_left_15"> <span style="color:gray;"><strong>TEL: <c:out value="${shop.mb_phone}"/></strong></span></div>
 		        </div>
 		    </div>
 		</div>
@@ -211,17 +221,26 @@
 
 
 	<!-- 공통 js 파일 footer있으면 필요 없음 -->
-    <script src="${pageContext.request.contextPath}/resources/main_resources/js/common_scripts.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/main_resources/js/main.js"></script>
+    <script src="js/common_scripts.js"></script>
+    <script src="js/main.js"></script>
 	<script src="assets/validate.js"></script>
 
 	<!-- map에 관련한 js파일  -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 넣으시면 됩니다."></script>
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/markerclusterer.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/map_hotels_half_screen.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/infobox.js"></script>
-
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function godetail(number) {
+			document.goform.action = "<c:url value="/search/detailShop"/>";
+			document.goform.pknum.value = number;
+			document.goform.submit();
+		}
+	</script>
+	<!-- 디테일로 이동하기 위한 폼태그 -->
+	<form action="" name="goform">
+		<input type="hidden" name="de_licencenum" id="pknum" />
+	</form>
 </body>
 </html>

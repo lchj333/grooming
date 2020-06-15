@@ -30,15 +30,6 @@ public class NoticeController {
 	@Inject
 	NoticeDAO noticedao;
 	
-	//공지사항 전체보기
-//	@RequestMapping(value="/noticeList")
-//	public String noticeList(Model model) {
-//		List<NoticeDTO> list = noticedao.selectList();
-//		model.addAttribute("list", list);
-//		return "gr_noticeboard_list";
-//		//return "board/grooming_noticeboard_list";
-//	}
-
 	// 상세내용 보기
 	@RequestMapping(value="/noticeDetail")
 	public String noticeDetail(@RequestParam(value="nt_no")int nt_no,
@@ -51,7 +42,7 @@ public class NoticeController {
 		HttpSession ses = req.getSession();
 		//ses.setAttribute("num", 현재페이지값이있는객체);
 		
-		return "board/grooming_noticeboard_list";
+		return "board/grooming_noticeboard_detail";
 	}
 	// 상세내용 보기
 		@RequestMapping(value="/noticeDetail2")
@@ -89,14 +80,13 @@ public class NoticeController {
 	public String noticeUpdate(@RequestParam(value="nt_no")int nt_no, Model model) {
 		NoticeDTO noticedto = noticedao.selectOne(nt_no);
 		model.addAttribute("inform", noticedto);
-		return "gr_noticeboard_update";
+		return "board/grooming_noticeboard_update";
 	}
 	//글 수정하기
 	@PostMapping(value="/noticeUpdate")
 	public String UpdateOk(@RequestParam(value="nt_no")int nt_no, Model model,
 							@ModelAttribute NoticeDTO noticedto) {
 		noticedao.updateOne(noticedto);
-
 		return "redirect:/noticeListPage2";
 	}
 	
@@ -104,11 +94,10 @@ public class NoticeController {
 	@RequestMapping(value="/noticeDelete")
 	public String noticeDelete(@RequestParam(value="nt_no")int nt_no, Model model) {
 		noticedao.deleteOne(nt_no);
-
 		return "redirect:/noticeListPage2";
 	}
 	
-	//공지사항 전체보기+페이징추가
+	//공지사항 전체보기+페이징추가(일반사용자)
 	@RequestMapping(value="/noticeListPage")
 	public String noticeListPage(Model model, HttpServletRequest req, RedirectAttributes rtt) {
 		int num = 1;
@@ -167,7 +156,7 @@ public class NoticeController {
 		//return "board/grooming_noticeboard_list"; 
 	}
 	
-	//공지사항 전체보기+페이징추가
+	//공지사항 전체보기+페이징추가(관리자)
 		@RequestMapping(value="/noticeListPage2")
 		public String noticeListPage2(Model model, HttpServletRequest req, RedirectAttributes rtt) {
 			int num = 1;
