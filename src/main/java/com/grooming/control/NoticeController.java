@@ -30,15 +30,6 @@ public class NoticeController {
 	@Inject
 	NoticeDAO noticedao;
 	
-	//공지사항 전체보기
-//	@RequestMapping(value="/noticeList")
-//	public String noticeList(Model model) {
-//		List<NoticeDTO> list = noticedao.selectList();
-//		model.addAttribute("list", list);
-//		return "gr_noticeboard_list";
-//		//return "board/grooming_noticeboard_list";
-//	}
-
 	// 상세내용 보기
 	@RequestMapping(value="/noticeDetail")
 	public String noticeDetail(@RequestParam(value="nt_no")int nt_no,
@@ -106,7 +97,7 @@ public class NoticeController {
 		return "redirect:/noticeListPage2";
 	}
 	
-	//공지사항 전체보기+페이징추가
+	//공지사항 전체보기+페이징추가(일반사용자)
 	@RequestMapping(value="/noticeListPage")
 	public String noticeListPage(Model model, HttpServletRequest req, RedirectAttributes rtt) {
 		int num = 1;
@@ -165,7 +156,7 @@ public class NoticeController {
 		//return "board/grooming_noticeboard_list"; 
 	}
 	
-	//공지사항 전체보기+페이징추가
+	//공지사항 전체보기+페이징추가(관리자)
 		@RequestMapping(value="/noticeListPage2")
 		public String noticeListPage2(Model model, HttpServletRequest req, RedirectAttributes rtt) {
 			int num = 1;
