@@ -35,7 +35,7 @@ $(document).ready(function(){
 		<div id="grooming_qnaboard_customl\ist_div">
 			<div id="grooming_qnaboard_customlist_section">
 				<div id="grooming_qnaboard_customlist_articlelist">
-					<div id="grooming_qnaboard_customlist_maintitle">1:1문의(관리자 페이지)</div>
+					<div id="grooming_qnaboard_customlist_maintitle">1:1문의(사용자페이지)</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
 							<c:forEach var="a" items="${list }">

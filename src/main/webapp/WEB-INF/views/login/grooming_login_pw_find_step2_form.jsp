@@ -48,19 +48,23 @@
 
 		//비밀번호 유효성 검사
 	    if(mb_pw.value==''){
+	    	$('#pwCheck').text("비밀번호를 입력해주세요.");
 	    	alert("비밀번호를 입력해주세요");
 	    	mb_pw.focus();
 	          return false;
 	    }if(!checkIP.test(mb_pw.value)){
 	    	alert("4~16자 영문 대 소문자, 숫자를 사용하세요.");
+	    	$('#pwCheck').text("4~16자 영문 대 소문자, 숫자를 사용하세요.");
 	    	mb_pw.focus();
 	         return false;
 	    }if(mb_pwck.value==''){
 	    	alert("필수정보 입니다.");
+	    	$('#pwCheck2').text("필수정보 입니다.");
 	    	mb_pwck.focus();
 	          return false;
 	    }if(mb_pw.value!=mb_pwck.value){
 	    	alert("비밀번호가 일치하지 않습니다.");
+	    	$('#pwCheck2').text("비밀번호가 일치하지 않습니다.");
 	    	mb_pwck.focus();
 	    	return false;
 	    }
@@ -91,14 +95,12 @@
 				</div>
 				<div class="divider"></div>
 				<form action="#" name="frm">
-					<c:if test="${pwFind.mb_id != null }">
 					<div class="form-group"
 						style=" height: 20%; padding: 2%; color: black;">
 						<div class="form-group" style="margin-bottom: 20px;">
 							<label>아이디</label>
 							<div>
-								<input class="form-control" type="text" value="${pwFind.mb_id }"  disabled="disabled">
-								<input type="hidden" id="mb_id" value="${pwFind.mb_id }" name="mb_id">
+								<input class="form-control" type="text" id="mb_id" value="${pwFind.mb_id }" name="mb_id">
 
 							</div>
 						</div>
@@ -111,37 +113,16 @@
 							<label>패스워드 확인</label> <input class="form-control" type="password" name="mb_pwck" id="mb_pwck"/>
 
 						</div>
-						
-						<div class="form-group add_top_15">
-							<div class="clearfix" style="text-align: center;">
-								<input type="button" value="비밀번호 변경" class="btn_1" id="changePw"/>
-								<input type="button" value="뒤로가기" class="btn_1 add_left_15" />
-							</div>
-						</div>
+
 					</div>
-					</c:if>
-					
-					<c:if test="${pwFind.mb_id == null }">
-					<div class="form-group"
-						style=" height: 20%; padding: 2%; color: black;">
-						<div class="form-group" style="margin-bottom: 20px;">
-							<label>아이디</label>
-							<div>
-								<input class="form-control" type="text" id="mb_id" value="일치하는 정보가 없습니다. 확인해주세요" disabled="disabled">
 
-							</div>
-						</div>
 
-						<div class="form-group add_top_15">
-							<div class="clearfix" style="text-align: center;">
-								<a href="javascript:history.back(-1)" class="btn_1 add_left_15" style="height: 40px; margin-top: 10px; onclick="history.back(-1)>뒤로가기</a>
-							</div>
-						</div>
+				<div class="form-group add_top_15">
+					<div class="clearfix" style="text-align: center;">
+						<input type="button" value="비밀번호 변경" class="btn_1" id="changePw"/>
+						<input type="button" value="뒤로가기" class="btn_1 add_left_15" />
 					</div>
-					</c:if>
-
-
-				
+				</div>
 			</form>
 			<div class="copy">© 2020 Grooming</div>
 		</aside>

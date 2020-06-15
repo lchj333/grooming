@@ -42,7 +42,7 @@
 				</div>
 			</section>
 			<!--/hero_in-->
-		<section class=" ">
+		<section class="hero_single ">
 			<div class="container margin_80_55 ">
 				<div class="main_title_2 add_top_30">
 

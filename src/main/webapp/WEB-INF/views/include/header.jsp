@@ -50,10 +50,10 @@
 
 
 				<!-- 사용자 로그인시 -->
-				<c:if test="${login != null  }">
+				<c:if test="${login != null && dInfo.de_licencenum == null }">
 					<li><a href="<c:url value="/bookmarksearch"/>" class="wishlist_bt_top" title="찜"></a></li>
-					<li><a href="<c:url value="/mypageInfo"/>" id="logout" class="icon-doc-text-2" title="마이페이지"></a></li> <!-- 마이페이지 이미지로 바꾸셈 -->
-					<li><a href="<c:url value="/logout"/>" class=" icon-spin4" title="로그아웃"><strong></strong></a></li>
+					<li><a href="<c:url value="/mypageInfo"/>" id="logout" class="login" title="마이페이지"></a></li> <!-- 마이페이지 이미지로 바꾸셈 -->
+					<li><a href="<c:url value="/logout"/>" class="cart-menu-btn" title="로그아웃"><strong></strong></a></li>
 
 				</c:if>
 
