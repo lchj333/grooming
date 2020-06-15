@@ -127,7 +127,7 @@
 
 				</div>
 				<input type="button" value="아이디 찾기" class="btn_1 rounded full-width"  id="findId"/>
-				<input type="button" value="뒤로가기" class="btn_1 rounded full-width" />
+				<a href="javascript:history.back(-1)" class="btn_1 rounded full-width" style= onclick="history.back(-1)>뒤로가기</a>
 			</form>
 			<div class="copy">© 2020 Grooming</div>
 		</aside>
