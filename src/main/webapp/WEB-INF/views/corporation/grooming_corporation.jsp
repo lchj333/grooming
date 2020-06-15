@@ -29,7 +29,7 @@
 		<!-- header -->
 		<jsp:include page="../include/header.jsp" />
 		<!-- header end -->
-
+			<!-- 창주 bg 확인  -->
 		<main>
 			<section class="hero_in general" style="background-image: url('${pageContext.request.contextPath}/resources/main_resources/img/Grooming_BG.png');">
 
