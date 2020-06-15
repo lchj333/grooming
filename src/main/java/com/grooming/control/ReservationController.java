@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,6 +48,7 @@ public class ReservationController {
 	@PostMapping(value = "mypage/addReserv")
 	public String takeReserv(ReservationDTO dto,
 						HttpServletResponse res) throws IOException {
+		
 		rdao.insertReserv(dto);
 		
 		PrintWriter out = res.getWriter();
@@ -105,9 +107,22 @@ public class ReservationController {
 	//-> grooming_result_detail -> 예약확인(reserv) -> 예약완료 -> 예약 목록 페이지
 	//예약 확인 폼
 	@PostMapping(value = "reservCk")
-	public String reservCk() {
-		return "";
+	public String reservCk(ReservationDTO dto, HttpServletRequest req) {
+		HttpSession hs = req.getSession();
+		
+		if(hs.getAttribute("login") != null) { //로그인 정보 있는지 확인
+			//정보가 있을 경우
+			req.setAttribute("rsv", dto);
+			//예약 체크 페이지 이동
+			return "";
+		}else {
+			//정보가 없을 경우
+			return "redirect:rollback";
+		}
 	}
+	
+	//-> 예약  확인 페이지 ->
+	//예약 적용
 	
 	/******************************
 	 		유틸 메소드

@@ -43,7 +43,7 @@ html, body {
 }
 .hero_in.restaurants_detail {
 	height: 550px;
-	/* 디테일 이미지 넣는 곳 */
+	/* 상단 백그라운드 */
 	background-image: url('${pageContext.request.contextPath}/resources/main_resources/img/Grooming_BG.png');
 
 }
@@ -74,12 +74,13 @@ html, body {
 					<!-- 미리 보기 div & 모아보기-->
 					<span class="magnific-gallery">
 					<!-- 등록되는 서브 이미지 받기 -->
-					<a href="<c:url value="/resource/img/grooming_gogi.jpg"/>" class="btn_photos"
+					<a href="<c:url value="/resource/shopimags/${sessionScope.infoImgs[0]}"/>" class="btn_photos"
 						title="Photo title" data-effect="mfp-zoom-in">모아보기</a>
-
-						 <a href="img/grooming_gogi.jpg" title="Photo title"
-						data-effect="mfp-zoom-in"></a> <a href="img/grooming_gogi.jpg"
-						title="Photo title" data-effect="mfp-zoom-in"></a>
+						
+						<c:forEach var="img" items="${infoImgs}" step="1">
+						 <a href="<c:url value="/resources/shopimags/${img}"/>" title="Photo title"
+						data-effect="mfp-zoom-in"></a>
+						</c:forEach>
 					</span>
 				</div>
 			</section>
@@ -116,11 +117,13 @@ html, body {
 								<div class="container margin_60_35">
 									<div class="grid">
 										<ul class="magnific-gallery">
+											<c:forEach var="img" items="${infoImgs}">
 											<li>
 												<figure>
-													<img src="img/gallery/large/pic_1.jpg" alt="">
+															<img src="<c:url value="/resources/shopimags/${img}"/>" width="50px;" height="" alt="상세 이미지" />
 													<figcaption>
 														<div class="caption-content">
+															<img src="img/gallery/large/pic_1.jpg" alt="">
 															<a href="img/gallery/large/pic_1.jpg" title="Photo title"
 																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
 																<p>Your caption</p>
@@ -129,97 +132,7 @@ html, body {
 													</figcaption>
 												</figure>
 											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_2.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_2.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_3.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_3.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_4.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_1.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_5.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_1.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_6.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_6.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_7.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_7.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
-											<li>
-												<figure>
-													<img src="img/gallery/large/pic_8.jpg" alt="">
-													<figcaption>
-														<div class="caption-content">
-															<a href="img/gallery/large/pic_8.jpg" title="Photo title"
-																data-effect="mfp-zoom-in"> <i class="pe-7s-albums"></i>
-																<p>Your caption</p>
-															</a>
-														</div>
-													</figcaption>
-												</figure>
-											</li>
+											</c:forEach>
 										</ul>
 									</div>
 									<!-- /grid gallery -->
@@ -316,20 +229,23 @@ html, body {
 										placeholder="When.."> <i class="icon_calendar"></i>
 								</div>
 								<form action="/search/reserv">
+											<!-- 임시 태그 -->
+											<input type="hidden" name="re_species" value="대형견" />
+											
 									<div class="panel-dropdown">
 										<a href="#">견종선택 <span class="qtyTotal">1</span></a>
 										<div class="panel-dropdown-content right">
 											<div class="qtyButtons">
-												<label>대형견</label> <input type="text" name="qtyInput"
-													value="1">
+												<label>대형견</label> 
+												<input type="text" name="re_specie" value="1">
 											</div>
 											<div class="qtyButtons">
-												<label>중형견</label> <input type="text" name="qtyInput"
-													value="0">
+												<label>중형견</label> 
+												<input type="text" name="re_specie" value="0">
 											</div>
 											<div class="qtyButtons">
-												<label>소형견</label> <input type="text" name="qtyInput"
-													value="0">
+												<label>소형견</label> 
+												<input type="text" name="re_specie" value="0">
 											</div>
 										</div>
 									</div>
@@ -342,10 +258,10 @@ html, body {
 									<option>Lunch</option>
 									<option>Dinner</option>
 								</select> -->
-											<input class="form-control" type="text" name="mb_pw"
-												id="mb_pw" placeholder="견종 몸무게"> <input
-												class="form-control add_top_15" type="text" name="mb_pw"
-												id="mb_pw" placeholder="견종 컷 및 특이사항">
+											<input class="form-control" type="text" name="re_weight"
+												id="" placeholder="견종 몸무게"> 
+											<input class="form-control add_top_15" type="text" name="re_cut"
+												id="" placeholder="견종 컷 및 특이사항">
 										</div>
 									</div>
 								</form>
