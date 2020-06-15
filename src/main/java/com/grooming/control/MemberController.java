@@ -77,10 +77,10 @@ public class MemberController {
 	@RequestMapping(value = "/agreedDesigner")
 	public String showListDesigner(Model model) {
 		
-		List<MemberDTO> list = dao.agreedDesigner();
-		model.addAttribute("list", list);
+		List<MemberDTO> designerList = dao.agreedDesigner();
+		model.addAttribute("designerList", designerList);
 		
-		return "mypage/grooming_admin_management";
+		return "mypage/grooming_admin_management2";
 	}
 	
 	
@@ -272,10 +272,10 @@ public class MemberController {
 		
 		dd.setMb_pw(securityService.encryptSHA256(mb_pw));
 		
-//		System.out.println(mb_pw);
+		System.out.println(mb_pw);
 		
-//		System.out.println(dd.getMb_id());
-//		System.out.println(dd.getMb_pw());
+		System.out.println(dd.getMb_id());
+		System.out.println(dd.getMb_pw());
 		
 		dao.changePw(dd);
 		

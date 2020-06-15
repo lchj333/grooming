@@ -54,7 +54,7 @@
 								<label>회원등급</label>
 								<!-- 아아아아아아 -->
 								<input type="text" class="form-control"
-							    placeholder="${dInfo.de_approval }" readonly="readonly" >
+							    placeholder="${login.mb_check}" readonly="readonly" >
 							</div>
 						</div>
 						<div class="col-md-6">

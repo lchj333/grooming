@@ -42,7 +42,7 @@ public class NoticeController {
 		HttpSession ses = req.getSession();
 		//ses.setAttribute("num", 현재페이지값이있는객체);
 		
-		return "board/grooming_noticeboard_detail";
+		return "board/grooming_noticeboard_list";
 	}
 	// 상세내용 보기
 		@RequestMapping(value="/noticeDetail2")
@@ -80,13 +80,14 @@ public class NoticeController {
 	public String noticeUpdate(@RequestParam(value="nt_no")int nt_no, Model model) {
 		NoticeDTO noticedto = noticedao.selectOne(nt_no);
 		model.addAttribute("inform", noticedto);
-		return "board/grooming_noticeboard_update";
+		return "gr_noticeboard_update";
 	}
 	//글 수정하기
 	@PostMapping(value="/noticeUpdate")
 	public String UpdateOk(@RequestParam(value="nt_no")int nt_no, Model model,
 							@ModelAttribute NoticeDTO noticedto) {
 		noticedao.updateOne(noticedto);
+
 		return "redirect:/noticeListPage2";
 	}
 	
@@ -94,6 +95,7 @@ public class NoticeController {
 	@RequestMapping(value="/noticeDelete")
 	public String noticeDelete(@RequestParam(value="nt_no")int nt_no, Model model) {
 		noticedao.deleteOne(nt_no);
+
 		return "redirect:/noticeListPage2";
 	}
 	
