@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,29 +42,30 @@
             <h2><i class="fa fa-file"></i>공지사항</h2>
          </div>
             <!-- 제목-->
+            <form action="noticeInsert" method="post">
          <div class="row">
             <div class="col-md-6">
                <div class="form-group">
                   <label>제 목</label>
-                  <input type="text" class="form-control" placeholder="제목을 입력하세요">
+                  <input type="text" class="form-control" name="nt_title" placeholder="제목을 입력하세요">
                </div>
             </div>
-   
          </div>
          <!-- 내용-->
          <div class="row">
             <div class="col-md-12">
                <div class="form-group">
                   <label>내 용</label>
-                  <div class="editor"></div>
+                  <textarea class="editor" name="nt_con" placeholder="내용을 입력하세요"> </textarea>
                </div>
             </div>
          </div>
-      		<input type="submit" value="작성" class="btn_1 medium" />
+         <input type="hidden" name="ad_id" value="${admin.ad_id }" />
+      <input type="submit" value="작성" class="btn_1 medium" />
+            </form>
       </div>
       <!-- /box_general-->
       <!-- /box_general-->
-      <input type="submit" value="저장" class="btn_1 medium" />
      </div>
      <!-- /.container-fluid-->
       </div>
@@ -111,6 +113,6 @@
         tabsize: 2,
         height: 500,
       });
-    </script>    
+    </script>     
 </body>
 </html>

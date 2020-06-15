@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/main_resources/css/grooming_noticeboard_list.css" />
+	href="${pageContext.request.contextPath}/resources/main_resources/css/grooming_noticeboard_list1.css" />
 <meta charset="UTF-8">
 <title>noticelist</title>
 </head>

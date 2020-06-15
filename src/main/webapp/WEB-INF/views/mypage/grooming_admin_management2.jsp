@@ -40,7 +40,7 @@
 		<!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i>미용사 정보</div>
+          <i class="fa fa-table"></i>회원정보</div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -65,7 +65,7 @@
               
               <!-- select All 반복문 -->
                  <tbody>
-               <c:forEach var="list" items="${designerList }">
+               <c:forEach var="list" items="${list }">
                    <tr>
                      <td><c:out value="${list.mb_name}"/></td>
                      <td><c:out value="${list.mb_id}"/></td>
