@@ -19,8 +19,9 @@
         #google-map {
             width: 1200px;
             height: 1200px;
-            margin-left : 600px;
-            padding: 0
+           	margin: 0;
+            padding: 0;
+            position: relative;
             
         }
         #search-panel {
@@ -32,9 +33,10 @@
             padding: 5px;
             border: 1px solid black;
             text-align: center;
+            margin-top: 100px;
             padding: left: 10px
         }
-    </style>
+</style>
 
   <!-- ====================링크============================ -->
   <!-- GOOGLE WEB FONT -->
@@ -71,7 +73,8 @@
 						   <div class="container-fluid">
 							   <div class="row">
 				 				  <div class="col-10">
-					   				<h4><strong>${count}개</strong>검색되었습니다.</h4>
+					   				<h4
+					   				><strong>${count}개</strong>검색되었습니다.</h4>
 				   				  </div>
 								   <div class="col-2">
 									   <a href="#0" class="search_map btn_search_map_view"></a> <!-- /open search panel -->
@@ -204,18 +207,19 @@
 		    </div>
 		</div>
 		<!-- /썸네일 결과 1 (찜,맵 ,)-->
-		</c:forEach>
-
 		<!-- 더보기 버튼 -->
-		<p class="text-center add_top_30"><a href="#0" class="btn_1 rounded"><strong>+더보기</strong></a></p>
 		<!-- /더보기 버튼 -->
+	    <div id="search-panel" style="display: none">
+	        <input id="address" type="text" value="<c:out value='${shoplist.reg_shopaddress}'/>" />
+	        <button id="submit" type="button" value="Geocode">지도 검색</button>
+   		</div>
+	</c:forEach>
+		<p class="text-center add_top_30"><a href="#0" class="btn_1 rounded"><strong>+더보기</strong></a></p>
 	</div>
 	<!-- /검색 결과 좌측 div-->
 	
-	    <div id="search-panel" >
-        <input id="address" type="text" value="대구광역시 북구 침산로 158" />
-        <button id="submit" type="button" value="Geocode">지도 검색</button>
-    </div>
+   
+	
     <div id="google-map">
     </div>
 	
