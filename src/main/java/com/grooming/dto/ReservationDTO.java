@@ -15,6 +15,8 @@ public class ReservationDTO {
 	private String re_cut;
 	
 	private String bc_con;
+	private String ref_shopname;
+	
 	//생성자
 	public ReservationDTO() {}
 	public ReservationDTO(int re_num, int de_licencenum, String mb_id, String re_approval, Date re_date,
@@ -98,4 +100,12 @@ public class ReservationDTO {
 	public void setBc_con(String bc_con) {
 		this.bc_con = bc_con;
 	}
+	public String getRef_shopname() {
+		return ref_shopname;
+	}
+	public void setRef_shopname(String ref_shopname) {
+		this.ref_shopname = ref_shopname;
+	}
+	
+	
 }

@@ -36,17 +36,17 @@
 			</div>
 			<div class="list_general">
 				<ul>
-					<c:forEach var="i" items="${revs}">
+					<c:forEach var="myList" items="${myList}">
 					<li>
 						<figure><img src="img/item_1.jpg" alt=""></figure>
-						<h4>jstl 가게이름 <i class="pending">Pending(jstl 예약정보)</i></h4>
+						<h4>${myList.ref_shopname } <i class="pending">Pending(jstl 예약정보)</i></h4>
 						<ul class="booking_list">
-							<li><strong style="font-weight: bold;">예약일</strong>${i.re_date}</li>
-							<li><strong style="font-weight: bold;">견종</strong>${i.re_species}</li>
-							<li><strong style="font-weight: bold;">몸무게</strong>${i.re_weight}</li>
-							<li><strong style="font-weight: bold;">원하는컷</strong>${i.re_cut}</li>
-							<li><strong style="font-weight: bold;">가게번호</strong>${i.de_licencenum}</li>
-							<li><strong style="font-weight: bold;">예약번호</strong>${i.re_num}</li>
+							<li><strong style="font-weight: bold;">예약일</strong>${myList.re_date}</li>
+							<li><strong style="font-weight: bold;">견종</strong>${myList.re_species}</li>
+							<li><strong style="font-weight: bold;">몸무게</strong>${myList.re_weight}</li>
+							<li><strong style="font-weight: bold;">원하는컷</strong>${myList.re_cut}</li>
+							<li><strong style="font-weight: bold;">가게번호</strong>${myList.de_licencenum}</li>
+							<li><strong style="font-weight: bold;">예약번호</strong>${myList.re_num}</li>
 						</ul>
 						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i>1대1대화</a></p>
 						<ul class="buttons">

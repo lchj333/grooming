@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.grooming.dto.MemberDTO;
 import com.grooming.dto.ReservationDTO;
 
 //예약 관련 DAO
@@ -48,6 +49,11 @@ public class ReservationDAO {
 	//예약 작성
 	public void insertReserv(ReservationDTO dto) {
 		ss.insert(MAPPER+".insertReserv", dto);
+	}
+	
+	// 내 예약 리스트 가져오기
+	public List<ReservationDTO> myReservation() {
+		return ss.selectList("myReservation");
 	}
 	
 }
