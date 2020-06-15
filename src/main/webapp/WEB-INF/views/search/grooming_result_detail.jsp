@@ -49,6 +49,20 @@ html, body {
 }
 </style>
 <!-- ====================css============================ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+
+		$("#btn").click(function(){
+			document.frm.action = "<c:url value='reservation/addReserv'/>";
+			document.frm.submit();
+		});
+
+	});
+
+
+</script>
 
 </head>
 <body>
@@ -222,20 +236,22 @@ html, body {
 									<span style="font-size: 20px;">GROOMING 미용예약</span>
 
 								</div>
-
+								
+							<!-- 예약폼 -->
+							<form action="" name="frm" method="post">
+								
 
 								<div class="form-group" id="input_date">
 									<input class="form-control" type="text" name="dates"
 										placeholder="When.."> <i class="icon_calendar"></i>
 								</div>
-								<form action="/reservation/reservCk">
 											<!-- 임시 태그 -->
 											<input type="hidden" name="re_species" value="대형견" />
 											
 									<div class="panel-dropdown">
 										<a href="#">견종선택 <span class="qtyTotal">1</span></a>
 										<div class="panel-dropdown-content right">
-											<div class="qtyButtons">
+<!-- 											<div class="qtyButtons">
 												<label>대형견</label> 
 												<input type="text" name="re_specie" value="1">
 											</div>
@@ -246,7 +262,7 @@ html, body {
 											<div class="qtyButtons">
 												<label>소형견</label> 
 												<input type="text" name="re_specie" value="0">
-											</div>
+											</div> -->
 										</div>
 									</div>
 
@@ -264,8 +280,8 @@ html, body {
 												id="" placeholder="견종 컷 및 특이사항">
 										</div>
 									</div>
+									<input type="button" value="예약하기" id="btn" class="add_top_30 btn_1 full-width"/>
 								</form>
-								<a href="cart-1.html" class=" add_top_30 btn_1 full-width ">예약하기</a>
 								<a href="wishlist.html"
 									class="btn_1 full-width outline wishlist"><i
 									class="icon_heart"></i> 찜목록에 추가하기</a>
@@ -294,9 +310,9 @@ html, body {
 		<!-- 끌어 올리기 -->
 
 		<!-- Map -->
-	<script src="http://maps.googleapis.com/maps/api/js"></script>
-	<script src="js/map_single_restaurant.js"></script>
-	<script src="js/infobox.js"></script>
+		<script src="http://maps.googleapis.com/maps/api/js"></script>
+		<script src="js/map_single_restaurant.js"></script>
+		<script src="js/infobox.js"></script>
 
 
 		<!-- 푸터 -->
