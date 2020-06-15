@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.grooming.dao.RegistrationDAO;
+import com.grooming.dto.DesignerDTO;
 import com.grooming.dto.RegistrationDTO;
 import com.grooming.dto.ShopListDTO;
 import com.grooming.utils.FileUpload;
@@ -59,15 +60,18 @@ public class RegistrationController {
 	//가게 등록 (+썸네일 이미지)
 	@PostMapping(value = "/mypage/registShop")
 	public String insertShopInfo(RegistrationDTO dto, MultipartHttpServletRequest ms, //스프링에서 알아서 set.
+									@RequestParam(value = "addr1")String addr1,
+									@RequestParam(value = "addr2")String addr2,
 									HttpServletRequest req) throws IllegalStateException, IOException {
 		//메소드 바디
-		String lnum = (String)req.getAttribute("dInfo.de_licencenum");
-		if(lnum == null & lnum.equals("")) {
+		HttpSession ss = req.getSession();
+		
+		DesignerDTO info = (DesignerDTO)ss.getAttribute("dInfo");
+		if(info == null) {
 			return "mypage/grooming_user_profile";//미용사 값 없을 경우
 		}else {
 			//미용사 넘버 저장
-			int num = Integer.parseInt(lnum); 
-			dto.setDe_licencenum(num);
+			dto.setDe_licencenum(info.getDe_licencenum());
 			
 			String lPath = req.getServletContext().getRealPath("/resources/thumbnail/");
 			//post 파라미터
@@ -78,6 +82,9 @@ public class RegistrationController {
 				
 			//저장된 파일 이름 담기
 			dto.setReg_img(fileName);
+			
+			//샵 주소
+			dto.setReg_shopaddress(addr1+" "+addr2);
 			
 			//최종적 DB저장
 			rdao.insertShop(dto);
@@ -106,8 +113,8 @@ public class RegistrationController {
 									HttpServletResponse res, RedirectAttributes rtt) 
 														throws IllegalStateException, IOException {
 		//메소드 바디
-		int de_licencenum = (int)req.getAttribute("de_licencenum");	//세션일 경우
-//		int de_licencenum = Integer.parseInt(ms.getParameter("de_licencenum"));//파라미터일 경우
+		HttpSession ss = req.getSession();
+		int de_licencenum = (int)ss.getAttribute("de_licencenum");
 		
 		List<MultipartFile> list = ms.getFiles("files");
 		//IOException - 파일이 없을 때 발생할 에러. 호출함수인 xml의 DispatcherServlet class로 예외처리 전가//studentNumber - submissionForm의 속성 name 
@@ -141,12 +148,14 @@ public class RegistrationController {
 	}
 	
 	//가게 정보 블럭 상태 변경 (관리자에 의한)
-	@RequestMapping(value = "/blockShop")
+	@RequestMapping(value = "mypage/blockShop")
 	public String shopBlockByAdmin(@RequestParam
 										(value = "de_licencenum", required = true)int licencenum, 
 															HttpServletRequest req) {
 		//메소드 바디
-		String ad_id = (String) req.getAttribute("ad_id");
+		HttpSession ss = req.getSession();
+		
+		String ad_id = (String) ss.getAttribute("ad_id");
 		if(ad_id==null) {//관리자 아이디 값이 없을 경우
 			return "redirect:"+req.getHeader("Referer");//뒤로 보내기
 		}else {
@@ -156,7 +165,7 @@ public class RegistrationController {
 			
 			rdao.changeStateByAdmin(dto);
 			
-			return "home";
+			return "mypage/grooming_admin_management";
 		}
 		
 	}
@@ -176,10 +185,11 @@ public class RegistrationController {
 		
 		List<ShopListDTO> list = rdao.searchShop(map);
 		
-		if(list.size() == 0) { //검색값이 없을 경우
+		if(list == null) { //검색값이 없을 경우
 			return "main/grooming_main";
 		}else {
 			req.setAttribute("shopList", list);
+			req.setAttribute("count", list.size());
 			
 			return "search/grooming_screen_map";
 		}

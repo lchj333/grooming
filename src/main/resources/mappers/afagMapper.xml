@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace=" ">
+	
+	<!-- 댓글작성 -->
+	<insert id="insertAfag">
+		INSERT INTO IQ_AFAG(IN_NUM, AD_ID, IQ_CON)
+		VALUES (#{in_num}, 'admin', #{iq_con})
+	</insert>
+	
+	<!-- 댓글보기 -->
+	<select id="selectAfag">
+		SELECT * FROM IQ_AFAG
+		WHERE IN_NUM = #{in_num}
+	</select>
+		
+	<!-- 댓글수정 -->
+	<update id="updateAfag">
+		UPDATE IQ_AFAG
+		SET IQ_CON = #{iq_con}
+		WHERE IN_NUM = #{in_num}
+	</update>
+	
+	<!-- 댓글삭제 -->
+	<delete id="deleteAfag">
+		DELETE FROM IQ_AFAG
+		WHERE IN_NUM = #{in_num}
+	</delete>
+	
+</mapper>

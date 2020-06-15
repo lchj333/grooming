@@ -41,7 +41,7 @@
 <body class="fixed-nav sticky-footer" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-default fixed-top" id="mainNav">
-    <a class="navbar-brand" href="#"><img src="<c:url value='/resources/mypage/img/grooming_logo_main.png'/>" data-retina="true" alt="" width="150" height="36"></a>
+    <a class="navbar-brand" href="<c:url value="/"/>"><img src="<c:url value='/resources/mypage/img/grooming_logo_main.png'/>" data-retina="true" alt="" width="150" height="36"></a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -127,7 +127,7 @@
 		          </a>
 		          <ul class="sidenav-second-level collapse" id="collapseMylistings">
 		            <li>
-		              <a href="<c:url value='/mypage/'/>">가게등록<span class="badge badge-pill badge-primary">6</span></a>
+		              <a href="<c:url value='/mypage/registShop'/>">가게등록<span class="badge badge-pill badge-primary">6</span></a>
 		            </li>
 					<li>
 		              <a href="<c:url value='/mypage/'/>">메시지<span class="badge badge-pill badge-success">6</span></a>
@@ -265,7 +265,19 @@
 		              <a href="<c:url value='/agreedDesigner'/>">미용사 회원관리</a>
 		            </li>
 		            <li>
-		              <a href="<c:url value='pointchargingok'/>">문의보기</a>
+		              <a href="<c:url value='/noticeListPage2'/>">공지사항목록</a>
+		            </li>
+		            <li>
+		              <a href="<c:url value='/noticeInsert'/>">공지사항등록</a>
+		            </li>
+		            <li>
+		              <a href="<c:url value='/faqList2'/>">자주묻는질문목록</a>
+		            </li>
+		            <li>
+		              <a href="<c:url value='/faqInsert'/>">자주묻는질문등록</a>
+		            </li>
+		            <li>
+		              <a href="<c:url value='/inquiryAdminlist'/>">문의보기</a>
 		            </li>
 		            <li>
 		              <a href="<c:url value='/designerApplication'/>">미용사등록</a>
