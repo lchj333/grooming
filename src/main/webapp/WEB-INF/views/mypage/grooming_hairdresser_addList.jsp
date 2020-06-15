@@ -163,6 +163,7 @@ function openDaumPost(){
 				</div>
 				<p id="myprofile-savebtn">
 					<input type="button" id="btn" value="저장" class="btn_1 medium" />
+					<input type="hidden" name="de_licencenum" value="${dInfo.de_licencenum }"/>
 				</p>
 			</form>
 		</div>
