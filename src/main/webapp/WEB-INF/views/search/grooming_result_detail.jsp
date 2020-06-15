@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -44,7 +44,7 @@ html, body {
 .hero_in.restaurants_detail {
 	height: 550px;
 	/* 디테일 이미지 넣는 곳 */
-	background: url(img/grooming_gogi.jpg) center center;
+	background-image: url('${pageContext.request.contextPath}/resources/main_resources/img/Grooming_BG.png');
 
 }
 </style>
@@ -74,7 +74,7 @@ html, body {
 					<!-- 미리 보기 div & 모아보기-->
 					<span class="magnific-gallery">
 					<!-- 등록되는 서브 이미지 받기 -->
-					<a href="img/grooming_gogi.jpg" class="btn_photos"
+					<a href="<c:url value="/resource/img/grooming_gogi.jpg"/>" class="btn_photos"
 						title="Photo title" data-effect="mfp-zoom-in">모아보기</a>
 
 						 <a href="img/grooming_gogi.jpg" title="Photo title"
