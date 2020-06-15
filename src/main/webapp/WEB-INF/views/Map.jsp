@@ -52,7 +52,7 @@
          */
         function initMap() {
             console.log('Map is initialized.');
- 			
+ 
             /**
              * 맵을 설정한다.
              * 1번째 파라미터 : 구글 맵을 표시할 위치. 여기서는 #google-map
@@ -69,15 +69,7 @@
                     lng: 150.644
                 }
             });
- 				
-             
-            <c:forEach items="${slist }" var="o">
- 			
- 			console.log(<c:out value="${d.REG_SHOPADDRESS}" />+
- 			<c:out value="${d.REF_SHOPNAME}" />);
- 			
- 			</c:forEach>
-             
+ 
             /**
              * Google Geocoding. Google Map API에 포함되어 있다.
              */

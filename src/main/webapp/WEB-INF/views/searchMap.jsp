@@ -11,7 +11,7 @@
 	<form action="mapps" method="post">
 		<table>
 			<tr>
-				<th>디자이너 라이센스 넘버</th>
+				<th>가게이름</th>
 				<td><input type="text" name="names"/></td>
 			</tr>
 			
