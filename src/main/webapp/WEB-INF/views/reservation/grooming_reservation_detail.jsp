@@ -73,9 +73,9 @@
 							<h5 class="float-right">
 								<strong>예약번호#55555 </strong>
 							</h5>
-						</div>
+						</div>rsvrsvrsvrsvrsvrsvrsvrsvrsvrsv rsv rsv rsv  rsvrsvrsvrsvrsvrsv
 						<!-- 여기로 이동 -->
-						<form action="/reservation/addReserv">
+						<form action="<c:url value="/reservation/addReserv"/>">
 						</form>
 						<hr>
 						<div>

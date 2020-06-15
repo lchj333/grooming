@@ -55,7 +55,7 @@ html, body {
 		
 
 		$("#btn").click(function(){
-			document.frm.action = "<c:url value='reservation/addReserv'/>";
+			document.frm.action = "<c:url value='/reservation/reservCk'/>";
 			document.frm.submit();
 		});
 
