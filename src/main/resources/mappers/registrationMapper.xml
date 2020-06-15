@@ -11,7 +11,7 @@
 			r.reg_img, (select mb_phone from gr_member
 						where mb_id = (select mb_id
 										from gr_designer
-										where DE_LICENCENUM = r.de_licencenum)) 
+										where DE_LICENCENUM = r.de_licencenum)) mb_phone
 		from gr_registration r
 		where reg_block = 0
 		<if test="data!=null and !data.equals('')">
