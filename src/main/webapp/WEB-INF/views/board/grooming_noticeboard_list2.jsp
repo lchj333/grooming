@@ -11,18 +11,18 @@
 <title>noticelist</title>
 </head>
 <body>
-
+<jsp:include page="../mypage/mypage_nav.jsp" />
 <div id="page">
 <!-- contents -->
 	<form action="#" id="gr_noticeboard_list_form">
 		<div id="grooming_qnaboard_customlist_div">
 			<div id="grooming_qnaboard_customlist_section">
 				<div id="grooming_qnaboard_customlist_articlelist">
-					<div id="grooming_qnaboard_customlist_maintitle">공지사항</div>
+					<div id="grooming_qnaboard_customlist_maintitle">공지사항(관리자)</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 					<c:forEach var="a" items="${list }">
 						<div id="grooming_qnaboard_customlist_tr">
-							<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td1"><a href="noticeDetail?nt_no=${a.nt_no }&num=${pn}">${a.nt_title }</a></div>
+							<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td1"><a href="noticeDetail2?nt_no=${a.nt_no }&num=${pn}">${a.nt_title }</a></div>
 							<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td2"><fmt:formatDate value="${a.nt_regdate }" pattern="YY.MM.dd"/></div>
 						</div>
 					</c:forEach>
@@ -30,7 +30,7 @@
 				
 		<!-- 페이징 처리 -->
 		<c:if test="${prev}">
-			<span>[ <a href="/control/noticeListPage?num=${startPageNum - 1}">이전</a> ]</span>
+			<span>[ <a href="/control/noticeListPage2?num=${startPageNum - 1}">이전</a> ]</span>
 		</c:if>
 		
 		<!-- 페이지 모음 출력 -->
@@ -38,7 +38,7 @@
 			<span>
 				<!-- 현재보고있는 페이지 글자 두껍게해서 직관성 향상-->
 				<c:if test="${select != num }">
-					<a href="/control/noticeListPage?num=${num}">${num}</a>									
+					<a href="/control/noticeListPage2?num=${num}">${num}</a>									
 				</c:if>
 				<c:if test="${select == num }">
 					<b>${num }</b>
@@ -47,7 +47,7 @@
 		</c:forEach>
 					
 		<c:if test="${next}">
-			<span>[ <a href="/control/noticeListPage?num=${endPageNum + 1}">다음</a> ]</span>
+			<span>[ <a href="/control/noticeListPage2?num=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
 		<!-- 페이징처리 끝 -->		
 				</div>
@@ -59,7 +59,23 @@
 		</div>
 	</form>
 </div>
-
-	<jsp:include page="../mypage/mypage_nav.jsp" />
+	<script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="<c:url value='/resources/mypage/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
+    
+    <!-- Page level plugin JavaScript-->
+    <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/dataTables.bootstrap4.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.selectbox-0.2.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/retina-replace.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.magnific-popup.min.js'/>"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
+	<!-- Custom scripts for this page-->
+	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
+	
 </body>
 </html>

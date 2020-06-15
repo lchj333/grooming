@@ -265,7 +265,16 @@
 		              <a href="<c:url value='/agreedDesigner'/>">미용사 회원관리</a>
 		            </li>
 		            <li>
+		              <a href="<c:url value='/noticeListPage2'/>">공지사항목록</a>
+		            </li>
+		            <li>
 		              <a href="<c:url value='/noticeInsert'/>">공지사항등록</a>
+		            </li>
+		            <li>
+		              <a href="<c:url value='/faqList2'/>">자주묻는질문목록</a>
+		            </li>
+		            <li>
+		              <a href="<c:url value='/faqInsert'/>">자주묻는질문등록</a>
 		            </li>
 		            <li>
 		              <a href="<c:url value='/inquiryAdminlist'/>">문의보기</a>
