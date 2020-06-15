@@ -22,6 +22,8 @@
     <!-- YOUR CUSTOM CSS -->
     <link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
 
+    <!-- icon 링크 -->
+	<link href="${pageContext.request.contextPath}/resources/main_resources/css/icon_fonts/css/icon_set_1.css" rel="stylesheet">
 
 
 	<!-- 링크 정보  -->

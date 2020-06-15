@@ -13,7 +13,14 @@
 
 <title>Grooming 검색 결과</title>
 
-
+<!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <!-- =======================================================================================================================================================================================================================  -->
   <!-- ====================링크============================ -->
   <!-- GOOGLE WEB FONT -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
@@ -305,13 +312,13 @@
     <script src="${pageContext.request.contextPath}/resources/main_resources/js/main.js"></script>
 	<script src="assets/validate.js"></script>
 
-	<%-- <!-- map에 관련한 js파일  -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=발급받은 APP KEY를 넣으시면 됩니다."></script>
+	<!-- map에 관련한 js파일  -->
+
 	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/markerclusterer.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/map_hotels_half_screen.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/main_resources/js/infobox.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --%>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		function godetail(number) {
 			document.goform.action = "<c:url value="/search/detailShop"/>";
