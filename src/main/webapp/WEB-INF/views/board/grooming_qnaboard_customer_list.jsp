@@ -40,6 +40,7 @@ $(document).ready(function(){
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
 							<%-- <c:if test="${mb.id eq login.md_id"> --%>
+							<div style="border-top : 1px solid black;"></div>
 							<c:forEach var="a" items="${list}">
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
@@ -51,11 +52,17 @@ $(document).ready(function(){
 										<fmt:formatDate value="${a.in_nowdate }" pattern="YY-MM-dd"/>
 									</div>
 								</div> 
-									<ul class="hide" id="gr_qna_slideul">
-										<li id="gr_qna_slideli">
-										<c:out value="${a.in_con }"></c:out>
-		  								</li>
-									</ul>
+					<ul class="hide" id="gr_qna_slideul">
+                         <li id="gr_qna_slideli">Q. <c:out value="${a.in_con }"></c:out></li>
+                        	<%-- <c:out value="${list2.iq_con }"/> --%>
+                        	<c:forEach var="k" items="${list2 }">
+                        		<c:if test="${k.in_num == a.in_num }">
+                		 <li id="gr_qna_slideli" style="margin-top:20px; margin-bottom:10px;">
+                          		A. <c:out value="${k.iq_con }"/>
+                         </li>
+                        		</c:if>
+                        	</c:forEach>
+                    </ul>
 								</li>
 							</c:forEach>
 							<%-- </c:if> --%>

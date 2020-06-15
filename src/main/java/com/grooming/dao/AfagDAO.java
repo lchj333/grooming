@@ -1,5 +1,7 @@
 package com.grooming.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -21,13 +23,18 @@ public class AfagDAO {
 	public AfagDTO selectOne(int in_num) {
 		return ss.selectOne("selectAfag", in_num);
 	}
+	public List<AfagDTO> selectAll(){
+		
+		return ss.selectList("selectAllAfag");
+	}
+	
 	
 	//댓글 작성하기
 	public void insertOne(AfagDTO dto) {
 		ss.insert("insertAfag", dto);
 	}
 	
-	// 댓글 수정하기
+	// 댓글 수정하기(X)
 	public void updateOne(AfagDTO dto) {
 		ss.update("updateAfag", dto);
 	}

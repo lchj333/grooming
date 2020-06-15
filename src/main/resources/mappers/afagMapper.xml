@@ -6,13 +6,17 @@
 	
 	<!-- 댓글작성 -->
 	<insert id="insertAfag">
-		INSERT INTO IQ_AFAG(IN_NUM, AD_ID, IQ_CON)
+		INSERT INTO iq_afag(IN_NUM, AD_ID, IQ_CON)
 		VALUES (#{in_num}, 'admin', #{iq_con})
 	</insert>
 	
 	<!-- 댓글보기 -->
-	<select id="selectAfag">
-		SELECT * FROM IQ_AFAG
+	<select id="selectAllAfag" resultType="AfagDTO">
+		SELECT * FROM iq_afag
+	</select>
+	
+	<select id="selectAfag" resultType="AfagDTO">
+		SELECT * FROM iq_afag
 		WHERE IN_NUM = #{in_num}
 	</select>
 		

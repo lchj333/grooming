@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.grooming.dao.AfagDAO;
 import com.grooming.dao.InquiryDAO;
+import com.grooming.dto.AfagDTO;
 import com.grooming.dto.InquiryDTO;
 import com.grooming.dto.NoticeDTO;
 
@@ -24,6 +26,8 @@ public class InquiryController {
 
 	@Inject
 	InquiryDAO dao;
+	@Inject
+	AfagDAO dao2;
 	//문의사항(관리자) 전체 보기
 //	@RequestMapping(value="inquiryAdminList")
 //	public String inquiryAdminList(Model model) {
@@ -37,8 +41,6 @@ public class InquiryController {
 	public String inquiryAdminList(Model model, HttpServletRequest req, RedirectAttributes rtt) {
 		int num = 1;
 		
-		HttpSession ss = req.getSession();
-		ss.setAttribute("in_num", rtt.getAttribute("in_num"));
 		
 		String n = req.getParameter("num");
 		
@@ -83,6 +85,9 @@ public class InquiryController {
 		model.addAttribute("list", list);
 		model.addAttribute("pageNum", pageNum);
 					
+		HttpSession ss = req.getSession();
+		ss.setAttribute("in_num", rtt.getAttribute("in_num"));
+		
 		ss.setAttribute("pn", num);
 		model.addAttribute("select", num);
 		
@@ -139,7 +144,10 @@ public class InquiryController {
 		List<InquiryDTO> list = dao.listPage(displayPost, postNum);			
 		model.addAttribute("list", list);
 		model.addAttribute("pageNum", pageNum);
-					
+		
+		List<AfagDTO> list2 = dao2.selectAll();
+		model.addAttribute("list2", list2);
+		
 		ss.setAttribute("pn", num);
 		model.addAttribute("select", num);
 		
@@ -148,10 +156,12 @@ public class InquiryController {
 	
 	// 문의하기 detail
 	@RequestMapping(value="inquiryDetail")
-	public String inquiryDetail(@RequestParam(value="in_num")int in_num, Model model) {
+	public String inquiryDetail(@RequestParam(value="in_num")int in_num,
+							@RequestParam(value="num")int num,
+						HttpServletRequest req) {
 		InquiryDTO dto = dao.selectOne(in_num);
-		model.addAttribute("inform", dto);
-		return "gr_inquiryboard_detail";
+		req.setAttribute("inform", dto);
+		return "board/grooming_qnaboard_adminwrite";
 	}
 	
 	// 문의작성페이지로 이동하기
@@ -166,6 +176,13 @@ public class InquiryController {
 		dao.insertOne(dto);
 		return "redirect:/inquiryCustomerList";
 	}
+	// 댓글 작성하기
+	@PostMapping(value="/afagInsert")
+	public String comment(@ModelAttribute AfagDTO afagdto) {
+		dao2.insertOne(afagdto);
+		return "redirect:/inquiryAdminList";
+	}
+	
 	
 	// 문의수정하기 페이지로이동
 	@GetMapping(value="/inquiryUpdate")
