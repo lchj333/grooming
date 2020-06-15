@@ -8,7 +8,8 @@
 	<select id="selectAllIPayed"  parameterType="PaylogDTO" resultType="PaylogDTO">
 		select g.DE_LICENCENUM, p.PAY_DATE, p.PAY_MONEY
 		from gr_paylog p , gr_designer g 
-		where g.DE_LICENCENUM = #{de_licencenum};
+		where g.DE_LICENCENUM = #{de_licencenum}
+		order by p.PAY_DATE desc
 	</select>
 	
 </mapper>
