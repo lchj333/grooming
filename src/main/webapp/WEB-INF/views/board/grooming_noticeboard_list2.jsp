@@ -13,7 +13,6 @@
 <body>
 
 <div id="page">
-		<jsp:include page="../include/header.jsp" />
 <!-- contents -->
 	<form action="#" id="gr_noticeboard_list_form">
 		<div id="grooming_qnaboard_customlist_div">
@@ -27,7 +26,6 @@
 							<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td2"><fmt:formatDate value="${a.nt_regdate }" pattern="YY.MM.dd"/></div>
 						</div>
 					</c:forEach>
-						<div style="border-top:1px solid #D5D5D5;"></div>
 					</div>
 				
 		<!-- 페이징 처리 -->
@@ -62,6 +60,6 @@
 	</form>
 </div>
 
-	<jsp:include page="../include/footer.jsp" />
+	<jsp:include page="../mypage/mypage_nav.jsp" />
 </body>
 </html>

@@ -32,7 +32,6 @@
 
 </head>
 
-<jsp:include page="../include/header.jsp"/>
 <body class="fixed-nav sticky-footer" id="page-top">
   <!-- /Navigation-->
   <div class="content-wrapper" id="grooming_noticeboard_write_maindiv">
@@ -61,6 +60,7 @@
                </div>
             </div>
          </div>
+         <input type="hidden" name="ad_id" value="${admin.ad_id }" />
       <input type="submit" value="작성" class="btn_1 medium" />
             </form>
       </div>
@@ -69,7 +69,7 @@
      </div>
      <!-- /.container-fluid-->
       </div>
-   <jsp:include page="../include/footer.jsp"/>
+   <jsp:include page="../mypage/mypage_nav.jsp"/>
     <!-- /.container-wrapper-->
     <!-- Scroll to Top Button-->
     <!-- Logout Modal-->
