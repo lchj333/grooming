@@ -90,8 +90,8 @@ public class ReservationController {
 	//↕페이지 이동 -> 목록 페이지
 	@RequestMapping("/goToBook")
 	public String goToBook(RedirectAttributes rtt, HttpServletRequest req) {
+		//세션 옮기기
 		HttpSession hs = req.getSession();
-		
 		hs.setAttribute("login", req.getAttribute("login"));
 		hs.setAttribute("dInfo", req.getAttribute("dInfo"));
 		//예약 리스트 이동
