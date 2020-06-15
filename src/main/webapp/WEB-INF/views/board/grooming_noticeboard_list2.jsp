@@ -1,18 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/resources/main_resources/css/grooming_noticeboard_list.css" />
+	href="${pageContext.request.contextPath}/resources/main_resources/css/grooming_noticeboard_list1.css" />
 <meta charset="UTF-8">
 <title>noticelist</title>
 </head>
 <body>
 
 <div id="page">
-		<jsp:include page="../include/header.jsp" />
 <!-- contents -->
 	<form action="#" id="gr_noticeboard_list_form">
 		<div id="grooming_qnaboard_customlist_div">
@@ -26,7 +26,6 @@
 							<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td2"><fmt:formatDate value="${a.nt_regdate }" pattern="YY.MM.dd"/></div>
 						</div>
 					</c:forEach>
-						<div style="border-top:1px solid #D5D5D5;"></div>
 					</div>
 				
 		<!-- 페이징 처리 -->
@@ -61,6 +60,6 @@
 	</form>
 </div>
 
-	<jsp:include page="../include/footer.jsp" />
+	<jsp:include page="../mypage/mypage_nav.jsp" />
 </body>
 </html>

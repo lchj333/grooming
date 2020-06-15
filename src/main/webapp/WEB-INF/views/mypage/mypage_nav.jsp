@@ -265,7 +265,10 @@
 		              <a href="<c:url value='/agreedDesigner'/>">미용사 회원관리</a>
 		            </li>
 		            <li>
-		              <a href="<c:url value='pointchargingok'/>">문의보기</a>
+		              <a href="<c:url value='/noticeInsert'/>">공지사항등록</a>
+		            </li>
+		            <li>
+		              <a href="<c:url value='/inquiryAdminlist'/>">문의보기</a>
 		            </li>
 		            <li>
 		              <a href="<c:url value='/designerApplication'/>">미용사등록</a>
