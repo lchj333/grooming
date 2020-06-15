@@ -81,7 +81,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="Ansonika">
-  <title>PANAGEA - Admin dashboard</title>
+  <title>1:1 문의 작성</title>
 	
 
   <!-- GOOGLE WEB FONT -->
@@ -110,12 +110,13 @@
   
   <div class="content-wrapper">
 		<form action="inquiryInsert" method="post">
+		<input type="hidden" name="mb_id" value="${login.mb_id }" />
     <div class="container-fluid">
       <!-- Breadcrumbs-->
      
 		<div class="box_general padding_bottom">
 			<div class="header_box version_2">
-				<h2><i class="fa fa-file"></i>문의하기</h2>
+				<h2><i class="fa fa-file"></i>1:1 문의하기</h2>
 			</div>
 			<div class="row">
 				<div class="col-md-5">

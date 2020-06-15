@@ -6,7 +6,7 @@
 	<!-- 문의작성 -->
 	<insert id="insertInquiry">
 		INSERT INTO gr_inquiry(MB_ID, AD_ID, IN_TITLE, IN_CON, IN_NOWDATE, IN_CATEGORY)
-		VALUES ('mins2', 'admin', #{in_title}, #{in_con}, NOW(), #{in_category})
+		VALUES (#{mb_id}, 'admin', #{in_title}, #{in_con}, NOW(), #{in_category})
 	</insert>
 	<!-- 문의전체조회 -->
 	<select id="selectAllInquiry" resultType="InquiryDTO">
@@ -26,4 +26,16 @@
 	<delete id="deleteInquiry">
 		DELETE FROM gr_inquiry WHERE IN_NUM = #{in_num}
 	</delete>
+	
+	<!-- 게시물의 총 갯수를 구하기 -->
+	<select id="inquiryCount" resultType="int">
+		SELECT COUNT(in_num) FROM gr_inquiry
+	</select>
+	
+	<!-- 게시물 목록 + 페이징 -->
+	<select id="inquiryListPage" parameterType="hashMap" resultType="InquiryDTO">
+		SELECT * FROM gr_inquiry
+		ORDER BY in_num DESC
+		LIMIT #{displayPost}, #{postNum}
+	</select>
 </mapper>

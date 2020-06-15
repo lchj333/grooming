@@ -96,10 +96,10 @@
 		          </a>
 		          <ul class="sidenav-second-level collapse" id="collapseInquiry">
 		            <li>
-		              <a href="<c:url value='/mypage/'/>">문의하기<span class="badge badge-pill badge-primary">6</span></a>
+		              <a href="<c:url value='inquiryInsert?mb_id=${login.mb_id }'/>">문의하기<span class="badge badge-pill badge-primary">6</span></a>
 		            </li>
 					<li>
-		              <a href="<c:url value='/mypage/bookmark'/>">문의확인<span class="badge badge-pill badge-success">6</span></a>
+		              <a href="<c:url value='inquiryCustomerList'/>">문의확인<span class="badge badge-pill badge-success">6</span></a>
 		            </li>
 		          </ul>
 		        </li>
@@ -277,7 +277,7 @@
 		              <a href="<c:url value='/faqInsert'/>">자주묻는질문등록</a>
 		            </li>
 		            <li>
-		              <a href="<c:url value='/inquiryAdminlist'/>">문의보기</a>
+		              <a href="<c:url value='/inquiryAdminList'/>">문의보기</a>
 		            </li>
 		            <li>
 		              <a href="<c:url value='/designerApplication'/>">미용사등록</a>

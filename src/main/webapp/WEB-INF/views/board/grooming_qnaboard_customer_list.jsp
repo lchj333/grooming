@@ -36,19 +36,19 @@ $(document).ready(function(){
 		<div id="grooming_qnaboard_customlist_div">
 			<div id="grooming_qnaboard_customlist_section">
 				<div id="grooming_qnaboard_customlist_articlelist">
-					<div id="grooming_qnaboard_customlist_maintitle">1:1문의(사용자페이지)</div>
+					<div id="grooming_qnaboard_customlist_maintitle">내 문의 내역</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
 							<%-- <c:if test="${mb.id eq login.md_id"> --%>
-							<c:forEach var="a" items="list">
+							<c:forEach var="a" items="${list}">
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
 									<!-- 제목 -->
-									<div id="gr_qna_title"><c:out value="${a.in_title }"></c:out> 
+									<div id="gr_qna_title">[<c:out value="${a.in_category }"/>] <c:out value="${a.in_title }"></c:out> 
 									</div>
 									<!-- 날짜 -->
 									<div id="gr_qna_regdate" >
-										<fmt:formatDate value="${a.in_nowdate }" pattern="YY.MM.dd"/>
+										<fmt:formatDate value="${a.in_nowdate }" pattern="YY-MM-dd"/>
 									</div>
 								</div> 
 									<ul class="hide" id="gr_qna_slideul">
@@ -67,5 +67,22 @@ $(document).ready(function(){
 	</form>
 </div>
 <jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
+	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/chart.js/Chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/mypage/vendor/datatables/dataTables.bootstrap4.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery.selectbox-0.2.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/retina-replace.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery.magnific-popup.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="${pageContext.request.contextPath}/resources/mypage/js/admin.js"></script>
+	<!-- Custom scripts for this page-->
+	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/dropzone.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap-datepicker.js"></script>
+	<script>$('input.date-pick').datepicker();</script>
 </body>
 </html>

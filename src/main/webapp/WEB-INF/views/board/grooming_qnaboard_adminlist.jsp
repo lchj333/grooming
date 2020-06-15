@@ -35,7 +35,7 @@ $(document).ready(function(){
 		<div id="grooming_qnaboard_customl\ist_div">
 			<div id="grooming_qnaboard_customlist_section">
 				<div id="grooming_qnaboard_customlist_articlelist">
-					<div id="grooming_qnaboard_customlist_maintitle">1:1문의(사용자페이지)</div>
+					<div id="grooming_qnaboard_customlist_maintitle">문의사항 관리</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
 							<c:forEach var="a" items="${list }">
@@ -47,7 +47,7 @@ $(document).ready(function(){
 									<div id="gr_qna_regdate" ><c:out value="${a.in_nowdate }"></c:out></div>
 								</div> 
 									<ul class="hide" id="gr_qna_slideul">
-										<li id   ="gr_qna_slideli"><c:out value="${a.in_con }"></c:out></li>
+										<li id="gr_qna_slideli"><c:out value="${a.in_con }"></c:out></li>
 									</ul>
 								</li>
 							</c:forEach>

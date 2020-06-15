@@ -1,5 +1,6 @@
 package com.grooming.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -8,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.grooming.dto.InquiryDTO;
+import com.grooming.dto.NoticeDTO;
 
 @Repository
 public class InquiryDAO {
@@ -39,4 +41,15 @@ public class InquiryDAO {
 		ss.delete("deleteInquiry", in_num);
 	}
 	
+	// 게시물의 총 갯수
+	public int count() {
+		return ss.selectOne("inquiryCount");
+	}
+	// 게시물 목록 + 페이징
+	public List<InquiryDTO> listPage(int displayPost, int postNum) {
+		HashMap<String, Integer> data = new HashMap<String, Integer>();
+		data.put("displayPost", displayPost);
+		data.put("postNum", postNum);
+		return ss.selectList("inquiryListPage", data);
+	}
 }
