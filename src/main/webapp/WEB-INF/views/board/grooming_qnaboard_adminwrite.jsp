@@ -161,6 +161,8 @@
     </a>
     <!-- Logout Modal-->
     <!-- Bootstrap core JavaScript-->
+    <!-- 로그아웃 버튼 -->
+<jsp:include page="../mypage/mypage_logout.jsp"></jsp:include>
     <script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->

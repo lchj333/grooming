@@ -30,7 +30,7 @@ public class InquiryController {
 	AfagDAO dao2;
 	//문의사항(관리자) 전체 보기
 //	@RequestMapping(value="inquiryAdminList")
-//	public String inquiryAdminList(Model model) {
+//	public String inquiryAdminL     ist(Model model) {
 //		List<InquiryDTO> list = dao.selectList();
 //		model.addAttribute("list", list);
 //		return "board/grooming_qnaboard_adminlist";
@@ -107,11 +107,9 @@ public class InquiryController {
 		if(n!=null&&n!="") {
 			num = Integer.parseInt(n);
 		}
-		
-		
-		//사용자가 작성한 게시물 총 갯수
-		int count = dao.count2(req.getParameter("mb_id"));		
-		
+				
+		//게시물 총 갯수
+		int count = dao.count();
 		// 한 페이지에 출력할 공지사항 숫자
 		int postNum = 5;
 		//하단 페이징 번호
