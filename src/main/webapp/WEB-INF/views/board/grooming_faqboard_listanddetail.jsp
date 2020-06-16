@@ -45,19 +45,19 @@ $(document).ready(function(){
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
 									<!-- 제목 -->
-									<div id="gr_qna_title"><c:out value="${inform.f_title }"></c:out></div>
+									<div id="gr_qna_title">Q.   <c:out value="${inform.f_title }"></c:out></div>
 									<!-- 날짜 -->
 									<div id="gr_qna_regdate" ></div>
 								</div> 
 									<ul class="hide" id="gr_qna_slideul">
 										<li id="gr_qna_slideli">
-										<c:set var="a" value="${inform.f_con }"/>
+										A.    <c:set var="a" value="${inform.f_con }"/>
 										<c:set var="b" value="${fn:replace(a,'<p>','')}"/>
 										<c:set var="c" value="${fn:replace(b,'</p>','</br>')}"/>
 										<c:set var="d" value="${fn:replace(c,'&nbsp;','
 										')}"/>
 										<c:set var="e" value="${fn:replace(d,'<br>','')}"/>
-										{e }
+										${e }
 										</li>
 									</ul>
 								</li>

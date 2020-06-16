@@ -31,7 +31,7 @@
 		<c:set var="d" value="${fn:replace(c,'&nbsp;','
 		')}"/>
 		<c:set var="e" value="${fn:replace(d,'<br>','')}"/>
-		{e }
+		${e }
 	</div>      
 	<p id="notice_button">
 		<a href="noticeListPage2?num=${pn }" class="btn_1 medium">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
