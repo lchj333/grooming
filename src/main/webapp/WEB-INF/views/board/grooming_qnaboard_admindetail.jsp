@@ -42,16 +42,15 @@ $(document).ready(function(){
 						<ul id="gr_qna_ul">
 							<c:forEach var="a" items="${list}">
 								<li class="menu" id="gr_qna_li">
-								<div id="gr_qna_a">
-									<!-- 제목 -->
-									<div id="gr_qna_title"><c:out value="${a.in_title }"></c:out> 
-
-									</div>
-									<!-- 날짜 -->
-									<div id="gr_qna_regdate" >
-										<fmt:formatDate value="${a.in_nowdate }" pattern="YY.MM.dd"/>
-									</div>
-								</div> 
+									<div id="gr_qna_a">
+										<!-- 제목 -->
+										<div id="gr_qna_title"><c:out value="${a.in_title }"/> 
+										</div>
+										<!-- 날짜 -->
+										<div id="gr_qna_regdate" >
+											<fmt:formatDate value="${a.in_nowdate }" pattern="YY.MM.dd"/>
+										</div>
+									</div> 
 									<ul class="hide" id="gr_qna_slideul">
 										<li id="gr_qna_slideli">
 										<c:out value="${a.in_con }"></c:out>
@@ -62,7 +61,7 @@ $(document).ready(function(){
 						</ul>
 					</div>			
 				</div>
-						<a href="inquiryInsert"><input type="button" value="문의하기" class="btn_1 medium" /></a>
+				<a href="inquiryInsert"><input type="button" value="문의하기" class="btn_1 medium" /></a>
 			</div>
 		</div>
 	</form>

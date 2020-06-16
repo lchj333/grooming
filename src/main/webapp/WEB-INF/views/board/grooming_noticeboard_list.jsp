@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +32,7 @@
 					</div>
 				
 		<!-- 페이징 처리 -->
+		<div style="color:black; float:right; font-size: 20px; margin-top: 20px; margin-right:20px;">
 		<c:if test="${prev}">
 			<span>[ <a href="/control/noticeListPage?num=${startPageNum - 1}">이전</a> ]</span>
 		</c:if>
@@ -51,6 +53,7 @@
 		<c:if test="${next}">
 			<span>[ <a href="/control/noticeListPage?num=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
+		</div>
 		<!-- 페이징처리 끝 -->		
 				</div>
 				<!-- 관리자일경우에만 공지 등록가능 -->

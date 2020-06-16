@@ -47,7 +47,7 @@ public class NoticeDAO {
 	}
 	// 게시물의 총 갯수
 	public int count() {
-		return ss.selectOne("count");
+		return ss.selectOne("noticeCount");
 	}
 	// 게시물 목록 + 페이징
 	public List<NoticeDTO> listPage(int displayPost, int postNum) {

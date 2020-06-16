@@ -43,7 +43,7 @@
 	</update>
 	
 	<!-- 게시물의 총 갯수를 구하기 -->
-	<select id="count" resultType="int">
+	<select id="noticeCount" resultType="int">
 		SELECT COUNT(NT_NO) FROM gr_notice
 	</select>
 	

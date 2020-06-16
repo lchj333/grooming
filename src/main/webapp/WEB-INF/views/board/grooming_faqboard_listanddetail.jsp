@@ -39,7 +39,7 @@ $(document).ready(function(){
 					<div id="grooming_qnaboard_customlist_maintitle">자주 묻는 질문</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
-								<div style="border-bottom : 1px solid black;"></div>
+							<div style="border-bottom : 1px solid black;"></div>
 							<c:forEach var="inform" items="${list }">
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
@@ -54,7 +54,8 @@ $(document).ready(function(){
 								</li>
 							</c:forEach>
 						</ul>
-						<!-- 페이징 처리 -->
+		<!-- 페이징 처리 -->
+		<div style="color:black; float:right; font-size: 20px; margin-top: 20px; margin-right:20px;"><div style="color:black; float:right; font-size: 20px; margin-top: 20px; margin-right:20px;">
 		<c:if test="${prev}">
 			<span>[ <a href="/control/faqList?num=${startPageNum - 1}">이전</a> ]</span>
 		</c:if>
@@ -75,7 +76,9 @@ $(document).ready(function(){
 		<c:if test="${next}">
 			<span>[ <a href="/control/faqList?num=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
+		</div>
 		<!-- 페이징처리 끝 -->	
+					</div>
 					</div>			
 				</div>
 			</div>

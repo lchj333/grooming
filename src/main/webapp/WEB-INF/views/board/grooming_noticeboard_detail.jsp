@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,10 +26,17 @@
          <span>조회수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
          <span><c:out value="${inform.nt_hits }"></c:out></span>
       </div>
-      <div id="gr_noticeboard_detail_contents"><c:out value="${inform.nt_con }"></c:out></div>      
+      <div id="gr_noticeboard_detail_contents">
+		<c:set var="a" value="${inform.nt_con }"/>
+		<c:set var="b" value="${fn:replace(a,'<p>','')}"/>
+		<c:set var="c" value="${fn:replace(b,'</p>','&#13;')}"/>
+		<c:out value="${c }"></c:out>
+		<c:out value=""></c:out>
+		</div>
+     <%-- 	<div id="gr_noticeboard_detail_contents"><c:out value="${a.inform.nt_con }"></c:out></div>   --%>
+      
 	   <p id="notice_button">
 		   <a href="noticeListPage?num=${pn }" class="btn_1 medium">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 	   </p>
    </div>
 <!-- footer -->
