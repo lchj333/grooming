@@ -412,7 +412,7 @@ html, body {
 
 	<!-- DATEPICKER  -->
 	<script>
-		$('input[name="dates"]').daterangepicker(
+		$('input[name="re_date"]').daterangepicker(
 				{
 					"singleDatePicker" : true,
 					"autoApply" : true,

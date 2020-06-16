@@ -101,6 +101,23 @@
 	height: 50px;
 }
 
+#reserv-fourth-outline{
+	margin-top: 40px;
+	height: 50px;
+}
+
+#reserv-left4{
+	float: left;
+	background-color: red;
+	height: 50px;
+}
+
+#reserv-right4{
+	float: left;
+	background-color: yellow;
+	height: 50px;
+}
+
 </style>
 
 
@@ -127,16 +144,16 @@
 							<!-- 값받고 보내는 곳 -->
 							<div id="reserv-first-outline">
 								<div id="reserv-left1" class="col-4">
-									<c:out value="${rsv.re_date }"></c:out>
+									<h2>예약일 : <c:out value="${rsv.re_date }"></c:out></h2>
 								</div>
 							</div>
 							
 							<div id="reserv-second-outline">
 								<div id="reserv-left2" class="col-4">
-									<c:out value="${rsv.re_weight}"></c:out>
+									<c:out value="${rsv.ref_shopname}"></c:out>
 								</div>
 								<div id="reserv-right2" class="col-4">
-									<c:out value="${rsv.re_weight}"></c:out>
+									<c:out value="${address}"></c:out>
 								</div>
 							</div>
 							
@@ -149,6 +166,12 @@
 								</div>
 							</div>
 							
+							<div id="reserv-fourth-outline">
+								<div id="reserv-left4" class="col-4">
+									<input type="text" name="re_weight" id="" value="<c:out value="${rsv.re_weight}"/>" readonly="readonly"/>
+								</div>
+							</div>
+						<%-- 	${rsv.re_cut} --%>
 						</div>
 					</div>
 					<hr>
