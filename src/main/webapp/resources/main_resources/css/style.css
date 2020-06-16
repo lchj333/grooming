@@ -962,7 +962,7 @@ h3.slide_typo {
 /*General links color   일반 링크 색상*/
 a {
 	color: #353533;
-	
+
 	text-decoration: none;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
@@ -1248,6 +1248,7 @@ ul#top_menu {
 ul#top_menu li {
 	float: left;
 	margin: 0;
+	margin-top : 5px;
 	line-height: 1;
 	margin-right: 15px;
 }
