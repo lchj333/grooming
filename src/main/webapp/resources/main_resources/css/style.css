@@ -5325,7 +5325,7 @@ ul.hotel_facilities li img {
 	padding: 20px 60px 25px 60px;
 }
 
-@media ( max-width : 767px) {
+@media ( max-width : 768px) {  /* 아이패드 용 로그인 1px 추가했음 */
 	#login figure, #register figure {
 		margin: -30px -30px 20px -30px;
 		padding: 15px 60px 20px 60px;
@@ -5344,7 +5344,7 @@ ul.hotel_facilities li img {
 	margin-bottom: 3%;
 }
 
-@media ( max-width : 767px) {
+@media ( max-width : 768px) { /* 아이패드 용 로그인 1px 추가했음 */
 	#login aside, #register aside {
 		width: 100%;
 		padding: 30px;
