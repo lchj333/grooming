@@ -72,9 +72,10 @@
 	<!-- 미용사가 예약정보 가져오기 -->
 	<select id="agreedReservation" resultType="ReservationDTO" parameterType="ReservationDTO">
 		SELECT *
-		from gr_reservation r LEFT JOIN gr_registration d
-		ON (r.de_licencenum = d.de_licencenum)
-		WHERE d.de_licencenum = #{de_licencenum}
+		from gr_reservation r, gr_registration d, gr_member m
+		where r.mb_id = m.mb_id
+		and r.de_licencenum = d.de_licencenum
+		and r.de_licencenum = #{de_licencenum}
 	</select>
 	
 	<!-- 사용자가 예약정보 가져오기 -->
@@ -83,7 +84,7 @@
 		FROM  gr_reservation r, gr_registration d, gr_member m
 		WHERE  r.de_licencenum = d.de_licencenum
 		AND r.mb_id = m.mb_id
-		AND  r.mb_id = #{mb_id};
+		AND  r.mb_id = #{mb_id}
 	</select>
 	
 	<!-- 예약 취소 이유 가져오는 부분 -->
