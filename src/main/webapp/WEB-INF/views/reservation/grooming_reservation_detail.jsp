@@ -144,44 +144,44 @@
 							<!-- 값받고 보내는 곳 -->
 							<div id="reserv-first-outline">
 								<div id="reserv-left1" class="col-4">
-									<h2>예약일 : <c:out value="${rsv.re_date }"></c:out></h2>
+									<h4>예약일 : <c:out value="${rsv.re_date }"></c:out></h4>
 								</div>
 							</div>
 							
 							<div id="reserv-second-outline">
 								<div id="reserv-left2" class="col-4">
-									<c:out value="${rsv.ref_shopname}"></c:out>
+									<h4>가게명 : <c:out value="${rsv.ref_shopname}"></c:out></h4>
 								</div>
 								<div id="reserv-right2" class="col-4">
-									<c:out value="${address}"></c:out>
+									<h4>주소 : <c:out value="${address}"></c:out></h4>
 								</div>
 							</div>
 							
 							<div id="reserv-third-outline">
 								<div id="reserv-left3" class="col-4">
-									<c:out value="${rsv.re_species}"></c:out>
+									<h4>견종 : <c:out value="${rsv.re_species}"></c:out></h4>
 								</div>
 								<div id="reserv-right3" class="col-4">
-									<c:out value="${rsv.re_cut}"></c:out>
+									<h4>컷 : <c:out value="${rsv.re_weight}"></c:out></h4>
 								</div>
 							</div>
 							
 							<div id="reserv-fourth-outline">
 								<div id="reserv-left4" class="col-4">
-									<input type="text" name="re_weight" id="" value="<c:out value="${rsv.re_weight}"/>" readonly="readonly"/>
+									<h4>요청사항 : <c:out value="${rsv.re_cut}"/></h4>
 								</div>
 							</div>
 						<%-- 	${rsv.re_cut} --%>
 						</div>
 					</div>
 					<hr>
-						</form>
 					<div class="row col-6 add_bottom_75">
 						<div class="add_right_15">
 							<input type="button" class="btn_1  add_top_15 "
 								value="예약하기" />
 
 						</div>
+					</form>
 						<div class="">
 							<input type="button" class="btn_1  add_top_15 "
 								value="되돌아가기" />
