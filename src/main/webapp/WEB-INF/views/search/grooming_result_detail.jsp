@@ -321,7 +321,7 @@ html, body {
 								
 							<!-- 예약폼 -->
 							<form action="" name="frm" method="post">
-								
+								<input type="hidden" name="de_licencenum" value="${de_licencenum}" />
 
 								<div class="form-group" id="input_date">
 									<input class="form-control" type="text" name="re_date"

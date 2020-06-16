@@ -94,9 +94,9 @@
 		where re_num = #{re_num}
 	</select>
 	
-	<!-- ============ -->
-	<select id="getaddrBylnum" parameterType="int" resultType="String">
-		select REG_SHOPADDRESS
+	<!-- 라이센스 넘버로 주소, 샵이름 -->
+	<select id="getaddrBylnum" parameterType="int" resultType="RegistrationDTO">
+		select ref_shopname, reg_shopaddress
 		from gr_registration
 		where de_licencenum = #{de_licencenum};
 	</select>
