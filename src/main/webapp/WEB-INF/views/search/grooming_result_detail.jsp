@@ -58,57 +58,83 @@ html, body {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		
+		/* 날짜 유효성 검사 */
+		
+		
+		
 		$("#btn").click(function(){
 			document.frm.action = "<c:url value='/reservation/reservCk'/>";
 			document.frm.submit();
 		});
-
+		
+		
+		/* 강아지 체크 */
+		var dogsum = 0;
 		var count = 0;
 		var count2 = 0;
 		var count3 = 0;
+			
+			$('#icon-largeDog-plus').on('mousedown',function(){
+	            count += 1;
+	            $('#largeDog').val(count);
+	        })
+	        
+	        $('#icon-mediumDog-plus').on('mousedown',function(){
+	            count2 += 1;
+	            $('#mediumDog').val(count2);
+	        })
+	        
+	        $('#icon-smallDog-plus').on('mousedown',function(){
+	            count3 += 1;
+	            $('#smallDog').val(count3);
+	        })
+	        
+	        
+	        $('#icon-largeDog-minus').on('mousedown',function(){
+	            count -= 1;
+	            if(count<0){
+	            	count = 0;
+	            }else{
+	          	  $('#largeDog').val(count);
+	            }
+	        })
+	        
+	        $('#icon-mediumDog-minus').on('mousedown',function(){
+	            count2 -= 1;
+	            if(count2<0){
+	            	count2 = 0;
+	            }else{
+	          	  $('#mediumDog').val(count2);
+	            }
+	        })
+	        
+	        $('#icon-smallDog-minus').on('mousedown',function(){
+	            count3 -= 1;
+	            if(count3<0){
+	            	count3 = 0;
+	            }else{
+	          	  $('#smallDog').val(count3);
+	            }
+	        })
+	        
+	        
+        $(".icon-plus , .icon-minus").click(function(){
+	        
+		    var la = parseInt($('#largeDog').val());
+			var me = parseInt($('#mediumDog').val());
+			var sm = parseInt($('#smallDog').val());	
+				
+			dogsum = la+me+sm;		
+				
+		    $("#dog-total").text(dogsum);
+		});
+        
+
+        
 		
-		$('#icon-largeDog-plus').on('mousedown',function(){
-            count += 1;
-            $('#largeDog').val(count);
-        })
-        
-        $('#icon-mediumDog-plus').on('mousedown',function(){
-            count2 += 1;
-            $('#mediumDog').val(count2);
-        })
-        
-        $('#icon-smallDog-plus').on('mousedown',function(){
-            count3 += 1;
-            $('#smallDog').val(count3);
-        })
-        
-        
-        $('#icon-largeDog-minus').on('mousedown',function(){
-            count -= 1;
-            if(count<0){
-            	count = 0;
-            }else{
-          	  $('#largeDog').val(count);
-            }
-        })
-        
-        $('#icon-mediumDog-minus').on('mousedown',function(){
-            count2 -= 1;
-            if(count2<0){
-            	count2 = 0;
-            }else{
-          	  $('#mediumDog').val(count2);
-            }
-        })
-        
-        $('#icon-smallDog-minus').on('mousedown',function(){
-            count3 -= 1;
-            if(count3<0){
-            	count3 = 0;
-            }else{
-          	  $('#smallDog').val(count3);
-            }
-        })
+		
+		
 		
 	});
 
@@ -288,18 +314,16 @@ html, body {
 								</div>
 								
 							<!-- 예약폼 -->
-							<form action="" name="frm" method="post">
+							<form action="" name="frm" method="get">
 								
 
 								<div class="form-group" id="input_date">
 									<input class="form-control" type="text" name="dates"
 										placeholder="When.."> <i class="icon_calendar"></i>
 								</div>
-											<!-- 임시 태그 -->
-											<input type="hidden" name="re_species" value="대형견" />
 											
 									<div class="panel-dropdown">
-										<a href="#">견종선택 <span class="qtyTotal">0</span></a>
+										<a href="#">견종선택 <span class="qtyTotal" id="dog-total">0</span></a>
 										<div class="panel-dropdown-content right">
 											<div class="qtyButtons">
 												<label>대형</label>
@@ -331,7 +355,7 @@ html, body {
 									<option>Dinner</option>
 								</select> -->
 											<input class="form-control" type="text" name="re_weight"
-												id="" placeholder="견종 몸무게"> 
+												id="" placeholder="견종 몸무게(숫자만 입력)" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="10"> 
 											<input class="form-control add_top_15" type="text" name="re_cut"
 												id="" placeholder="견종 컷 및 특이사항">
 										</div>
