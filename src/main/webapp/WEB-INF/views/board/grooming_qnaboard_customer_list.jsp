@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,7 +59,15 @@ $(document).ready(function(){
 									</div>
 								</div> 
 					<ul class="hide" id="gr_qna_slideul">
-                         <li id="gr_qna_slideli">Q. <c:out value="${a.in_con }"></c:out></li>
+                         <li id="gr_qna_slideli">
+                         		Q. <c:set var="a" value="${a.in_con }"/>
+								<c:set var="b" value="${fn:replace(a,'<p>','')}"/>
+								<c:set var="c" value="${fn:replace(b,'</p>','</br>')}"/>
+								<c:set var="d" value="${fn:replace(c,'&nbsp;','
+								')}"/>
+								<c:set var="e" value="${fn:replace(d,'<br>','')}"/> 
+								${e }
+                         </li>
                          	<!-- 댓글이 달린경우 댓글 표시 -->
                         	<c:forEach var="k" items="${list2 }">
                         		<c:if test="${k.in_num == a.in_num }">

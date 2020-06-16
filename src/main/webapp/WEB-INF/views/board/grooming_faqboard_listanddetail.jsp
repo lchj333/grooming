@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage/css/grooming_qnaboard_customlist.css" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage/css/grooming_faqboard_customlist.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -36,10 +37,10 @@ $(document).ready(function(){
 		<div id="grooming_qnaboard_customlist_div">
 			<div id="grooming_qnaboard_customlist_section">
 				<div id="grooming_qnaboard_customlist_articlelist">
-					<div id="grooming_qnaboard_customlist_maintitle">자주 묻는 질문</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
-							<div style="border-bottom : 1px solid black;"></div>
+							<div id="grooming_qnaboard_customlist_maintitle">자주 묻는 질문</div>
+							<div style="border-bottom:1px solid black;"></div>
 							<c:forEach var="inform" items="${list }">
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
@@ -49,11 +50,18 @@ $(document).ready(function(){
 									<div id="gr_qna_regdate" ></div>
 								</div> 
 									<ul class="hide" id="gr_qna_slideul">
-										<li id="gr_qna_slideli"><c:out value="${inform.f_con }"></c:out></li>
+										<li id="gr_qna_slideli">
+										<c:set var="a" value="${inform.f_con }"/>
+										<c:set var="b" value="${fn:replace(a,'<p>','')}"/>
+										<c:set var="c" value="${fn:replace(b,'</p>','</br>')}"/>
+										<c:set var="d" value="${fn:replace(c,'&nbsp;','
+										')}"/>
+										<c:set var="e" value="${fn:replace(d,'<br>','')}"/>
+										{e }
+										</li>
 									</ul>
 								</li>
 							</c:forEach>
-						</ul>
 		<!-- 페이징 처리 -->
 		<div style="color:black; float:right; font-size: 20px; margin-top: 20px; margin-right:20px;"><div style="color:black; float:right; font-size: 20px; margin-top: 20px; margin-right:20px;">
 		<c:if test="${prev}">
@@ -78,6 +86,7 @@ $(document).ready(function(){
 		</c:if>
 		</div>
 		<!-- 페이징처리 끝 -->	
+						</ul>
 					</div>
 					</div>			
 				</div>

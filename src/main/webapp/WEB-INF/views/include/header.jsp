@@ -100,6 +100,7 @@
 						</ul>
 					</li>
 					<li><span><a href="<c:url value="/faqList"/>">고객센터</a></span>
+						
 						<ul>
 							<li>
 								<c:if test="${login.mb_id eq null }">
