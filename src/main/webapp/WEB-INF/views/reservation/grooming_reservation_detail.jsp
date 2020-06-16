@@ -120,7 +120,12 @@
 
 </style>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+	});
+</script>
 
 </head>
 <body>
@@ -134,7 +139,7 @@
 		<main>
 		
 			<div class="container add_top_60 ">
-				<form action="<c:url value="/reservation/addReserv"/>">
+				<form action="" method="post" name="frm">
 					<div class="row magin_60">
 						<div class="col-12">
 							<div class="invoice-title add_top_30" style="color: black">
@@ -171,34 +176,38 @@
 									<h4>요청사항 : <c:out value="${rsv.re_cut}"/></h4>
 								</div>
 							</div>
-						<%-- 	${rsv.re_cut} --%>
+							<!-- 정보넘겨주자 -->
+							<input type="hidden" name="" value="" />
+							<input type="hidden" name="re_species" value="${rsv.re_species}" />
+							<input type="hidden" name="re_weight" value="${rsv.re_weight}" />
+							<input type="hidden" name="re_cut" value="${rsv.re_cut}" />
 						</div>
 					</div>
 					<hr>
 					<div class="row col-6 add_bottom_75">
 						<div class="add_right_15">
-							<input type="button" class="btn_1  add_top_15 "
-								value="예약하기" />
-
+							<input type="button" class="btn_1  add_top_15 "value="예약하기" />
 						</div>
-					</form>
 						<div class="">
-							<input type="button" class="btn_1  add_top_15 "
-								value="되돌아가기" />
-
+							<input type="button" class="btn_1  add_top_15 "value="되돌아가기" />
 						</div>
+				
 
-
+					</form>
 				</div>
-
-			</div>
-
 		</main>
-		<div id="toTop" style="display: none;"></div>
-			<!-- footer -->
+
+	</div>
+
+		
+		
+	<!-- 상단 올라감 -->
+	<div id="toTop" style="display: none;"></div>
+		
+	<!-- footer -->
 	<jsp:include page="../include/footer.jsp" />
 	<!-- footer end -->
-	</div>
+
 
 
 
