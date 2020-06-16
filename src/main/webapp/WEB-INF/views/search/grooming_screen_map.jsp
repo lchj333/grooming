@@ -315,12 +315,7 @@ html, body {
                 var array_address = document.getElementsByClassName('address');
                 
 				for (var i = 0; i < array_address.length; i++) {
- 					alert(address[i].value);
-            	
-				
-				console.log(address[0].value + "구로구청!!");
-				console.log(address[1].value + "영등포구청!!");
-				
+ 					
 				var addressr = address[i].value;
 	          	
                 /**
@@ -340,7 +335,7 @@ html, body {
                         // 맵의 중심 좌표를 설정한다.
                         resultMap.setCenter(result[0].geometry.location);
                         // 맵의 확대 정도를 설정한다.
-                        resultMap.setZoom(18);
+                        resultMap.setZoom(12.5);
                         // 맵 마커
                         var marker = new google.maps.Marker({
                             map: resultMap,
