@@ -12,11 +12,10 @@
 	<select id="selectBookMark"  parameterType="String" resultType="RegistrationDTO">
 		select *
 		from gr_registration
-		where DE_LICENCENUM = (select DE_LICENCENUM 
+		where EXISTS (select * from mb_bookmark where MB_ID = #{mb_id}) 
+		and DE_LICENCENUM = (select DE_LICENCENUM 
 								from mb_bookmark
-								where MB_ID = ${mb_id});
-<!-- 		select * from mb_bookmark -->
-<!-- 		where MB_ID = #{mb_id} -->
+								where MB_ID = #{mb_id});
 	</select>
 	
 	<delete id="deleteBookMark" parameterType="BookMarkDTO">
