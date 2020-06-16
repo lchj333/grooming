@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.grooming.dao.ReservationDAO;
 import com.grooming.dto.MemberDTO;
+import com.grooming.dto.RegistrationDTO;
 import com.grooming.dto.ReservationDTO;
 
 @Controller
@@ -51,7 +52,8 @@ public class ReservationController {
 	//-> grooming_result_detail ->
 	//예약 확인 폼 이동
 	@PostMapping(value = "reservation/reservCk")
-	public String reservCk(@RequestParam(value = "re_specie")String[] specie, ReservationDTO dto, HttpServletRequest req) {
+	public String reservCk(@RequestParam(value = "re_specie")String[] specie, ReservationDTO dto,
+							@RequestParam(value = "de_licencenum")int num, HttpServletRequest req) {
 		HttpSession hs = req.getSession();
 		
 		String species = "";
@@ -71,11 +73,14 @@ public class ReservationController {
 			dto.setMb_id(id);
 			dto.setRe_species(species);
 			
-			//+ 샵 주소 넘기기
-			String address = rdao.getaddrBylnum(dto.getDe_licencenum());
+			//+ 샵 주소, 이름 넘기기
+			RegistrationDTO rdto = rdao.getaddrBylnum(num);
+			req.setAttribute("address", rdto.getReg_shopaddress());
+			req.setAttribute("shopname", rdto.getRef_shopname());
+			req.setAttribute("lnum", num);
 			
-			req.setAttribute("address", address);
 			req.setAttribute("rsv", dto);
+			
 			//예약 체크 페이지 이동
 			return "reservation/grooming_reservation_detail";
 		}else {
@@ -86,11 +91,12 @@ public class ReservationController {
 	//-> 예약  확인 페이지 ->
 	//미용 예약 적용
 	@PostMapping(value = "reservation/addReserv")
-	public String takeReserv(ReservationDTO dto, HttpServletRequest req,
-						HttpServletResponse res, RedirectAttributes rtt) throws IOException {
+	public String takeReserv(@RequestParam(value = "de_licencenum")int lnum, ReservationDTO dto, 
+								HttpServletRequest req,	HttpServletResponse res, RedirectAttributes rtt) throws IOException {
 		HttpSession hs = req.getSession();
 		
 		//실질적 DB저장
+		dto.setDe_licencenum(lnum);
 		rdao.insertReserv(dto);
 		
 		//알림 팝업
