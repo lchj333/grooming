@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.grooming.dao.BookMarkDAO;
 import com.grooming.dao.BookMarkDAOImple;
 import com.grooming.dto.BookMarkDTO;
+import com.grooming.dto.DesignerDTO;
 import com.grooming.dto.MemberDTO;
+import com.grooming.dto.RegistrationDTO;
 
 @Controller
 public class BookMarkController {
@@ -44,6 +46,7 @@ public class BookMarkController {
 		dto.setDe_licencenum(licence);
 		dao.insertBookmark(dto);
 		
+		//그 후 이동
 		return "mypage/grooming_user_bookmark";
 	}
 	
@@ -55,14 +58,19 @@ public class BookMarkController {
 	
 	//찜 목록 표시
 	@RequestMapping(value = "/bookmarksearch")
-	public String selectBookMark(BookMarkDTO dto, Model m) {
-		String id = (String)m.getAttribute("mb_id");
+	public String selectBookMark(HttpServletRequest req) {
+		HttpSession hs = req.getSession();
+		MemberDTO mem = (MemberDTO) hs.getAttribute("login");
 		
-		dto.setMb_id(id);
-		List<BookMarkDTO> blist = dao.selectBookMark(dto);
-		m.addAttribute("blist", blist);
-		
-		return "bookmarklist";
+		if(mem != null) { //회원값이 있을 경우
+			//목록 불러오기
+			List<RegistrationDTO> blist = dao.selectBookMark(mem.getMb_id());
+			req.setAttribute("blist", blist);
+			
+			return "mypage/grooming_user_bookmark";
+		}else {//없으면 홈 이동
+			return "/";
+		}
 	}
 	
 	//찜 목록 삭제 스타트
