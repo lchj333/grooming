@@ -222,10 +222,9 @@ html, body {
 		<!-- 더보기 버튼 -->
 		<!-- /더보기 버튼 -->
 	    <div id="search-panel" style="display: none">
-	        <input id="address" type="text" value="<c:out value='${shop.reg_shopaddress}'/>" />
+	        <input name="address11" id="address" type="text" value="<c:out value='${shop.reg_shopaddress}'/>" />
 	        <button id="submit" type="button" value="Geocode">지도 검색</button>
    		</div>
-   		
 	</c:forEach>
 		<p class="text-center add_top_30"><a href="#0" class="btn_1 rounded"><strong>+더보기</strong></a></p>
 	</div>
@@ -294,8 +293,17 @@ html, body {
                 console.log('geocodeAddress 함수 실행');
  
                 // 주소 설정
-                var address = document.getElementById('address').value;
- 
+                var array_address = document.getElementsByClassName('address');
+                
+				for (var i = 0; i < array_address.length; i++) {
+ 					alert(address[i].value);
+            	
+				
+				console.log(address[0].value + "구로구청!!");
+				console.log(address[1].value + "영등포구청!!");
+				
+				var addressr = address[i].value;
+	          	
                 /**
                  * 입력받은 주소로 좌표에 맵 마커를 찍는다.
                  * 1번째 파라미터 : 주소 등 여러가지. 
@@ -305,7 +313,7 @@ html, body {
                  *      ㄴ result : 결과값
                  *      ㄴ status : 상태. OK가 나오면 정상.
                  */
-                geocoder.geocode({'address': address}, function(result, status) {
+                geocoder.geocode({'address': addressr}, function(result, status) {
                     console.log(result);
                     console.log(status);
                     
@@ -328,6 +336,7 @@ html, body {
                         alert('지오코드가 다음의 이유로 성공하지 못했습니다 : ' + status);
                     }
                 });
+				}
             }
         }
     </script>
