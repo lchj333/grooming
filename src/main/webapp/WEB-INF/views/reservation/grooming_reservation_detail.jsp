@@ -117,7 +117,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		$("#btn").click(function(){
+			document.frm.action = "<c:url value='/reservation/addReserv'/>";
+			document.frm.submit();
+			alert("에약완료");
+		});
 		
+		$("#btn2").click(function(){
+			document.frm.action = "<c:url value='/reservation/reservCk'/>";
+			document.frm.submit();
+		});
 	});
 </script>
 
@@ -149,7 +158,7 @@
 							
 							<div id="reserv-second-outline">
 								<div id="reserv-left2" class="col-6">
-									<h4>가게명 : <c:out value="${rsv.ref_shopname}"></c:out></h4>
+									<h4>가게명 : <c:out value="${shopname}"></c:out></h4>
 								</div>
 								<div id="reserv-right2" class="col-6">
 									<h4>주소 : <c:out value="${address}"></c:out></h4>
@@ -171,7 +180,8 @@
 								</div>
 							</div>
 							<!-- 정보넘겨주자 -->
-							<input type="hidden" name="" value="" />
+							<input type="hidden" name="lnum" value="${lnum}" />
+							<input type="hidden" name="re_date" value="${rsv.re_date }" />
 							<input type="hidden" name="re_species" value="${rsv.re_species}" />
 							<input type="hidden" name="re_weight" value="${rsv.re_weight}" />
 							<input type="hidden" name="re_cut" value="${rsv.re_cut}" />
@@ -180,15 +190,15 @@
 					<hr>
 					<div class="row col-6 add_bottom_75">
 						<div class="add_right_15">
-							<input type="button" class="btn_1  add_top_15 "value="예약하기" />
+							<input type="button" class="btn_1  add_top_15" id="btn" value="예약하기" />
 						</div>
 						<div class="">
-							<input type="button" class="btn_1  add_top_15 "value="되돌아가기" />
+							<input type="button" class="btn_1  add_top_15" id="btn2" value="되돌아가기" />
 						</div>
-				
+					</div>
 
-					</form>
-				</div>
+				</form>
+			</div>
 		</main>
 
 	</div>
