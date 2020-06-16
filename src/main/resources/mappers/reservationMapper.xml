@@ -63,9 +63,9 @@
 	
 	<!-- 예약 작성 -->
 	<insert id="insertReserv" parameterType="ReservationDTO"><!-- 예약 번호는 자동 생성 -->
-		insert into gr_reservation (DE_LICENCENUM, MB_ID, RE_APPROVAL, RE_DATE, 
+		insert into gr_reservation (DE_LICENCENUM, MB_ID, RE_DATE, 
 									RE_NOWDATE,	RE_SPECIES, RE_WEIGHT, RE_CUT)
-		values (#{de_licencenum}, #{mb_id}, 'U', #{re_date}, 
+		values (#{de_licencenum}, #{mb_id}, #{re_date}, 
 				now(), #{re_species}, #{re_weight}, #{re_cut})
 	</insert>
 	

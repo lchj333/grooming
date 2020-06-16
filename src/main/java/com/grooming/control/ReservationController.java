@@ -77,6 +77,7 @@ public class ReservationController {
 			RegistrationDTO rdto = rdao.getaddrBylnum(num);
 			req.setAttribute("address", rdto.getReg_shopaddress());
 			req.setAttribute("shopname", rdto.getRef_shopname());
+			req.setAttribute("lnum", num);
 			
 			req.setAttribute("rsv", dto);
 			
@@ -90,11 +91,12 @@ public class ReservationController {
 	//-> 예약  확인 페이지 ->
 	//미용 예약 적용
 	@PostMapping(value = "reservation/addReserv")
-	public String takeReserv(ReservationDTO dto, HttpServletRequest req,
-						HttpServletResponse res, RedirectAttributes rtt) throws IOException {
+	public String takeReserv(@RequestParam(value = "de_licencenum")int lnum, ReservationDTO dto, 
+								HttpServletRequest req,	HttpServletResponse res, RedirectAttributes rtt) throws IOException {
 		HttpSession hs = req.getSession();
 		
 		//실질적 DB저장
+		dto.setDe_licencenum(lnum);
 		rdao.insertReserv(dto);
 		
 		//알림 팝업
