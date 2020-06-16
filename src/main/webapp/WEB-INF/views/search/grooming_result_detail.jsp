@@ -58,31 +58,31 @@ html, body {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
+
 		/* 날짜 유효성 검사 */
-		
+
 		/* 강아지 체크 */
 		var dogsum = 0;
 		var count = 0;
 		var count2 = 0;
 		var count3 = 0;
-			
+
 			$('#icon-largeDog-plus').on('mousedown',function(){
 	            count += 1;
 	            $('#largeDog').val(count);
 	        })
-	        
+
 	        $('#icon-mediumDog-plus').on('mousedown',function(){
 	            count2 += 1;
 	            $('#mediumDog').val(count2);
 	        })
-	        
+
 	        $('#icon-smallDog-plus').on('mousedown',function(){
 	            count3 += 1;
 	            $('#smallDog').val(count3);
 	        })
-	        
-	        
+
+
 	        $('#icon-largeDog-minus').on('mousedown',function(){
 	            count -= 1;
 	            if(count<0){
@@ -91,7 +91,7 @@ html, body {
 	          	  $('#largeDog').val(count);
 	            }
 	        })
-	        
+
 	        $('#icon-mediumDog-minus').on('mousedown',function(){
 	            count2 -= 1;
 	            if(count2<0){
@@ -100,7 +100,7 @@ html, body {
 	          	  $('#mediumDog').val(count2);
 	            }
 	        })
-	        
+
 	        $('#icon-smallDog-minus').on('mousedown',function(){
 	            count3 -= 1;
 	            if(count3<0){
@@ -109,36 +109,36 @@ html, body {
 	          	  $('#smallDog').val(count3);
 	            }
 	        })
-	        
-	        
+
+
         $(".icon-plus , .icon-minus").click(function(){
-	        
+
 		    var la = parseInt($('#largeDog').val());
 			var me = parseInt($('#mediumDog').val());
-			var sm = parseInt($('#smallDog').val());	
-				
-			dogsum = la+me+sm;		
-				
+			var sm = parseInt($('#smallDog').val());
+
+			dogsum = la+me+sm;
+
 		    $("#dog-total").text(dogsum);
 		});
-        
 
-        
-		
+
+
+
 		/* 예약버튼 */
 		$("#btn").click(function(){
 			document.frm.action = "<c:url value='/reservation/reservCk'/>";
 			document.frm.submit();
 		});
-		
+
 		/* 리뷰작성버튼 */
 		$("#btn2").click(function(){
 			document.frm.action = "<c:url value='/reservation/reservCk'/>";
 			document.frm.submit();
 		});
-		
-		
-		
+
+
+
 	});
 
 </script>
@@ -161,7 +161,7 @@ html, body {
 					<!-- title main -->
 					<div class="container">
 						<h1 class="fadeInUp">
-							<span></span>미미네 샵
+							<span></span>미미네 샵 <!-- 가게이름 데이터 넣어야함  -->
 						</h1>
 					</div>
 					<!-- 미리 보기 div & 모아보기-->
@@ -169,7 +169,7 @@ html, body {
 					<!-- 등록되는 서브 이미지 받기 -->
 					<a href="<c:url value="/resource/shopimags/${sessionScope.infoImgs[0]}"/>" class="btn_photos"
 						title="Photo title" data-effect="mfp-zoom-in">모아보기</a>
-						
+
 						<c:forEach var="img" items="${infoImgs}" step="1">
 						 <a href="<c:url value="/resources/shopimags/${img}"/>" title="Photo title"
 						data-effect="mfp-zoom-in"></a>
@@ -241,8 +241,8 @@ html, body {
 								<!-- End Map -->
 							</section>
 							<!-- /section -->
-							
-							
+
+
 							<!-- 리뷰 -->
 							<form action="" method="post" name="frm2">
 								<section id="reviews">
@@ -268,7 +268,7 @@ html, body {
 											</div>
 										</div>
 										<!-- /댓글 박스 div 끝 -->
-	
+
 									</div>
 									<!-- /전체 리뷰 end -->
 								</section>
@@ -318,7 +318,7 @@ html, body {
 									<span style="font-size: 20px;">GROOMING 미용예약</span>
 
 								</div>
-								
+
 							<!-- 예약폼 -->
 							<form action="" name="frm" method="post">
 								<input type="hidden" name="de_licencenum" value="${de_licencenum}" />
@@ -327,7 +327,7 @@ html, body {
 									<input class="form-control" type="text" name="re_date"
 										placeholder="When.."> <i class="icon_calendar"></i>
 								</div>
-											
+
 									<div class="panel-dropdown">
 										<a href="#">견종선택 <span class="qtyTotal" id="dog-total">0</span></a>
 										<div class="panel-dropdown-content right">
@@ -338,7 +338,7 @@ html, body {
 												<i class="icon-plus" id="icon-largeDog-plus"></i>
 											</div>
 											<div class="qtyButtons">
-												<label>중형</label> 
+												<label>중형</label>
 												<i class="icon-minus" id="icon-mediumDog-minus"></i>
 												<input type="text" name="re_specie" value="0" id="mediumDog">
 												<i class="icon-plus" id="icon-mediumDog-plus"></i>
@@ -361,7 +361,7 @@ html, body {
 									<option>Dinner</option>
 								</select> -->
 											<input class="form-control" type="text" name="re_weight"
-												id="" placeholder="견종 몸무게(숫자만 입력)" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="10"> 
+												id="" placeholder="견종 몸무게(숫자만 입력)" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="10">
 											<input class="form-control add_top_15" type="text" name="re_cut"
 												id="" placeholder="견종 컷 및 특이사항">
 										</div>

@@ -35,7 +35,7 @@
 		<header class="header map_view menu_fixed">
 			<div id="logo">
 				<a href="<c:url value="/"/>">
-					<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main.png" width="150" height="36" data-retina="true" class="Grooming_logo_header_main" alt="메인이미지">
+					<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main.png" width="150" height="36" data-retina="true" class="logo_normal" alt="메인이미지">
 				</a>
 			</div>
 			<ul id="top_menu">
