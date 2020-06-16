@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +41,7 @@ $(document).ready(function(){
 					<div id="grooming_qnaboard_customlist_maintitle">자주 묻는 질문</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
-								<div style="border-bottom : 1px solid black;"></div>
+							<div style="border-bottom : 1px solid black;"></div>
 							<c:forEach var="inform" items="${list }">
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
@@ -51,8 +52,14 @@ $(document).ready(function(){
 								</div> 
 									<ul class="hide" id="gr_qna_slideul">
 										<li id="gr_qna_slideli">
-										<c:out value="${inform.f_con }"></c:out>
-         <a href="faqDelete?f_title=${inform.f_title }" class="btn_1 medium">삭제</a>
+										<c:set var="a" value="${inform.f_con }"/>
+										<c:set var="b" value="${fn:replace(a,'<p>','')}"/>
+										<c:set var="c" value="${fn:replace(b,'</p>','</br>')}"/>
+										<c:set var="d" value="${fn:replace(c,'&nbsp;','
+										')}"/>
+										<c:set var="e" value="${fn:replace(d,'<br>','')}"/>
+										{e }
+         					<!--삭제버튼--><a href="faqDelete?f_title=${inform.f_title }" class="btn_1 medium">삭제</a>
 										</li>
 									</ul>
 								</li>
