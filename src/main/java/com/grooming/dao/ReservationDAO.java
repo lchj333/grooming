@@ -59,13 +59,16 @@ public class ReservationDAO {
 	public List<ReservationDTO> agreedReservation(ReservationDTO dto) {
 		return ss.selectList(MAPPER+".agreedReservation", dto);
 	}
+
+	//라이센스넘버로 주소 서치
+	public String getaddrBylnum(int de_licencenum) {
+		return ss.selectOne(MAPPER+".getaddrBylnum", de_licencenum);
+	}
 	
 	// 사용자가 예약 리스트 가져오기
 	public List<ReservationDTO> myReservation(ReservationDTO dto) {
 		return ss.selectList(MAPPER+".myReservation", dto);
 	}
-	
-	
 	
 	
 }

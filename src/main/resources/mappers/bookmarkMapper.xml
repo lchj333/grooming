@@ -9,9 +9,13 @@
 	 	INSERT INTO mb_bookmark SELECT #{mb_id}, #{de_licencenum} FROM DUAL WHERE NOT EXISTS(SELECT DE_LICENCENUM FROM MB_BOOKMARK WHERE MB_ID = #{mb_id} and DE_LICENCENUM = #{de_licencenum})
 	 </insert>
 
-	<select id="selectBookMark"  parameterType="BookMarkDTO" resultType="BookMarkDTO">
-		select * from mb_bookmark
-		where MB_ID = #{mb_id}
+	<select id="selectBookMark"  parameterType="String" resultType="RegistrationDTO">
+		select *
+		from gr_registration
+		where EXISTS (select * from mb_bookmark where MB_ID = #{mb_id}) 
+		and DE_LICENCENUM = (select DE_LICENCENUM 
+								from mb_bookmark
+								where MB_ID = #{mb_id});
 	</select>
 	
 	<delete id="deleteBookMark" parameterType="BookMarkDTO">
