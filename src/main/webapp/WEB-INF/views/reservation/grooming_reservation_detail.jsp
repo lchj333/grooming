@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,6 +84,23 @@
 	height: 50px;
 }
 
+#reserv-third-outline{
+	margin-top: 40px;
+	height: 50px;
+}
+
+#reserv-left3{
+	float: left;
+	background-color: green;
+	height: 50px;
+}
+
+#reserv-right3{
+	float: left;
+	background-color: yellow;
+	height: 50px;
+}
+
 </style>
 
 
@@ -109,13 +126,27 @@
 							<hr>
 							<!-- 값받고 보내는 곳 -->
 							<div id="reserv-first-outline">
-								<div id="reserv-left1" class="col-4"></div>
-								<div id="reserv-right1" class="col-4"></div>
+								<div id="reserv-left1" class="col-4">
+									<c:out value="${rsv.re_date }"></c:out>
+								</div>
 							</div>
 							
 							<div id="reserv-second-outline">
-								<div id="reserv-left2" class="col-4"></div>
-								<div id="reserv-right2" class="col-4"></div>
+								<div id="reserv-left2" class="col-4">
+									<c:out value="${rsv.re_weight}"></c:out>
+								</div>
+								<div id="reserv-right2" class="col-4">
+									<c:out value="${rsv.re_weight}"></c:out>
+								</div>
+							</div>
+							
+							<div id="reserv-third-outline">
+								<div id="reserv-left3" class="col-4">
+									<c:out value="${rsv.re_species}"></c:out>
+								</div>
+								<div id="reserv-right3" class="col-4">
+									<c:out value="${rsv.re_cut}"></c:out>
+								</div>
 							</div>
 							
 						</div>
