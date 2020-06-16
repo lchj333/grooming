@@ -52,8 +52,8 @@ public class RegistrationDAO {
 	}
 	
 	// 모든 가게
-//	public List<ShopListDTO> getList(Map<String, String> map) {
-//		return ss.selectList(MAPPER+".searchShop", map);
-//	}
-//	
+	public List<ShopListDTO> getList(Map<String, String> map) {
+		return ss.selectList(MAPPER+".searchShop", map);
+	}
+	
 }

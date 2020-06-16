@@ -49,9 +49,12 @@ public class ReservationController {
 	//-> grooming_result_detail ->
 	//예약 확인 폼 이동
 	@PostMapping(value = "reservation/reservCk")
-	public String reservCk(ReservationDTO dto, HttpServletRequest req) {
+	public String reservCk(@RequestParam(value = "re_specie")String[] specie, ReservationDTO dto, HttpServletRequest req) {
 		HttpSession hs = req.getSession();
 		
+		for(String s : specie) {
+			System.out.println(s);
+		}
 		if(hs.getAttribute("login") != null) { //로그인 정보 있는지 확인
 			//정보가 있을 경우
 			String id = ((MemberDTO) hs.getAttribute("login")).getMb_id();
