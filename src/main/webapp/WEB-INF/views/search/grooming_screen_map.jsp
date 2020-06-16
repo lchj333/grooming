@@ -226,7 +226,6 @@ html, body {
 		<!-- /더보기 버튼 -->
 	    <div id="search-panel" style="display: none">
 	        <input name="address11" id="address" type="text" value="<c:out value='${shop.reg_shopaddress}'/>" />
-	        <input name="address11" id="address" type="text" value="서울특별시 구로구 구로동 시흥대로163길 33 주호타워" />
 	        <button id="submit" type="button" value="Geocode">지도 검색</button>
    		</div>
 	</c:forEach>
