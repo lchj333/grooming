@@ -70,6 +70,10 @@ public class ReservationController {
 			dto.setMb_id(id);
 			dto.setRe_species(species);
 			
+			//+ 샵 주소 넘기기
+			String address = rdao.getaddrBylnum(dto.getDe_licencenum());
+			
+			req.setAttribute("address", address);
 			req.setAttribute("rsv", dto);
 			//예약 체크 페이지 이동
 			return "reservation/grooming_reservation_detail";

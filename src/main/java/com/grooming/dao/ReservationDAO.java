@@ -60,6 +60,9 @@ public class ReservationDAO {
 		return ss.selectList("myReservation");
 	}
 
-	
+	//라이센스넘버로 주소 서치
+	public String getaddrBylnum(int de_licencenum) {
+		return ss.selectOne(MAPPER+".getaddrBylnum", de_licencenum);
+	}
 	
 }

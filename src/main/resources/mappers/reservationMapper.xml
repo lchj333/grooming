@@ -77,4 +77,11 @@
 		and r.mb_id = m.mb_id
 	</select>
 	
+	<!-- ============ -->
+	<select id="getaddrBylnum" parameterType="int" resultType="String">
+		select REG_SHOPADDRESS
+		from gr_registration
+		where de_licencenum = #{de_licencenum};
+	</select>
+	
 </mapper>

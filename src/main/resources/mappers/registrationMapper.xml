@@ -62,15 +62,16 @@
 							where mb_id = (select mb_id
 											from gr_designer
 											where DE_LICENCENUM = r.de_licencenum)) mb_phone
-			from gr_registration r
-			where reg_block = 0
-			<where>
-				<choose>
-					
-				</choose>
-			</where>
-			<if test="data!=null and !data.equals('')">
+		from gr_registration r
+		where reg_block = 0
+		<where>
+			<choose>
 				
-			</if>
+			</choose>
+		</where>
+<!-- 		<if test="data!=null and !data.equals('')"> -->
+			
+<!-- 		</if> -->
 	</select>
+	
 </mapper>

@@ -324,7 +324,7 @@ html, body {
 								
 
 								<div class="form-group" id="input_date">
-									<input class="form-control" type="text" name="dates"
+									<input class="form-control" type="text" name="re_date"
 										placeholder="When.."> <i class="icon_calendar"></i>
 								</div>
 											
