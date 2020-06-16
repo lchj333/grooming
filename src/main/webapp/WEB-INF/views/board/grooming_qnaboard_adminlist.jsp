@@ -22,11 +22,13 @@
 						<c:forEach var="a" items="${list }">
 							<div id="grooming_qnaboard_customlist_tr">
 								<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td1"><a href="inquiryDetail?in_num=${a.in_num }&num=${pn}">${a.in_title }</a></div>
+								<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td1"><a href="inquiryDetail?in_num=${a.in_num }&num=${pn}">작성자 : ${a.mb_id }</a></div>
 								<div class="grooming_qnaboard_customlist_td" id="grooming_qnaboard_customlist_td2"><fmt:formatDate value="${a.in_nowdate }" pattern="YY.MM.dd"/></div>
 							</div>
 						</c:forEach>
 						<div style="border-top:1px solid #D5D5D5;"></div>
 					</div>
+		<!-- 페이징 처리 -->
 				<div style="color:black; float:right; font-size: 20px; margin-top: 20px; margin-right:20px;">
 			<c:if test="${prev}">
 				<span>[ <a href="/control/inquiryAdminList?num=${startPageNum - 1}">이전</a> ]</span>
@@ -49,7 +51,6 @@
 			<span>[ <a href="/control/inquiryAdminList?num=${endPageNum + 1}">다음</a> ]</span>
 		</c:if>
 				</div>
-		<!-- 페이징 처리 -->
 	
 		</div>
 		<!-- 페이징처리 끝 -->		

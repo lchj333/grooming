@@ -99,7 +99,7 @@
 		              <a href="<c:url value='inquiryInsert?mb_id=${login.mb_id }'/>">문의하기<span class="badge badge-pill badge-primary">6</span></a>
 		            </li>
 					<li>
-		              <a href="<c:url value='inquiryCustomerList'/>">문의확인<span class="badge badge-pill badge-success">6</span></a>
+		              <a href="<c:url value='inquiryCustomerList?mb_id=${login.mb_id }'/>">문의확인<span class="badge badge-pill badge-success">6</span></a>
 		            </li>
 		          </ul>
 		        </li>

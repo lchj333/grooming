@@ -27,9 +27,15 @@
 		DELETE FROM gr_inquiry WHERE IN_NUM = #{in_num}
 	</delete>
 	
-	<!-- 게시물의 총 갯수를 구하기 -->
+	<!-- 게시물의 총 갯수를 구하기(관리자가 볼 때) -->
 	<select id="inquiryCount" resultType="int">
 		SELECT COUNT(in_num) FROM gr_inquiry
+	</select>
+	
+	<!-- 사용자가 볼때 게시물 갯수(아이디로 검색한 수) -->
+	<select id="selectedCount" resultType="int">
+		SELECT COUNT(in_num) FROM gr_inquiry
+		WHERE MB_ID = #{mb_id}
 	</select>
 	
 	<!-- 게시물 목록 + 페이징 -->

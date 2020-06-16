@@ -108,8 +108,10 @@ public class InquiryController {
 			num = Integer.parseInt(n);
 		}
 		
-		//게시물 총 갯수
-		int count = dao.count();
+		
+		//사용자가 작성한 게시물 총 갯수
+		int count = dao.count2(req.getParameter("mb_id"));		
+		
 		// 한 페이지에 출력할 공지사항 숫자
 		int postNum = 5;
 		//하단 페이징 번호
@@ -202,7 +204,8 @@ public class InquiryController {
 	// 문의 삭제하기
 	@RequestMapping(value="/inquiryDelete")
 	public String inquiryDelete(@RequestParam(value="in_num")int in_num, Model model) {
+		dao2.deleteOne(in_num);
 		dao.deleteOne(in_num);
-		return "redirect:/inquiryList";
+		return "redirect:/inquiryCustomerList";
 	}	
 }

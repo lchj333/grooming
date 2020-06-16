@@ -30,5 +30,6 @@ public class AfagController {
 	}
 	// 댓글 작성하기페이지로
 	// 작성하기
+	// 댓글 삭제하기
 	
 }

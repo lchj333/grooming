@@ -45,6 +45,12 @@ public class InquiryDAO {
 	public int count() {
 		return ss.selectOne("inquiryCount");
 	}
+	
+	// 해당회원이 쓴 게시물의 총 갯수
+	public int count2(String mb_id) {
+		return ss.selectOne("selectedCount", mb_id);
+	}
+	
 	// 게시물 목록 + 페이징
 	public List<InquiryDTO> listPage(int displayPost, int postNum) {
 		HashMap<String, Integer> data = new HashMap<String, Integer>();

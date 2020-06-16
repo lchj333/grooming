@@ -42,6 +42,8 @@ $(document).ready(function(){
 							<%-- <c:if test="${mb.id eq login.md_id"> --%>
 							<div style="border-top : 1px solid black;"></div>
 							<c:forEach var="a" items="${list}">
+							<!-- 내가 쓴 글만 보기-->
+							<c:if test="${login.mb_id eq a.mb_id }">
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
 									<!-- 제목 -->
@@ -54,7 +56,7 @@ $(document).ready(function(){
 								</div> 
 					<ul class="hide" id="gr_qna_slideul">
                          <li id="gr_qna_slideli">Q. <c:out value="${a.in_con }"></c:out></li>
-                        	<%-- <c:out value="${list2.iq_con }"/> --%>
+                         	<!-- 댓글이 달린경우 댓글 표시 -->
                         	<c:forEach var="k" items="${list2 }">
                         		<c:if test="${k.in_num == a.in_num }">
                 		 <li id="gr_qna_slideli" style="margin-top:20px; margin-bottom:10px;">
@@ -62,15 +64,44 @@ $(document).ready(function(){
                          </li>
                         		</c:if>
                         	</c:forEach>
+                        <li id="gr_qna_slideli"><a href="inquiryDelete?in_num=${a.in_num }"><input type="button" value="삭제" class="btn_1 medium" /></a></li>
                     </ul>
 								</li>
+								
+								</c:if>
 							</c:forEach>
 							<%-- </c:if> --%>
-						</ul>	
+						</ul>
+						
+			<!-- 페이징 처리 -->
+				<div style="color:black; float:right; font-size: 20px; margin-top: 20px; margin-right:20px;">
+			<c:if test="${prev}">
+				<span>[ <a href="/control/inquiryAdminList?num=${startPageNum - 1}">이전</a> ]</span>
+			</c:if>
+		
+		<!-- 페이지 모음 출력 -->
+		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+			<span>
+				<!-- 현재보고있는 페이지 글자 두껍게해서 직관성 향상-->
+				<c:if test="${select != num }">
+					<a href="/control/inquiryCustomerList?num=${num}">${num}</a>									
+				</c:if>
+				<c:if test="${select == num }">
+					<b>${num }</b>
+				</c:if>
+			</span>
+		</c:forEach>
+					
+		<c:if test="${next}">
+			<span>[ <a href="/control/inquiryCustomerList?num=${endPageNum + 1}">다음</a> ]</span>
+		</c:if>
+				</div>
+	
+		</div>
+		<!-- 페이징처리 끝 -->		
 					</div>
 				</div>
 			</div>
-		</div>
 	</form>
 </div>
 <jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
