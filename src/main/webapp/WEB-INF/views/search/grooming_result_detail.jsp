@@ -40,20 +40,77 @@ html, body {
 	background-image: url('${pageContext.request.contextPath}/resources/main_resources/img/Grooming_BG.png');
 
 }
+
+.icon-plus{
+	margin-top: auto;
+	margin-bottom: auto;
+	cursor: pointer;
+}
+
+.icon-minus{
+	margin-top: auto;
+	margin-bottom: auto;
+	cursor: pointer;
+}
+
 </style>
 <!-- ====================css============================ -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
-
 		$("#btn").click(function(){
 			document.frm.action = "<c:url value='/reservation/reservCk'/>";
 			document.frm.submit();
 		});
 
+		var count = 0;
+		var count2 = 0;
+		var count3 = 0;
+		
+		$('#icon-largeDog-plus').on('mousedown',function(){
+            count += 1;
+            $('#largeDog').val(count);
+        })
+        
+        $('#icon-mediumDog-plus').on('mousedown',function(){
+            count2 += 1;
+            $('#mediumDog').val(count2);
+        })
+        
+        $('#icon-smallDog-plus').on('mousedown',function(){
+            count3 += 1;
+            $('#smallDog').val(count3);
+        })
+        
+        
+        $('#icon-largeDog-minus').on('mousedown',function(){
+            count -= 1;
+            if(count<0){
+            	count = 0;
+            }else{
+          	  $('#largeDog').val(count);
+            }
+        })
+        
+        $('#icon-mediumDog-minus').on('mousedown',function(){
+            count2 -= 1;
+            if(count2<0){
+            	count2 = 0;
+            }else{
+          	  $('#mediumDog').val(count2);
+            }
+        })
+        
+        $('#icon-smallDog-minus').on('mousedown',function(){
+            count3 -= 1;
+            if(count3<0){
+            	count3 = 0;
+            }else{
+          	  $('#smallDog').val(count3);
+            }
+        })
+		
 	});
-
 
 </script>
 
@@ -242,20 +299,26 @@ html, body {
 											<input type="hidden" name="re_species" value="대형견" />
 											
 									<div class="panel-dropdown">
-										<a href="#">견종선택 <span class="qtyTotal">1</span></a>
+										<a href="#">견종선택 <span class="qtyTotal">0</span></a>
 										<div class="panel-dropdown-content right">
-<!-- 											<div class="qtyButtons">
-												<label>대형견</label> 
-												<input type="text" name="re_specie" value="1">
+											<div class="qtyButtons">
+												<label>대형</label>
+												<i class="icon-minus" id="icon-largeDog-minus"></i>
+												<input type="text" name="re_specie" value="0" id="largeDog">
+												<i class="icon-plus" id="icon-largeDog-plus"></i>
 											</div>
 											<div class="qtyButtons">
-												<label>중형견</label> 
-												<input type="text" name="re_specie" value="0">
+												<label>중형</label> 
+												<i class="icon-minus" id="icon-mediumDog-minus"></i>
+												<input type="text" name="re_specie" value="0" id="mediumDog">
+												<i class="icon-plus" id="icon-mediumDog-plus"></i>
 											</div>
 											<div class="qtyButtons">
-												<label>소형견</label> 
-												<input type="text" name="re_specie" value="0">
-											</div> -->
+												<label>소형</label>
+												<i class="icon-minus" id="icon-smallDog-minus"></i>
+												<input type="text" name="re_specie" value="0" id="smallDog">
+												<i class="icon-plus" id="icon-smallDog-plus"></i>
+											</div>
 										</div>
 									</div>
 
@@ -276,8 +339,7 @@ html, body {
 									<input type="button" value="예약하기" id="btn" class="add_top_30 btn_1 full-width"/>
 								</form>
 								<a href="wishlist.html"
-									class="btn_1 full-width outline wishlist"><i
-									class="icon_heart"></i> 찜목록에 추가하기</a>
+									class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> 찜목록에 추가하기</a>
 								<div class="text-center">
 									<small>GROOMING</small>
 								</div>
