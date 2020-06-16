@@ -17,6 +17,8 @@ public class ReservationDTO {
 	private String bc_con;
 	private String ref_shopname;
 	private String mb_phone;
+	private String reg_shopaddress;
+	private String reg_img;
 	
 	//생성자
 	public ReservationDTO() {}
@@ -112,6 +114,18 @@ public class ReservationDTO {
 	}
 	public void setMb_phone(String mb_phone) {
 		this.mb_phone = mb_phone;
+	}
+	public String getReg_shopaddress() {
+		return reg_shopaddress;
+	}
+	public void setReg_shopaddress(String reg_shopaddress) {
+		this.reg_shopaddress = reg_shopaddress;
+	}
+	public String getReg_img() {
+		return reg_img;
+	}
+	public void setReg_img(String reg_img) {
+		this.reg_img = reg_img;
 	}
 	
 	

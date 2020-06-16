@@ -55,11 +55,17 @@ public class ReservationDAO {
 		ss.insert(MAPPER+".insertReserv", dto);
 	}
 	
-	// 내 예약 리스트 가져오기
-	public List<ReservationDTO> myReservation() {
-		return ss.selectList("myReservation");
+	// 미용사가 예약 리스트 가져오기
+	public List<ReservationDTO> agreedReservation(ReservationDTO dto) {
+		return ss.selectList(MAPPER+".agreedReservation", dto);
 	}
-
+	
+	// 사용자가 예약 리스트 가져오기
+	public List<ReservationDTO> myReservation(ReservationDTO dto) {
+		return ss.selectList(MAPPER+".myReservation", dto);
+	}
+	
+	
 	
 	
 }
