@@ -32,6 +32,7 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="page">
+<jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
 <!-- contents -->
 	<input type="hidden" value="${a.in_num }" />
 	<form action="#" id="grooming_qnaboard_customlist_form">
@@ -73,7 +74,8 @@ $(document).ready(function(){
 		</div>
 	</form>
 </div>
-<jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
+<!-- 로그아웃 버튼 -->
+<jsp:include page="../mypage/mypage_logout.jsp"></jsp:include>
    <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
