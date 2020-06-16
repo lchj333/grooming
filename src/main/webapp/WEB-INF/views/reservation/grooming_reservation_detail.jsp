@@ -181,7 +181,7 @@
 							</div>
 							<!-- 정보넘겨주자 -->
 							<input type="hidden" name="lnum" value="${lnum}" />
-							<input type="hidden" name="re_date" value="${rsv.re_date }" />
+							<input type="hidden" name="dates" value="${rsv.re_date }" />
 							<input type="hidden" name="re_species" value="${rsv.re_species}" />
 							<input type="hidden" name="re_weight" value="${rsv.re_weight}" />
 							<input type="hidden" name="re_cut" value="${rsv.re_cut}" />
@@ -202,7 +202,6 @@
 		</main>
 
 	</div>
-
 		
 		
 	<!-- 상단 올라감 -->

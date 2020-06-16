@@ -63,12 +63,14 @@
 html, body {
 	height: 100%;
 }
+
+#google-map{
+	float: right;
+	width: 50%;
+	float: right;
+}
 </style>
 <!-- ====================css============================ -->
-
-
-
-
 </head>
 
 <body>
@@ -76,7 +78,7 @@ html, body {
 	<div id="page">
 <!-- 네비 =============================================================== -->
 
-<!-- header -->
+		<!-- header -->
 		<jsp:include page="../include/header.jsp" />
 		<!-- header end -->
 
@@ -229,11 +231,18 @@ html, body {
 		<p class="text-center add_top_30"><a href="#0" class="btn_1 rounded"><strong>+더보기</strong></a></p>
 	</div>
 	<!-- /검색 결과 좌측 div-->
-	
-   
-	
-    <div id="google-map">
-    </div>
+	</div>
+	<!-- /row-->
+</div>
+<!-- /container-fluid -->
+
+</main>
+<!--/main end-->
+
+</div>
+<!-- /전체 페이지 div -->
+
+    <div id="google-map"></div>
 	
 
 	    <script>
@@ -342,16 +351,6 @@ html, body {
     </script>
 
 
-	</div>
-	<!-- /row-->
-</div>
-<!-- /container-fluid -->
-
-</main>
-<!--/main end-->
-
-</div>
-<!-- /전체 페이지 div -->
 
 
 
