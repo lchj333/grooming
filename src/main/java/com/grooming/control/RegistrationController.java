@@ -202,6 +202,7 @@ public class RegistrationController {
 			if(imgs != null) {//가져온 이미지들이 있을 때
 				req.setAttribute("infoImgs", imgs);
 			}
+			req.setAttribute("de_licencenum", num);
 			
 			return "search/grooming_result_detail";
 		}else {//가져온 정보가 없을 때
