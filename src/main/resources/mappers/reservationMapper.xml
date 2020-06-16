@@ -63,9 +63,9 @@
 	
 	<!-- 예약 작성 -->
 	<insert id="insertReserv" parameterType="ReservationDTO"><!-- 예약 번호는 자동 생성 -->
-		insert into gr_reservation (DE_LICENCENUM, MB_ID, RE_APPROVAL, RE_DATE, 
+		insert into gr_reservation (DE_LICENCENUM, MB_ID, RE_DATE, 
 									RE_NOWDATE,	RE_SPECIES, RE_WEIGHT, RE_CUT)
-		values (#{de_licencenum}, #{mb_id}, 'U', #{re_date}, 
+		values (#{de_licencenum}, #{mb_id}, #{re_date}, 
 				now(), #{re_species}, #{re_weight}, #{re_cut})
 	</insert>
 	
@@ -94,9 +94,9 @@
 		where re_num = #{re_num}
 	</select>
 	
-	<!-- ============ -->
-	<select id="getaddrBylnum" parameterType="int" resultType="String">
-		select REG_SHOPADDRESS
+	<!-- 라이센스 넘버로 주소, 샵이름 -->
+	<select id="getaddrBylnum" parameterType="int" resultType="RegistrationDTO">
+		select ref_shopname, reg_shopaddress
 		from gr_registration
 		where de_licencenum = #{de_licencenum};
 	</select>

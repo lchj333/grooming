@@ -76,7 +76,7 @@
 
 			<!-- 상단 로고 -->
 			<figure>
-				<a href="/main"><img
+				<a href="/"><img
 					src="<c:url value='/resources/main_resources/img/Grooming_150_36_LOGO.png'/>"
 					data-retina="true" alt="" width="150" height="36"></a>
 			</figure>
