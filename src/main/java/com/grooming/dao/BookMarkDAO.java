@@ -3,9 +3,10 @@ package com.grooming.dao;
 import java.util.List;
 
 import com.grooming.dto.BookMarkDTO;
+import com.grooming.dto.RegistrationDTO;
 
 public interface BookMarkDAO {
-	public List<BookMarkDTO> selectBookMark(BookMarkDTO BookMarkDTO);
+	public List<RegistrationDTO> selectBookMark(String mb_id);
 	public void insertBookmark(BookMarkDTO BookMarkDTO);
 	public void deleteBookMark(BookMarkDTO BookMarkDTO);
 }

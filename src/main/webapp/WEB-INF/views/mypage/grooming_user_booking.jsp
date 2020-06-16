@@ -39,7 +39,7 @@
 					<c:forEach var="myList" items="${myList}">
 					<li>
 						<figure><img src="img/item_1.jpg" alt=""></figure>
-						<h4>${myList.ref_shopname } <i class="pending">Pending(jstl 예약정보)</i></h4>
+						<h4>${myList.ref_shopname } <i class="pending"><c:set var="대기" value="${myList.re_approval }"/></i></h4>
 						<ul class="booking_list">
 							<li><strong style="font-weight: bold;">예약일</strong>${myList.re_date}</li>
 							<li><strong style="font-weight: bold;">견종</strong>${myList.re_species}</li>
@@ -53,19 +53,7 @@
 							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i>취소</a></li>
 						</ul>
 					</li>
-					<li>
-						<figure><img src="img/item_2.jpg" alt=""></figure>
-						<h4>Da Alfredo <i class="cancel">Cancelled</i></h4>
-						<ul class="booking_list">
-							<li><strong>Booking date</strong> 11 November 2017</li>
-							<li><strong>Booking details</strong> 2 People</li>
-							<li><strong>Client</strong> Mark Twain</li>
-						</ul>
-						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i>Send Message</a></p>
-						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-						</ul>
-					</li>
+					
 					</c:forEach>
 				</ul>
 			</div>

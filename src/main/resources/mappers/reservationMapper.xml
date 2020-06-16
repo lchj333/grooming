@@ -41,10 +41,17 @@
 		where DE_LICENCENUM = #{de_licencenum}
 	</select>
 	
-	<!-- 예약 승인 | 미승인 -->
-	<update id="checkReserv" parameterType="ReservationDTO">
+	<!-- 예약 승인 -->
+	<update id="checkReservY" parameterType="ReservationDTO">
 		update GR_RESERVATION
-		set RE_APPROVAL = #{RE_APPROVAL}
+		set RE_APPROVAL = 'Y'
+		where RE_NUM = #{re_num};
+	</update>
+	
+	<!-- 예약  미승인 -->
+	<update id="checkReserN" parameterType="ReservationDTO">
+		update GR_RESERVATION
+		set RE_APPROVAL = 'N'
 		where RE_NUM = #{re_num};
 	</update>
 	
@@ -64,7 +71,7 @@
 	
 	<!-- 내 예약정보 가져오기 -->
 	<select id="myReservation" resultType="ReservationDTO">
-		select r.*, m.mb_id, d.ref_shopname
+		select r.*, m.*, d.ref_shopname
 		from GR_RESERVATION r, GR_MEMBER m, GR_REGISTRATION d
 		where r.de_licencenum = d.de_licencenum
 		and r.mb_id = m.mb_id
