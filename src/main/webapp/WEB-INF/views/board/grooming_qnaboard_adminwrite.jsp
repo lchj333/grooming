@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.css">
   <!-- Your custom styles -->
   <link href="${pageContext.request.contextPath}/resources/mypage/css/custom.css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function (e){
     $("input[type='file']").change(function(e){

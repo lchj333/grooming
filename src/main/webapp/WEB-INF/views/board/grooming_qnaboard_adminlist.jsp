@@ -28,6 +28,7 @@
 						</c:forEach>
 						<div style="border-top:1px solid #D5D5D5;"></div>
 					</div>
+
 		<!-- 페이징 처리 -->
 				<div style="color:black; float:right; font-size: 20px; margin-top: 20px; margin-right:20px;">
 			<c:if test="${prev}">
@@ -79,58 +80,6 @@
 	<!-- Custom scripts for this page-->
 	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/dropzone.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap-datepicker.js"></script>
+
 </body>
 </html>
-<!-- <div id="page"> -->
-<!-- <!-- contents --> -->
-<!-- 	<form action="#" id="grooming_qnaboard_customlist_form"> -->
-<!-- 		<div id="grooming_qnaboard_customl\ist_div"> -->
-<!-- 			<div id="grooming_qnaboard_customlist_section"> -->
-<!-- 				<div id="grooming_qnaboard_customlist_articlelist"> -->
-<!-- 					<div id="grooming_qnaboard_customlist_maintitle">문의사항 관리</div> -->
-<!-- 					<div id="grooming_qnaboard_customlist_tablediv"> -->
-<!-- 						<ul id="gr_qna_ul"> -->
-<%-- 							<c:forEach var="a" items="${list }"> --%>
-<!-- 								<li class="menu" id="gr_qna_li"> -->
-<!-- 								<div id="gr_qna_a">  -->
-<!-- 									제목 -->
-<%-- 									<div id="gr_qna_title"><c:out value="${a.in_title }"></c:out></div> --%>
-<!-- 									날짜 -->
-<%-- 									<div id="gr_qna_regdate" ><fmt:formatDate value="${a.in_nowdate }" pattern="YY-MM-dd"/></div> --%>
-<!-- 								</div>  -->
-<!-- 									<ul class="hide" id="gr_qna_slideul"> -->
-<%-- 										<li id="gr_qna_slideli"><c:out value="${a.in_con }"></c:out></li> --%>
-<!-- 									</ul> -->
-<!-- 								</li> -->
-<%-- 							</c:forEach> --%>
-<!-- 						</ul> -->
-<!-- 		<!-- 페이징 처리 --> -->
-<!-- 		<div style="color:black; float:right; font-size: 20px; margin-top: 20px; margin-right:20px;"> -->
-<%-- 		<c:if test="${prev}"> --%>
-<%-- 			<span>[ <a href="/control/inquiryAdminList?num=${startPageNum - 1}">이전</a> ]</span> --%>
-<%-- 		</c:if> --%>
-		
-<!-- 		<!-- 페이지 모음 출력 --> -->
-<%-- 		<c:forEach begin="${startPageNum}" end="${endPageNum}" var="num"> --%>
-<!-- 			<span> -->
-<!-- 				현재보고있는 페이지 글자 두껍게해서 직관성 향상 -->
-<%-- 				<c:if test="${select != num }"> --%>
-<%-- 					<a href="/control/inquiryAdminList?num=${num}">${num}</a>									 --%>
-<%-- 				</c:if> --%>
-<%-- 				<c:if test="${select == num }"> --%>
-<%-- 					<b>${num }</b> --%>
-<%-- 				</c:if> --%>
-<!-- 			</span> -->
-<%-- 		</c:forEach> --%>
-					
-<%-- 		<c:if test="${next}"> --%>
-<%-- 			<span>[ <a href="/control/inquiryAdminList?num=${endPageNum + 1}">다음</a> ]</span> --%>
-<%-- 		</c:if> --%>
-<!-- 		</div> -->
-<!-- 		<!-- 페이징처리 끝	 --> -->
-<!-- 					</div>			 -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</form> -->
-<!-- </div> -->

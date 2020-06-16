@@ -30,6 +30,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+<jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
 <div id="page">
 <!-- contents -->
 	<form action="#" id="grooming_qnaboard_customlist_form">
@@ -41,9 +42,11 @@ $(document).ready(function(){
 						<ul id="gr_qna_ul">
 							<%-- <c:if test="${mb.id eq login.md_id"> --%>
 							<div style="border-top : 1px solid black;"></div>
+
 							<c:forEach var="a" items="${list}">
 							<!-- 내가 쓴 글만 보기-->
 							<c:if test="${login.mb_id eq a.mb_id }">
+
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
 									<!-- 제목 -->
@@ -66,6 +69,7 @@ $(document).ready(function(){
                         	</c:forEach>
                         <li id="gr_qna_slideli"><a href="inquiryDelete?in_num=${a.in_num }"><input type="button" value="삭제" class="btn_1 medium" /></a></li>
                     </ul>
+
 								</li>
 								
 								</c:if>
@@ -99,6 +103,7 @@ $(document).ready(function(){
 	
 		</div>
 		<!-- 페이징처리 끝 -->		
+
 					</div>
 				</div>
 			</div>
