@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,30 +33,22 @@
 			</div>
 			<div class="list_general">
 				<ul>
+					<c:forEach var="b" items="${blist}">
 					<li>
 						<figure><img src="img/item_1.jpg" alt=""></figure>
 						<small>강아지 or 고양이</small>
-						<h4>가게이름</h4>
-						<p>Lorem ipsum dolor sit amet, est ei idque voluptua copiosae, pro detracto disputando reformidans at, ex vel suas eripuit. Vel alii zril maiorum ex, mea id sale eirmod epicurei. Sit te possit senserit, eam alia veritus maluisset ei, id cibo vocent ocurreret per....</p>
-						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i>가게 상세보기</a></p>
+						<h4>${b.ref_shopname}</h4>
+						<p>${b.reg_con}</p>
+						<p><a href="#" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i>가게 상세보기</a></p>
 						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray delete wishlist_close"><i class="fa fa-fw fa-times-circle-o"></i>찜취소</a></li>
+							<li><a href="#" class="btn_1 gray delete wishlist_close"><i class="fa fa-fw fa-times-circle-o"></i>찜취소</a></li>
 						</ul>
 					</li>
+					</c:forEach>
 					<li>
 						<figure><img src="img/item_2.jpg" alt=""></figure>
 						<small>Restaurant</small>
 						<h4>Da Alfredo</h4>
-						<p>Lorem ipsum dolor sit amet, est ei idque voluptua copiosae, pro detracto disputando reformidans at, ex vel suas eripuit. Vel alii zril maiorum ex, mea id sale eirmod epicurei. Sit te possit senserit, eam alia veritus maluisset ei, id cibo vocent ocurreret per....</p>
-						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i> View item</a></p>
-						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray delete wishlist_close"><i class="fa fa-fw fa-times-circle-o"></i> Cancel</a></li>
-						</ul>
-					</li>
-					<li>
-						<figure><img src="img/item_3.jpg" alt=""></figure>
-						<small>Museum</small>
-						<h4>Pompidue</h4>
 						<p>Lorem ipsum dolor sit amet, est ei idque voluptua copiosae, pro detracto disputando reformidans at, ex vel suas eripuit. Vel alii zril maiorum ex, mea id sale eirmod epicurei. Sit te possit senserit, eam alia veritus maluisset ei, id cibo vocent ocurreret per....</p>
 						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-eye"></i> View item</a></p>
 						<ul class="buttons">

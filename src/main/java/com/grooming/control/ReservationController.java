@@ -24,6 +24,8 @@ import com.grooming.dto.ReservationDTO;
 
 @Controller
 public class ReservationController {
+	String[] spec = {"대형 ", "중형 ", "소형 "};
+	
 	@Inject
 	ReservationDAO rdao;
 
@@ -49,13 +51,24 @@ public class ReservationController {
 	//-> grooming_result_detail ->
 	//예약 확인 폼 이동
 	@PostMapping(value = "reservation/reservCk")
-	public String reservCk(ReservationDTO dto, HttpServletRequest req) {
+	public String reservCk(@RequestParam(value = "re_specie")String[] specie, ReservationDTO dto, HttpServletRequest req) {
 		HttpSession hs = req.getSession();
+		
+		String species = "";
+		for(int x=0; x<specie.length; x++) {
+			if(!specie[x].equals("0")) {
+				species = species + spec[x] +specie[x];
+			}
+			if(x < 2 && !specie[x+1].equals("0")) { //x는 최대 2
+				species = species + " | ";
+			}
+		}
 		
 		if(hs.getAttribute("login") != null) { //로그인 정보 있는지 확인
 			//정보가 있을 경우
 			String id = ((MemberDTO) hs.getAttribute("login")).getMb_id();
 			dto.setMb_id(id);
+			dto.setRe_species(species);
 			
 			req.setAttribute("rsv", dto);
 			//예약 체크 페이지 이동

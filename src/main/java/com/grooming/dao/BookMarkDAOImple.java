@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.grooming.dto.BookMarkDTO;
+import com.grooming.dto.RegistrationDTO;
 
 @Repository
 public class BookMarkDAOImple implements BookMarkDAO{
@@ -21,9 +22,10 @@ public class BookMarkDAOImple implements BookMarkDAO{
 	
 	//찜 한 내용 조회
 	@Override
-	public List<BookMarkDTO> selectBookMark(BookMarkDTO BookMarkDTO) {
-		return ss.selectList("selectBookMark", BookMarkDTO);
+	public List<RegistrationDTO> selectBookMark(String mb_id) {
+		return ss.selectList("selectBookMark", mb_id);
 	}
+	
 	//찜 하기
 	@Override
 	public void insertBookmark(BookMarkDTO BookMarkDTO) {
@@ -34,5 +36,6 @@ public class BookMarkDAOImple implements BookMarkDAO{
 	public void deleteBookMark(BookMarkDTO BookMarkDTO) {
 		ss.delete("deleteBookMark", BookMarkDTO);
 	}
+
 	
 }
