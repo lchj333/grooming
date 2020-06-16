@@ -8,11 +8,11 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage/css/grooming_faqboard_customlist.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
     .menu #gr_qna_a{cursor:pointer;}
     .menu .hide{display:none;}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 // html dom 이 다 로딩된 후 실행된다.
 $(document).ready(function(){

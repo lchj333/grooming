@@ -43,7 +43,6 @@ $(document).ready(function(){
 						<ul id="gr_qna_ul">
 							<%-- <c:if test="${mb.id eq login.md_id"> --%>
 							<div style="border-top : 1px solid black;"></div>
-
 							<c:forEach var="a" items="${list}">
 							<!-- 내가 쓴 글만 보기-->
 							<c:if test="${login.mb_id eq a.mb_id }">
@@ -60,13 +59,16 @@ $(document).ready(function(){
 								</div> 
 					<ul class="hide" id="gr_qna_slideul">
                          <li id="gr_qna_slideli">
-                         		Q. <c:set var="a" value="${a.in_con }"/>
-								<c:set var="b" value="${fn:replace(a,'<p>','')}"/>
-								<c:set var="c" value="${fn:replace(b,'</p>','</br>')}"/>
-								<c:set var="d" value="${fn:replace(c,'&nbsp;','
-								')}"/>
-								<c:set var="e" value="${fn:replace(d,'<br>','')}"/> 
-								${e }
+<%--                          		<c:out value="${fn:replace(a.in_con,'하이','바이')}"></c:out> --%>
+<%--                          		<c:out value="${a.in_con }"></c:out> --%>
+                         		<c:set var="aa" value="${a.in_con }"/>
+								<c:set var="bb" value="${fn:replace(aa,'<p>','')}"/>
+								<c:set var="cc" value="${fn:replace(bb,'</p>','</br>')}"/>
+								<c:set var="dd" value="${fn:replace(cc,'&nbsp;','
+ 								')}"/>
+								<c:set var="ee" value="${fn:replace(dd,'<br>','')}"/>
+								${ee }
+<%-- 								<c:set var="e" value="${a.in_con }"></c:set>                          --%>
                          </li>
                          	<!-- 댓글이 달린경우 댓글 표시 -->
                         	<c:forEach var="k" items="${list2 }">
