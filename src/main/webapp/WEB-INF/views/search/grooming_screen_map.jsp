@@ -15,9 +15,9 @@
 
 <style>
         html,
-        body,
-        #google-map {
-            width: 1200px;
+        body
+        {
+            width: 100%;
             height: 1200px;
            	margin: 0;
             padding: 0;
@@ -64,11 +64,8 @@ html, body {
 	height: 100%;
 }
 
-#google-map{
-	float: right;
-	width: 50%;
-	float: right;
-}
+
+
 </style>
 <!-- ====================css============================ -->
 </head>
@@ -78,15 +75,19 @@ html, body {
 	<div id="page">
 <!-- 네비 =============================================================== -->
 
+	<!-- 구글맵 -->
+	
+
+		</div>
 		<!-- header -->
 		<jsp:include page="../include/header.jsp" />
 		<!-- header end -->
 
-		<main>  <!-- 메인 시작  -->
+		<main id="main-start">  <!-- 메인 시작  -->
 			<div class="container-fluid full-height">  <!-- 최고 루트 div  -->
 				<!-- 안에 div -->
 				<div class="row row-height">
-					<div class="col-lg-5 content-left order-md-last order-sm-last order-last">
+					<div class="col-lg-5 content-left order-md-last order-sm-last order-last" id="test">
 						 <!-- 검색 div -->
 						<div id="results_map_view">
 						   <div class="container-fluid">
@@ -231,6 +232,15 @@ html, body {
 		<p class="text-center add_top_30"><a href="#0" class="btn_1 rounded"><strong>+더보기</strong></a></p>
 	</div>
 	<!-- /검색 결과 좌측 div-->
+	
+	
+	
+	
+	<!-- 지도 api 공간 -->
+	<div class="col-lg-7 map-right">
+		<div id="map">
+	</div>
+	
 	</div>
 	<!-- /row-->
 </div>
@@ -242,7 +252,7 @@ html, body {
 </div>
 <!-- /전체 페이지 div -->
 
-    <div id="google-map"></div>
+
 	
 
 	    <script>
@@ -266,7 +276,7 @@ html, body {
              *              ㄴ lat : 위도 (latitude)
              *              ㄴ lng : 경도 (longitude)
              */
-            var map = new google.maps.Map(document.getElementById('google-map'), {
+            var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 12.5,
                 center: {
                 	lat: 37.715133, lng: 126.734086

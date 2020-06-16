@@ -131,7 +131,7 @@
 </script>
 
 </head>
-<body>
+<body style="width: 100%;">
 	<div id="page">
 		<!-- header -->
 		<jsp:include page="../include/header.jsp" />
