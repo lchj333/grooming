@@ -62,6 +62,7 @@ public class ReservationController {
 			if(x < 2 && !specie[x+1].equals("0")) { //x는 최대 2
 				species = species + " | ";
 			}
+			// ex : "대형 1 | 중형 2"
 		}
 		
 		if(hs.getAttribute("login") != null) { //로그인 정보 있는지 확인
