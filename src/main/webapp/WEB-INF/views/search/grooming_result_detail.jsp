@@ -61,14 +61,6 @@ html, body {
 		
 		/* 날짜 유효성 검사 */
 		
-		
-		
-		$("#btn").click(function(){
-			document.frm.action = "<c:url value='/reservation/reservCk'/>";
-			document.frm.submit();
-		});
-		
-		
 		/* 강아지 체크 */
 		var dogsum = 0;
 		var count = 0;
@@ -133,6 +125,17 @@ html, body {
 
         
 		
+		/* 예약버튼 */
+		$("#btn").click(function(){
+			document.frm.action = "<c:url value='/reservation/reservCk'/>";
+			document.frm.submit();
+		});
+		
+		/* 리뷰작성버튼 */
+		$("#btn2").click(function(){
+			document.frm.action = "<c:url value='/reservation/reservCk'/>";
+			document.frm.submit();
+		});
 		
 		
 		
@@ -238,35 +241,38 @@ html, body {
 								<!-- End Map -->
 							</section>
 							<!-- /section -->
-
-							<section id="reviews">
-
-								<div class="reviews-container">
-									<h2>Reviews</h2>
-									<hr>
-									<div class="review-box clearfix">
-										<figure class="rev-thumb">
-											<img src="img/Grooming_300_200_LOGO.png" alt="">
-										</figure>
-										<div class="rev-content">
-											<div class="rating">
-												<!-- 별점 -->
-												<i class="icon_star voted"></i><i class="icon_star voted"></i><i
-													class="icon_star voted"></i><i class="icon_star voted"></i><i
-													class="icon_star"></i>
-											</div>
-											<div class="rev-info">이름 :홍길동 날짜:2020-10-30</div>
-											<div class="rev-text">
-												<p style="color: gray;">으으으은우ㅡ으으으ㅐㅔ라ㅓㅠㅇㄹ뉴ㅗㅓㅏ ㅇㅀㄴ뮤ㅓㅏ
-													ㄹㄴㅇ휴ㅓㅏㅣ ㅁㄴㅇㄿ ㅗㅠㅓㅏㅇㅀㅁㄴ호ㅠㅓㅏㅣ ㅁㅇㄿ티 호ㅠㅓㅏㅇㄿ</p>
+							
+							
+							<!-- 리뷰 -->
+							<form action="" method="post" name="frm2">
+								<section id="reviews">
+									<div class="reviews-container">
+										<h2>리얼리뷰</h2>
+										<hr>
+										<div class="review-box clearfix">
+											<figure class="rev-thumb">
+												<img src="img/Grooming_300_200_LOGO.png" alt="">
+											</figure>
+											<div class="rev-content">
+												<div class="rating">
+													<!-- 별점 -->
+													<i class="icon_star voted"></i><i class="icon_star voted"></i><i
+														class="icon_star voted"></i><i class="icon_star voted"></i><i
+														class="icon_star"></i>
+												</div>
+												<div class="rev-info">이름 :홍길동 날짜:2020-10-30</div>
+												<div class="rev-text">
+													<p style="color: gray;">으으으은우ㅡ으으으ㅐㅔ라ㅓㅠㅇㄹ뉴ㅗㅓㅏ ㅇㅀㄴ뮤ㅓㅏ
+														ㄹㄴㅇ휴ㅓㅏㅣ ㅁㄴㅇㄿ ㅗㅠㅓㅏㅇㅀㅁㄴ호ㅠㅓㅏㅣ ㅁㅇㄿ티 호ㅠㅓㅏㅇㄿ</p>
+												</div>
 											</div>
 										</div>
+										<!-- /댓글 박스 div 끝 -->
+	
 									</div>
-									<!-- /댓글 박스 div 끝 -->
-
-								</div>
-								<!-- /전체 리뷰 end -->
-							</section>
+									<!-- /전체 리뷰 end -->
+								</section>
+							</form>
 							<!-- /리뷰  end -->
 							<hr>
 							<!-- 리뷰를 추가 하다  -->
@@ -314,7 +320,7 @@ html, body {
 								</div>
 								
 							<!-- 예약폼 -->
-							<form action="" name="frm" method="get">
+							<form action="" name="frm" method="post">
 								
 
 								<div class="form-group" id="input_date">
