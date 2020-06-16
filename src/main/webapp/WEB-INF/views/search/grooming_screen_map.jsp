@@ -388,7 +388,7 @@ html, body {
 		}	
 	</script>
 	<!-- 디테일로 이동하기 위한 폼태그 -->
-	<form action="" name="goform">
+	<form action="" name="goform" method="post">
 		<input type="hidden" name="de_licencenum" id="pknum" />
 	</form>
 </body>

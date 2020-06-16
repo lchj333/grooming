@@ -2,6 +2,9 @@ package com.grooming.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -59,11 +62,13 @@ public class ReservationController {
 		String species = "";
 		for(int x=0; x<specie.length; x++) {
 			if(!specie[x].equals("0")) {
+				//입력
 				species = species + spec[x] +specie[x];
-			}
-			if(x < 2 && !specie[x+1].equals("0")) { //x는 최대 2
-				species = species + " | ";
-			}
+				//칸 구분 ( | )
+				if(x < 2 && !specie[x+1].equals("0")) { //x는 최대 2
+					species = species + " | ";
+				}//in
+			}//out
 			// ex : "대형 1 | 중형 2"
 		}
 		
@@ -77,6 +82,7 @@ public class ReservationController {
 			RegistrationDTO rdto = rdao.getaddrBylnum(num);
 			req.setAttribute("address", rdto.getReg_shopaddress());
 			req.setAttribute("shopname", rdto.getRef_shopname());
+			req.setAttribute("lnum", num);
 			
 			req.setAttribute("rsv", dto);
 			
@@ -90,11 +96,20 @@ public class ReservationController {
 	//-> 예약  확인 페이지 ->
 	//미용 예약 적용
 	@PostMapping(value = "reservation/addReserv")
-	public String takeReserv(ReservationDTO dto, HttpServletRequest req,
-						HttpServletResponse res, RedirectAttributes rtt) throws IOException {
+	public String takeReserv(@RequestParam(value = "lnum")int lnum, HttpServletRequest req,
+								@RequestParam(value = "dates")String dates, ReservationDTO dto,
+								HttpServletResponse res, RedirectAttributes rtt) throws IOException, ParseException {
 		HttpSession hs = req.getSession();
+		MemberDTO mem = (MemberDTO) hs.getAttribute("login");
 		
+		//String to Date
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date re_date = transFormat.parse(dates);
+
 		//실질적 DB저장
+		dto.setMb_id(mem.getMb_id());
+		dto.setDe_licencenum(lnum);
+		dto.setRe_date(re_date);
 		rdao.insertReserv(dto);
 		
 		//알림 팝업
@@ -107,7 +122,7 @@ public class ReservationController {
 		rtt.addFlashAttribute("dInfo", hs.getAttribute("dInfo"));
 		
 		//예약 리스트 이동 컨트롤
-		return "redirect:/goToBook";
+		return "redirect:goToBook";
 	}
 	//↕페이지 이동 -> 목록 페이지
 	@RequestMapping("/goToBook")
