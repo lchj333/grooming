@@ -109,7 +109,6 @@ $(document).ready(function(){
 			</div>
 	</form>
 </div>
-<jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
 	<script src="${pageContext.request.contextPath}/resources/mypage/vendor/jquery/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Core plugin JavaScript-->
