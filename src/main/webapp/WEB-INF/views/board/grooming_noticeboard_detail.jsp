@@ -19,17 +19,16 @@
 <!-- header end -->
 <!-- contents -->
 	<div id="gr_noticeboard_detail_maindiv">
-      <div id="gr_noticeboard_detail_title"><span><c:out value="${inform.nt_title }"></c:out></span></div>
-      <div id="gr_noticeboard_detail_datehits">
-         <span>등록일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-         <span><fmt:formatDate value="${inform.nt_regdate }"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-         <span>조회수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-         <span><c:out value="${inform.nt_hits }"></c:out></span>
-      </div>
-      
-    
+		<div>
+	      <div id="gr_noticeboard_detail_title"><span><c:out value="${inform.nt_title }"></c:out></span></div>
+	      <div id="gr_noticeboard_detail_datehits">
+	         <span>등록일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	         <span><fmt:formatDate value="${inform.nt_regdate }"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	         <span>조회수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	         <span><c:out value="${inform.nt_hits }"></c:out></span>
+	      </div>
+		</div>
 		<div id="gr_noticeboard_detail_contents">
-
 			<c:set var="a" value="${inform.nt_con }"/>
 			<c:set var="b" value="${fn:replace(a,'<p>','')}"/>
 			<c:set var="c" value="${fn:replace(b,'</p>','</br>')}"/>
@@ -37,9 +36,7 @@
 			')}"/>
 			<c:set var="e" value="${fn:replace(d,'<br>','')}"/> 
 			${e }
-			
 		</div> 
-		
 	   <p id="notice_button">
 		   <a href="noticeListPage?num=${pn }" class="btn_1 medium">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	   </p>
