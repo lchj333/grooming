@@ -94,13 +94,19 @@
 #gr_qna_regdate{
 	font-size: 20px;
 	float: right;
+	padding : 20px;
 }
-
 @media screen and (max-width: 1620px) {
 	#gr_qna_regdate{
 		display: none;
 	}
 }
+#gr_qna_writer{
+	font-size: 20px;
+	float: right;
+	padding : 20px;
+}
+
 #gr_qna_slideul{
 	width :100%;
 	margin-left : 20px;

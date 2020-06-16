@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +30,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/mypage/js/editor/summernote-bs4.css">
   <!-- Your custom styles -->
   <link href="${pageContext.request.contextPath}/resources/mypage/css/custom.css" rel="stylesheet">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function (e){
     $("input[type='file']").change(function(e){
@@ -107,19 +109,20 @@
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
-     
+     <form action="afagInsert" method="post">
+     	<input type="hidden" name="in_num" value="${inform.in_num }" />
 		<div class="box_general padding_bottom">
 			<div class="header_box version_2">
 				<h2><i class="fa fa-file"></i>1:1 문의</h2>
 			</div>
 			<div id="qnaboard_question_main">
 			<!-- 사용자 아이디 받아올곳 -->
-				<div id="qnaboard_question_id"><span>작성자 : nayoungsfather</span></div>
+				<div id="qnaboard_question_id"><span>작성자 : <c:out value="${inform.mb_id }"></c:out></span></div>
 			<!-- 사용자 글 작성 날짜 받아올곳 -->
-				<div id="qnaboard_question_date"><span>2020.06.10</span></div>
+				<div id="qnaboard_question_date">문의작성 날짜 : <span><fmt:formatDate value="${inform.in_nowdate }" pattern="YY.MM.dd"/></span></div>
 			</div>
 			<!-- 사용자 글 내용 받아올곳 -->
-				<div id="qnaboard"><p>(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?(질문제목)이거 왜 안되는 거에요?</p></div>
+				<div id="qnaboard"><p>질문내용 <br /><br /><c:out value="${inform.in_con }"></c:out></p></div>
 				<div>
 					<table id="imageDetail-table">
                         <tr>
@@ -127,9 +130,9 @@
                         </tr>
                         <tr>
                            <td>
-                                 <input type="file" id="uploadFile" name="files" accept="image/*" title="이미지 파일만 가능" multiple>
-                                  <div id="preview"></div>
-                              </td>
+                				<input type="file" id="uploadFile" name="" accept="image/*" title="이미지 파일만 가능" multiple>
+                				<div id="preview"></div>
+                           </td>
                          </tr>
                      </table>
 				</div>
@@ -137,7 +140,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="form-group">
-						<div class="editor"></div>
+						<textarea class="editor" name="iq_con"> </textarea>
 					</div>
 				</div>
 			</div>
@@ -147,7 +150,8 @@
 		
 	
 		<!-- /box_general-->
-		<p><a href="#0" class="btn_1 medium">답변하기</a></p>
+		<p><input type="submit" class="btn_1 medium" value="답변하기" /></p>
+		</form>
 	  </div>
 	  <!-- /.container-fluid-->
    	</div>

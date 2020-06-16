@@ -22,6 +22,8 @@
 	height : 700px;
 	margin-left : 10%;
 	margin-right : 10%;
+	margin-bottom : 5%;
+	
 }
 /* 공지사항 (제목=공지사항) */
 #grooming_qnaboard_customlist_pagetitle{
@@ -33,10 +35,7 @@
 	font-size: 28px;
     font-weight: 700;
     color: #333333;
-    
 }
-
-
 
 @media (maxwidth:380px) {
 	#grooming_qnaboard_customlist_pagetitle{
