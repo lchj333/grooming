@@ -90,12 +90,12 @@ public class ReservationController {
 			return "reservation/grooming_reservation_detail";
 		}else {
 			//정보가 없을 경우
-			return "redirect:rollback";
+			return "redirect:reload";
 		}
 	}
 	//-> 예약  확인 페이지 ->
 	//미용 예약 적용
-	@PostMapping(value = "reservation/addReserv")
+	@PostMapping(value = "/reservation/addReserv")
 	public String takeReserv(@RequestParam(value = "lnum")int lnum, HttpServletRequest req,
 								@RequestParam(value = "dates")String dates, ReservationDTO dto,
 								HttpServletResponse res, RedirectAttributes rtt) throws IOException, ParseException {
@@ -135,17 +135,13 @@ public class ReservationController {
 		return "mypage/grooming_user_booking";
 	}
 	
-	//사용자 미용 후기 작성 폼
-	@GetMapping(value = "/writeReview")
+	//사용자 미용 후기 작성 적용
+	@PostMapping(value = "/writeReview")
 	public String writeReviewForm() {
+		
+		
 		return "mypage/grooming_user_review";
 	}
-	
-//	@PostMapping(value = "/writeReview")
-//	public String writeReviewReal(HttpServletRequest req) {
-//		
-//		return "home";
-//	}
 	
 	/***********************************************
   		미용사 입장
