@@ -161,7 +161,7 @@ html, body {
 					<!-- title main -->
 					<div class="container">
 						<h1 class="fadeInUp">
-							<span></span>미미네 샵
+							<span></span><c:out value="${Regist.ref_shopname }"></c:out>
 						</h1>
 					</div>
 					<!-- 미리 보기 div & 모아보기-->
@@ -196,7 +196,8 @@ html, body {
 						<div class="col-lg-8 add_top_15" style="color: black;">
 							<section id="description">
 								<h3>상세정보</h3>
-								<p style="color: gray;">태어난 강아지는 생후 10일까지를 신생아로 본다. 강아지는 견종에
+									<p style="color: gray;"><c:out value="${Regist.reg_con}"/></p>
+									<p>태어난 강아지는 생후 10일까지를 신생아로 본다. 강아지는 견종에
 									따라 체중이 매우 다양하며 태어난 지 14일 무렵 눈을 뜨고 소리에 반응하며 걷기 시작한다.[6] 몸떨기 반사는
 									그 보다 1주일 정도 빠르다. 젓빨기는 첫 2주간은 2시간 마다 이루어지며 8일만에 몸무게가 두 배로 늘 정도로
 									빠르게 성장한다. 이 기간엔 따로 마련한 출산장에서 강아지의 관리를 전적으로 어미개에게 맡기는 것이 좋다.[7]
