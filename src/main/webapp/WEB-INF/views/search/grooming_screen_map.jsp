@@ -15,9 +15,9 @@
 
 <style>
         html,
-        body,
-        #google-map {
-            width: 1200px;
+        body
+        {
+            width: 100%;
             height: 1200px;
            	margin: 0;
             padding: 0;
@@ -63,12 +63,11 @@
 html, body {
 	height: 100%;
 }
+
+
+
 </style>
 <!-- ====================css============================ -->
-
-
-
-
 </head>
 
 <body>
@@ -76,15 +75,19 @@ html, body {
 	<div id="page">
 <!-- 네비 =============================================================== -->
 
-<!-- header -->
+	<!-- 구글맵 -->
+	
+
+		</div>
+		<!-- header -->
 		<jsp:include page="../include/header.jsp" />
 		<!-- header end -->
 
-		<main>  <!-- 메인 시작  -->
+		<main id="main-start">  <!-- 메인 시작  -->
 			<div class="container-fluid full-height">  <!-- 최고 루트 div  -->
 				<!-- 안에 div -->
 				<div class="row row-height">
-					<div class="col-lg-5 content-left order-md-last order-sm-last order-last">
+					<div class="col-lg-5 content-left order-md-last order-sm-last order-last" id="test">
 						 <!-- 검색 div -->
 						<div id="results_map_view">
 						   <div class="container-fluid">
@@ -230,10 +233,26 @@ html, body {
 	</div>
 	<!-- /검색 결과 좌측 div-->
 	
-   
 	
-    <div id="google-map">
-    </div>
+	
+	
+	<!-- 지도 api 공간 -->
+	<div class="col-lg-7 map-right">
+		<div id="map">
+	</div>
+	
+	</div>
+	<!-- /row-->
+</div>
+<!-- /container-fluid -->
+
+</main>
+<!--/main end-->
+
+</div>
+<!-- /전체 페이지 div -->
+
+
 	
 
 	    <script>
@@ -257,7 +276,7 @@ html, body {
              *              ㄴ lat : 위도 (latitude)
              *              ㄴ lng : 경도 (longitude)
              */
-            var map = new google.maps.Map(document.getElementById('google-map'), {
+            var map = new google.maps.Map(document.getElementById('map'), {
                 zoom: 12.5,
                 center: {
                 	lat: 37.715133, lng: 126.734086
@@ -296,12 +315,7 @@ html, body {
                 var array_address = document.getElementsByClassName('address');
                 
 				for (var i = 0; i < array_address.length; i++) {
- 					alert(address[i].value);
-            	
-				
-				console.log(address[0].value + "구로구청!!");
-				console.log(address[1].value + "영등포구청!!");
-				
+ 					
 				var addressr = address[i].value;
 	          	
                 /**
@@ -321,7 +335,7 @@ html, body {
                         // 맵의 중심 좌표를 설정한다.
                         resultMap.setCenter(result[0].geometry.location);
                         // 맵의 확대 정도를 설정한다.
-                        resultMap.setZoom(18);
+                        resultMap.setZoom(12.5);
                         // 맵 마커
                         var marker = new google.maps.Marker({
                             map: resultMap,
@@ -342,16 +356,6 @@ html, body {
     </script>
 
 
-	</div>
-	<!-- /row-->
-</div>
-<!-- /container-fluid -->
-
-</main>
-<!--/main end-->
-
-</div>
-<!-- /전체 페이지 div -->
 
 
 
@@ -379,7 +383,7 @@ html, body {
 		}	
 	</script>
 	<!-- 디테일로 이동하기 위한 폼태그 -->
-	<form action="" name="goform">
+	<form action="" name="goform" method="post">
 		<input type="hidden" name="de_licencenum" id="pknum" />
 	</form>
 </body>

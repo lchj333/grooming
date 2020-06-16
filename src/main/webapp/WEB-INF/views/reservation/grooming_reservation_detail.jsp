@@ -73,7 +73,7 @@
 
 #reserv-left2{
 	float: left;
-	background-color: orange;
+
 	height: 50px;
 }
 
@@ -122,16 +122,12 @@
 			document.frm.submit();
 			alert("에약완료");
 		});
-		
-		$("#btn2").click(function(){
-			document.frm.action = "<c:url value='/reservation/reservCk'/>";
-			document.frm.submit();
-		});
+
 	});
 </script>
 
 </head>
-<body>
+<body style="width: 100%;">
 	<div id="page">
 		<!-- header -->
 		<jsp:include page="../include/header.jsp" />
@@ -181,7 +177,7 @@
 							</div>
 							<!-- 정보넘겨주자 -->
 							<input type="hidden" name="lnum" value="${lnum}" />
-							<input type="hidden" name="re_date" value="${rsv.re_date }" />
+							<input type="hidden" name="dates" value="<fmt:formatDate value="${rsv.re_date}" pattern="YYYY-MM-dd"/>" />
 							<input type="hidden" name="re_species" value="${rsv.re_species}" />
 							<input type="hidden" name="re_weight" value="${rsv.re_weight}" />
 							<input type="hidden" name="re_cut" value="${rsv.re_cut}" />
@@ -193,16 +189,14 @@
 							<input type="button" class="btn_1  add_top_15" id="btn" value="예약하기" />
 						</div>
 						<div class="">
-							<input type="button" class="btn_1  add_top_15" id="btn2" value="되돌아가기" />
+							<a href="<c:url value='/search/detailShop' />" class="btn_1  add_top_15" id="btn2">되돌아가기</a>
 						</div>
 					</div>
-
 				</form>
 			</div>
 		</main>
 
 	</div>
-
 		
 		
 	<!-- 상단 올라감 -->

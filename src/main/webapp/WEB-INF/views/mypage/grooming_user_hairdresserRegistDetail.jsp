@@ -50,7 +50,14 @@
 									<!-- 이미지 파일 첨부 -->
 									<input type="hidden" name="mb_id" id="mb_id" value="${login.mb_id }"/>
 									<input type="file" name="file" id="de_licence" />
-									<input type="text" name="de_insta" id="de_insta" />
+								</td>
+							</tr>
+							<tr class="pricing-list-item2" style="margin-top: 30px;">
+								<td>
+									<div>
+										<h6>인스타아이디(선택)</h6>
+										<input type="text" name="de_insta" id="de_insta" class="form-controll" placeholder="선택사항"/>
+									</div>
 								</td>
 							</tr>
 						</table>
