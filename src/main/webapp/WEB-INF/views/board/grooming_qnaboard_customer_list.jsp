@@ -30,6 +30,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
+<jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
 <div id="page">
 <!-- contents -->
 	<form action="#" id="grooming_qnaboard_customlist_form">
@@ -40,6 +41,7 @@ $(document).ready(function(){
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
 							<%-- <c:if test="${mb.id eq login.md_id"> --%>
+							<div style="border-top : 1px solid black;"></div>
 							<c:forEach var="a" items="${list }">
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
@@ -53,12 +55,16 @@ $(document).ready(function(){
 								</div> 
 									<ul class="hide" id="gr_qna_slideul">
 										<li id="gr_qna_slideli">
+										Q. 
 										<c:out value="${a.in_con }"></c:out>
+		  								</li>
+		  								<li id="gr_qna_slideli" style="margin-top:20px; margin-bottom:10px;">
+		  								A.
+		  								답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변답변
 		  								</li>
 									</ul>
 								</li>
 							</c:forEach>
-							<%-- </c:if> --%>
 						</ul>	
 					</div>
 				</div>
@@ -66,6 +72,22 @@ $(document).ready(function(){
 		</div>
 	</form>
 </div>
-<jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
+    <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="<c:url value='/resources/mypage/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
+    
+    <!-- Page level plugin JavaScript-->
+    <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/dataTables.bootstrap4.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.selectbox-0.2.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/retina-replace.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.magnific-popup.min.js'/>"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
+	<!-- Custom scripts for this page-->
+	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
 </body>
 </html>

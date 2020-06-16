@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +36,7 @@ $(document).ready(function(){
 		<div id="grooming_qnaboard_customl\ist_div">
 			<div id="grooming_qnaboard_customlist_section">
 				<div id="grooming_qnaboard_customlist_articlelist">
-					<div id="grooming_qnaboard_customlist_maintitle">1:1문의(사용자페이지)</div>
+					<div id="grooming_qnaboard_customlist_maintitle">1:1문의(관리자페이지)</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
 							<c:forEach var="a" items="${list }">
@@ -43,8 +44,10 @@ $(document).ready(function(){
 								<div id="gr_qna_a"> 
 									<!-- 제목 -->
 									<div id="gr_qna_title"><c:out value="${a.in_title }"></c:out></div>
+									<!-- 글쓴이 아이디 -->
+									<div id="gr_qna_writer"><c:out value="${a.mb_id }"></c:out></div>
 									<!-- 날짜 -->
-									<div id="gr_qna_regdate" ><c:out value="${a.in_nowdate }"></c:out></div>
+									<div id="gr_qna_regdate" ><fmt:formatDate value="${a.in_nowdate }"/></div>
 								</div> 
 									<ul class="hide" id="gr_qna_slideul">
 										<li id   ="gr_qna_slideli"><c:out value="${a.in_con }"></c:out></li>
@@ -83,5 +86,22 @@ $(document).ready(function(){
 	</form>
 </div>
 <jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
+   <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="<c:url value='/resources/mypage/vendor/jquery-easing/jquery.easing.min.js'/>"></script>
+    
+    <!-- Page level plugin JavaScript-->
+    <script src="<c:url value='/resources/mypage/vendor/chart.js/Chart.min.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/jquery.dataTables.js'/>"></script>
+    <script src="<c:url value='/resources/mypage/vendor/datatables/dataTables.bootstrap4.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.selectbox-0.2.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/retina-replace.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/jquery.magnific-popup.min.js'/>"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="<c:url value='/resources/mypage/js/admin.js'/>"></script>
+	<!-- Custom scripts for this page-->
+	<script src="<c:url value='/resources/mypage/vendor/dropzone.min.js'/>"></script>
+	<script src="<c:url value='/resources/mypage/vendor/bootstrap-datepicker.js'/>"></script>
 </body>
 </html>
