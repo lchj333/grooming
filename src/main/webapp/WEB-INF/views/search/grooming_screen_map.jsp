@@ -223,6 +223,7 @@ html, body {
 		<!-- /더보기 버튼 -->
 	    <div id="search-panel" style="display: none">
 	        <input name="address11" id="address" type="text" value="<c:out value='${shop.reg_shopaddress}'/>" />
+	        <input name="address11" id="address" type="text" value="서울특별시 구로구 구로동 시흥대로163길 33 주호타워" />
 	        <button id="submit" type="button" value="Geocode">지도 검색</button>
    		</div>
 	</c:forEach>
@@ -321,7 +322,7 @@ html, body {
                         // 맵의 중심 좌표를 설정한다.
                         resultMap.setCenter(result[0].geometry.location);
                         // 맵의 확대 정도를 설정한다.
-                        resultMap.setZoom(18);
+                        resultMap.setZoom(12.5);
                         // 맵 마커
                         var marker = new google.maps.Marker({
                             map: resultMap,
