@@ -50,6 +50,40 @@
 .table>tbody>tr>.thick-line {
 	border-top: 2px solid;
 }
+
+#reserv-first-outline{
+	height: 50px;
+}
+
+#reserv-left1{
+	float: left;
+	background-color: red;
+	height: 50px;
+}
+
+#reserv-right1{
+	float: left;
+	background-color: blue;
+	height: 50px;
+}
+
+#reserv-second-outline{
+	margin-top: 40px;
+	height: 50px;
+}
+
+#reserv-left2{
+	float: left;
+	background-color: orange;
+	height: 50px;
+}
+
+#reserv-right2{
+	float: left;
+	background-color: black;
+	height: 50px;
+}
+
 </style>
 
 
@@ -66,27 +100,28 @@
 		<main>
 		
 			<div class="container add_top_60 ">
-				<div class="row magin_60">
-					<div class="col-12">
-						<div class="invoice-title add_top_30" style="color: black">
-							<strong><h2>GROOMING 미용확인</h2></strong>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
+				<form action="<c:url value="/reservation/addReserv"/>">
+					<div class="row magin_60">
+						<div class="col-12">
+							<div class="invoice-title add_top_30" style="color: black">
+								<strong><h2>GROOMING 미용확인</h2></strong>							
+							</div>
+							<hr>
+							<!-- 값받고 보내는 곳 -->
+							<div id="reserv-first-outline">
+								<div id="reserv-left1" class="col-4"></div>
+								<div id="reserv-right1" class="col-4"></div>
+							</div>
 							
+							<div id="reserv-second-outline">
+								<div id="reserv-left2" class="col-4"></div>
+								<div id="reserv-right2" class="col-4"></div>
+							</div>
 							
 						</div>
-						<!-- 여기로 이동 -->
-						<form action="<c:url value="/reservation/addReserv"/>">
-						
-						
-						
-						</form>
-						<hr>
 					</div>
-				</div>
-				<hr>
+					<hr>
+						</form>
 					<div class="row col-6 add_bottom_75">
 						<div class="add_right_15">
 							<input type="button" class="btn_1  add_top_15 "
