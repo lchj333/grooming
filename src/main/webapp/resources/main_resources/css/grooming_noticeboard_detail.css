@@ -24,7 +24,9 @@
 }
 
 #gr_noticeboard_detail_contents{
-	height : 500px;
+	height : 480px;
+	padding : 10px;
+	border : 1px solid #EAEAEA;
 }
 
 #gr_noticeboard_detail_title{
@@ -52,6 +54,9 @@
 		width : 80%;
 		
 	}
+}
+#notice_buttondiv{
+	margin-top : 20px;
 }
 
 #notice_button{

@@ -37,9 +37,11 @@
 				<c:set var="e" value="${fn:replace(d,'<br>','')}"/> 
 				${e }
 			</div> 
-			<p id="notice_button">
-				<a href="noticeListPage?num=${pn }" class="btn_1 medium">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			</p>
+			<div id="notice_buttondiv">
+				<p id="notice_button">
+					<a href="noticeListPage?num=${pn }" class="btn_1 medium">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				</p>
+			</div>
 		</div>
 	</div>
 </div>
