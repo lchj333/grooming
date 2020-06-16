@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,13 +58,11 @@
 
 #reserv-left1{
 	float: left;
-	background-color: red;
 	height: 50px;
 }
 
 #reserv-right1{
 	float: left;
-	background-color: blue;
 	height: 50px;
 }
 
@@ -80,7 +79,6 @@
 
 #reserv-right2{
 	float: left;
-	background-color: black;
 	height: 50px;
 }
 
@@ -91,13 +89,11 @@
 
 #reserv-left3{
 	float: left;
-	background-color: green;
 	height: 50px;
 }
 
 #reserv-right3{
 	float: left;
-	background-color: yellow;
 	height: 50px;
 }
 
@@ -108,13 +104,11 @@
 
 #reserv-left4{
 	float: left;
-	background-color: red;
 	height: 50px;
 }
 
 #reserv-right4{
 	float: left;
-	background-color: yellow;
 	height: 50px;
 }
 
@@ -148,31 +142,31 @@
 							<hr>
 							<!-- 값받고 보내는 곳 -->
 							<div id="reserv-first-outline">
-								<div id="reserv-left1" class="col-4">
-									<h4>예약일 : <c:out value="${rsv.re_date }"></c:out></h4>
+								<div id="reserv-left1" class="col-6">
+									<h4>예약일 : <fmt:formatDate value="${rsv.re_date }" pattern="YYYY-MM-dd"/></h4>
 								</div>
 							</div>
 							
 							<div id="reserv-second-outline">
-								<div id="reserv-left2" class="col-4">
+								<div id="reserv-left2" class="col-6">
 									<h4>가게명 : <c:out value="${rsv.ref_shopname}"></c:out></h4>
 								</div>
-								<div id="reserv-right2" class="col-4">
+								<div id="reserv-right2" class="col-6">
 									<h4>주소 : <c:out value="${address}"></c:out></h4>
 								</div>
 							</div>
 							
 							<div id="reserv-third-outline">
-								<div id="reserv-left3" class="col-4">
+								<div id="reserv-left3" class="col-6">
 									<h4>견종 : <c:out value="${rsv.re_species}"></c:out></h4>
 								</div>
-								<div id="reserv-right3" class="col-4">
-									<h4>컷 : <c:out value="${rsv.re_weight}"></c:out></h4>
+								<div id="reserv-right3" class="col-6">
+									<h4>무게 : <c:out value="${rsv.re_weight}"></c:out></h4>
 								</div>
 							</div>
 							
 							<div id="reserv-fourth-outline">
-								<div id="reserv-left4" class="col-4">
+								<div id="reserv-left4" class="col-6">
 									<h4>요청사항 : <c:out value="${rsv.re_cut}"/></h4>
 								</div>
 							</div>
