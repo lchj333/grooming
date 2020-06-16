@@ -3,6 +3,8 @@ package com.grooming.control;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.grooming.dao.BookMarkDAO;
 import com.grooming.dao.BookMarkDAOImple;
 import com.grooming.dto.BookMarkDTO;
+import com.grooming.dto.MemberDTO;
 
 @Controller
 public class BookMarkController {
@@ -30,11 +33,18 @@ public class BookMarkController {
 	}
 	//찜 테이블 등록 로직
 	@PostMapping(value = "/bookmark")
-	public void insertBookmark(@RequestParam(value = "de_licencenum")int licence,
-			@RequestParam(value = "mb_id")String id, BookMarkDTO dto) {
+	public String insertBookmark(@RequestParam(value = "de_licencenum")int licence,
+								HttpServletRequest req) {
+		//멤버 세션값 가져오기
+		HttpSession hs = req.getSession();
+		MemberDTO mem = (MemberDTO) hs.getAttribute("login");
+		//값 삽입
+		BookMarkDTO dto = new BookMarkDTO();
+		dto.setMb_id(mem.getMb_id());
 		dto.setDe_licencenum(licence);
-		dto.setMb_id(id);
-		dao.insertBookmark(dto);	
+		dao.insertBookmark(dto);
+		
+		return "mypage/grooming_user_bookmark";
 	}
 	
 	//찜 목록 표시 스타트
