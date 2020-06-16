@@ -10,6 +10,19 @@
 	height : 700px;
 	color : black;
 }
+
+#notice_maindiv2{
+	width: 80%;
+	margin-left : 10%;
+	margin-right : 10%;
+}
+
+#notice_maindiv3{
+	width: 80%;
+	margin-left : 10%;
+	margin-right : 10%;
+}
+
 #gr_noticeboard_detail_contents{
 	height : 500px;
 }
@@ -27,7 +40,7 @@
 	
 	text-align: right;
 	margin-bottom : 30px;
-	
+	margin-right: 10px;
 }
 
 @media screen and (max-width:375px) {
