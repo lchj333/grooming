@@ -57,10 +57,10 @@
 		          </a>
 		          <ul class="sidenav-second-level collapse" id="collapseMypage">
 		            <li>
-		              <a href="<c:url value='/mypageInfo'/>">내정보</a>
+		              <a href="<c:url value='/mypageInfo'/>">내 정보</a>
 		            </li>
 					<li>
-		              <a href="<c:url value='/mypage'/>">내장보수정</a>
+		              <a href="<c:url value='/mypage'/>">내 정보 수정</a>
 		            </li>
 		          </ul>
 		        </li>
@@ -72,15 +72,15 @@
 		          </a>
 		        </li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Bookings">
-		          <a class="nav-link" href="<c:url value='/myReservation'/>">
+		          <a class="nav-link" href="<c:url value='/myReservation?mb_id=${login.mb_id }'/>">
 		            <i class="fa fa-fw fa-calendar-check-o"></i>
-		            <span class="nav-link-text">예약정보</span>
+		            <span class="nav-link-text">예약 정보</span>
 		          </a>
 		        </li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Reviews">
 		          <a class="nav-link" href="<c:url value='/mypage/review'/>">
 		            <i class="fa fa-fw fa-star"></i>
-		            <span class="nav-link-text">내리뷰</span>
+		            <span class="nav-link-text">내 리뷰</span>
 		          </a>
 		        </li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Bookmarks">
@@ -133,7 +133,7 @@
 		              <a href="<c:url value='/mypage/'/>">메시지<span class="badge badge-pill badge-success">6</span></a>
 		            </li>
 					<li>
-		              <a href="<c:url value='/agreedReservation'/>">예약승인<span class="badge badge-pill badge-danger">6</span></a>
+		              <a href="<c:url value='/agreedReservation?de_licencenum=${dInfo.de_licencenum }'/>">예약승인<span class="badge badge-pill badge-danger">6</span></a>
 		            </li>
 		            <li>
 		              <a href="<c:url value='/mypage/bookmark'/>">내 가게 리뷰 보기<span class="badge badge-pill badge-danger">6</span></a>

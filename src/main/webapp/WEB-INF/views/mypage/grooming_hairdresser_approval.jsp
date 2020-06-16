@@ -47,21 +47,13 @@
 		<div class="box_general">
 			<div class="header_box">
 				<h2 class="d-inline-block">예약정보</h2>
-				<div class="filter">
-					<select name="orderby" class="selectbox">
-						<option value="Any status">모든 예약</option>
-						<option value="Pending">예약확인전</option>
-						<option value="Approved">완료</option>
-						<option value="Cancelled">취소된 예약</option>
-					</select>
-				</div>
 			</div>
 			<div class="list_general">
 				<ul>
 					<c:forEach var="myList" items="${myList}">
 					<li>
-
-						<h4>${myList.ref_shopname } <i class="pending"><c:set var="대기" value="${myList.re_approval }"/></i></h4>
+					<figure><img src="<c:url value="/resources/shopimags/${myList.reg_img}"/>" alt=""></figure>
+						<h4>${myList.ref_shopname } <i class="pending">${myList.re_approval }</i></h4>
 						<ul class="booking_list">
 							<li><strong style="font-weight: bold;">예약번호</strong>${myList.re_num}</li>
 							<li><strong style="font-weight: bold;">예약일</strong><fmt:formatDate value="${myList.re_date}" pattern="YYYY-MM-dd hh:mm:ss"/></li>
@@ -73,8 +65,10 @@
 						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i>1대1대화</a></p>
 						<ul class="buttons">
 						<!-- <input type="button" value="" class="btn_1 gray approve" /> -->
+						<c:if test="${myList.re_approval eq '승인 대기'}">
 							<li><input type="button" value="승인" class="btn_1 gray approve" id="btn2" /></li>
 							<li class="btn_1 gray delete" id="delete-click-btn" data-toggle="modal" data-target="#cancel"><i class="fa fa-fw fa-times-circle-o"></i>취소</li>
+						 </c:if> 
 						</ul>
 						<ul>
 						</ul>
@@ -132,7 +126,7 @@
                </button>
              </div>
              <div class="modal-body"><input type="text" name="bc_con" id="cancel-btn" placeholder="취소사유" style="width: 100%; height: 50px;" /></div>
-							<%-- <input type="hidden" name="re_num" id="re_num" value="${myList.re_num}"/> --%>
+							
              <div class="modal-footer">
                <button class="btn btn-secondary" type="button" data-dismiss="modal" id="btn1">예약취소</button>
                <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>

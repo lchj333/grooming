@@ -30,34 +30,34 @@
 	
 	<!-- 예약 내역 리스트 -->
 	<select id="getAllMyList" parameterType="String" resultType="ReservationDTO">
-		select * from GR_RESERVATION
+		select * from gr_reservation
 		where MB_ID = #{mb_id}
 		order by RE_DATE desc
 	</select>
 	
 	<!-- 상세정보 -->
 	<select id="selectByNum" parameterType="int" resultType="ReservationDTO">
-		select * from GR_RESERVATION
+		select * from gr_reservation
 		where DE_LICENCENUM = #{de_licencenum}
 	</select>
 	
 	<!-- 예약 승인 -->
 	<update id="checkReservY" parameterType="ReservationDTO">
-		update GR_RESERVATION
-		set RE_APPROVAL = 'Y'
+		update gr_reservation
+		set RE_APPROVAL = '승인'
 		where RE_NUM = #{re_num};
 	</update>
 	
 	<!-- 예약  미승인 -->
 	<update id="checkReserN" parameterType="ReservationDTO">
-		update GR_RESERVATION
-		set RE_APPROVAL = 'N'
+		update gr_reservation
+		set RE_APPROVAL = '취소'
 		where RE_NUM = #{re_num};
 	</update>
 	
 	<!-- 미승인 사유 작성 -->
 	<insert id="insertFeedBack" parameterType="ReservationDTO">
-		insert into RES_BECAUSE
+		insert into res_because
 		values (#{re_num}, #{bc_con}) 
 	</insert>
 	
@@ -69,12 +69,28 @@
 				now(), #{re_species}, #{re_weight}, #{re_cut})
 	</insert>
 	
-	<!-- 내 예약정보 가져오기 -->
-	<select id="myReservation" resultType="ReservationDTO">
-		select r.*, m.*, d.ref_shopname
-		from GR_RESERVATION r, GR_MEMBER m, GR_REGISTRATION d
-		where r.de_licencenum = d.de_licencenum
-		and r.mb_id = m.mb_id
+	<!-- 미용사가 예약정보 가져오기 -->
+	<select id="agreedReservation" resultType="ReservationDTO" parameterType="ReservationDTO">
+		SELECT *
+		from gr_reservation r LEFT JOIN gr_registration d
+		ON (r.de_licencenum = d.de_licencenum)
+		WHERE d.de_licencenum = #{de_licencenum}
+	</select>
+	
+	<!-- 사용자가 예약정보 가져오기 -->
+	<select id="myReservation" resultType="ReservationDTO" parameterType="ReservationDTO">
+		SELECT  *
+		FROM  gr_reservation r, gr_registration d, gr_member m
+		WHERE  r.de_licencenum = d.de_licencenum
+		AND r.mb_id = m.mb_id
+		AND  r.mb_id = #{mb_id};
+	</select>
+	
+	<!-- 예약 취소 이유 가져오는 부분 -->
+	<select id="cancelReason" resultType="ReservationDTO">
+		select *
+		from res_because
+		where re_num = #{re_num}
 	</select>
 	
 	<!-- ============ -->

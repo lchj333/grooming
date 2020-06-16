@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace=" ">
+	<!-- 예약 취소 이유 가져오는 부분 -->
+	<select id="cancelReason" resultType="BecauseDTO">
+		select *
+		from res_because
+	</select>
+</mapper>

@@ -146,35 +146,6 @@ public class ReservationController {
 		return "home";
 	}
 
-	//미용사 예약 승인 + 피드백
-	@RequestMapping(value = "/appReservationY")
-	public String appReservationY(@RequestParam(value = "re_num", required = false)String re_num,
-							ReservationDTO dto) {
-		
-		int renum = Integer.parseInt(re_num);
-		
-		dto.setRe_num(renum);
-		
-		rdao.checkReservY(dto);
-		
-		return "mypage/grooming_user_profile";
-	}
-	
-	//미용사 예약 승인 + 피드백
-	@RequestMapping(value = "/appReservationN")
-	public String appReservationN(@RequestParam(value = "re_num", required = false)String re_num,
-			@RequestParam(value = "bc_con", required = false)String bc_con,
-			ReservationDTO dto) {
-		
-		int renum = Integer.parseInt(re_num);
-		dto.setRe_num(renum);
-		dto.setBc_con(bc_con);
-		
-		rdao.checkReservN(dto);
-		rdao.insertFeedBack(dto);
-		
-		return "mypage/grooming_user_profile";
-	}
 	
 	/******************************
 	 		유틸 메소드
@@ -187,28 +158,68 @@ public class ReservationController {
 	}
 	
 	
-	// 내 예약 정보 보는 페이지
+	// 사용자가 예약 정보 보는 페이지
 		@RequestMapping(value="/myReservation")
-		public String myReservation(Model model) {
+		public String myReservation(@RequestParam(value = "mb_id", required = false)String mb_id,
+				ReservationDTO dto,Model model) {
 			
-			List<ReservationDTO> myList = rdao.myReservation();
 			
-			model.addAttribute("myList", myList);
+			dto.setMb_id(mb_id);
 			
+			List<ReservationDTO> list = rdao.myReservation(dto);
+			
+			model.addAttribute("myList", list);
+
 			
 			return "mypage/grooming_user_booking";
 		}
 		
-		// 내 예약 정보 보는 페이지
+		// 미용사가 예약 정보 보는 페이지
 		@RequestMapping(value= "/agreedReservation")
-		public String agreedReservation(Model model) {
+		public String agreedReservation(@RequestParam(value = "de_licencenum", required = false)String de_licencenum,
+										ReservationDTO dto,Model model) {
 			
-			List<ReservationDTO> myList = rdao.myReservation();
+			int num = Integer.parseInt(de_licencenum);
 			
-			model.addAttribute("myList", myList);
+			dto.setDe_licencenum(num);
+			
+			List<ReservationDTO> list = rdao.agreedReservation(dto);
+			
+			model.addAttribute("myList", list);
 			
 			
 			return "mypage/grooming_hairdresser_approval";
 		}
+		
+		//미용사 예약 승인 + 피드백
+		@RequestMapping(value = "/appReservationY")
+		public String appReservationY(@RequestParam(value = "re_num", required = false)String re_num,
+								ReservationDTO dto) {
+			
+			int renum = Integer.parseInt(re_num);
+			
+			dto.setRe_num(renum);
+			
+			rdao.checkReservY(dto);
+			
+			return "mypage/grooming_user_profile";
+		}
+		
+		//미용사 예약 승인 + 피드백
+		@RequestMapping(value = "/appReservationN")
+		public String appReservationN(@RequestParam(value = "re_num", required = false)String re_num,
+				@RequestParam(value = "bc_con", required = false)String bc_con,
+				ReservationDTO dto) {
+			
+			int renum = Integer.parseInt(re_num);
+			dto.setRe_num(renum);
+			dto.setBc_con(bc_con);
+			
+			rdao.checkReservN(dto);
+			rdao.insertFeedBack(dto);
+			
+			return "mypage/grooming_user_profile";
+		}
+		
 	
 }

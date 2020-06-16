@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,36 +26,42 @@
 		<div class="box_general">
 			<div class="header_box">
 				<h2 class="d-inline-block">예약정보</h2>
-				<div class="filter">
-					<select name="orderby" class="selectbox">
-						<option value="Any status">모든 예약</option>
-						<option value="Pending">예약확인전</option>
-						<option value="Approved">완료</option>
-						<option value="Cancelled">취소된 예약</option>
-					</select>
-				</div>
 			</div>
 			<div class="list_general">
 				<ul>
 					<c:forEach var="myList" items="${myList}">
 					<li>
-						<figure><img src="img/item_1.jpg" alt=""></figure>
-						<h4>${myList.ref_shopname } <i class="pending"><c:set var="대기" value="${myList.re_approval }"/></i></h4>
+						<figure><img src="<c:url value="/resources/shopimags/${myList.reg_img}"/>" alt=""></figure>
+						<h4>${myList.ref_shopname } 
+						<c:if test="${myList.re_approval eq '취소'}">
+						<i class="pending" data-toggle="modal" data-target="#cancel">${myList.re_approval }</i>
+						</c:if>
+						
+						<c:if test="${myList.re_approval eq '승인'}">
+						<i class="pending">${myList.re_approval }</i>
+						</c:if>
+						
+						<c:if test="${myList.re_approval eq '승인 대기'}">
+						<i class="pending">${myList.re_approval }</i>
+						</c:if>
+						</h4>
 						<ul class="booking_list">
-							<li><strong style="font-weight: bold;">예약일</strong>${myList.re_date}</li>
+							<li><strong style="font-weight: bold;">예약일</strong><fmt:formatDate value="${myList.re_date}" pattern="YYYY-MM-dd hh:mm:ss"/></li>
 							<li><strong style="font-weight: bold;">견종</strong>${myList.re_species}</li>
 							<li><strong style="font-weight: bold;">몸무게</strong>${myList.re_weight}</li>
 							<li><strong style="font-weight: bold;">원하는컷</strong>${myList.re_cut}</li>
-							<li><strong style="font-weight: bold;">가게번호</strong>${myList.de_licencenum}</li>
+							<li><strong style="font-weight: bold;">가게주소</strong>${myList.reg_shopaddress }</li>
 							<li><strong style="font-weight: bold;">예약번호</strong>${myList.re_num}</li>
 						</ul>
 						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i>1대1대화</a></p>
-						<ul class="buttons">
-							<li><a href="#0" class="btn_1 gray delete"><i class="fa fa-fw fa-times-circle-o"></i>취소</a></li>
-						</ul>
+					<%-- 	<c:if test="${myList.re_num == cencel.re_num}">
+						<p>취소 이유 : <c:out value="${cencel.bc_con }"></c:out></p>
+						</c:if> --%>
+
 					</li>
-					
 					</c:forEach>
+					
+					
 				</ul>
 			</div>
 		</div>
@@ -91,6 +98,24 @@
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fa fa-angle-up"></i>
     </a>
+    
+        <!-- 예약취소 사유 보여주는곳 -->
+       <div class="modal fade" id="cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog" role="document">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">취소사유</h5>
+               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">×</span>
+               </button>
+             </div>
+             <div class="modal-body"><input type="text" name="bc_con" id="cancel-btn" placeholder="취소사유" style="width: 100%; height: 50px;" /></div>
+             <div class="modal-footer">
+               <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
+             </div>
+           </div>
+         </div>
+       </div>
 
     <jsp:include page="mypage_logout.jsp"></jsp:include>
     
