@@ -27,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.grooming.dao.RegistrationDAO;
 import com.grooming.dto.DesignerDTO;
+import com.grooming.dto.MemberDTO;
 import com.grooming.dto.RegistrationDTO;
 import com.grooming.dto.ShopListDTO;
 import com.grooming.utils.FileUpload;
@@ -67,16 +68,18 @@ public class RegistrationController {
 	//등록폼 (작성 후)->
 	//가게 등록 (+썸네일 이미지)
 	@PostMapping(value = "/mypage/registShop")
-	public String insertShopInfo(RegistrationDTO dto, MultipartHttpServletRequest ms, //스프링에서 알아서 set.
-									HttpServletRequest req) throws IllegalStateException, IOException {
+	public String insertShopInfo(@RequestParam(value = "addr1")String addr1,RegistrationDTO dto, 
+								@RequestParam(value = "addr2")String addr2,MultipartHttpServletRequest ms, //스프링에서 알아서 set.
+									HttpServletRequest req, RedirectAttributes rtt) throws IllegalStateException, IOException {
 		//메소드 바디
-		String lnum = (String)req.getAttribute("dInfo.de_licencenum");
-		if(lnum == null & lnum.equals("")) {
+		HttpSession hs = req.getSession();
+		DesignerDTO dinfo = (DesignerDTO) hs.getAttribute("dInfo");
+		
+		if(dinfo == null) {
 			return "mypage/grooming_user_profile";//미용사 값 없을 경우
 		}else {
 			//미용사 넘버 저장
-			int num = Integer.parseInt(lnum); 
-			dto.setDe_licencenum(num);
+			dto.setDe_licencenum(dinfo.getDe_licencenum());
 			
 			String lPath = req.getServletContext().getRealPath("/resources/thumbnail/");
 			//post 파라미터
@@ -84,6 +87,9 @@ public class RegistrationController {
 			
 			//이미지 추가 메소드
 			String fileName = fu.saveFile(mfile, lPath);
+			
+			//주소 저장
+			dto.setReg_shopaddress(addr1 + addr2);
 				
 			//저장된 파일 이름 담기
 			dto.setReg_img(fileName);
@@ -91,15 +97,21 @@ public class RegistrationController {
 			//최종적 DB저장
 			rdao.insertShop(dto);
 			
+			rtt.addFlashAttribute("login", (MemberDTO) hs.getAttribute("login"));
+			rtt.addFlashAttribute("dInfo", (DesignerDTO) hs.getAttribute("dInfo"));
+			
 			return "redirect:/mypage/insertInfoImgs";
 		}
 	}
 	//↕(컨트롤끼리 이동)
 	//샵 상세 이미지 추가 폼
 	@GetMapping(value = "/mypage/insertInfoImgs")
-	public String addShopImgsForm(HttpServletResponse res) throws IOException {
-		res.setContentType("text/html; charset=UTF-8");
-		 
+	public String addShopImgsForm(HttpServletResponse res, HttpServletRequest req) throws IOException {
+		HttpSession hs = req.getSession();
+		
+		hs.setAttribute("login", (MemberDTO) hs.getAttribute("login"));
+		hs.setAttribute("dInfo", (DesignerDTO) hs.getAttribute("dInfo"));
+		
 		PrintWriter out = res.getWriter();
 		 
 		out.println("<script>alert('추가이미지 등록페이지로 이동합니다.');</script>");
@@ -115,8 +127,10 @@ public class RegistrationController {
 									HttpServletResponse res, RedirectAttributes rtt) 
 														throws IllegalStateException, IOException {
 		//메소드 바디
-		int de_licencenum = (int)req.getAttribute("de_licencenum");	//세션일 경우
-//		int de_licencenum = Integer.parseInt(ms.getParameter("de_licencenum"));//파라미터일 경우
+		HttpSession hs = req.getSession();
+		DesignerDTO dinfo = (DesignerDTO) hs.getAttribute("dInfo");
+		
+		int de_licencenum = dinfo.getDe_licencenum();	//세션일 경우
 		
 		List<MultipartFile> list = ms.getFiles("files");
 		//IOException - 파일이 없을 때 발생할 에러. 호출함수인 xml의 DispatcherServlet class로 예외처리 전가//studentNumber - submissionForm의 속성 name 
@@ -133,20 +147,22 @@ public class RegistrationController {
 				RegistrationDTO dto = new RegistrationDTO(de_licencenum, fileName);
 				//저장된 파일이름과 라이선스 번호 저장
 				rdao.insertShop(dto);
+				
 			}
+			//유저정보페이지로 이동
+			out.println("<script>alert('완료!');</script>");
+			out.flush();
+			
+			return "main/grooming_main";
 		}else {	//넘어온 파일이 없을 경우
 			rtt.addFlashAttribute("de_licencenum", de_licencenum);
 			
 			out.println("<script>alert('파일이 없거나 너무 많습니다!');</script>");
 			out.flush();
 			
-			return "redirect:/mypage/insertInfoImgs";
+			return "main/grooming_main";
 		}
-		//유저정보페이지로 이동
-		out.println("<script>alert('완료!');</script>");
-		out.flush();
 		
-		return "mypage/grooming_user_profile";
 	}
 	
 	//가게 정보 블럭 상태 변경 (관리자에 의한)
@@ -155,7 +171,8 @@ public class RegistrationController {
 										(value = "de_licencenum", required = true)int licencenum, 
 															HttpServletRequest req) {
 		//메소드 바디
-		String ad_id = (String) req.getAttribute("ad_id");
+		HttpSession hs = req.getSession();
+		String ad_id = (String) hs.getAttribute("ad_id");
 		if(ad_id==null) {//관리자 아이디 값이 없을 경우
 			return "redirect:"+req.getHeader("Referer");//뒤로 보내기
 		}else {
@@ -191,7 +208,6 @@ public class RegistrationController {
 			req.setAttribute("shopList", list);
 			
 			return "search/grooming_screen_map";
-//			return "test";
 		}else {//없을 떄
 			return "main/grooming_main";
 		}
@@ -224,18 +240,6 @@ public class RegistrationController {
 	/************************************
 		컨트롤에서 사용할 유틸 메소드..
 	*************************************/
-	//샵 모든 리스트
-	@RequestMapping(value = "allShop", method = RequestMethod.POST)
-	public String searchShop(HttpServletRequest req) {
-//		rdao.getList(map);
-		return "search/grooming_screen_map";
-	}
-	
-	@RequestMapping(value = "go")
-	public String go() {
-		return "search/grooming_result_detail";
-	}
-	// 등록글 검색
 	
 	
 }
