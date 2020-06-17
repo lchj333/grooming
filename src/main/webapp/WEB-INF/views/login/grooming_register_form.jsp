@@ -55,7 +55,7 @@
 	    var mb_area = document.getElementById("mb_area");
 
 	    $("#join").on('click', function(){
-			
+
 
 	    	//아이디 유효성 검사
 	    	if(mb_id.value == ""){
@@ -148,8 +148,8 @@
 		    	alert("주소를 입력해주세요.");
 		    	return false;
 		    }
-		 
-		 
+
+
 			console.log("sss");
 		    document.frm.action = "join"
 			document.frm.method = "POST";
@@ -187,7 +187,7 @@
     	  if(mb_email == ''){
     		  alert("이메일을 적어주세요.");
     	  }else if(mb_email != null){
-    		  
+
 	        // 새창에 대한 세팅(옵션)
 	        var settings ='toolbar=0,directories=0,status=no,menubar=0,scrollbars=auto,resizable=no,height=600,width=600,left=0,top=0';
 	        // 자식창을 열고 자식창의 window 객체를 windowObj 변수에 저장
@@ -221,7 +221,7 @@
 <div id="register">
 		<aside>
 			<figure>
-				<a href="<c:url value="main/grooming_main"/>">
+				<a href="<c:url value="/"/>">
 					<img src="<c:url value='/resources/main_resources/img/Grooming_150_36_LOGO.png'/>"
 					data-retina="true" alt="" width="150" height="36"></a>
 			</figure>

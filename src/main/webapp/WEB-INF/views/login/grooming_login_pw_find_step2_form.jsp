@@ -85,7 +85,7 @@
 
 		<aside>
 			<figure>
-				<a href="/main"><img
+				<a href="<c:url value="/"/>"><img
 					src="<c:url value='/resources/main_resources/img/Grooming_150_36_LOGO.png'/>"
 					data-retina="true" alt="" width="150" height="36"></a>
 			</figure>
@@ -100,7 +100,7 @@
 						style=" height: 20%; padding: 2%; color: black;">
 						<div class="form-group" style="margin-bottom: 20px;">
 							<label>아이디</label>
-							
+
 							<div>
 								<input class="form-control" type="text" value="${pwFind.mb_id }" disabled="disabled">
 								<input type="hidden" value="${pwFind.mb_id }" name="mb_id" id="mb_id">
@@ -126,12 +126,12 @@
 						</div>
 					</div>
 					</c:if>
-					
+
 					<c:if test="${pwFind.mb_id == null }">
 						<div>
 							<input class="form-control" type="text" value="존재하지 않는 정보입니다. 확인해주세요" disabled="disabled">
 						</div>
-						
+
 						<div class="form-group add_top_15">
 							<div class="clearfix" style="text-align: center;">
 								<a href="javascript:history.back(-1)" class="btn_1 add_left_15" style="height: 50px; margin-top: 10px; onclick="history.back(-1)>뒤로가기</a>
