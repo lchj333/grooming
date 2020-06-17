@@ -1,7 +1,11 @@
 package com.grooming.control;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -41,7 +45,8 @@ public class LoginController {
 	public ModelAndView loginCheck(@ModelAttribute MemberDTO memberDto, 
 								   @ModelAttribute DesignerDTO designerDto,
 								   @ModelAttribute AdminDTO adminDto,
-								   HttpSession session, HttpServletRequest req) {
+								   HttpSession session, HttpServletRequest req,
+								   Model model,HttpServletResponse resp) throws IOException {
 		
 		SecurityService securityService = new SecurityService();
 		
@@ -75,6 +80,11 @@ public class LoginController {
 			
 			
 			session.setAttribute("login", null);
+			
+			resp.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out_email = resp.getWriter();
+	        out_email.println("<script>alert('일치하는 정보가 없습니다.');</script>");
+	        out_email.flush();
 			mav.setViewName("login/grooming_login_form");
 			
 		}
