@@ -38,7 +38,7 @@
 					</div>
 				<div style="color:black; float:right; font-size: 20px; margin-top: 20px; margin-right:20px;">
 			<c:if test="${prev}">
-				<span>[ <a href="/control/noticeListPage2?num=${startPageNum - 1}">이전</a> ]</span>
+				<span>[ <a href="<c:url value="/noticeListPage2?num=${startPageNum - 1}"/> ">이전</a> ]</span>
 			</c:if>
 		
 		<!-- 페이지 모음 출력 -->
@@ -46,7 +46,7 @@
 			<span>
 				<!-- 현재보고있는 페이지 글자 두껍게해서 직관성 향상-->
 				<c:if test="${select != num }">
-					<a href="/control/noticeListPage2?num=${num}">${num}</a>									
+					<a href="<c:url value="/noticeListPage2?num=${num}"/> " >${num}</a>									
 				</c:if>
 				<c:if test="${select == num }">
 					<b>${num }</b>
@@ -55,7 +55,7 @@
 		</c:forEach>
 					
 		<c:if test="${next}">
-			<span>[ <a href="/control/noticeListPage2?num=${endPageNum + 1}">다음</a> ]</span>
+			<span>[ <a href="<c:url value="/noticeListPage2?num=${endPageNum + 1} "/> ">다음</a> ]</span>
 		</c:if>
 				</div>
 		<!-- 페이징 처리 -->
