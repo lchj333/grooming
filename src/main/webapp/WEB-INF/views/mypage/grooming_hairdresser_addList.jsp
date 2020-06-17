@@ -94,7 +94,7 @@ function openDaumPost(){
 					<div class="col-md-6">
 						<div class="form-group">
 							<label>가게이름</label>
-							<input type="text" id="reg_shopname" class="form-control" name="reg_shopname" placeholder="가게이름" > 
+							<input type="text" id="ref_shopname" class="form-control" name="reg_shopname" placeholder="가게이름" > 
 						</div>
 					</div>
 				</div>
