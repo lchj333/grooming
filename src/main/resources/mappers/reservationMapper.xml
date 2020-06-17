@@ -73,18 +73,18 @@
 	<select id="agreedReservation" resultType="ReservationDTO" parameterType="ReservationDTO">
 		SELECT r.RE_NUM, r.DE_LICENCENUM, r.MB_ID, r.RE_APPROVAL, r.RE_DATE, r.RE_NOWDATE, r.RE_SPECIES, 
 							r.RE_WEIGHT, r.RE_CUT, r.RE_CHECK, (select BC_CON from res_because 
-																where re_num = r.re_num) BC_CON
+																where re_num = r.re_num) bc_con
 		FROM  (gr_reservation r join gr_registration d on r.de_licencenum = d.de_licencenum)
-		where  r.mb_id = #{mb_id};
+		where  r.de_licencenum = #{de_licencenum};
 	</select>
 	
 	<!-- 사용자가 예약정보 가져오기 -->
 	<select id="myReservation" resultType="ReservationDTO" parameterType="ReservationDTO">
-		SELECT  *
-		FROM  gr_reservation r, gr_registration d, gr_member m
-		WHERE  r.de_licencenum = d.de_licencenum
-		AND r.mb_id = m.mb_id
-		AND  r.mb_id = #{mb_id}
+		SELECT r.RE_NUM, r.DE_LICENCENUM, r.MB_ID, r.RE_APPROVAL, r.RE_DATE, r.RE_NOWDATE, r.RE_SPECIES, 
+							r.RE_WEIGHT, r.RE_CUT, r.RE_CHECK, (select BC_CON from res_because 
+																where re_num = r.re_num) bc_con
+		FROM  (gr_reservation r join gr_registration d on r.de_licencenum = d.de_licencenum)
+		where  r.mb_id = #{mb_id};
 	</select>
 	
 	<!-- 예약 취소 이유 가져오는 부분 -->

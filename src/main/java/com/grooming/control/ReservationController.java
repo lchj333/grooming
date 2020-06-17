@@ -209,14 +209,12 @@ public class ReservationController {
 	
 	//미용사 예약 승인 + 피드백
 	@RequestMapping(value = "/appReservationY")
-	public String appReservationY(@RequestParam(value = "re_num", required = false)String re_num,
-							ReservationDTO dto) {
+	public String appReservationY(@RequestParam(value = "re_num")int re_num,
+									ReservationDTO dto) {
 		
 		System.out.println(re_num);
 		
-		int renum = Integer.parseInt(re_num);
-		
-		dto.setRe_num(renum);
+		dto.setRe_num(re_num);
 		
 		rdao.checkReservY(dto);
 		
@@ -225,12 +223,11 @@ public class ReservationController {
 	
 	//미용사 예약 승인 + 피드백
 	@RequestMapping(value = "/appReservationN")
-	public String appReservationN(@RequestParam(value = "re_num", required = false)String re_num,
-			@RequestParam(value = "bc_con", required = false)String bc_con,
-			ReservationDTO dto) {
+	public String appReservationN(@RequestParam(value = "re_num", required = false)int re_num,
+								@RequestParam(value = "bc_con", required = false)String bc_con,
+								ReservationDTO dto) {
 		
-		int renum = Integer.parseInt(re_num);
-		dto.setRe_num(renum);
+		dto.setRe_num(re_num);
 		dto.setBc_con(bc_con);
 		
 		rdao.checkReservN(dto);
