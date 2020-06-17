@@ -1,12 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage/css/grooming_qnaboard_customlist.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <!-- =======================================================================================================================================================================================================================  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
     .menu #gr_qna_a{cursor:pointer;}
@@ -40,19 +49,25 @@ $(document).ready(function(){
 					<div id="grooming_qnaboard_customlist_maintitle">자주 묻는 질문</div>
 					<div id="grooming_qnaboard_customlist_tablediv">
 						<ul id="gr_qna_ul">
-								<div style="border-bottom : 1px solid black;"></div>
+							<div style="border-bottom : 1px solid black;"></div>
 							<c:forEach var="inform" items="${list }">
 								<li class="menu" id="gr_qna_li">
 								<div id="gr_qna_a"> 
 									<!-- 제목 -->
-									<div id="gr_qna_title"><c:out value="${inform.f_title }"></c:out></div>
+									<div id="gr_qna_title">Q.   <c:out value="${inform.f_title }"></c:out></div>
 									<!-- 날짜 -->
 									<div id="gr_qna_regdate" ></div>
 								</div> 
 									<ul class="hide" id="gr_qna_slideul">
 										<li id="gr_qna_slideli">
-										<c:out value="${inform.f_con }"></c:out>
-         <a href="faqDelete?f_title=${inform.f_title }" class="btn_1 medium">삭제</a>
+										A.   <c:set var="a" value="${inform.f_con }"/>
+										<c:set var="b" value="${fn:replace(a,'<p>','')}"/>
+										<c:set var="c" value="${fn:replace(b,'</p>','</br>')}"/>
+										<c:set var="d" value="${fn:replace(c,'&nbsp;','
+										')}"/>
+										<c:set var="e" value="${fn:replace(d,'<br>','')}"/>
+										${e }
+         					<!--삭제버튼--><a href="faqDelete?f_title=${inform.f_title }" class="btn_1 medium">삭제</a>
 										</li>
 									</ul>
 								</li>
@@ -88,6 +103,8 @@ $(document).ready(function(){
 		</div>
 	</form>
 </div>
+<!-- 로그아웃 버튼 -->
+<jsp:include page="../mypage/mypage_logout.jsp"></jsp:include>
    <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
