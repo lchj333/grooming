@@ -145,13 +145,13 @@ function openDaumPost(){
 							<div class="form-group">
 								<label>우편번호</label>
 								<div id="address-search-outline">
-									<input class="form-control" id="adress-text" type="text" readonly="readonly" placeholder="jstl로 주소" style="background-color: #e9ecef">
+									<input class="form-control" id="adress-text" type="text" readonly="readonly" style="background-color: #e9ecef">
 									<input class="form-control" id="adress-btn" type="button" value="검색" onclick="openDaumPost()">
 								</div>
 							</div>
 							<div class="form-group">
 								<label>도로명주소</label>
-								<input class="form-control" name="addr1" id="addr1" type="text" readonly="readonly" placeholder="jstl로 주소" style="background-color: #e9ecef">
+								<input class="form-control" name="addr1" id="addr1" type="text" readonly="readonly" style="background-color: #e9ecef">
 							</div>
 							<div class="form-group">
 								<label>상세주소</label>

@@ -128,7 +128,7 @@
 		          </a>
 		          <ul class="sidenav-second-level collapse" id="collapseMylistings">
 		            <li>
-		              <a href="<c:url value='/mypage/'/>">가게등록<span class="badge badge-pill badge-primary">6</span></a>
+		              <a href="<c:url value='/mypage/registShop'/>">가게등록<span class="badge badge-pill badge-primary">6</span></a>
 		            </li>
 					<li>
 		              <a href="<c:url value='/mypage/'/>">메시지<span class="badge badge-pill badge-success">6</span></a>
