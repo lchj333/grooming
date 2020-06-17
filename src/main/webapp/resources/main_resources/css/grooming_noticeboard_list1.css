@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+
 #grooming_qnaboard_customlist_form{
 	width: 100%;
 	padding-left : 250px;
@@ -16,14 +17,24 @@
 	width: 100%;
 	margin-top : 200px;
 }
+@media screen and (max-width:375px){
+	#grooming_qnaboard_customlist_div{
+		margin-top : 60px;
+	}
+}
 
 #grooming_qnaboard_customlist_section{
 	width : 80%;
 	height : 700px;
 	margin-left : 10%;
 	margin-right : 10%;
-	margin-bottom : 5%;
-	
+	margin-bottom : 5%;	
+}
+@media screen and (max-width:375px){
+	#grooming_qnaboard_customlist_section{
+		height : auto;
+		margin-bottom : 20%;
+	}
 }
 /* 공지사항 (제목=공지사항) */
 #grooming_qnaboard_customlist_pagetitle{
@@ -135,5 +146,11 @@
 @media (max-width:380px){
 	#grooming_qnaboard_customlist_button{
 		width : 100%;
+	}
+}
+
+@media all and(max-width:375px) {
+	#grooming_qnaboard_customlist_div{
+		background-color: black;
 	}
 }

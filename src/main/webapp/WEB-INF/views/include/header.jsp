@@ -35,7 +35,7 @@
 		<header class="header map_view menu_fixed">
 			<div id="logo">
 				<a href="<c:url value="/"/>">
-					<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main.png" width="150" height="36" data-retina="true" class="Grooming_logo_header_main" alt="메인이미지">
+					<img src="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_logo_main.png" width="150" height="36" data-retina="true" class="logo_normal" alt="메인이미지">
 				</a>
 			</div>
 			<ul id="top_menu">
@@ -44,17 +44,17 @@
 				<!-- 비로그인시 -->
 				<c:if test="${login == null }">
 					<li></li>
-					<li><a href="<c:url value="/login"/>" class="cart-menu-btn" title="로그인"></a></li>
-					<li><a href="<c:url value="/agreementJoin"/>" id="" class="login" title="회원가입"></a></li>
+					<li><a href="<c:url value="/login"/>" class="icon-login" title="로그인" style="color: black; font-size: 22px; "></a></li>
+					<li><a href="<c:url value="/agreementJoin"/>" class="icon-user-add" title="회원가입" style="color: black; font-size: 22px; " ></a></li>
 					<!-- <li><a href="wishlist.html" class="wishlist_bt_top" title="Your wishlist">Your wishlist</a></li> -->
 				</c:if>
 
 
 				<!-- 사용자 로그인시 -->
 				<c:if test="${login != null}">
-					<li><a href="<c:url value="/bookmarksearch"/>" class="wishlist_bt_top" title="찜"></a></li>
-					<li class="nv_login_li_icon_1"  style="margin-top: 7px;"><a href="<c:url value="/mypageInfo"/>" id="logout" class="icon-doc-1" title="마이페이지" style="color: black; font-size: 22px; "></a></li> <!-- 마이페이지 이미지로 바꾸셈 -->
-					<li class="nv_login_li_icon_1" style="margin-top: 7px;"><a href="<c:url value="/logout"/>" class="icon-logout" title="로그아웃" style="color: black; font-size: 22px;"><strong></strong></a></li>
+					<li><a href="<c:url value="/bookmarksearch"/>" class="icon-heart-empty" title="찜" style="color: black; font-size: 22px; "></a></li>
+					<li><a href="<c:url value="/mypageInfo"/>" id="logout" class="icon-doc-1" title="마이페이지" style="color: black; font-size: 22px; "></a></li> <!-- 마이페이지 이미지로 바꾸셈 -->
+					<li><a href="<c:url value="/logout"/>" class="icon-logout" title="로그아웃" style="color: black; font-size: 22px;"></a></li>
 
 				</c:if>
 
@@ -100,8 +100,16 @@
 						</ul>
 					</li>
 					<li><span><a href="<c:url value="/faqList"/>">고객센터</a></span>
+						
 						<ul>
-							<li><a href="<c:url value="/inquiryCustomerList?mb_id=${login.mb_id }"/>">1:1문의</a></li>
+							<li>
+								<c:if test="${login.mb_id eq null }">
+									<a href="<c:url value="/login"/>">1:1문의</a>
+								</c:if>
+								<c:if test="${login.mb_id != null }">
+									<a href="<c:url value="/inquiryCustomerList?mb_id=${login.mb_id }"/>">1:1문의</a>
+								</c:if>
+							</li>
 							<li><a href="<c:url value="/faqList"/>">FAQ</a></li>
 						</ul>
 					</li>

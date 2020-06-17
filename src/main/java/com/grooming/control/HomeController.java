@@ -31,5 +31,9 @@ public class HomeController {
 	public String goToCorp() {
 		return "corporation/grooming_corporation";
 	}
-
+	
+	@RequestMapping(value="/error")
+	public String errorpage() {
+		return "include/error_404_500";
+	}
 }

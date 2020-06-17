@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grooming.dto.MemberDTO;
+import com.grooming.dto.RegistrationDTO;
 import com.grooming.dto.ReservationDTO;
 
 //예약 관련 DAO
@@ -60,8 +61,8 @@ public class ReservationDAO {
 		return ss.selectList(MAPPER+".agreedReservation", dto);
 	}
 
-	//라이센스넘버로 주소 서치
-	public String getaddrBylnum(int de_licencenum) {
+	//라이센스넘버로 주소, 이름 서치
+	public RegistrationDTO getaddrBylnum(int de_licencenum) {
 		return ss.selectOne(MAPPER+".getaddrBylnum", de_licencenum);
 	}
 	

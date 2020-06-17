@@ -195,13 +195,14 @@ public class RegistrationController {
 		//텍스트 정보
 		RegistrationDTO dto = rdao.infoShop(num);
 		if(dto != null) {//가져온 정보가 있을 때
-			req.setAttribute("RegistrationDTO", dto);
+			req.setAttribute("Regist", dto);
 			
 			//샵 이미지들
 			List<String> imgs = rdao.infoImgs(num);
 			if(imgs != null) {//가져온 이미지들이 있을 때
 				req.setAttribute("infoImgs", imgs);
 			}
+			req.setAttribute("de_licencenum", num);
 			
 			return "search/grooming_result_detail";
 		}else {//가져온 정보가 없을 때

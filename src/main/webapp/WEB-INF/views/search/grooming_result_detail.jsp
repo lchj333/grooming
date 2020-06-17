@@ -58,31 +58,31 @@ html, body {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		
+
 		/* 날짜 유효성 검사 */
-		
+
 		/* 강아지 체크 */
 		var dogsum = 0;
 		var count = 0;
 		var count2 = 0;
 		var count3 = 0;
-			
+
 			$('#icon-largeDog-plus').on('mousedown',function(){
 	            count += 1;
 	            $('#largeDog').val(count);
 	        })
-	        
+
 	        $('#icon-mediumDog-plus').on('mousedown',function(){
 	            count2 += 1;
 	            $('#mediumDog').val(count2);
 	        })
-	        
+
 	        $('#icon-smallDog-plus').on('mousedown',function(){
 	            count3 += 1;
 	            $('#smallDog').val(count3);
 	        })
-	        
-	        
+
+
 	        $('#icon-largeDog-minus').on('mousedown',function(){
 	            count -= 1;
 	            if(count<0){
@@ -91,7 +91,7 @@ html, body {
 	          	  $('#largeDog').val(count);
 	            }
 	        })
-	        
+
 	        $('#icon-mediumDog-minus').on('mousedown',function(){
 	            count2 -= 1;
 	            if(count2<0){
@@ -100,7 +100,7 @@ html, body {
 	          	  $('#mediumDog').val(count2);
 	            }
 	        })
-	        
+
 	        $('#icon-smallDog-minus').on('mousedown',function(){
 	            count3 -= 1;
 	            if(count3<0){
@@ -109,36 +109,37 @@ html, body {
 	          	  $('#smallDog').val(count3);
 	            }
 	        })
-	        
-	        
+
+
         $(".icon-plus , .icon-minus").click(function(){
-	        
+
 		    var la = parseInt($('#largeDog').val());
 			var me = parseInt($('#mediumDog').val());
-			var sm = parseInt($('#smallDog').val());	
-				
-			dogsum = la+me+sm;		
-				
+			var sm = parseInt($('#smallDog').val());
+
+			dogsum = la+me+sm;
+
 		    $("#dog-total").text(dogsum);
 		});
-        
 
-        
-		
+
+
+
 		/* 예약버튼 */
 		$("#btn").click(function(){
+			
 			document.frm.action = "<c:url value='/reservation/reservCk'/>";
 			document.frm.submit();
 		});
-		
+
 		/* 리뷰작성버튼 */
 		$("#btn2").click(function(){
 			document.frm.action = "<c:url value='/reservation/reservCk'/>";
 			document.frm.submit();
 		});
-		
-		
-		
+
+
+
 	});
 
 </script>
@@ -161,7 +162,7 @@ html, body {
 					<!-- title main -->
 					<div class="container">
 						<h1 class="fadeInUp">
-							<span></span>미미네 샵
+							<span></span><c:out value="${Regist.ref_shopname }"></c:out>
 						</h1>
 					</div>
 					<!-- 미리 보기 div & 모아보기-->
@@ -169,7 +170,7 @@ html, body {
 					<!-- 등록되는 서브 이미지 받기 -->
 					<a href="<c:url value="/resource/shopimags/${sessionScope.infoImgs[0]}"/>" class="btn_photos"
 						title="Photo title" data-effect="mfp-zoom-in">모아보기</a>
-						
+
 						<c:forEach var="img" items="${infoImgs}" step="1">
 						 <a href="<c:url value="/resources/shopimags/${img}"/>" title="Photo title"
 						data-effect="mfp-zoom-in"></a>
@@ -196,7 +197,8 @@ html, body {
 						<div class="col-lg-8 add_top_15" style="color: black;">
 							<section id="description">
 								<h3>상세정보</h3>
-								<p style="color: gray;">태어난 강아지는 생후 10일까지를 신생아로 본다. 강아지는 견종에
+									<p style="color: gray;"><c:out value="${Regist.reg_con}"/></p>
+									<p>태어난 강아지는 생후 10일까지를 신생아로 본다. 강아지는 견종에
 									따라 체중이 매우 다양하며 태어난 지 14일 무렵 눈을 뜨고 소리에 반응하며 걷기 시작한다.[6] 몸떨기 반사는
 									그 보다 1주일 정도 빠르다. 젓빨기는 첫 2주간은 2시간 마다 이루어지며 8일만에 몸무게가 두 배로 늘 정도로
 									빠르게 성장한다. 이 기간엔 따로 마련한 출산장에서 강아지의 관리를 전적으로 어미개에게 맡기는 것이 좋다.[7]
@@ -241,8 +243,8 @@ html, body {
 								<!-- End Map -->
 							</section>
 							<!-- /section -->
-							
-							
+
+
 							<!-- 리뷰 -->
 							<form action="" method="post" name="frm2">
 								<section id="reviews">
@@ -268,7 +270,7 @@ html, body {
 											</div>
 										</div>
 										<!-- /댓글 박스 div 끝 -->
-	
+
 									</div>
 									<!-- /전체 리뷰 end -->
 								</section>
@@ -301,8 +303,17 @@ html, body {
 												class="form-control" style="height: 130px;"></textarea>
 										</div>
 										<div class="form-group col-md-12 add_top_20">
-											<input type="submit" value="전송하기" class="btn_1"
-												id="submit-review">
+										
+												
+										<c:if test="${login.mb_id eq null }">
+												<a href="<c:url value="/login"/>"><input type="button" value="전송하기" class="btn_1"
+													id="submit-review"></a>
+										</c:if>									
+										<c:if test="${login.mb_id != null }">
+												<input type="submit" value="전송하기" class="btn_1"
+													id="submit-review">
+										</c:if>
+												
 										</div>
 									</div>
 								</form>
@@ -318,16 +329,16 @@ html, body {
 									<span style="font-size: 20px;">GROOMING 미용예약</span>
 
 								</div>
-								
+
 							<!-- 예약폼 -->
 							<form action="" name="frm" method="post">
-								
+								<input type="hidden" name="de_licencenum" value="${de_licencenum}" />
 
 								<div class="form-group" id="input_date">
 									<input class="form-control" type="text" name="re_date"
 										placeholder="When.."> <i class="icon_calendar"></i>
 								</div>
-											
+
 									<div class="panel-dropdown">
 										<a href="#">견종선택 <span class="qtyTotal" id="dog-total">0</span></a>
 										<div class="panel-dropdown-content right">
@@ -338,7 +349,7 @@ html, body {
 												<i class="icon-plus" id="icon-largeDog-plus"></i>
 											</div>
 											<div class="qtyButtons">
-												<label>중형</label> 
+												<label>중형</label>
 												<i class="icon-minus" id="icon-mediumDog-minus"></i>
 												<input type="text" name="re_specie" value="0" id="mediumDog">
 												<i class="icon-plus" id="icon-mediumDog-plus"></i>
@@ -361,15 +372,29 @@ html, body {
 									<option>Dinner</option>
 								</select> -->
 											<input class="form-control" type="text" name="re_weight"
-												id="" placeholder="견종 몸무게(숫자만 입력)" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="10"> 
+												id="" placeholder="견종 몸무게(숫자만 입력)" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="10">
 											<input class="form-control add_top_15" type="text" name="re_cut"
 												id="" placeholder="견종 컷 및 특이사항">
 										</div>
 									</div>
-									<input type="button" value="예약하기" id="btn" class="add_top_30 btn_1 full-width"/>
+									
+									<c:if test="${login.mb_id eq null }">
+										<a href="<c:url value="/login"/>"><input type="button" value="예약하기" id="" class="add_top_30 btn_1 full-width"/></a>										
+									</c:if>									
+									<c:if test="${login.mb_id != null }">
+										<input type="button" value="예약하기" id="btn" class="add_top_30 btn_1 full-width"/>									
+									</c:if>
+									
 								</form>
-								<a href="wishlist.html"
-									class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> 찜목록에 추가하기</a>
+									<c:if test="${login.mb_id eq null }">
+										<a href="<c:url value="/login" />"
+										class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> 찜목록에 추가하기</a>										
+									</c:if>
+									<c:if test="${login.mb_id != null }">
+									<a href="wishlist.html"
+										class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> 찜목록에 추가하기</a>
+									</c:if>
+									
 								<div class="text-center">
 									<small>GROOMING</small>
 								</div>

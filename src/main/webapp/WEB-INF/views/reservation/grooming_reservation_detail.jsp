@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,13 +58,11 @@
 
 #reserv-left1{
 	float: left;
-	background-color: red;
 	height: 50px;
 }
 
 #reserv-right1{
 	float: left;
-	background-color: blue;
 	height: 50px;
 }
 
@@ -74,13 +73,12 @@
 
 #reserv-left2{
 	float: left;
-	background-color: orange;
+
 	height: 50px;
 }
 
 #reserv-right2{
 	float: left;
-	background-color: black;
 	height: 50px;
 }
 
@@ -91,13 +89,11 @@
 
 #reserv-left3{
 	float: left;
-	background-color: green;
 	height: 50px;
 }
 
 #reserv-right3{
 	float: left;
-	background-color: yellow;
 	height: 50px;
 }
 
@@ -108,22 +104,30 @@
 
 #reserv-left4{
 	float: left;
-	background-color: red;
 	height: 50px;
 }
 
 #reserv-right4{
 	float: left;
-	background-color: yellow;
 	height: 50px;
 }
 
 </style>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#btn").click(function(){
+			document.frm.action = "<c:url value='/reservation/addReserv'/>";
+			document.frm.submit();
+			alert("에약완료");
+		});
 
+	});
+</script>
 
 </head>
-<body>
+<body style="width: 100%;">
 	<div id="page">
 		<!-- header -->
 		<jsp:include page="../include/header.jsp" />
@@ -134,7 +138,7 @@
 		<main>
 		
 			<div class="container add_top_60 ">
-				<form action="<c:url value="/reservation/addReserv"/>">
+				<form action="" method="post" name="frm">
 					<div class="row magin_60">
 						<div class="col-12">
 							<div class="invoice-title add_top_30" style="color: black">
@@ -143,62 +147,65 @@
 							<hr>
 							<!-- 값받고 보내는 곳 -->
 							<div id="reserv-first-outline">
-								<div id="reserv-left1" class="col-4">
-									<h2>예약일 : <c:out value="${rsv.re_date }"></c:out></h2>
+								<div id="reserv-left1" class="col-6">
+									<h4>예약일 : <fmt:formatDate value="${rsv.re_date }" pattern="YYYY-MM-dd"/></h4>
 								</div>
 							</div>
 							
 							<div id="reserv-second-outline">
-								<div id="reserv-left2" class="col-4">
-									<c:out value="${rsv.ref_shopname}"></c:out>
+								<div id="reserv-left2" class="col-6">
+									<h4>가게명 : <c:out value="${shopname}"></c:out></h4>
 								</div>
-								<div id="reserv-right2" class="col-4">
-									<c:out value="${address}"></c:out>
+								<div id="reserv-right2" class="col-6">
+									<h4>주소 : <c:out value="${address}"></c:out></h4>
 								</div>
 							</div>
 							
 							<div id="reserv-third-outline">
-								<div id="reserv-left3" class="col-4">
-									<c:out value="${rsv.re_species}"></c:out>
+								<div id="reserv-left3" class="col-6">
+									<h4>견종 : <c:out value="${rsv.re_species}"></c:out></h4>
 								</div>
-								<div id="reserv-right3" class="col-4">
-									<c:out value="${rsv.re_cut}"></c:out>
+								<div id="reserv-right3" class="col-6">
+									<h4>무게 : <c:out value="${rsv.re_weight}"></c:out></h4>
 								</div>
 							</div>
 							
 							<div id="reserv-fourth-outline">
-								<div id="reserv-left4" class="col-4">
-									<input type="text" name="re_weight" id="" value="<c:out value="${rsv.re_weight}"/>" readonly="readonly"/>
+								<div id="reserv-left4" class="col-6">
+									<h4>요청사항 : <c:out value="${rsv.re_cut}"/></h4>
 								</div>
 							</div>
-						<%-- 	${rsv.re_cut} --%>
+							<!-- 정보넘겨주자 -->
+							<input type="hidden" name="lnum" value="${lnum}" />
+							<input type="hidden" name="dates" value="<fmt:formatDate value="${rsv.re_date}" pattern="YYYY-MM-dd"/>" />
+							<input type="hidden" name="re_species" value="${rsv.re_species}" />
+							<input type="hidden" name="re_weight" value="${rsv.re_weight}" />
+							<input type="hidden" name="re_cut" value="${rsv.re_cut}" />
 						</div>
 					</div>
 					<hr>
-						</form>
 					<div class="row col-6 add_bottom_75">
 						<div class="add_right_15">
-							<input type="button" class="btn_1  add_top_15 "
-								value="예약하기" />
-
+							<input type="button" class="btn_1  add_top_15" id="btn" value="예약하기" />
 						</div>
 						<div class="">
-							<input type="button" class="btn_1  add_top_15 "
-								value="되돌아가기" />
-
+							<a href="<c:url value='/search/detailShop' />" class="btn_1  add_top_15" id="btn2">되돌아가기</a>
 						</div>
-
-
-				</div>
-
+					</div>
+				</form>
 			</div>
-
 		</main>
-		<div id="toTop" style="display: none;"></div>
-			<!-- footer -->
+
+	</div>
+		
+		
+	<!-- 상단 올라감 -->
+	<div id="toTop" style="display: none;"></div>
+		
+	<!-- footer -->
 	<jsp:include page="../include/footer.jsp" />
 	<!-- footer end -->
-	</div>
+
 
 
 
