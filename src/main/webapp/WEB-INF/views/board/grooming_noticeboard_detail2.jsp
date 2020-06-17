@@ -9,6 +9,14 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/main_resources/css/grooming_noticeboard_detail.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <!-- =======================================================================================================================================================================================================================  -->
 </head>
 <body>
 <div id="page">
@@ -17,27 +25,31 @@
 
 <!-- contents -->
 <div id="gr_noticeboard_detail_maindiv">
-	<div id="gr_noticeboard_detail_title"><span><c:out value="${inform.nt_title }"></c:out></span></div>
-	<div id="gr_noticeboard_detail_datehits">
-		<span>등록일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<span><fmt:formatDate value="${inform.nt_regdate }"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<span>조회수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-		<span><c:out value="${inform.nt_hits }"></c:out></span>
+	<div id="notice_maindiv2">
+		<div id="notice_maindiv3">
+			<div id="gr_noticeboard_detail_title"><span><c:out value="${inform.nt_title }"></c:out></span></div>
+			<div id="gr_noticeboard_detail_datehits">
+				<span>등록일&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<span><fmt:formatDate value="${inform.nt_regdate }"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<span>조회수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				<span><c:out value="${inform.nt_hits }"></c:out></span>
+			</div>
+			<div id="gr_noticeboard_detail_contents">
+				<c:set var="a" value="${inform.nt_con }"/>
+				<c:set var="b" value="${fn:replace(a,'<p>','')}"/>
+				<c:set var="c" value="${fn:replace(b,'</p>','</br>')}"/>
+				<c:set var="d" value="${fn:replace(c,'&nbsp;','
+				')}"/>
+				<c:set var="e" value="${fn:replace(d,'<br>','')}"/>
+				${e }
+			</div>      
+			<p id="notice_button">
+				<a href="noticeListPage2?num=${pn }" class="btn_1 medium">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="noticeUpdate?nt_no=${inform.nt_no }" class="btn_1 medium">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="noticeDelete?nt_no=${inform.nt_no }" class="btn_1 medium">삭제</a>
+			</p>
+		</div>
 	</div>
-	<div id="gr_noticeboard_detail_contents">
-		<c:set var="a" value="${inform.nt_con }"/>
-		<c:set var="b" value="${fn:replace(a,'<p>','')}"/>
-		<c:set var="c" value="${fn:replace(b,'</p>','</br>')}"/>
-		<c:set var="d" value="${fn:replace(c,'&nbsp;','
-		')}"/>
-		<c:set var="e" value="${fn:replace(d,'<br>','')}"/>
-		${e }
-	</div>      
-	<p id="notice_button">
-		<a href="noticeListPage2?num=${pn }" class="btn_1 medium">목록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="noticeUpdate?nt_no=${inform.nt_no }" class="btn_1 medium">수정</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="noticeDelete?nt_no=${inform.nt_no }" class="btn_1 medium">삭제</a>
-	</p>
 </div>
 <!-- footer -->
 <jsp:include page="../mypage/mypage_nav.jsp" />

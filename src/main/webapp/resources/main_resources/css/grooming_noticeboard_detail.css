@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 #gr_noticeboard_detail_maindiv{
-	
 	margin-left : 10%;
 	margin-right : 10%;
 	margin-top : 200px;
@@ -10,11 +9,28 @@
 	height : 700px;
 	color : black;
 }
+@media screen and (max-width:375px) {
+	#gr_noticeboard_detail_maindiv{
+		width : 100%;
+		margin-left : 0;
+		margin-right : 0;
+		margin-top : 60px;
+		margin-bottom : 0; 
+		height  : auto;
+	}
+}
 
 #notice_maindiv2{
 	width: 80%;
 	margin-left : 10%;
 	margin-right : 10%;
+}
+@media screen and(max-width:375px) {
+	#notice_maindiv2{
+		width:100%;
+		margin-left:0;
+		margin-right:0;
+	}
 }
 
 #notice_maindiv3{
@@ -28,16 +44,23 @@
 	padding : 10px;
 	border : 1px solid #EAEAEA;
 }
+@media screen and(max-width:375px) {
+	#gr_noticeboard_detail_contents{
+		height : auto;
+	}
+}
 
 #gr_noticeboard_detail_title{
-	
 	font-size: 28px;
 	font-weight: 400;
 	text-align: center;
 	margin-bottom : 30px;
-	
 }
-
+@media screen and (max-width:375px){
+	#gr_noticeboard_detail_title{
+		font-size :20px;
+	}
+}
 #gr_noticeboard_detail_datehits{
 	
 	text-align: right;
@@ -45,16 +68,6 @@
 	margin-right: 10px;
 }
 
-@media screen and (max-width:375px) {
-	#gr_noticeboard_detail_maindiv{
-	
-		margin-left:10%;
-		margin-right:10%;
-		margin-bottom:15%;
-		width : 80%;
-		
-	}
-}
 #notice_buttondiv{
 	margin-top : 20px;
 }

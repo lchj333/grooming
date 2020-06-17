@@ -56,6 +56,11 @@
 	color : black;
 	height : 1000px;
 }
+@media screen and (max-width:375px){
+	#grooming_qnaboard_customlist_articlelist{
+		height : auto;
+	}
+}
 #grooming_qnaboard_customlist_tablediv{
 	width:100%;
 	margin-top : 5%;
@@ -64,6 +69,12 @@
 #gr_qna_ul{
 	width : 100%;
 }
+@media screen and (max-width:375px){
+	#gr_qna_ul{
+		padding-left:0px;
+	}
+}
+
 
 #gr_qna_li{
 	width: 100%;
@@ -89,6 +100,16 @@
 	float:left;
 	padding : 20px;
 }
+@media screen and (max-width:375px){
+	#gr_qna_title{
+		font-size: 14px;
+		overflow: auto;
+		text-overflow: none;
+		white-space: normal;
+		float:left;
+		padding : 20px 0px;
+	}
+}
 
 
 #gr_qna_regdate{
@@ -113,6 +134,14 @@
 	padding : 26px 30px;
 	font-size: 16px;
 }
+@media screen and (max-width:375px){
+	#gr_qna_slideul{
+		margin-left : 20px;
+		font-size: 14px;
+		padding: 20px 0px;
+	}
+}
+
 
 #gr_qna_slideli{
 	 list-style:none;
