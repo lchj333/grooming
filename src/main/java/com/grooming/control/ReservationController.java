@@ -210,7 +210,7 @@ public class ReservationController {
 	//미용사 예약 승인 + 피드백
 	@RequestMapping(value = "/appReservationY")
 	public String appReservationY(@RequestParam(value = "re_num")int re_num,
-									ReservationDTO dto) {
+									ReservationDTO dto, HttpServletRequest req) {
 		
 		System.out.println(re_num);
 		
@@ -222,16 +222,22 @@ public class ReservationController {
 	}
 	
 	//미용사 예약 승인 + 피드백
-	@RequestMapping(value = "/appReservationN")
+	@RequestMapping(value = "/appReservation")
 	public String appReservationN(@RequestParam(value = "re_num", required = false)int re_num,
-								@RequestParam(value = "bc_con", required = false)String bc_con,
-								ReservationDTO dto) {
+								ReservationDTO dto, HttpServletRequest req) {
+		System.out.println(re_num);
+		String bc_con = dto.getBc_con();
+		System.out.println(bc_con);
 		
-		dto.setRe_num(re_num);
-		dto.setBc_con(bc_con);
-		
-		rdao.checkReservN(dto);
-		rdao.insertFeedBack(dto);
+		if(dto.getRe_approval().equals("취소")) {//예약 취소
+			rdao.checkReservN(dto);
+			if(bc_con != null & bc_con.equals("")) {
+				//사유 값 있을 때
+				rdao.insertFeedBack(dto);
+			}
+		}else {//예약 승인
+			rdao.checkReservY(dto);
+		}
 		
 		return "mypage/grooming_user_profile";
 	}

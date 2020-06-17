@@ -9,23 +9,19 @@
 <title>booking</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(function(){
-		$("#btn1").click(function(){
-			var re_num = document.getElementById("re_num");
-			var bc_con = document.getElementById("bc_con");
-			document.frm.action = "<c:url value='/appReservationN'/>";
-			document.frm.re_num.val = re_num;
-			document.frm.bc_con.val = bc_con;
-			document.frm.submit();
-		});
+	function because(num) {
+		var con = prompt("사유를 입력하여 주세요.");
+		document.frm.bc_con.val = con;
+		yesman(num);
+	}
+	function yesman(num) {
+		console.log(num);
+
+		document.frm.action = "<c:url value="/appReservation"/>";
+		document.frm.re_num.val = num;
 		
-		$("#btn2").click(function(){
-			var re_num = document.getElementById("re_num");
-			document.frm.action = "<c:url value='/appReservationY'/>";
-			document.frm.re_num.val = re_num;
-			document.frm.submit();
-		});
-	});
+		document.frm.submit();
+	}
 </script>
 </head>
 <body>
@@ -34,8 +30,10 @@
 <!-- nav end -->
 
 <!-- booking contents start -->
-<form name="frm" >
-	<input type="hidden" name="re_num" id="re_num" value=""/>
+<form name="frm" method="post" >
+	<input type="hidden" name="re_num" id="re_num"/>
+	<input type="hidden" name="bc_con" id="bc_con"/>
+</form> 
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -68,14 +66,31 @@
 						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i>1대1대화</a></p>
 						<ul class="buttons">
 						<!-- <input type="button" value="" class="btn_1 gray approve" /> -->
-						<c:if test="${myList.re_approval eq '승인 대기'}">
-							<li><input type="button" value="승인" class="btn_1 gray approve" id="btn2" /></li>
-							<li class="btn_1 gray delete" id="delete-click-btn" data-toggle="modal" data-target="#cancel"><i class="fa fa-fw fa-times-circle-o"></i>취소</li>
-						</c:if>
+							<li><input type="button" value="승인" class="btn_1 gray approve" id="btn2" onclick="yesman(${myList.re_num})"/></li>
+							<li data-toggle="modal" data-target="#cancel"><input type="button" class="btn_1 gray delete" value="취소" onclick="because(${myList.re_num})" /> </li>
 						</ul>
 						<ul>
 						</ul>
 					</li>
+					<!-- 예약취소 사유 창 -->
+<!-- 			       <div class="modal fade" id="cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"> -->
+<!-- 			         <div class="modal-dialog" role="document"> -->
+<!-- 			           <div class="modal-content"> -->
+<!-- 			             <div class="modal-header"> -->
+<!-- 			               <h5 class="modal-title" id="exampleModalLabel">이 유저의 예약을 취소하시겠습니까?</h5> -->
+<!-- 			               <button class="close" type="button" data-dismiss="modal" aria-label="Close"> -->
+<!-- 			                 <span aria-hidden="true">×</span> -->
+<!-- 			               </button> -->
+<!-- 			             </div> -->
+<!-- 			             <div class="modal-body"><input type="text" name="bc_con" id="cancel-btn" placeholder="취소사유" style="width: 100%; height: 50px;" /></div> -->
+										
+<!-- 			             <div class="modal-footer"> -->
+<%-- 			               <button class="btn btn-secondary" type="button" data-dismiss="modal" id="btn1" onclick="because(${myList.de_licencenum})">예약취소</button> --%>
+<!-- 			               <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button> -->
+<!-- 			             </div> -->
+<!-- 			           </div> -->
+<!-- 			         </div> -->
+<!-- 			       </div> -->
 					</c:if>
 					</c:forEach>
 				</ul>
@@ -117,31 +132,6 @@
     </a>
     
     
-    <!-- 예약취소 사유 창 -->
-    <!-- <form action="" method="post" name="frm"> -->
-       <div class="modal fade" id="cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">이 유저의 예약을 취소하시겠습니까?</h5>
-               <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">×</span>
-               </button>
-             </div>
-             <div class="modal-body"><input type="text" name="bc_con" id="cancel-btn" placeholder="취소사유" style="width: 100%; height: 50px;" /></div>
-							
-             <div class="modal-footer">
-               <button class="btn btn-secondary" type="button" data-dismiss="modal" id="btn1">예약취소</button>
-               <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
-             </div>
-           </div>
-         </div>
-       </div>
-    </form>    
-    
-    
-    
-
     <jsp:include page="mypage_logout.jsp"></jsp:include>
     
     <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>

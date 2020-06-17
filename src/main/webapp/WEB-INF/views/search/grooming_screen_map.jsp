@@ -97,7 +97,7 @@ html, body {
 					   				><strong>${count}개</strong>검색되었습니다.</h4>
 				   				  </div>
 								   <div class="col-2">
-									   <a href="#0" class="search_map btn_search_map_view"></a> <!-- /open search panel -->
+									   <a href="#" class="search_map btn_search_map_view"></a> <!-- /open search panel -->
 								   </div>
 			   					</div>
 			  					<!-- /row -->
@@ -192,7 +192,7 @@ html, body {
 		        <div class="col-4">
 
 		            <figure>
-		                  <a href='<c:url value="${shop.de_licencenum}"></c:url>'><img src="<c:out value="${shop.reg_img}"/>" class="img-fluid" alt="" width="800" height="533"></a>
+		                  <a onclick="godetail(${shop.de_licencenum})"><img src="<c:url value="/resources/thumbnail/${shop.reg_img}"/>" class="img-fluid" alt="" width="800" height="533"></a>
 		            </figure>
 
 		        </div>

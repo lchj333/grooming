@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.grooming.dao.RegistrationDAO;
+import com.grooming.dto.DesignerDTO;
 import com.grooming.dto.RegistrationDTO;
 import com.grooming.dto.ShopListDTO;
 import com.grooming.utils.FileUpload;
@@ -52,8 +53,16 @@ public class RegistrationController {
 	//메뉴 ->
 	//가게 등록 폼
 	@GetMapping(value = "/mypage/registShop")
-	public String insertShopForm() {
-		return "mypage/grooming_hairdresser_addList";
+	public String insertShopForm(HttpServletRequest req) {
+		HttpSession hs = req.getSession();
+		DesignerDTO dinfo = (DesignerDTO) hs.getAttribute("dInfo");
+		
+		RegistrationDTO rdto = rdao.infoShop(dinfo.getDe_licencenum());
+		if(rdto == null) {//가게 정보가 없을 시 (등록 ㄱㄱ)
+			return "mypage/grooming_hairdresser_addList";
+		}else {//가게 정보가 있을 시 (되돌아가기)
+			return "mypage/grooming_user_mypage";
+		}
 	}
 	//등록폼 (작성 후)->
 	//가게 등록 (+썸네일 이미지)
