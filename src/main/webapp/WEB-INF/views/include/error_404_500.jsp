@@ -19,14 +19,12 @@ rel="stylesheet">
 
 <!-- YOUR CUSTOM CSS -->
 <link href="${pageContext.request.contextPath}/resources/main_resources/css/custom.css" rel="stylesheet">
-
-
 </head>
 
 
 <div id="page">
 	<main>
-		<div id="error_page" style="background-image: url('${pageContext.request.contextPath}/resources/main_resources/img/404-에러-페이지.png');">
+		<div id="error_page">
 			<div class="container">
 				<div class="row justify-content-center text-center">
 					<div class="col-xl-7 col-lg-9">
@@ -36,9 +34,9 @@ rel="stylesheet">
 						<h6>다른 문제가 있을시 관리자에게 문의 해주세요.</h6>
 						</div>
 						<form>
-							<div class="search_bar_error">
-								<a href="<c:url value="/"></c:url>"><input type="button" class="btn_1 text-center" value="메인으로" /></a>
-							</div>
+						<div class="search_bar_error">
+							<a href="<c:url value="/"></c:url>"><input type="button" class="btn_1 text-center" value="메인으로" /></a>
+						</div>
 						</form>
 					</div>
 				</div>

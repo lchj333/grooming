@@ -15,8 +15,4 @@ public class testController {
 		return mv;
 	}
 
-	   @RequestMapping(value="/error")
-	   public String errorpage() {
-	      return "include/error_404_500";
-	   }
 }
