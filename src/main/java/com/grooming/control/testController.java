@@ -9,9 +9,10 @@ public class testController {
 
 	@RequestMapping(value = "/wqe")
 	public ModelAndView main(ModelAndView mv) throws Exception  {
-		
+
 		mv.setViewName("main/grooming_main");
-		
+
 		return mv;
 	}
+
 }
