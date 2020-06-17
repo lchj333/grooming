@@ -97,10 +97,10 @@ $(document).ready(function(){
                      <%-- </c:if> --%>
                   </ul>
                   
-         <!-- 페이징 처리 -->
+         <%-- <!-- 페이징 처리 -->
             <div style="color:black; float:right; font-size: 20px; margin-top: 20px; margin-right:20px;">
          <c:if test="${prev}">
-            <span>[ <a href="<c:url value="/inquiryAdminList?num=${startPageNum - 1}"/>">이전</a> ]</span>
+            <span>[ <a href="<c:url value="/inquiryCustomerList?num=${startPageNum - 1}"/>">이전</a> ]</span>
          </c:if>
       
       <!-- 페이지 모음 출력 -->
@@ -108,7 +108,7 @@ $(document).ready(function(){
          <span>
             <!-- 현재보고있는 페이지 글자 두껍게해서 직관성 향상-->
             <c:if test="${select != num }">
-               <a href="<c:url value="/inquiryAdminList?num=${num}"/>">${num}</a>                           
+               <a href="<c:url value="/inquiryCustomerList?num=${num}"/>">${num}</a>                           
             </c:if>
             <c:if test="${select == num }">
                <b>${num }</b>
@@ -117,12 +117,12 @@ $(document).ready(function(){
       </c:forEach>
                
       <c:if test="${next}">
-         <span>[ <a href="<c:url value="/inquiryAdminList?num=${endPageNum + 1}"/>">다음</a> ]</span>
+         <span>[ <a href="<c:url value="/inquiryCustomerList?num=${endPageNum + 1}"/>">다음</a> ]</span>
       </c:if>
             </div>
    
       </div>
-      <!-- 페이징처리 끝 -->      
+      <!-- 페이징처리 끝 -->    --%>   
 
                </div>
             </div>

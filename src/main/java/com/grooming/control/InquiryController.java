@@ -111,7 +111,7 @@ public class InquiryController {
 		//게시물 총 갯수
 		int count = dao.count();
 		// 한 페이지에 출력할 공지사항 숫자
-		int postNum = 5;
+		int postNum = dao.count();
 		//하단 페이징 번호
 		int pageNum = (int)Math.ceil((double)count/postNum);
 		// 출력할 게시물
