@@ -17,16 +17,23 @@
 					<h5>바로가기 링크</h5>
 					<ul class="links">
 						<li><a href="<c:url value="/corporation"/>">소개</a></li>
-						<li><a href="<c:url value="/login"/>">로그인</a></li>
-						<li><a href="<c:url value="/agreementJoin"/>">회원가입</a></li>
-						<li><a href="contacts.html">연락처</a></li>
+						
+								<c:if test="${login.mb_id eq null }">
+							<li><a href="<c:url value="/login"/>">로그인</a></li>						
+							<li><a href="<c:url value="/agreementJoin"/>">회원가입</a></li>
+								</c:if>
+								
+								<c:if test="${login.mb_id != null }">
+							<li><a href="<c:url value="/logout"/>">로그아웃</a></li>
+							<li><a href="<c:url value="/mypageInfo"/>">마이페이지</a></li>
+								</c:if>
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<h5>문의 전화</h5>
 					<ul class="contacts">
 						<li><a href="tel://812345671234"><i class="ti-mobile"></i> + 81 23 4567 1234</a></li>
-						<li><a href="GROOMING@gmail.com"><i class="ti-email"></i> GROOMING@gmail.com</a></li>
+						<li><i class="ti-email"></i> GROOMING@gmail.com</li>
 					</ul>
 				</div>
 			</div>

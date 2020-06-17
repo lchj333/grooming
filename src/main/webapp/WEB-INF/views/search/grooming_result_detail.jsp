@@ -127,6 +127,7 @@ html, body {
 		
 		/* 예약버튼 */
 		$("#btn").click(function(){
+			
 			document.frm.action = "<c:url value='/reservation/reservCk'/>";
 			document.frm.submit();
 		});
@@ -302,8 +303,17 @@ html, body {
 												class="form-control" style="height: 130px;"></textarea>
 										</div>
 										<div class="form-group col-md-12 add_top_20">
-											<input type="submit" value="전송하기" class="btn_1"
-												id="submit-review">
+										
+												
+										<c:if test="${login.mb_id eq null }">
+												<a href="<c:url value="/login"/>"><input type="button" value="전송하기" class="btn_1"
+													id="submit-review"></a>
+										</c:if>									
+										<c:if test="${login.mb_id != null }">
+												<input type="submit" value="전송하기" class="btn_1"
+													id="submit-review">
+										</c:if>
+												
 										</div>
 									</div>
 								</form>
@@ -367,10 +377,24 @@ html, body {
 												id="" placeholder="견종 컷 및 특이사항">
 										</div>
 									</div>
-									<input type="button" value="예약하기" id="btn" class="add_top_30 btn_1 full-width"/>
+									
+									<c:if test="${login.mb_id eq null }">
+										<a href="<c:url value="/login"/>"><input type="button" value="예약하기" id="" class="add_top_30 btn_1 full-width"/></a>										
+									</c:if>									
+									<c:if test="${login.mb_id != null }">
+										<input type="button" value="예약하기" id="btn" class="add_top_30 btn_1 full-width"/>									
+									</c:if>
+									
 								</form>
-								<a href="wishlist.html"
-									class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> 찜목록에 추가하기</a>
+									<c:if test="${login.mb_id eq null }">
+										<a href="<c:url value="/login" />"
+										class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> 찜목록에 추가하기</a>										
+									</c:if>
+									<c:if test="${login.mb_id != null }">
+									<a href="wishlist.html"
+										class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> 찜목록에 추가하기</a>
+									</c:if>
+									
 								<div class="text-center">
 									<small>GROOMING</small>
 								</div>
