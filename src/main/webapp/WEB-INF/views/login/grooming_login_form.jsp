@@ -66,8 +66,20 @@
 
 	    });
 
+		
+		$('#pw_ck').on('keypress', function(e){
+			if(e.keyCode == '13'){
+				$('#logingo').click();
+			}
+		});
+
 
 	});
+	
+
+
+
+
 </script>
 <body>
 	<div id="login">
@@ -99,7 +111,7 @@
 				<!-- 비밀번호 입력 -->
 				<div class="form-group">
 					<label>비밀번호</label> <input type="password" class="form-control"
-						name="mb_pw" id="" style="padding-left: 40px;"> <i
+						name="mb_pw" id="pw_ck" style="padding-left: 40px;"> <i
 						class="icon_lock_alt"></i>
 				</div>
 				<!-- 아이디 저장 체크 박스 -->

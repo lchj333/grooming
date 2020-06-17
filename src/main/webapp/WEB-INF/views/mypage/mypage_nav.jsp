@@ -168,7 +168,7 @@
 		          </a>
 		          <ul class="sidenav-second-level collapse" id="collapseComponents">
 		            <li>
-		              <a href="<c:url value='pointchargingok'/>">차트</a>
+		              <a href="<c:url value='/charts'/>">차트</a>
 		            </li>
 					<li>
 		              <a href="<c:url value='/selectMemberAll'/>">일반 회원관리</a>
