@@ -50,14 +50,21 @@
 <script>
 	$(document).ready(function(){
 
+		var mb_id = document.getElementById("mb_id");
+	    var mb_pw = document.getElementById("pw_ck");
+	      
+	    
+	    /* 로그인 유효성 검사 및 페이지 이동 */
 	    $("#logingo").on('click', function(){
-
-		    document.frm.action = "login";
-			document.frm.method = "POST";
-			document.frm.submit();
-
-	    });
-
+	         
+	          if(mb_id.value == "" || mb_pw.value == ""){
+	             alert("아이디와 비밀번호를 입력해주세요");
+	          }else{
+		          document.frm.action = "login";
+		          document.frm.method = "POST";
+		          document.frm.submit();
+	          }
+	       });
 	    $("#joingo").on('click', function(){
 
 		    document.frm.action = "agreementJoin";
@@ -65,8 +72,8 @@
 			document.frm.submit();
 
 	    });
-
-		
+	    
+	    /* 엔터시 로그인 버튼 반응 */
 		$('#pw_ck').on('keypress', function(e){
 			if(e.keyCode == '13'){
 				$('#logingo').click();
@@ -88,9 +95,9 @@
 
 			<!-- 상단 로고 -->
 			<figure>
-				<a href="/"><img
-					src="<c:url value='/resources/main_resources/img/Grooming_150_36_LOGO.png'/>"
-					data-retina="true" alt="" width="150" height="36"></a>
+				<a href="<c:url value='/'/>">
+					<img src="<c:url value='/resources/main_resources/img/Grooming_150_36_LOGO.png'/>" data-retina="true" alt="" width="150" height="36">
+				</a>
 			</figure>
 			<!-- 상단 로고 -->
 
@@ -105,7 +112,7 @@
 				<!-- 아이디 입력 -->
 				<div class="form-group">
 					<label>아이디</label> <i class="ti-user"></i> <input type="text"
-						class="form-control" name="mb_id" id=""
+						class="form-control" name="mb_id" id="mb_id"
 						style="padding-left: 40px;">
 				</div>
 				<!-- 비밀번호 입력 -->
