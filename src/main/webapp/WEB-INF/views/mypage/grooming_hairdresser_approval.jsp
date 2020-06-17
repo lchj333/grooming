@@ -35,6 +35,7 @@
 
 <!-- booking contents start -->
 <form name="frm" >
+	<input type="hidden" name="re_num" id="re_num" value=""/>
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -50,12 +51,14 @@
 			</div>
 			<div class="list_general">
 				<ul>
-					<c:forEach var="myList" items="${myList}">
+					<c:forEach var="myList" items="${myList}" varStatus="status">
+					<c:if test="${myList.re_approval eq '승인 대기'}">
 					<li>
 					<figure><img src="<c:url value="/resources/shopimags/${myList.reg_img}"/>" alt=""></figure>
-						<h4>${myList.ref_shopname } <i class="pending">${myList.re_approval }</i></h4>
+						<h4>${myList.ref_shopname } 
+						<i class="pending">${myList.re_approval }</i></h4>
 						<ul class="booking_list">
-							<li><strong style="font-weight: bold;">예약번호</strong>${myList.re_num}</li>
+							<li><strong style="font-weight: bold;">예약번호</strong><c:out value="${myList.re_num}"></c:out></li>
 							<li><strong style="font-weight: bold;">예약일</strong><fmt:formatDate value="${myList.re_date}" pattern="YYYY-MM-dd hh:mm:ss"/></li>
 							<li><strong style="font-weight: bold;">견종</strong>${myList.re_species}</li>
 							<li><strong style="font-weight: bold;">몸무게</strong>${myList.re_weight}</li>
@@ -68,12 +71,12 @@
 						<c:if test="${myList.re_approval eq '승인 대기'}">
 							<li><input type="button" value="승인" class="btn_1 gray approve" id="btn2" /></li>
 							<li class="btn_1 gray delete" id="delete-click-btn" data-toggle="modal" data-target="#cancel"><i class="fa fa-fw fa-times-circle-o"></i>취소</li>
-						 </c:if> 
+						</c:if>
 						</ul>
 						<ul>
 						</ul>
 					</li>
-							<input type="hidden" name="re_num" id="re_num" value="${myList.re_num}"/>
+					</c:if>
 					</c:forEach>
 				</ul>
 			</div>

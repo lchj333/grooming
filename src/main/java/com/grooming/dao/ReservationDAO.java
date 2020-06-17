@@ -71,5 +71,9 @@ public class ReservationDAO {
 		return ss.selectList(MAPPER+".myReservation", dto);
 	}
 	
+	// 취소 이유 가져오기
+	public List<ReservationDTO> cancel(ReservationDTO dto) {
+		return ss.selectList(MAPPER+".cancelReservation", dto);
+	}
 	
 }

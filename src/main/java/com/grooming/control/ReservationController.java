@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -174,67 +173,70 @@ public class ReservationController {
 	
 	
 	// 사용자가 예약 정보 보는 페이지
-		@RequestMapping(value="/myReservation")
-		public String myReservation(@RequestParam(value = "mb_id", required = false)String mb_id,
-				ReservationDTO dto,Model model) {
-			
-			
-			dto.setMb_id(mb_id);
-			
-			List<ReservationDTO> list = rdao.myReservation(dto);
-			
-			model.addAttribute("myList", list);
+	@RequestMapping(value="/myReservation")
+	public String myReservation(HttpServletRequest req,
+									ReservationDTO dto, Model model) {
+		HttpSession hs = req.getSession();
+		MemberDTO mem = (MemberDTO) hs.getAttribute("login");
+		
+		dto.setMb_id(mem.getMb_id());
+		
+		List<ReservationDTO> list = rdao.myReservation(dto);
+		
+		
+		model.addAttribute("myList", list);
 
-			
-			return "mypage/grooming_user_booking";
-		}
 		
-		// 미용사가 예약 정보 보는 페이지
-		@RequestMapping(value= "/agreedReservation")
-		public String agreedReservation(@RequestParam(value = "de_licencenum", required = false)String de_licencenum,
-										ReservationDTO dto,Model model) {
-			
-			int num = Integer.parseInt(de_licencenum);
-			
-			dto.setDe_licencenum(num);
-			
-			List<ReservationDTO> list = rdao.agreedReservation(dto);
-			
-			model.addAttribute("myList", list);
-			
-			
-			return "mypage/grooming_hairdresser_approval";
-		}
+		return "mypage/grooming_user_booking";
+	}
+	
+	// 미용사가 예약 정보 보는 페이지
+	@RequestMapping(value= "/agreedReservation")
+	public String agreedReservation(@RequestParam(value = "de_licencenum", required = false)String de_licencenum,
+									ReservationDTO dto,Model model) {
 		
-		//미용사 예약 승인 + 피드백
-		@RequestMapping(value = "/appReservationY")
-		public String appReservationY(@RequestParam(value = "re_num", required = false)String re_num,
-								ReservationDTO dto) {
-			
-			int renum = Integer.parseInt(re_num);
-			
-			dto.setRe_num(renum);
-			
-			rdao.checkReservY(dto);
-			
-			return "mypage/grooming_user_profile";
-		}
+		int num = Integer.parseInt(de_licencenum);
 		
-		//미용사 예약 승인 + 피드백
-		@RequestMapping(value = "/appReservationN")
-		public String appReservationN(@RequestParam(value = "re_num", required = false)String re_num,
-				@RequestParam(value = "bc_con", required = false)String bc_con,
-				ReservationDTO dto) {
-			
-			int renum = Integer.parseInt(re_num);
-			dto.setRe_num(renum);
-			dto.setBc_con(bc_con);
-			
-			rdao.checkReservN(dto);
-			rdao.insertFeedBack(dto);
-			
-			return "mypage/grooming_user_profile";
-		}
+		dto.setDe_licencenum(num);
 		
+		List<ReservationDTO> list = rdao.agreedReservation(dto);
+		
+		model.addAttribute("myList", list); 
+		
+		
+		return "mypage/grooming_hairdresser_approval";
+	}
+	
+	//미용사 예약 승인 + 피드백
+	@RequestMapping(value = "/appReservationY")
+	public String appReservationY(@RequestParam(value = "re_num", required = false)String re_num,
+							ReservationDTO dto) {
+		
+		System.out.println(re_num);
+		
+		int renum = Integer.parseInt(re_num);
+		
+		dto.setRe_num(renum);
+		
+		rdao.checkReservY(dto);
+		
+		return "mypage/grooming_user_profile";
+	}
+	
+	//미용사 예약 승인 + 피드백
+	@RequestMapping(value = "/appReservationN")
+	public String appReservationN(@RequestParam(value = "re_num", required = false)String re_num,
+			@RequestParam(value = "bc_con", required = false)String bc_con,
+			ReservationDTO dto) {
+		
+		int renum = Integer.parseInt(re_num);
+		dto.setRe_num(renum);
+		dto.setBc_con(bc_con);
+		
+		rdao.checkReservN(dto);
+		rdao.insertFeedBack(dto);
+		
+		return "mypage/grooming_user_profile";
+	}
 	
 }
