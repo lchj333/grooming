@@ -7,6 +7,37 @@
 <head>
 <meta charset="UTF-8">
 <title>booking</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#btn1").click(function(){
+			var re_num = document.getElementById("re_num");
+					
+		
+			/* document.frm.action = "<c:url value='/cancel'/>";
+			document.frm.re_num.val = re_num;
+			document.frm.submit(); */
+			
+			$.ajax({
+	            url: "cancel",
+	            type: "POST",
+	            dataType : 'json',
+	            data: re_num,
+	            success: function(data){
+	                $('#cancel-btn').text(data);
+	            },
+	            error: function(){
+	                alert("simpleWithObject err");
+	            }
+	        });
+		});
+		
+
+			
+
+		
+	});
+</script>
 </head>
 <body>
 <!-- nav start -->
@@ -14,6 +45,7 @@
 <!-- nav end -->
 
 <!-- booking contents start -->
+<form name="frm" >
   <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -29,21 +61,12 @@
 			</div>
 			<div class="list_general">
 				<ul>
+					
 					<c:forEach var="myList" items="${myList}">
 					<li>
 						<figure><img src="<c:url value="/resources/shopimags/${myList.reg_img}"/>" alt=""></figure>
 						<h4>${myList.ref_shopname } 
-						<c:if test="${myList.re_approval eq '취소'}">
-						<i class="pending" data-toggle="modal" data-target="#cancel">${myList.re_approval }</i>
-						</c:if>
-						
-						<c:if test="${myList.re_approval eq '승인'}">
 						<i class="pending">${myList.re_approval }</i>
-						</c:if>
-						
-						<c:if test="${myList.re_approval eq '승인 대기'}">
-						<i class="pending">${myList.re_approval }</i>
-						</c:if>
 						</h4>
 						<ul class="booking_list">
 							<li><strong style="font-weight: bold;">예약일</strong><fmt:formatDate value="${myList.re_date}" pattern="YYYY-MM-dd hh:mm:ss"/></li>
@@ -52,15 +75,14 @@
 							<li><strong style="font-weight: bold;">원하는컷</strong>${myList.re_cut}</li>
 							<li><strong style="font-weight: bold;">가게주소</strong>${myList.reg_shopaddress }</li>
 							<li><strong style="font-weight: bold;">예약번호</strong>${myList.re_num}</li>
+							<li><strong style="font-weight: bold;">취소이유</strong>${myList.bc_con}</li>
 						</ul>
+						
 						<p><a href="#0" class="btn_1 gray"><i class="fa fa-fw fa-envelope"></i>1대1대화</a></p>
-					<%-- 	<c:if test="${myList.re_num == cencel.re_num}">
-						<p>취소 이유 : <c:out value="${cencel.bc_con }"></c:out></p>
-						</c:if> --%>
 
 					</li>
 					</c:forEach>
-					
+			
 					
 				</ul>
 			</div>
@@ -109,13 +131,14 @@
                  <span aria-hidden="true">×</span>
                </button>
              </div>
-             <div class="modal-body"><input type="text" name="bc_con" id="cancel-btn" placeholder="취소사유" style="width: 100%; height: 50px;" /></div>
+             <div class="modal-body"><input type="text" name="bc_con" id="cancel-btn" value="${cancel.bc_con }" disabled="disabled" style="width: 100%; height: 50px;" /></div>
              <div class="modal-footer">
                <button class="btn btn-secondary" type="button" data-dismiss="modal">닫기</button>
              </div>
            </div>
          </div>
        </div>
+       </form>
 
     <jsp:include page="mypage_logout.jsp"></jsp:include>
     

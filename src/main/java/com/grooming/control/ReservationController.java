@@ -2,6 +2,7 @@ package com.grooming.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.grooming.dao.ReservationDAO;
@@ -160,13 +163,15 @@ public class ReservationController {
 	
 	// 사용자가 예약 정보 보는 페이지
 		@RequestMapping(value="/myReservation")
-		public String myReservation(@RequestParam(value = "mb_id", required = false)String mb_id,
-				ReservationDTO dto,Model model) {
+		public String myReservation(HttpServletRequest req,
+										ReservationDTO dto, Model model) {
+			HttpSession hs = req.getSession();
+			MemberDTO mem = (MemberDTO) hs.getAttribute("login");
 			
-			
-			dto.setMb_id(mb_id);
+			dto.setMb_id(mem.getMb_id());
 			
 			List<ReservationDTO> list = rdao.myReservation(dto);
+			
 			
 			model.addAttribute("myList", list);
 
@@ -185,7 +190,7 @@ public class ReservationController {
 			
 			List<ReservationDTO> list = rdao.agreedReservation(dto);
 			
-			model.addAttribute("myList", list);
+			model.addAttribute("myList", list); 
 			
 			
 			return "mypage/grooming_hairdresser_approval";
@@ -195,6 +200,8 @@ public class ReservationController {
 		@RequestMapping(value = "/appReservationY")
 		public String appReservationY(@RequestParam(value = "re_num", required = false)String re_num,
 								ReservationDTO dto) {
+			
+			System.out.println(re_num);
 			
 			int renum = Integer.parseInt(re_num);
 			
@@ -220,6 +227,7 @@ public class ReservationController {
 			
 			return "mypage/grooming_user_profile";
 		}
+		
 		
 	
 }
