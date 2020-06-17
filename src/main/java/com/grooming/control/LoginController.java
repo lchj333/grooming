@@ -76,7 +76,7 @@ public class LoginController {
 			
 			mav.setViewName("main/grooming_main");
 			
-		}else if (check == 0 || adcheck == 0) {
+		}else if (check == 0 && adcheck == 0) {
 			
 			
 			session.setAttribute("login", null);
@@ -93,7 +93,7 @@ public class LoginController {
 			
 			session.setAttribute("admin", ad.adminloginOk(adminDto));
 			
-			mav.setViewName("redirect:/selectMemberAll");
+			mav.setViewName("mypage/grooming_admin_management");
 			
 		}
 		
