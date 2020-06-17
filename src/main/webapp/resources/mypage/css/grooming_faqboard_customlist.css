@@ -2,10 +2,14 @@
 
 #grooming_qnaboard_customlist_form{
 	width: 100%;
-	padding-left : 250px;
-	color : black;
-}
 
+}
+@media (max-width:380px){
+	#grooming_qnaboard_customlist_form{
+		width:100%;
+ 		padding-left : 0px;
+	}
+}
 
 /* 공지사항 리스트 최상위 div */
 #grooming_qnaboard_customlist_div{
@@ -14,10 +18,12 @@
 
 #grooming_qnaboard_customlist_section{
 	width : 80%;
+	margin-top : 200px;
 	margin-left : 10%;
 	margin-right : 10%;
+	margin-bottom : 5%;
+	height:700px;
 }
-
 
 /* 공지사항 (제목=공지사항) */
 #grooming_qnaboard_customlist_pagetitle{
@@ -29,6 +35,7 @@
 	font-size: 28px;
     font-weight: 700;
     color: #333333;
+   
     
 }
 @media (maxwidth:380px) {
@@ -39,17 +46,22 @@
 /* 공지사항 폼 */
 
 #grooming_qnaboard_customlist_maintitle{
-	margin-top: 5%;
-	margin-bottom : 15%;
+
+	margin-top:5%;
+    margin-bottom:5%;
 	font-size: 30px;
     font-weight: bold;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    color : black;
     
 }
 
 #grooming_qnaboard_customlist_articlelist{
-	max-width: 1100px;
-	height : 600px;
+	width:80%;
+	margin-left:10%;
+	margin-right:10%;
+	min-width: 1100px;
+	color : black;
 	
 }
 #grooming_qnaboard_customlist_tablediv{
@@ -58,18 +70,21 @@
 }
 
 #gr_qna_ul{
-	width : 100%;
+	width : 80%;
+	margin-left:10%;
+	margin-right:10%;
 }
 
 #gr_qna_li{
 	width: 100%;
 	list-style:none;
-
+	border-bottom: 1px solid black;
+	border-collapse : collapse;
 }
 
 #gr_qna_a{
-	width: 100%;
-	margin-left : 10%;
+	width: 80%;
+	margin-left : 20px;
 	margin-right : 10%;
 	display: flex;
 	flex-direction:row;
@@ -82,23 +97,29 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	float:left;
+	padding : 20px;
 }
 
 
 #gr_qna_regdate{
 	font-size: 20px;
 	float: right;
+	padding : 20px;
 }
-
 @media screen and (max-width: 1620px) {
 	#gr_qna_regdate{
 		display: none;
 	}
 }
+#gr_qna_writer{
+	font-size: 20px;
+	float: right;
+	padding : 20px;
+}
+
 #gr_qna_slideul{
 	width :100%;
-	margin-left : 10%;
-	margin-right : 10%;
+	margin-left : 20px;
 	padding : 26px 30px;
 	font-size: 16px;
 }
@@ -198,3 +219,4 @@
 		width : 100%;
 	}
 }
+

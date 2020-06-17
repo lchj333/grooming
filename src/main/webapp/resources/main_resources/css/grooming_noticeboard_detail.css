@@ -2,16 +2,31 @@
 
 #gr_noticeboard_detail_maindiv{
 	
-	margin-left : 30%;
-	margin-right : 30%;
-	margin-top : 100px;
-	margin-bottom : 20%; 
-	width: 40%;
-	height : 400px;
+	margin-left : 10%;
+	margin-right : 10%;
+	margin-top : 200px;
+	margin-bottom : 5%; 
+	width: 80%;
+	height : 700px;
 	color : black;
 }
+
+#notice_maindiv2{
+	width: 80%;
+	margin-left : 10%;
+	margin-right : 10%;
+}
+
+#notice_maindiv3{
+	width: 80%;
+	margin-left : 10%;
+	margin-right : 10%;
+}
+
 #gr_noticeboard_detail_contents{
-	height : 450px;
+	height : 480px;
+	padding : 10px;
+	border : 1px solid #EAEAEA;
 }
 
 #gr_noticeboard_detail_title{
@@ -27,7 +42,7 @@
 	
 	text-align: right;
 	margin-bottom : 30px;
-	
+	margin-right: 10px;
 }
 
 @media screen and (max-width:375px) {
@@ -39,6 +54,9 @@
 		width : 80%;
 		
 	}
+}
+#notice_buttondiv{
+	margin-top : 20px;
 }
 
 #notice_button{

@@ -100,8 +100,16 @@
 						</ul>
 					</li>
 					<li><span><a href="<c:url value="/faqList"/>">고객센터</a></span>
+						
 						<ul>
-							<li><a href="<c:url value="/inquiryCustomerList?mb_id=${login.mb_id }"/>">1:1문의</a></li>
+							<li>
+								<c:if test="${login.mb_id eq null }">
+									<a href="<c:url value="/login"/>">1:1문의</a>
+								</c:if>
+								<c:if test="${login.mb_id != null }">
+									<a href="<c:url value="/inquiryCustomerList?mb_id=${login.mb_id }"/>">1:1문의</a>
+								</c:if>
+							</li>
 							<li><a href="<c:url value="/faqList"/>">FAQ</a></li>
 						</ul>
 					</li>

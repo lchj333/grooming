@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,6 +32,7 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="page">
+<jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
 <!-- contents -->
 	<input type="hidden" value="${a.in_num }" />
 	<form action="#" id="grooming_qnaboard_customlist_form">
@@ -53,7 +55,13 @@ $(document).ready(function(){
 									</div> 
 									<ul class="hide" id="gr_qna_slideul">
 										<li id="gr_qna_slideli">
-										<c:out value="${a.in_con }"></c:out>
+										<c:set var="a" value="${a.in_con }"/>
+										<c:set var="b" value="${fn:replace(a,'<p>','')}"/>
+										<c:set var="c" value="${fn:replace(b,'</p>','</br>')}"/>
+										<c:set var="d" value="${fn:replace(c,'&nbsp;','
+										')}"/>
+										<c:set var="e" value="${fn:replace(d,'<br>','')}"/> 
+										${e }
 		  								</li>
 									</ul>
 								</li>
@@ -66,7 +74,8 @@ $(document).ready(function(){
 		</div>
 	</form>
 </div>
-<jsp:include page="../mypage/mypage_nav.jsp"></jsp:include>
+<!-- 로그아웃 버튼 -->
+<jsp:include page="../mypage/mypage_logout.jsp"></jsp:include>
    <script src="<c:url value='/resources/mypage/vendor/jquery/jquery.min.js'/>"></script>
     <script src="<c:url value='/resources/mypage/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
     <!-- Core plugin JavaScript-->
