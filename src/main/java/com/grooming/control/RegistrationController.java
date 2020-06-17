@@ -195,7 +195,7 @@ public class RegistrationController {
 		//텍스트 정보
 		RegistrationDTO dto = rdao.infoShop(num);
 		if(dto != null) {//가져온 정보가 있을 때
-			req.setAttribute("RegistrationDTO", dto);
+			req.setAttribute("Regist", dto);
 			
 			//샵 이미지들
 			List<String> imgs = rdao.infoImgs(num);

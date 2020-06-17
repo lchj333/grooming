@@ -5598,6 +5598,12 @@ a.social_bt.linkedin:before {
 	height: 500px;
 }
 
+#google-map{
+	width: 100%;
+	height: 500px;
+	
+}
+
 .map.map_single {
 	height: 400px;
 }

@@ -2,6 +2,9 @@ package com.grooming.control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -59,11 +62,13 @@ public class ReservationController {
 		String species = "";
 		for(int x=0; x<specie.length; x++) {
 			if(!specie[x].equals("0")) {
+				//입력
 				species = species + spec[x] +specie[x];
-			}
-			if(x < 2 && !specie[x+1].equals("0")) { //x는 최대 2
-				species = species + " | ";
-			}
+				//칸 구분 ( | )
+				if(x < 2 && !specie[x+1].equals("0")) { //x는 최대 2
+					species = species + " | ";
+				}//in
+			}//out
 			// ex : "대형 1 | 중형 2"
 		}
 		
@@ -85,18 +90,26 @@ public class ReservationController {
 			return "reservation/grooming_reservation_detail";
 		}else {
 			//정보가 없을 경우
-			return "redirect:rollback";
+			return "redirect:reload";
 		}
 	}
 	//-> 예약  확인 페이지 ->
 	//미용 예약 적용
-	@PostMapping(value = "reservation/addReserv")
-	public String takeReserv(@RequestParam(value = "de_licencenum")int lnum, ReservationDTO dto, 
-								HttpServletRequest req,	HttpServletResponse res, RedirectAttributes rtt) throws IOException {
+	@PostMapping(value = "/reservation/addReserv")
+	public String takeReserv(@RequestParam(value = "lnum")int lnum, HttpServletRequest req,
+								@RequestParam(value = "dates")String dates, ReservationDTO dto,
+								HttpServletResponse res, RedirectAttributes rtt) throws IOException, ParseException {
 		HttpSession hs = req.getSession();
+		MemberDTO mem = (MemberDTO) hs.getAttribute("login");
 		
+		//String to Date
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date re_date = transFormat.parse(dates);
+
 		//실질적 DB저장
+		dto.setMb_id(mem.getMb_id());
 		dto.setDe_licencenum(lnum);
+		dto.setRe_date(re_date);
 		rdao.insertReserv(dto);
 		
 		//알림 팝업
@@ -109,7 +122,7 @@ public class ReservationController {
 		rtt.addFlashAttribute("dInfo", hs.getAttribute("dInfo"));
 		
 		//예약 리스트 이동 컨트롤
-		return "redirect:/goToBook";
+		return "redirect:goToBook";
 	}
 	//↕페이지 이동 -> 목록 페이지
 	@RequestMapping("/goToBook")
@@ -122,17 +135,13 @@ public class ReservationController {
 		return "mypage/grooming_user_booking";
 	}
 	
-	//사용자 미용 후기 작성 폼
-	@GetMapping(value = "/writeReview")
+	//사용자 미용 후기 작성 적용
+	@PostMapping(value = "/writeReview")
 	public String writeReviewForm() {
+		
+		
 		return "mypage/grooming_user_review";
 	}
-	
-//	@PostMapping(value = "/writeReview")
-//	public String writeReviewReal(HttpServletRequest req) {
-//		
-//		return "home";
-//	}
 	
 	/***********************************************
   		미용사 입장
