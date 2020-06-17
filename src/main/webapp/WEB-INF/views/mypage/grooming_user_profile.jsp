@@ -6,6 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>myprofile</title>
+
+<!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <!-- =======================================================================================================================================================================================================================  -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 function openDaumPost(){
@@ -140,7 +149,7 @@ function openDaumPost(){
                      
                   </div>
                   <div class="form-group">
-                     <label>이메일 (jstl로 *달기)</label>
+                     <label>이메일</label>
                      <input class="form-control" type="email" placeholder="${login.mb_email}" disabled="disabled" style="background-color: #e9ecef">
                   
                   </div>
