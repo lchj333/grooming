@@ -9,6 +9,14 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/mypage/css/grooming_qnaboard_customlist.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 최상단 메뉴 icon --><!-- =======================================================================================================================================================================================================================  -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_72.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_114.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="${pageContext.request.contextPath}/resources/main_resources/img/Grooming_icon_144.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+ <!-- =======================================================================================================================================================================================================================  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
     .menu #gr_qna_a{cursor:pointer;}
@@ -61,7 +69,7 @@ $(document).ready(function(){
                          <li id="gr_qna_slideli">
 <%--                          		<c:out value="${fn:replace(a.in_con,'하이','바이')}"></c:out> --%>
 <%--                          		<c:out value="${a.in_con }"></c:out> --%>
-                         		<c:set var="aa" value="${a.in_con }"/>
+                         		Q.  <c:set var="aa" value="${a.in_con }"/>
 								<c:set var="bb" value="${fn:replace(aa,'<p>','')}"/>
 								<c:set var="cc" value="${fn:replace(bb,'</p>','</br>')}"/>
 								<c:set var="dd" value="${fn:replace(cc,'&nbsp;','
